@@ -1,0 +1,52 @@
+<?php
+return [
+    'address' => 'Address',
+    'services' => 'Services',
+
+    //navbar tarjima
+    'kriminalog' => 'Criminology Research Institute of the Republic of Uzbekistan',
+    'qidirish' =>'Search',
+    'ins_haq' =>  'About the Institute',
+    'ins_tar' =>  'History of the Institute',
+    'ins_haq2' => 'Information about the Institute',
+    'ins_nor' =>   'Regulatory Legal Documents of the Institute',
+    'ins_vaz' =>  'Functions of the Institute',
+
+    'rahbariyat' => 'Management',
+    'ins_rahbariyat' => 'Institute Management',
+
+    'ilm_sal' => 'Scientific Potential',
+    'ilm_dara' => 'Staff with Academic Degrees and Titles',
+    'kur_amal' => 'Provided Practical Assistance',
+    'maqolalar' => 'Articles',
+
+    'kengashlar' => 'Councils',
+    'ins_keng' => 'Institute Council',
+    'kri_keng' => 'Criminology Council',
+    'ilm_dar_ber' => 'Academic Council Conferring Degrees',
+    'xal_ex_keng' => 'International Expert Council',
+
+    'elon' => 'Announcements',
+    'ish_qab' => 'Job Recruitment',
+    'dis_mav' => 'Dissertation Topics',
+    'tadqiq' => 'Researchers',
+    'pul_xiz' => 'Paid Services',
+
+    'yangilik' => 'News',
+    'xor_yan' => 'International News',
+    'mah_yan' => 'Local News',
+    'ins_tash' => 'Visits to the Institute',
+    'ilm_saf' => 'Scientific Trips',
+    'telek' => 'TV Programs',
+
+    'hamkor' => 'Our Partners',
+    'xor_ham' => 'Foreign',
+    'mah_ham' => 'Local',
+    'boglanish' => 'Contact',
+
+    //main page
+    'sun_yan' => 'Latest News',
+    'malumot' => 'Information',
+
+
+];
