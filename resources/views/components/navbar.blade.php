@@ -30,8 +30,8 @@
                     </form>
                     <div class="currency-menu">
                         <img src="{{asset('assets/img/language.svg')}}" alt="">
-                        <select class="form-select nice-select" id="languageSelect" onchange="changeLanguage(this)">
-                            <option value="uz" {{ App::getLocale() === 'uz' ? 'selected' : '' }}>Uz</option>
+                        <select class="form-select nice-select mr-3 pl-5" id="languageSelect" onchange="changeLanguage(this)">
+                            <option value="uz" {{ App::getLocale() === 'uz' ? 'selected' : '' }}>O'z</option>
                             <option value="kr" {{ App::getLocale() === 'kr' ? 'selected' : '' }}>Ўз</option>
                             <option value="ru" {{ App::getLocale() === 'ru' ? 'selected' : '' }}>Ру</option>
                             <option value="en" {{ App::getLocale() === 'en' ? 'selected' : '' }}>En</option>
