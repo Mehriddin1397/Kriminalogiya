@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         View::composer('*', function ($view) {
-            $contact = Contact::find(2); // Baza orqali olingan ma'lumot
+            $contact = Contact::find(1); // Baza orqali olingan ma'lumot
             $view->with('contact', $contact); // Har bir view ga uzatish
         });
     }
