@@ -3,14 +3,14 @@
         <div class="row g-5">
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-light mb-4">{{__('lan.address')}}</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{$contact->address}}</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><a href="tel:{{$contact->phone}}" class="" >{{$contact->phone}}</a></p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{$contact->email}}</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>@if($contact) {{$contact->address}}@endif</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><a href="tel:@if($contact){{$contact->phone}}@endif" class="" >@if($contact) {{$contact->phone}}@endif</a></p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>@if($contact) {{$contact->email}}@endif</p>
                 <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" target="_blank" href="{{$contact->telegram_link}}"><i class="fab fa-telegram"></i></a>
-                    <a class="btn btn-outline-light btn-social" target="_blank" href="{{$contact->facebook_link}}"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" target="_blank" href="{{$contact->youtube_link}}"><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" target="_blank" href="{{$contact->whatsapp_link}}"><i class="fab fa-whatsapp"></i></a>
+                    <a class="btn btn-outline-light btn-social" target="_blank" href="@if($contact) {{$contact->telegram_link}} @endif"><i class="fab fa-telegram"></i></a>
+                    <a class="btn btn-outline-light btn-social" target="_blank" href="@if($contact) {{$contact->facebook_link}} @endif"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" target="_blank" href="@if($contact) {{$contact->youtube_link}} @endif "><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" target="_blank" href="@if($contact) {{$contact->whatsapp_link}} @endif"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">

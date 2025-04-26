@@ -14,7 +14,9 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
+        rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -34,7 +36,8 @@
 
 <body>
 <!-- Spinner Start -->
-<div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+<div id="spinner"
+     class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
     <!-- spinner-grow klassi olib tashlandi, faqat rasm qoldi -->
     <div role="status">
         <img
@@ -67,12 +70,18 @@
                 <small class="fa fa-phone-alt text-primary me-2"></small>
                 <small> <a href="tel:+998712386415" class="d-block">+998 71 238 64 15</a></small>
             </div>
-            <div class="h-100 d-inline-flex align-items-center">
-                <a class="btn btn-sm-square bg-white text-primary me-1" target="_blank" href="{{$contact->telegram_link}}"><i class="fab fa-telegram"></i></a>
-                <a class="btn btn-sm-square bg-white text-primary me-1" target="_blank" href="{{$contact->facebook_link}}"><i class="fab fa-facebook-f"></i></a>
-                <a class="btn btn-sm-square bg-white text-primary me-1" target="_blank" href="{{$contact->youtube_link}}"><i class="fab fa-youtube"></i></a>
-                <a class="btn btn-sm-square bg-white text-primary me-0" target="_blank" href="{{$contact->whatsapp_link}}"><i class="fab fa-whatsapp"></i></a>
-            </div>
+            @if ($contact)
+                <div class="h-100 d-inline-flex align-items-center">
+                    <a class="btn btn-sm-square bg-white text-primary me-1" target="_blank"
+                       href="{{$contact->telegram_link}}"><i class="fab fa-telegram"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" target="_blank"
+                       href="{{$contact->facebook_link}}"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-1" target="_blank"
+                       href="{{$contact->youtube_link}}"><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-sm-square bg-white text-primary me-0" target="_blank"
+                       href="{{$contact->whatsapp_link}}"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            @endif
         </div>
     </div>
 </div>
