@@ -41,7 +41,7 @@
                         <div class="p-4 text-center border border-5 border-light border-top-0">
                             <h4 class="mb-3"></h4>
                             <p>{{$new->name}}</p>
-                            <a class="fw-medium" href="{{route('show',['category_id'=>17,'id'=>$new->id])}}">Batafsil<i class="fa fa-arrow-right ms-2"></i></a>
+                            <a class="fw-medium" href="{{route('show',['category_id'=>17,'id'=>$new->id])}}">{{__('lan.batafsil')}}<i class="fa fa-arrow-right ms-2"></i></a>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                             <img class="img-fluid" src="assets/img/i2.jfif" alt="" style="width:275px; height:183px; !important;">
                         </div>
                         <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <a href="{{route('categoryId',22)}}"><h5 class="mb-0">Ijtimoiy amaliy tadqiqotlar</h5></a>
+                            <a href="{{route('categoryId',22)}}"><h5 class="mb-0">{{__('lan.ijti_ama_tad')}}</h5></a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                             <img class="img-fluid" src="assets/img/i3.jfif" alt="" style="width:275px; height:183px; !important;">
                         </div>
                         <div class="text-center border border-5 border-light border-top-0 p-4">
-                             <a href="{{route('categoryId',24)}}"><h5 class="mb-0">Kitobxonlik</h5> </a>
+                             <a href="{{route('categoryId',24)}}"><h5 class="mb-0">{{__('lan.kitobxonlik')}}</h5> </a>
                          </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
 
                         </div>
                         <div class="text-center border border-5 border-light border-top-0 p-4">
-                             <a href="{{route('categoryId',15)}}"><h5 class="mb-0">Jinoyat va jinoyatdan saqlaning</h5> </a>
+                             <a href="{{route('categoryId',15)}}"><h5 class="mb-0">{{__('lan.jin_va_jin_saq')}}</h5> </a>
                          </div>
                     </div>
                 </div>
@@ -96,7 +96,7 @@
                             <img class="img-fluid" src="assets/img/kriminalogiya.jpg" alt="" style="width:275px; height:183px; !important;">
                         </div>
                         <div class="text-center border border-5 border-light border-top-0 p-4">
-                             <a href="{{route('categoryId',14)}}"><h5 class="mb-0">Kriminalogik institut jurnallari</h5>  </a>
+                             <a href="{{route('categoryId',14)}}"><h5 class="mb-0">{{__('lan.krimina_ins_jur')}}</h5>  </a>
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,7 @@
                         <img class="img-fluid" src="assets/img/talaba.png" width="50px" alt="">
                     </div>
                     <div class="number">{{$researchcount}}</div>
-                    <div class="label">Maqolalar</div>
+                    <div class="label">{{__('lan.maqolalar')}}</div>
                 </div>
 
                 <div class="stat-card">
@@ -126,7 +126,7 @@
 
                     </div>
                     <div class="number">{{$newscount}}</div>
-                    <div class="label">Yangiliklar</div>
+                    <div class="label">{{__('lan.yangilik')}}</div>
                 </div>
 
                 <div class="stat-card">
@@ -136,7 +136,7 @@
 
                     </div>
                     <div class="number">{{$category2PartnersCount}}</div>
-                    <div class="label">Xorijiy hamkorlar</div>
+                    <div class="label">{{__('lan.xor_ham')}}</div>
                 </div>
 
                 <div class="stat-card">
@@ -144,7 +144,7 @@
                         <img class="img-fluid" src="assets/img/partnership.png" width="50px" alt="">
                     </div>
                     <div class="number">{{$category1PartnersCount}}</div>
-                    <div class="label">Mahalliy hamkorlar</div>
+                    <div class="label">{{__('lan.mah_ham')}}</div>
                 </div>
             </div>
             <style>

@@ -54,7 +54,7 @@
                     <div class="form-group mb-4">
                         <label for="object_type">Obyekt turi:</label>
                         <select name="object_type" class="form-select form-control" required>
-                            <option value="academia">Ilmiy kengash va maqola</option>
+                            <option value="academia">Ilmiy kengash </option>
                             <option value="bibliophilia">Kitobxonlik</option>
                             <option value="crimes">Jinoyatlar</option>
                             <option value="institut">Institut</option>

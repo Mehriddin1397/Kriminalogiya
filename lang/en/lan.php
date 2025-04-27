@@ -48,5 +48,11 @@ return [
     'sun_yan' => 'Latest News',
     'malumot' => 'Information',
 
+    'batafsil' => 'More Details',
+    'ijti_ama_tad' => 'Social Applied Research',
+    'kitobxonlik' => 'Reading Books',
+    'jin_va_jin_saq' => 'Crime and Crime Prevention',
+    'krimina_ins_jur' => 'Journals of the Criminological Institute',
+
 
 ];

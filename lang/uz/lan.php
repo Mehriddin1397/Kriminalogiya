@@ -40,13 +40,19 @@ return [
     'telek' => 'Teleko\'rsatuvlar',
 
     'hamkor' => 'Hamkorlarimiz',
-    'xor_ham' => 'Xorijiy',
-    'mah_ham' => 'Mahalliy',
+    'xor_ham' => 'Xorijiy hamkorlar',
+    'mah_ham' => 'Mahalliy hamkorlar',
     'boglanish' => 'Bog\'lanish',
 
     //main page
     'sun_yan' => 'So\'ngi yangiliklar',
     'malumot' => 'Ma\'lumotlar',
+
+    'batafsil' => 'Batafsil',
+    'ijti_ama_tad' => 'Ijtimoiy amaliy tadqiqotlar',
+    'kitobxonlik' => 'Kitobxonlik',
+    'jin_va_jin_saq' => 'Jinoyat va jinoyatdan saqlaning',
+    'krimina_ins_jur' => 'Kriminalogik institut jurnallari',
 
 
 
