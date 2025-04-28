@@ -41,7 +41,7 @@
                         <div class="p-4 text-center border border-5 border-light border-top-0">
                             <h4 class="mb-3"></h4>
                             <p>{{$new->name}}</p>
-                            <a class="fw-medium" href="{{route('show',['category_id'=>8,'id'=>$new->id])}}">{{__('lan.batafsil')}}<i class="fa fa-arrow-right ms-2"></i></a>
+                            <a class="fw-medium" href="{{route('show',['category_id'=>22,'id'=>$new->id])}}">{{__('lan.batafsil')}}<i class="fa fa-arrow-right ms-2"></i></a>
                         </div>
                     </div>
                 </div>
