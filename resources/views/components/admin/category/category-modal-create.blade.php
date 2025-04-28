@@ -63,7 +63,7 @@
                             <option value="research">Tadqiqotlar</option>
                             <option value="scholars">Tadqiqotchilar</option>
                             <option value="partner">Hamkorlar</option>
-                            <option value="expertise">Ilmiy salohiyat</option>
+                            <option value="expertise">Ilmiy salohiyat va hamkorlar</option>
                             <option value="articles">Maqolalar</option>
                         </select>
                     </div>
