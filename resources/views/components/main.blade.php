@@ -65,7 +65,7 @@
                 <small>{{__('lan.ish_vaqt')}}</small>
             </div>
         </div>
-        <div class="col-lg-5 px-5 text-end">
+        <div class="col-lg-5 px-5 text-end" style="width: 280px !important; ">
             <div class="h-100 d-inline-flex align-items-center py-3 me-4">
                 <small class="fa fa-phone-alt text-primary me-2"></small>
                 <small> <a href="tel:+998712386415" class="d-block">+998 71 238 64 15</a></small>
