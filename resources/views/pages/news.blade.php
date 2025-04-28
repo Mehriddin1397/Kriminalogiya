@@ -21,11 +21,11 @@
             <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-12 text-center">
                     <ul class="list-inline mb-5" id="portfolio-flters">
-                        @if($categories->isNotEmpty())
-                            @foreach($categories as $category)
-                                <li class="mx-2 {{ $id == $category->id ? 'active' : '' }}"><a href="{{ route('categoryId', $category->id) }}" style="color: {{ $id == $category->id ? '#0a0a0a' : '' }} ">{{$category->name}}</a></li>
-                            @endforeach
-                        @endif
+{{--                        @if($categories->isNotEmpty())--}}
+{{--                            @foreach($categories as $category)--}}
+{{--                                <li class="mx-2 {{ $id == $category->id ? 'active' : '' }}"><a href="{{ route('categoryId', $category->id) }}" style="color: {{ $id == $category->id ? '#0a0a0a' : '' }} ">{{$category->name}}</a></li>--}}
+{{--                            @endforeach--}}
+{{--                        @endif--}}
                     </ul>
                 </div>
             </div>

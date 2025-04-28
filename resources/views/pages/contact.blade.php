@@ -2,12 +2,11 @@
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 mb-5">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Contact</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">{{__('lan.boglanish')}}</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">{{__('lan.boglanish')}}</li>
                 </ol>
             </nav>
         </div>
@@ -22,9 +21,9 @@
                 <div class="col-lg-6 contact-text py-5 wow fadeIn" data-wow-delay="0.5s">
                     <div class="p-lg-5 ps-lg-0">
                         <div class="section-title text-start">
-                            <h1 class="display-5 mb-4">Contact Us</h1>
+                            <h1 class="display-5 mb-4">{{__('lan.boglanish')}}</h1>
                         </div>
-                        <p class="mb-4">O'zbekiston Respublikasi Kriminalogiya va ilmiy tadqiqot instituti</p>
+                        <p class="mb-4">{{__('lan.kriminalog')}}</p>
                         <p class="mb-4"><b>Manzil: </b> {{$contact->address}}</p>
                         <p class="mb-4"><b>Telefon raqami: </b> {{$contact->phone}}</p>
                         <p class="mb-4"><b>Elektron manzili: </b> {{$contact->email}}</p>
