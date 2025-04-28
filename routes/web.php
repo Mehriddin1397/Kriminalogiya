@@ -6,7 +6,7 @@ Route::get('/',[\App\Http\Controllers\PageController::class,'main'])->name('main
 Route::get('/contact',[\App\Http\Controllers\PageController::class,'contact'])->name('contact');
 
 Route::get('/login',[\App\Http\Controllers\AuthController::class,'showLogin'])->name('login');
-Route::post('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('login');
+Route::post('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('loginn');
 Route::post('/logout',[\App\Http\Controllers\AuthController::class,'logout'])->name('logout');
 
 
