@@ -286,5 +286,10 @@ class PageController extends Controller
             'rahbariyats', 'bibliophilias', 'news', 'journals', 'crimes', 'academias', 'q'));
     }
 
+    public function hujjat()
+    {
+        return view('pages.ins_nor_hujjat');
+    }
+
 
 }

@@ -3,6 +3,9 @@ return [
     'address' =>  'Manzil',
     'services' => 'Xizmatlar',
 
+    'ish_vaqt' => 'Dush-Juma : 09.00 AM-06.00 PM',
+
+
     //navbar tarjima
     'kriminalog' => 'O‘zbekiston Respublikasi Kriminologiya tadqiqot instituti',
     'qidirish' => 'Qidirish',
@@ -53,6 +56,12 @@ return [
     'kitobxonlik' => 'Kitobxonlik',
     'jin_va_jin_saq' => 'Jinoyat va jinoyatdan saqlaning',
     'krimina_ins_jur' => 'Kriminalogik institut jurnallari',
+
+    'ins_nor_hujjat' => 'Institut normativ hujjatlari',
+    'qaror_kri' => 'O‘zbekiston Respublikasi Vazirlar Mahkamasining qarori Kriminologik',
+    'farmoni' => 'O‘zbekiston Respublikasi Prezidentining Farmoni',
+    'qarori' => 'O‘zbekiston Respublikasi Prezidentining qarori',
+
 
 
 

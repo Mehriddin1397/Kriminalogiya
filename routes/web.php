@@ -60,3 +60,5 @@ Route::get('journal_show/{id}',[\App\Http\Controllers\SearchController::class,'j
 Route::get('crimes_show/{id}',[\App\Http\Controllers\SearchController::class,'crimes_show'])->name('crimes_show');
 Route::get('academia_show/{id}',[\App\Http\Controllers\SearchController::class,'academia_show'])->name('academia_show');
 
+Route::get('hujjat',[\App\Http\Controllers\PageController::class,'hujjat'])->name('hujjat');
+
