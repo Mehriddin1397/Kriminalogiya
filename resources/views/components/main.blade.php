@@ -3,10 +3,16 @@
 
 <head>
     <meta charset="utf-8">
-    <title>{{ $title ?? 'My Website' }}</title>
+    <title>{{ $title ?? 'Kriminalogiya' }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{__('lan.meta1')}}</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="{{__('lan.meta2')}}">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Kriminalogiya">
+    <link rel="canonical" href="https://kti.iiv.uz">
 
     <!-- Favicon -->
     <link href="{{asset('assets/images/logo.svg')}}" rel="icon">

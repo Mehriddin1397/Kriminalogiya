@@ -124,7 +124,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.ins_haq')}}</a>
                 <div class="dropdown-menu fade-up m-0">
 {{--                    <a href="{{route('show',['category_id'=>31,'id'=>4])}}" class="dropdown-item">{{__('lan.ins_tar')}}</a>--}}
-                    <a href="{{route('test',['category_id'=>26,'id'=>1])}}" class="dropdown-item">{{__('lan.ins_haq2')}}</a>
+                    <a href="{{route('test',['category_id'=>10,'id'=>1])}}" class="dropdown-item">{{__('lan.ins_haq2')}}</a>
                     <a href="{{route('hujjat')}}" class="dropdown-item">{{__('lan.ins_nor')}}</a>
 {{--                    <a href="{{route('test',['category_id'=>19,'id'=>3])}}" class="dropdown-item">{{__('lan.ins_vaz')}}</a>--}}
                 </div>
