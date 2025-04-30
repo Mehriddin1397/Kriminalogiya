@@ -8,6 +8,8 @@ return [
 
     'ish_vaqt' => 'Dush-Juma : 09.00 AM-06.00 PM',
 
+    'ortga' => 'Ortga',
+
 
 
 
@@ -66,6 +68,19 @@ return [
     'qaror_kri' => 'O‘zbekiston Respublikasi Vazirlar Mahkamasining qarori Kriminologik',
     'farmoni' => 'O‘zbekiston Respublikasi Prezidentining Farmoni',
     'qarori' => 'O‘zbekiston Respublikasi Prezidentining qarori',
+
+    //rahbariyat page
+    'lavozim' => 'Lavozim',
+    'telefon' => 'Telefon',
+    'ish_jadvali' => 'Ish jadvali',
+    'email' => 'Email',
+    'yopish' => 'Yopish',
+
+    //search page
+    'seatch1' => 'Qidiruv natijalari',
+    'jurnallar' => 'Jo\'rnallar',
+    'jinoyatlar' => 'Jinoyatlar',
+
 
 
 

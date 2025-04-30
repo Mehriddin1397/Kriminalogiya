@@ -1,9 +1,15 @@
 <?php
 return [
+
+    'meta1' => 'Criminology Research Institute',
+    'meta2' => 'fight against crime,criminology,fraud,theft,violence',
+
     'address' => 'Address',
     'services' => 'Services',
 
     'ish_vaqt' => 'Mon-Fri : 09.00 AM-06.00 PM',
+
+    'ortga' => 'Back',
 
     //navbar tarjima
     'kriminalog' => 'Criminology Research Institute of the Republic of Uzbekistan',
@@ -61,5 +67,17 @@ return [
     'qaror_kri' => 'Resolution of the Cabinet of Ministers of the Republic of Uzbekistan on Criminology',
     'farmoni' => 'Decree of the President of the Republic of Uzbekistan',
     'qarori' => 'Decision of the President of the Republic of Uzbekistan',
+
+    //rahbariyat page
+    'lavozim' => 'Position',
+    'telefon' => 'Phone',
+    'ish_jadvali' => 'Work schedule',
+    'email' => 'Email',
+    'yopish' => 'Close',
+
+    'seatch1' => '	Search results',
+    'jurnallar' => 'Journals',
+    'jinoyatlar' => 'Crimes',
+
 
 ];
