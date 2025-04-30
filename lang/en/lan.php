@@ -53,7 +53,8 @@ return [
     'boglanish' => 'Contact',
 
     //main page
-    'sun_yan' => 'Latest News',
+    'sun_yan' => 'Local news',
+    'sun_yann' => 'International news',
     'malumot' => 'Information',
 
     'batafsil' => 'More Details',

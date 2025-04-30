@@ -55,7 +55,8 @@ return [
     'boglanish' => 'Bog\'lanish',
 
     //main page
-    'sun_yan' => 'So\'ngi yangiliklar',
+    'sun_yan' => 'Mahalliy yangiliklar',
+    'sun_yann' => 'Xorijiy yangiliklar',
     'malumot' => 'Ma\'lumotlar',
 
     'batafsil' => 'Batafsil',

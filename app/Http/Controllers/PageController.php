@@ -24,7 +24,18 @@ class PageController extends Controller
     public function main()
     {
         $contacts = Contact::all();
-        $news = News::latest()->limit(6)->get();
+        $mnews = News::whereHas('categories', function ($query) {
+            $query->where('name_uz', 'Mahalliy yangiliklar');
+        })
+            ->latest() // created_at bo'yicha eng yangilari
+            ->take(6)
+            ->get();
+        $xnews = News::whereHas('categories', function ($query) {
+            $query->where('name_uz', 'Xorijiy Yangiliklar');
+        })
+            ->latest()
+            ->take(6)
+            ->get();
         $newscount = News::count();
         $researchcount = Research::count();
         $category1Id = 20; // Birinchi kategoriya IDsi
@@ -40,7 +51,7 @@ class PageController extends Controller
             $query->where('category_id', $category2Id);
         })->count();
 
-        return view('pages.main', compact('contacts', 'news', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount'));
+        return view('pages.main', compact('contacts', 'mnews','xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount'));
 
     }
 
