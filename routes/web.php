@@ -62,3 +62,11 @@ Route::get('academia_show/{id}',[\App\Http\Controllers\SearchController::class,'
 
 Route::get('hujjat',[\App\Http\Controllers\PageController::class,'hujjat'])->name('hujjat');
 
+//Google search
+Route::get('/sitemap.xml', function (){
+    $sitemap = \Spatie\Sitemap\Sitemap::create()
+        ->add(Url::create('/'))
+        ->add(Url::create('/boss'))
+        ->add(Url::create('/categoryId/8'));
+});
+

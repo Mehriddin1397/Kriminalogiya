@@ -164,8 +164,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.yangilik')}}</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="{{route('categoryId',32)}}" class="dropdown-item">{{__('lan.xor_yan')}}</a>
-                    <a href="{{route('categoryId',17)}}" class="dropdown-item">{{__('lan.mah_yan')}}</a>
+                    <a href="{{route('categoryId',22)}}" class="dropdown-item">{{__('lan.xor_yan')}}</a>
+                    <a href="{{route('categoryId',8)}}" class="dropdown-item">{{__('lan.mah_yan')}}</a>
                     <a href="{{route('categoryId',33)}}" class="dropdown-item">{{__('lan.ins_tash')}}</a>
                     <a href="{{route('categoryId',34)}}" class="dropdown-item">{{__('lan.ilm_saf')}}</a>
                     <a href="{{route('categoryId',40)}}" class="dropdown-item">{{__('lan.telek')}}</a>
