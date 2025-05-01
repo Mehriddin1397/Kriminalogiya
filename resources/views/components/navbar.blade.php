@@ -124,9 +124,15 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.ins_haq')}}</a>
                 <div class="dropdown-menu fade-up m-0">
 {{--                    <a href="{{route('show',['category_id'=>31,'id'=>4])}}" class="dropdown-item">{{__('lan.ins_tar')}}</a>--}}
+<<<<<<< HEAD
                     <a href="{{route('test',['category_id'=>26,'id'=>1])}}" class="dropdown-item">{{__('lan.ins_haq2')}}</a>
                     <a href="{{route('hujjat')}}" class="dropdown-item">{{__('lan.ins_nor')}}</a>
                     <a href="{{route('test',['category_id'=>19,'id'=>3])}}" class="dropdown-item">{{__('lan.ins_vaz')}}</a>
+=======
+                    <a href="{{route('test',['category_id'=>10,'id'=>1])}}" class="dropdown-item">{{__('lan.ins_haq2')}}</a>
+                    <a href="{{route('hujjat')}}" class="dropdown-item">{{__('lan.ins_nor')}}</a>
+{{--                    <a href="{{route('test',['category_id'=>19,'id'=>3])}}" class="dropdown-item">{{__('lan.ins_vaz')}}</a>--}}
+>>>>>>> 252a5004ae300c0153fa1b1246df7d114280ad41
                 </div>
             </div>
             <div class="nav-item dropdown">
@@ -164,8 +170,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.yangilik')}}</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="{{route('categoryId',32)}}" class="dropdown-item">{{__('lan.xor_yan')}}</a>
-                    <a href="{{route('categoryId',17)}}" class="dropdown-item">{{__('lan.mah_yan')}}</a>
+                    <a href="{{route('categoryId',22)}}" class="dropdown-item">{{__('lan.xor_yan')}}</a>
+                    <a href="{{route('categoryId',8)}}" class="dropdown-item">{{__('lan.mah_yan')}}</a>
                     <a href="{{route('categoryId',33)}}" class="dropdown-item">{{__('lan.ins_tash')}}</a>
                     <a href="{{route('categoryId',34)}}" class="dropdown-item">{{__('lan.ilm_saf')}}</a>
                     <a href="{{route('categoryId',40)}}" class="dropdown-item">{{__('lan.telek')}}</a>

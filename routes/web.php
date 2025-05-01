@@ -6,7 +6,7 @@ Route::get('/',[\App\Http\Controllers\PageController::class,'main'])->name('main
 Route::get('/contact',[\App\Http\Controllers\PageController::class,'contact'])->name('contact');
 
 Route::get('/login',[\App\Http\Controllers\AuthController::class,'showLogin'])->name('login');
-Route::post('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('login');
+Route::post('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('loginn');
 Route::post('/logout',[\App\Http\Controllers\AuthController::class,'logout'])->name('logout');
 
 
@@ -61,4 +61,15 @@ Route::get('crimes_show/{id}',[\App\Http\Controllers\SearchController::class,'cr
 Route::get('academia_show/{id}',[\App\Http\Controllers\SearchController::class,'academia_show'])->name('academia_show');
 
 Route::get('hujjat',[\App\Http\Controllers\PageController::class,'hujjat'])->name('hujjat');
+
+
+
+//Google search
+Route::get('/sitemap.xml', function (){
+    $sitemap = \Spatie\Sitemap\Sitemap::create()
+        ->add(Url::create('/'))
+        ->add(Url::create('/boss'))
+        ->add(Url::create('/categoryId/8'));
+});
+
 

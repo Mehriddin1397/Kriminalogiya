@@ -1,4 +1,4 @@
-<x-main title="$category->slug">
+<x-main title="{{$category->slug}}">
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 ">
         <div class="container py-5">
@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="main-button-red text-center">
-                                    <a href="route('categoryId',$category->id)">Ortga</a>
+                                    <a href="{{route('categoryId',$category->id)}}">{{__('lan.ortga')}}</a>
                                 </div>
                             </div>
                         </div>

@@ -1,9 +1,15 @@
 <?php
 return [
+    'meta1' => 'Kriminalogiya Ilmiy tadqiqot Instituti',
+    'meta2' => 'jinoyatchilikka qarshi kurash,kriminalogiya,firibgarlik,o‘g‘irlik,zo‘ravonlik',
+
     'address' =>  'Manzil',
     'services' => 'Xizmatlar',
 
     'ish_vaqt' => 'Dush-Juma : 09.00 AM-06.00 PM',
+
+
+    'ortga' => 'Ortga',
 
 
     //navbar tarjima
@@ -48,7 +54,8 @@ return [
     'boglanish' => 'Bog\'lanish',
 
     //main page
-    'sun_yan' => 'So\'ngi yangiliklar',
+    'sun_yan' => 'Mahalliy yangiliklar',
+    'sun_yann' => 'Xorijiy yangiliklar',
     'malumot' => 'Ma\'lumotlar',
 
     'batafsil' => 'Batafsil',
@@ -63,11 +70,16 @@ return [
     'qarori' => 'O‘zbekiston Respublikasi Prezidentining qarori',
 
 
+    //rahbariyat page
+    'lavozim' => 'Lavozim',
+    'telefon' => 'Telefon',
+    'ish_jadvali' => 'Ish jadvali',
+    'email' => 'Email',
+    'yopish' => 'Yopish',
 
-
-
-
-
-
+    //search page
+    'seatch1' => 'Qidiruv natijalari',
+    'jurnallar' => 'Jo\'rnallar',
+    'jinoyatlar' => 'Jinoyatlar',
 
 ];

@@ -1,12 +1,12 @@
-<x-main title="Rahbariyat">
+<x-main title="{{__('lan.rahbariyat')}}">
     <!-- Page Header Start -->
     <div class="container-fluid page-header py-5 ">
         <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">Rahbariyat</h1>
+            <h1 class="display-3 text-white mb-3 animated slideInDown">{{__('lan.rahbariyat')}}</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="{{route('main')}}">Home</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">Rahbariyat</li>
+                    <li class="breadcrumb-item text-white active" aria-current="page">{{__('lan.rahbariyat')}}</li>
                 </ol>
             </nav>
         </div>
@@ -19,7 +19,7 @@
         <div class="container">
             <div class="section-title text-center">
                 <h1 class="display-5 mb-5">
-                    Rahbariyat
+                    {{__('lan.rahbariyat')}}
                 </h1>
             </div>
 
@@ -42,7 +42,7 @@
                                         </a>
                                     </p>
                                     <div class="xalqaro-hankorlik-meta">
-                                        <span class="xalqaro-hankorlik-date">Lavozim: </span> {{$bos->post}}
+                                        <span class="xalqaro-hankorlik-date">{{__('lan.lavozim')}}: </span> {{$bos->post}}
                                     </div>
                                 </div>
                                 <!-- Modal -->
@@ -54,12 +54,13 @@
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Yopish"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p><strong>Telefon:</strong> {{ $bos->phone }}</p>
-                                                <p><strong>Ish jadvali:</strong> {{ $bos->worktime }}</p>
-                                                <p><strong>Email:</strong> {{ $bos->email }}</p>
+                                                <p><strong>{{__('lan.telefon')}}:</strong> {{ $bos->phone }}</p>
+                                                <p><strong>{{__('lan.ish_jadvali')}}:</strong> {{ $bos->worktime }}</p>
+                                                <p><strong>{{__('lan.email')}}:</strong> {{ $bos->email }}</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Yopish</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    {{__('lan.yopish')}}</button>
                                             </div>
                                         </div>
                                     </div>
