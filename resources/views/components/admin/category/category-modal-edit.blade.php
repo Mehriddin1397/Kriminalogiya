@@ -83,7 +83,7 @@
                             Hamkorlar
                         </option>
                         <option value="expertise" {{ old('object_type', $category->object_type ?? '') == 'expertise' ? 'selected' : '' }}>
-                            Ilmiy salohiyat
+                            Ilmiy salohiyat va hamkorlar
                         </option>
                         <option value="articles" {{ old('object_type', $category->object_type ?? '') == 'articles' ? 'selected' : '' }}>
                             Maqolalar

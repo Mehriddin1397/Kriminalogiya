@@ -59,7 +59,7 @@
                                     <tbody>
                                     @foreach($categories as $index => $category)
                                         <tr class="single-item">
-                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $category->id}}</td>
                                             <td>
                                                 {{ $category->name_uz }}
                                             </td>

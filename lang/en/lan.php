@@ -3,6 +3,8 @@ return [
     'address' => 'Address',
     'services' => 'Services',
 
+    'ish_vaqt' => 'Mon-Fri : 09.00 AM-06.00 PM',
+
     //navbar tarjima
     'kriminalog' => 'Criminology Research Institute of the Republic of Uzbekistan',
     'qidirish' =>'Search',
@@ -54,5 +56,10 @@ return [
     'jin_va_jin_saq' => 'Crime and Crime Prevention',
     'krimina_ins_jur' => 'Journals of the Criminological Institute',
 
+
+    'ins_nor_hujjat' => 'Institute Regulatory Documents',
+    'qaror_kri' => 'Resolution of the Cabinet of Ministers of the Republic of Uzbekistan on Criminology',
+    'farmoni' => 'Decree of the President of the Republic of Uzbekistan',
+    'qarori' => 'Decision of the President of the Republic of Uzbekistan',
 
 ];
