@@ -819,6 +819,66 @@ upcoming meetings page
     }
 }
 
+/*rahbariyat responsiv */
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('/img/123.png') center center/cover no-repeat;
+    color: white;
+    text-align: left;
+}
+
+.inner-header {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* Breadcrumb uslubi */
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+    margin-bottom: 0;
+    justify-content: left;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #fff;
+}
+
+/* Responsive heading */
+.page-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 992px) {
+    .page-header h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-header h1 {
+        font-size: 2rem;
+    }
+    .breadcrumb {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .page-header h1 {
+        font-size: 1.5rem;
+    }
+    .breadcrumb {
+        flex-direction: column;
+        align-items: left;
+        gap: 3px;
+        font-size: 0.8rem;
+    }
+}
+
+
 
 
 

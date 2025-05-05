@@ -10,6 +10,7 @@ return [
     'ish_vaqt' => 'Mon-Fri : 09.00 AM-06.00 PM',
 
     'ortga' => 'Back',
+    'yuklab_olish' => 'Download',
 
     //navbar tarjima
     'kriminalog' => 'Criminology Research Institute of the Republic of Uzbekistan',

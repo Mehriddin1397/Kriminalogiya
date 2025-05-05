@@ -247,52 +247,55 @@
                         }
 
                         .xalqaro-hankorlik-content {
-                            max-width: 800px;
                             display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            font-family: 'Segoe UI', Arial, sans-serif;
-                            position: relative; /* Separator uchun parent konteyner */
+                            align-items: flex-start;
+                            gap: 15px;
+                            flex-wrap: wrap;
                         }
 
                         .xalqaro-hankorlik-image-container {
-                            margin: 0px 15px 0px 10px;
+                            flex-shrink: 0;
+                        }
+
+                        .xalqaro-hankorlik-img {
+                            width: 100px;
+                            height: auto;
+                            border-radius: 4px;
+                            object-fit: cover;
                         }
 
                         .xalqaro-hankorlik-text-container {
-                            flex-grow: 1; /* Matn qismini kengaytirish */
-                        }
-
-                        .xalqaro-hankorlik-separator {
-                            height: 80%;
-                            /*background-color: #e0e0e0;*/
-                            position: absolute;
-                            right: -120px;
-                            top: 20%;
-                        }
-
-                        .xalqaro-hankorlik-separator:hover {
-                            transform: scale(1.2); /* 10% kattalashadi */
-                            transition: transform 0.3s ease;
-                            cursor: pointer;
+                            flex: 1;
                         }
 
                         .xalqaro-hankorlik-quote {
-                            font-size: 1.25rem;
-                            line-height: 1.5;
-                            color: #333;
-                            margin: 0 0 15px 0;
+                            font-size: 1.1rem;
+                            margin: 0;
                             font-weight: 500;
                         }
 
                         .xalqaro-hankorlik-meta {
-                            text-align: left; /* Sanani chapga joylash */
-                            margin-top: 10px;
+                            font-size: 0.9rem;
+                            color: #555;
+                            margin-top: 5px;
                         }
 
-                        .xalqaro-hankorlik-date {
-                            color: #666;
-                            font-size: 0.875rem;
+                        /* RESPONSIV QO‘LLAB-QUVVATLASH */
+                        @media (max-width: 576px) {
+                            .xalqaro-hankorlik-content {
+                                flex-direction: column;
+                                align-items: center;
+                                text-align: center;
+                            }
+
+                            .xalqaro-hankorlik-img {
+                                width: 80px;
+                                height: 100px;
+                            }
+
+                            .xalqaro-hankorlik-text-container {
+                                width: 100%;
+                            }
                         }
                     </style>
 

@@ -76,58 +76,97 @@
                             margin: 10px 0;
                             padding: 15px;
                             background-color: #f3f0ea;
-                            border-radius: 4px;
+                            border-radius: 6px;
                             box-shadow: 0 1px 3px rgba(0,0,0,0.1);
                         }
 
                         .xalqaro-hankorlik-content {
-                            max-width: 800px;
                             display: flex;
+                            flex-wrap: wrap; /* Mobil qurilmalar uchun o'rash */
                             align-items: center;
-                            justify-content: space-between;
+                            justify-content: flex-start;
                             font-family: 'Segoe UI', Arial, sans-serif;
-                            position: relative; /* Separator uchun parent konteyner */
+                            gap: 15px;
                         }
 
-                        .xalqaro-hankorlik-image-container {
-                            margin: 0px 15px 0px 10px;
+                        .xalqaro-hankorlik-image-container img {
+                            width: 100px;
+                            height: 110px;
+                            border-radius: 6px;
+                            object-fit: cover;
                         }
 
                         .xalqaro-hankorlik-text-container {
-                            flex-grow: 1; /* Matn qismini kengaytirish */
-                        }
-
-                        .xalqaro-hankorlik-separator {
-                            height: 80%;
-                            /*background-color: #e0e0e0;*/
-                            position: absolute;
-                            right: -120px;
-                            top: 20%;
-                        }
-
-                        .xalqaro-hankorlik-separator:hover
-                        {
-                            transform: scale(1.2); /* 10% kattalashadi */
-                            transition: transform 0.3s ease;
-                            cursor: pointer;
+                            flex-grow: 1;
+                            min-width: 200px;
                         }
 
                         .xalqaro-hankorlik-quote {
-                            font-size: 1.25rem;
-                            line-height: 1.5;
+                            font-size: 1.2rem;
                             color: #333;
-                            margin: 0 0 15px 0;
-                            font-weight: 500;
+                            margin: 0 0 10px 0;
+                            font-weight: 600;
+                            line-height: 1.4;
                         }
 
                         .xalqaro-hankorlik-meta {
-                            text-align: left; /* Sanani chapga joylash */
-                            margin-top: 10px;
+                            font-size: 0.95rem;
+                            color: #666;
                         }
 
-                        .xalqaro-hankorlik-date {
-                            color: #666;
-                            font-size: 0.875rem;
+                        /* Modal kichik ekranlarda yaxshi ko'rinishi uchun */
+                        .modal-dialog {
+                            max-width: 100%;
+                            margin: 1.75rem auto;
+                            padding: 0 1rem;
+                        }
+
+                        .modal-content {
+                            border-radius: 12px;
+                        }
+
+                        /* ========================
+                           RESPONSIVE DESIGN
+                        ======================== */
+
+                        @media (max-width: 768px) {
+                            .xalqaro-hankorlik-content {
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+
+                            .xalqaro-hankorlik-image-container img {
+                                width: 90px;
+                                height: 100px;
+                                margin-bottom: 10px;
+                            }
+
+                            .xalqaro-hankorlik-text-container {
+                                width: 100%;
+                            }
+
+                            .xalqaro-hankorlik-quote {
+                                font-size: 1rem;
+                            }
+
+                            .xalqaro-hankorlik-meta {
+                                font-size: 0.85rem;
+                            }
+                        }
+
+                        @media (max-width: 480px) {
+                            .xalqaro-hankorlik-image-container img {
+                                width: 80px;
+                                height: 90px;
+                            }
+
+                            .xalqaro-hankorlik-quote {
+                                font-size: 0.95rem;
+                            }
+
+                            .xalqaro-hankorlik-meta {
+                                font-size: 0.8rem;
+                            }
                         }
                     </style>
 

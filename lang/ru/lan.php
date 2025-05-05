@@ -7,6 +7,7 @@ return [
 
     'address' => 'Ruschada',
     'services' => 'Хизматлар',
+    'yuklab_olish' => 'Скачать',
 
     'ish_vaqt' => 'Пн-Пт : 09.00 AM-06.00 PM',
 

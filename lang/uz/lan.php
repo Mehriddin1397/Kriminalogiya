@@ -9,6 +9,7 @@ return [
     'ish_vaqt' => 'Dush-Juma : 09.00 AM-06.00 PM',
 
     'ortga' => 'Ortga',
+    'yuklab_olish' => 'Yuklab olish',
 
 
 

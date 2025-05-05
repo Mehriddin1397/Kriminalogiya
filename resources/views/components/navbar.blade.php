@@ -37,6 +37,61 @@
                             <option value="en" {{ App::getLocale() === 'en' ? 'selected' : '' }}>En</option>
                         </select>
                     </div>
+                    <style>
+                        .currency-menu {
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            margin-bottom: 15px;
+                        }
+
+                        /* Til tanlov formasi uchun */
+                        .currency-menu select {
+                            min-width: 100px;
+                            padding: 6px 12px;
+                            font-size: 16px;
+                            border-radius: 5px;
+                        }
+
+                        /* Rasm o'lchamini boshqarish */
+                        .currency-menu img {
+                            width: 24px;
+                            height: 24px;
+                        }
+
+                        /* Kichik ekranlar (planshet va telefon) uchun */
+                        @media (max-width: 768px) {
+                            .currency-menu {
+                                flex-direction: row;
+                                justify-content: flex-start;
+                                gap: 8px;
+                            }
+
+                            .currency-menu select {
+                                font-size: 14px;
+                                min-width: auto;
+                                padding: 4px 10px;
+                            }
+
+                            .currency-menu img {
+                                width: 20px;
+                                height: 20px;
+                            }
+                        }
+
+                        /* Juda kichik ekranlar (mobil telefonlar) uchun */
+                        @media (max-width: 480px) {
+                            .currency-menu {
+                                flex-direction: column;
+                                align-items: flex-start;
+                            }
+
+                            .currency-menu select {
+                                width: 100%;
+                            }
+                        }
+
+                    </style>
                 </div>
 
                 <div class="d-none d-md-block">
