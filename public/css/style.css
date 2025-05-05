@@ -656,30 +656,6 @@ upcoming meetings page
 ---------------------------------------------
 */
 
-/*new_show ni asosiy div o'lchamlari */
-.meetings-page {
-    padding: 60px 0;
-    background-color: #f9f9f9;
-    width: 1000px;
-    margin: 0 auto;
-
-}
-
-.meeting-single-item {
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    margin-bottom: 30px;
-}
-
-/*new_show ni rasm o'lchamlari */
-.thumb img {
-    width: 100%;
-    height: 490px;
-    display: block;
-}
-
 .price span {
     background: #e74c3c;
     color: #fff;
@@ -731,6 +707,118 @@ upcoming meetings page
     color: #fff;
     text-align: center;
 }
+
+
+
+/* news_show page */
+
+/* Asosiy konteyner */
+.container-new_show {
+    width: 100%;
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+/* Yangilik bo‘lagi */
+.meeting-single-item {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+/* Rasm */
+.thumb img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    display: block;
+    border-radius: 5px;
+}
+
+/* YouTube o‘lchami */
+.youtube-container {
+    margin-top: 20px;
+}
+
+/* Sarlavha va sana */
+.down-content h4 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.new_p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Ijtimoiy tarmoq tugmalari */
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Ortga tugmasi */
+.main-button-red a {
+    background: red;
+    color: #fff;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hover effekti */
+.main-button-red a:hover {
+    background: darkred;
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 1200px) {
+    .thumb img {
+        height: 400px;
+    }
+}
+@media (max-width: 992px) {
+    .thumb img {
+        height: 350px;
+    }
+    .down-content h4 {
+        font-size: 22px;
+    }
+}
+@media (max-width: 768px) {
+    .thumb img {
+        height: 300px;
+    }
+    .container-new_show {
+        padding: 30px 15px;
+    }
+    .down-content h4 {
+        font-size: 20px;
+    }
+}
+@media (max-width: 576px) {
+    .thumb img {
+        height: 220px;
+    }
+    .down-content h4 {
+        font-size: 18px;
+    }
+    .main-button-red a {
+        width: 100%;
+        text-align: center;
+    }
+    .social-buttons {
+        justify-content: center;
+    }
+}
+
 
 
 

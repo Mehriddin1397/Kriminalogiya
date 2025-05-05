@@ -61,7 +61,7 @@
                             <option value="jurnal">Jurnallar</option>
                             <option value="news">Yangiliklar</option>
                             <option value="research">Tadqiqotlar</option>
-                            <option value="scholars">Tadqiqotchilar</option>
+                            <option value="scholars">Tadqiqotchilar va amaliy yordam</option>
                             <option value="partner">Hamkorlar</option>
                             <option value="expertise">Ilmiy salohiyat va hamkorlar</option>
                             <option value="articles">Maqolalar</option>

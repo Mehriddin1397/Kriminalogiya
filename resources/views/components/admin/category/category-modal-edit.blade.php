@@ -77,7 +77,7 @@
                             Tadqiqotlar
                         </option>
                         <option value="scholars" {{ old('object_type', $category->object_type ?? '') == 'scholars' ? 'selected' : '' }}>
-                            Tadqiqotchilar
+                            Tadqiqotchilar va amaliy yordam
                         </option>
                         <option value="partner" {{ old('object_type', $category->object_type ?? '') == 'partner' ? 'selected' : '' }}>
                             Hamkorlar
