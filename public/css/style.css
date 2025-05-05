@@ -877,6 +877,9 @@ upcoming meetings page
         font-size: 0.8rem;
     }
 }
+.footer__link p{
+    text-align: left;
+}
 
 
 

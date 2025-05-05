@@ -5,6 +5,7 @@ return [
 
     'address' =>  'Manzil',
     'services' => 'Xizmatlar',
+    'bar_huq_him' => 'Barcha huquqlar himoyalangan.',
 
     'ish_vaqt' => 'Dush-Juma : 09.00 AM-06.00 PM',
 
@@ -82,6 +83,8 @@ return [
     'seatch1' => 'Qidiruv natijalari',
     'jurnallar' => 'Jo\'rnallar',
     'jinoyatlar' => 'Jinoyatlar',
+
+    'sayt_xaritasi'  => 'Sayt xaritasi',
 
 
 

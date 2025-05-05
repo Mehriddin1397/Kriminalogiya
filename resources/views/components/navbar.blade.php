@@ -42,7 +42,6 @@
                             display: flex;
                             align-items: center;
                             gap: 10px;
-                            margin-bottom: 15px;
                         }
 
                         /* Til tanlov formasi uchun */
@@ -68,14 +67,13 @@
                             }
 
                             .currency-menu select {
-                                font-size: 14px;
-                                min-width: auto;
+                                font-size: 10px;
+                                min-width: 20px;
                                 padding: 4px 10px;
                             }
 
                             .currency-menu img {
-                                width: 20px;
-                                height: 20px;
+                               display: none;
                             }
                         }
 
@@ -88,6 +86,7 @@
 
                             .currency-menu select {
                                 width: 100%;
+
                             }
                         }
 

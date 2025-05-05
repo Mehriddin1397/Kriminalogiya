@@ -6,6 +6,7 @@ return [
 
     'address' => 'Address',
     'services' => 'Services',
+    'bar_huq_him' => 'All rights reserved.',
 
     'ish_vaqt' => 'Mon-Fri : 09.00 AM-06.00 PM',
 
@@ -80,6 +81,8 @@ return [
     'seatch1' => '	Search results',
     'jurnallar' => 'Journals',
     'jinoyatlar' => 'Crimes',
+
+    'sayt_xaritasi'  => 'Sitemap',
 
 
 ];
