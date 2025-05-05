@@ -7,9 +7,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{__('lan.meta1')}}</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="{{__('lan.meta2')}}">
+    <title>Kriminalogiya Ilmiy tadqiqot Instituti, Научно-исследовательский институт криминологии, Криминалология Илмий тадқиқот Институти,Criminology Research Institute</title>
+    <meta name="description" content="Kriminalogiya Ilmiy tadqiqot Instituti">
+    <meta name="keywords" content="jinoyatchilikka qarshi kurash,kriminalogiya,firibgarlik,o‘g‘irlik,zo‘ravonlik,fight against crime,criminology,fraud,theft,violence,жиноятчиликка қарши кураш,криминалология,фирибгарлик,ўғрилик,зўравонлик,борьба с преступностью,криминология,мошенничество,кража,насилие">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Kriminalogiya">
     <link rel="canonical" href="https://kti.iiv.uz">

@@ -1,7 +1,7 @@
 <?php
 return [
     'meta1' => 'Kriminalogiya Ilmiy tadqiqot Instituti',
-    'meta2' => 'jinoyatchilikka qarshi kurash,kriminalogiya,firibgarlik,o‘g‘irlik,zo‘ravonlik',
+        'meta2' => 'jinoyatchilikka qarshi kurash,kriminalogiya,firibgarlik,o‘g‘irlik,zo‘ravonlik,fight against crime,criminology,fraud,theft,violence,жиноятчиликка қарши кураш,криминалология,фирибгарлик,ўғрилик,зўравонлик,борьба с преступностью,криминология,мошенничество,кража,насилие',
 
     'address' =>  'Manzil',
     'services' => 'Xizmatlar',
