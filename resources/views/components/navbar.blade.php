@@ -193,27 +193,27 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.ilm_sal')}}</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="{{route('show',['category_id'=>31,'id'=>4])}}" class="dropdown-item">{{__('lan.ilm_dara')}}</a>
-                    <a href="{{route('categoryId',37)}}" class="dropdown-item">{{__('lan.kur_amal')}}</a>
-                    <a href="{{route('categoryId',23)}}" class="dropdown-item">{{__('lan.maqolalar')}}</a>
+                    <a href="#" class="dropdown-item">{{__('lan.ilm_dara')}}</a>  {{--{{route('show',['category_id'=>3,'id'=>4])}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.kur_amal')}}</a> {{--{{route('categoryId',37)}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.maqolalar')}}</a> {{--{{route('categoryId',23)}} --}}
                 </div>
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.kengashlar')}}</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="{{route('show',['category_id'=>31,'id'=>4])}}" class="dropdown-item">{{__('lan.ins_keng')}}</a>
-                    <a href="{{route('show',['category_id'=>31,'id'=>4])}}" class="dropdown-item">{{__('lan.kri_keng')}}</a>
-                    <a href="{{route('show',['category_id'=>31,'id'=>4])}}" class="dropdown-item">{{__('lan.ilm_dar_ber')}}</a>
-                    <a href="{{route('show',['category_id'=>31,'id'=>4])}}" class="dropdown-item">{{__('lan.xal_ex_keng')}}</a>
+                    <a href="#" class="dropdown-item">{{__('lan.ins_keng')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.kri_keng')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.ilm_dar_ber')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.xal_ex_keng')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
                 </div>
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.elon')}}</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="{{route('test',['category_id'=>19,'id'=>3])}}" class="dropdown-item">{{__('lan.ish_qab')}}</a>
-                    <a href="{{route('test',['category_id'=>19,'id'=>3])}}" class="dropdown-item">{{__('lan.dis_mav')}}</a>
-                    <a href="{{route('categoryId',39)}}" class="dropdown-item">{{__('lan.tadqiq')}}</a>
-                    <a href="{{route('show',['category_id'=>31,'id'=>4])}}" class="dropdown-item">{{__('lan.pul_xiz')}}</a>
+                    <a href="#" class="dropdown-item">{{__('lan.ish_qab')}}</a>{{--{{route('test',['category_id'=>19,'id'=>3])}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.dis_mav')}}</a>{{--{{route('test',['category_id'=>19,'id'=>3])}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.tadqiq')}}</a>{{--{{route('categoryId',39)}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.pul_xiz')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
                 </div>
             </div>
             <div class="nav-item dropdown">
@@ -221,16 +221,16 @@
                 <div class="dropdown-menu fade-up m-0">
                     <a href="{{route('categoryId',22)}}" class="dropdown-item">{{__('lan.xor_yan')}}</a>
                     <a href="{{route('categoryId',8)}}" class="dropdown-item">{{__('lan.mah_yan')}}</a>
-                    <a href="{{route('categoryId',33)}}" class="dropdown-item">{{__('lan.ins_tash')}}</a>
-                    <a href="{{route('categoryId',34)}}" class="dropdown-item">{{__('lan.ilm_saf')}}</a>
-                    <a href="{{route('categoryId',40)}}" class="dropdown-item">{{__('lan.telek')}}</a>
+                    <a href="#" class="dropdown-item">{{__('lan.ins_tash')}}</a>{{--{{route('categoryId',33)}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.ilm_saf')}}</a>{{--{{route('categoryId',34)}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.telek')}}</a>{{--{{route('categoryId',40)}} --}}
                 </div>
             </div>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.hamkor')}}</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="{{route('categoryId',39)}}" class="dropdown-item">{{__('lan.xor_ham')}}</a>
-                    <a href="{{route('categoryId',38)}}" class="dropdown-item">{{__('lan.mah_ham')}}</a>
+                    <a href="#" class="dropdown-item">{{__('lan.xor_ham')}}</a>{{--{{route('categoryId',39)}} --}}
+                    <a href="#" class="dropdown-item">{{__('lan.mah_ham')}}</a>{{--{{route('categoryId',38)}} --}}
                     <a href="{{route('contact')}}" class="dropdown-item">{{__('lan.boglanish')}}</a>
                 </div>
             </div>

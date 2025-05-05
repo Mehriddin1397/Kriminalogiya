@@ -6,7 +6,9 @@
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="{{route('main')}}">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="{{route('categoryId',$category->id)}}">{{$category->slug}}</a></li>
+                    <li class="breadcrumb-item"><a class="text-white"
+                                                   href="{{route('categoryId',$category->id)}}">{{$category->slug}}</a>
+                    </li>
                     <li class="breadcrumb-item text-white active" aria-current="page">{{$new->name}}</li>
                 </ol>
             </nav>
@@ -25,19 +27,22 @@
 
                                 <div class="meeting-single-item">
                                     <div class="thumb">
-                                        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                                        <div id="carouselExampleControls" class="carousel slide"
+                                             data-bs-ride="carousel">
                                             <div class="carousel-inner">
                                                 @foreach($new->photos as $photo)
                                                     <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                                        <img src="{{ asset('storage/' . $photo->file_path) }}" alt="" >
+                                                        <img src="{{ asset('storage/' . $photo->file_path) }}" alt="">
                                                     </div>
                                                 @endforeach
                                             </div>
-                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                            <button class="carousel-control-prev" type="button"
+                                                    data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Previous</span>
                                             </button>
-                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                            <button class="carousel-control-next" type="button"
+                                                    data-bs-target="#carouselExampleControls" data-bs-slide="next">
                                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                                 <span class="visually-hidden">Next</span>
                                             </button>
@@ -45,7 +50,8 @@
                                     </div>
                                     <div class="down-content">
                                         <a href="#"><h4>{{$new->name}}</h4></a>
-                                        <p>{{ $new->created_at->format('Y') }}.{{ $new->created_at->format('m') }}.{{ $new->created_at->format('d') }}</p>
+                                        <p>{{ $new->created_at->format('Y') }}.{{ $new->created_at->format('m') }}
+                                            .{{ $new->created_at->format('d') }}</p>
                                         <p class="description">
                                             {{$new->title}}
 
@@ -89,12 +95,43 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="d-flex pt-2 ">
-                                                    <a class="btn btn-outline-dark btn-social" target="_blank" href="{{$contact->telegram_link}}"><i class="fab fa-telegram"></i></a>
-                                                    <a class="btn btn-outline-dark btn-social" target="_blank" href="{{$contact->facebook_link}}"><i class="fab fa-facebook-f"></i></a>
-                                                    @if(!empty($new->youtube_link))
-                                                    <a class="btn btn-outline-dark btn-social" target="_blank" href="{{$contact->youtube_link}}"><i class="fab fa-youtube"></i></a>
+                                                    @if(!empty($new->telegram_link))
+                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                           href="{{$contact->telegram_link}}"><i
+                                                                class="fab fa-telegram"></i></a>
+                                                    @else
+                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                           href="{{$new->telegram_link}}"><i
+                                                                class="fab fa-telegram"></i></a>
                                                     @endif
-                                                    <a class="btn btn-outline-dark btn-social" target="_blank" href="{{$contact->whatsapp_link}}"><i class="fab fa-whatsapp"></i></a>
+                                                    @if(!empty($new->facebook_link))
+                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                           href="{{$contact->facebook_link}}"><i
+                                                                class="fab fa-facebook"></i></a>
+                                                    @else
+                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                           href="{{$new->facebook_link}}"><i
+                                                                class="fab fa-facebook"></i></a>
+                                                    @endif
+                                                    @if(!empty($new->youtube_link))
+                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                           href="{{$contact->youtube_link}}"><i
+                                                                class="fab fa-youtube"></i></a>
+                                                    @else
+                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                           href="{{$new->youtube_link}}"><i
+                                                                class="fab fa-youtube"></i></a>
+                                                    @endif
+                                                    @if(!empty($new->whatsapp_link))
+                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                           href="{{$contact->whatsapp_link}}"><i
+                                                                class="fab fa-whatsapp"></i></a>
+                                                    @else
+                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                           href="{{$new->whatsapp_link}}"><i
+                                                                class="fab fa-whatsapp"></i></a>
+                                                    @endif
+
                                                 </div>
                                             </div>
                                         </div>
