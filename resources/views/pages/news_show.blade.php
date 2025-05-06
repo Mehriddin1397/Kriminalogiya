@@ -95,42 +95,21 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="d-flex pt-2 ">
-                                                    @if(!empty($new->telegram_link))
-                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                           href="{{$contact->telegram_link}}"><i
-                                                                class="fab fa-telegram"></i></a>
-                                                    @else
-                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                           href="{{$new->telegram_link}}"><i
-                                                                class="fab fa-telegram"></i></a>
-                                                    @endif
-                                                    @if(!empty($new->facebook_link))
-                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                           href="{{$contact->facebook_link}}"><i
-                                                                class="fab fa-facebook"></i></a>
-                                                    @else
-                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                           href="{{$new->facebook_link}}"><i
-                                                                class="fab fa-facebook"></i></a>
-                                                    @endif
-                                                    @if(!empty($new->youtube_link))
-                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                           href="{{$contact->youtube_link}}"><i
-                                                                class="fab fa-youtube"></i></a>
-                                                    @else
-                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                           href="{{$new->youtube_link}}"><i
-                                                                class="fab fa-youtube"></i></a>
-                                                    @endif
-                                                    @if(!empty($new->whatsapp_link))
-                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                           href="{{$contact->whatsapp_link}}"><i
-                                                                class="fab fa-whatsapp"></i></a>
-                                                    @else
-                                                        <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                           href="{{$new->whatsapp_link}}"><i
-                                                                class="fab fa-whatsapp"></i></a>
-                                                    @endif
+                                                    <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                       href="{{$contact->telegram_link}}"><i
+                                                            class="fab fa-telegram"></i></a>
+
+                                                    <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                       href="{{$contact->facebook_link}}"><i
+                                                            class="fab fa-facebook"></i></a>
+
+                                                    <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                       href="{{$contact->youtube_link}}"><i
+                                                            class="fab fa-youtube"></i></a>
+
+                                                    <a class="btn btn-outline-dark btn-social" target="_blank"
+                                                       href="{{$contact->whatsapp_link}}"><i
+                                                            class="fab fa-whatsapp"></i></a>
 
                                                 </div>
                                             </div>
