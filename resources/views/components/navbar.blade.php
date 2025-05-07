@@ -195,7 +195,7 @@
                 <div class="dropdown-menu fade-up m-0">
                     <a href="{{route('show',['category_id'=>27,'id'=>1])}}" class="dropdown-item">{{__('lan.ilm_dara')}}</a>  {{--{{route('show',['category_id'=>3,'id'=>4])}} --}}
                     <a href="#" class="dropdown-item">{{__('lan.kur_amal')}}</a> {{--{{route('categoryId',37)}} --}}
-                    <a href="#" class="dropdown-item">{{__('lan.maqolalar')}}</a> {{--{{route('categoryId',23)}} --}}
+                    <a href="{{route('categoryId',14)}}" class="dropdown-item">{{__('lan.maqolalar')}}</a> {{--{{route('categoryId',23)}} --}}
                 </div>
             </div>
             <div class="nav-item dropdown">
