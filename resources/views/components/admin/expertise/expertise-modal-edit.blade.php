@@ -63,19 +63,19 @@
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(uz):</label>
-                        <textarea name="description_uz" class="form-control">{{old('description_uz',$academy->description_uz)}}</textarea>
+                        <textarea name="description_uz" class="form-control ckeditor">{{old('description_uz',$academy->description_uz)}}</textarea>
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(ru):</label>
-                        <textarea name="description_ru" class="form-control">{{old('description_ru',$academy->description_ru)}}</textarea>
+                        <textarea name="description_ru" class="form-control ckeditor">{{old('description_ru',$academy->description_ru)}}</textarea>
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(en):</label>
-                        <textarea name="description_en" class="form-control">{{old('description_en',$academy->description_en)}}</textarea>
+                        <textarea name="description_en" class="form-control ckeditor">{{old('description_en',$academy->description_en)}}</textarea>
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(kr):</label>
-                        <textarea name="description_kr" class="form-control">{{old('description_kr',$academy->description_kr)}}</textarea>
+                        <textarea name="description_kr" class="form-control ckeditor">{{old('description_kr',$academy->description_kr)}}</textarea>
                     </div>
                     @if($academy->photos()->exists())
                         <!-- Munosabat mavjudligini tekshirish -->
