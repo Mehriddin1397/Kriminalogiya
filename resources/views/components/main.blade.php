@@ -58,7 +58,7 @@
 
 
 <!-- Topbar Start -->
-<div class="container-fluid bg-light p-0">
+<div class="container-fluid bg-light p-0 topbar_address">
     <div class="row gx-0 d-none d-lg-flex">
         <div class="col-lg-7 px-5 text-start" style="width: 74% !important;">
             <div class="h-100 d-inline-flex align-items-center py-3 me-4">
@@ -70,24 +70,6 @@
                 <small class="far fa-clock text-primary me-2"></small>
                 <small>{{__('lan.ish_vaqt')}}</small>
             </div>
-        </div>
-        <div class="col-lg-5 px-5 text-end" style="width: 280px !important; ">
-            <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                <small class="fa fa-phone-alt text-primary me-2"></small>
-                <small> <a href="tel:+998712386415" class="d-block">+998 71 238 64 15</a></small>
-            </div>
-{{--            @if ($contact)--}}
-{{--                <div class="h-100 d-inline-flex align-items-center">--}}
-{{--                    <a class="btn btn-sm-square bg-white text-primary me-1" target="_blank"--}}
-{{--                       href="{{$contact->telegram_link}}"><i class="fab fa-telegram"></i></a>--}}
-{{--                    <a class="btn btn-sm-square bg-white text-primary me-1" target="_blank"--}}
-{{--                       href="{{$contact->facebook_link}}"><i class="fab fa-facebook-f"></i></a>--}}
-{{--                    <a class="btn btn-sm-square bg-white text-primary me-1" target="_blank"--}}
-{{--                       href="{{$contact->youtube_link}}"><i class="fab fa-youtube"></i></a>--}}
-{{--                    <a class="btn btn-sm-square bg-white text-primary me-0" target="_blank"--}}
-{{--                       href="{{$contact->whatsapp_link}}"><i class="fab fa-whatsapp"></i></a>--}}
-{{--                </div>--}}
-{{--            @endif--}}
         </div>
     </div>
 </div>

@@ -175,6 +175,12 @@
     }
 }
 
+@media (max-width: 480px) {
+    .header-carousel .owl-carousel-item {
+        min-height: 300px;
+    }
+}
+
 .header-carousel .owl-nav {
     position: absolute;
     width: 200px;
@@ -854,6 +860,9 @@ upcoming meetings page
     .page-header h1 {
         font-size: 2.5rem;
     }
+    .topbar_address {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -863,6 +872,7 @@ upcoming meetings page
     .breadcrumb {
         font-size: 14px;
     }
+
 }
 
 @media (max-width: 576px) {

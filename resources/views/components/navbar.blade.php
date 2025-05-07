@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
+<nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
     <div class="container-fluid">
-        <div class="d-flex align-items-center w-100">
+        <div class="d-flex align-items-center w-100 justify-content-between">
             <!-- Logo va Sarlavha -->
-            <div class="d-flex align-items-center flex-grow-1">
+            <div class="d-flex align-items-center">
                 <div class="rasm1  px-4 px-lg-5 " style="padding-right: 1rem !important;">
                     <a href="{{route('main')}}" class="navbar-brand">
                         <img
@@ -59,16 +59,18 @@
                         }
 
                         /* Kichik ekranlar (planshet va telefon) uchun */
-                        @media (max-width: 768px) {
+                        @media (max-width: 769px) {
                             .currency-menu {
                                 flex-direction: row;
                                 justify-content: flex-start;
                                 gap: 8px;
                             }
-
+                            .iiv_logo {
+                                display: none;
+                            }
                             .currency-menu select {
                                 font-size: 10px;
-                                min-width: 20px;
+                                min-width: 60px;
                                 padding: 4px 10px;
                             }
 
@@ -83,7 +85,6 @@
                                 flex-direction: column;
                                 align-items: flex-start;
                             }
-
                             .currency-menu select {
                                 width: 100%;
 
@@ -93,7 +94,7 @@
                     </style>
                 </div>
 
-                <div class="d-none d-md-block">
+                <div class="d-none d-md-block iiv_logo">
                     <a href="{{route('main')}}" class="navbar-brand d-flex align-items-center pr-2 px-lg-3">
                         <img class="w-[80px] cursor-pointer rasm max-md:w-12"
                              src="/assets/img/logo.svg"
