@@ -211,7 +211,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.elon')}}</a>
                 <div class="dropdown-menu fade-up m-0">
                     <a href="{{route('test',['category_id'=>29,'id'=>2])}}" class="dropdown-item">{{__('lan.ish_qab')}}</a>{{--{{route('test',['category_id'=>19,'id'=>3])}} --}}
-                    <a href="{{route('test',['category_id'=>30,'id'=>3])}}" class="dropdown-item">{{__('lan.dis_mav')}}</a>{{--{{route('test',['category_id'=>19,'id'=>3])}} --}}
+                    <a href="{{route('show',['category_id'=>30,'id'=>3])}}" class="dropdown-item">{{__('lan.dis_mav')}}</a>{{--{{route('test',['category_id'=>19,'id'=>3])}} --}}
                     <a href="#" class="dropdown-item">{{__('lan.tadqiq')}}</a>{{--{{route('categoryId',39)}} --}}
                     <a href="#" class="dropdown-item">{{__('lan.pul_xiz')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
                 </div>
