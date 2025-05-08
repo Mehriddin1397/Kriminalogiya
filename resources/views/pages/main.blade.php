@@ -121,7 +121,7 @@
                             <img class="img-fluid" src="assets/img/kriminalogiya.jpg" alt="" style="width:275px; height:183px; !important;">
                         </div>
                         <div class="text-center border border-5 border-light border-top-0 p-4">
-                             <a href="{{route('categoryId',14)}}"><h5 class="mb-0">{{__('lan.krimina_ins_jur')}}</h5>  </a>
+                             <a href="{{route('categoryId',33)}}"><h5 class="mb-0">{{__('lan.krimina_ins_jur')}}</h5>  </a>
                         </div>
                     </div>
                 </div>
