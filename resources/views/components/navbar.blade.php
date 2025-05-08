@@ -201,7 +201,7 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.kengashlar')}}</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="#" class="dropdown-item">{{__('lan.ins_keng')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
+                    <a href="{{route('show',['category_id'=>2,'id'=>1])}}" class="dropdown-item">{{__('lan.ins_keng')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
                     <a href="#" class="dropdown-item">{{__('lan.kri_keng')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
                     <a href="#" class="dropdown-item">{{__('lan.ilm_dar_ber')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
                     <a href="#" class="dropdown-item">{{__('lan.xal_ex_keng')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
