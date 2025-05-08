@@ -39,7 +39,7 @@
                 <li class="nxl-item nxl-hasmenu">
                     <a href="{{route('institut.index')}}" class="nxl-link">
                         <span class="nxl-micon"><i class="feather-layout"></i></span>
-                        <span class="nxl-mtext">Institutlar</span><span class="nxl-arrow"></span>
+                        <span class="nxl-mtext">Institutlar va ishga qabul</span><span class="nxl-arrow"></span>
                     </a>
                 </li>
                 <li class="nxl-item nxl-hasmenu">
@@ -69,7 +69,7 @@
                 <li class="nxl-item nxl-hasmenu">
                     <a href="{{route('articles.index')}}" class="nxl-link">
                         <span class="nxl-micon"><i class="feather-layout"></i></span>
-                        <span class="nxl-mtext">Maqolalar</span><span class="nxl-arrow"></span>
+                        <span class="nxl-mtext">Maqola va disertatsiya mavzulari</span><span class="nxl-arrow"></span>
                     </a>
                 </li>
                 <li class="nxl-item nxl-hasmenu">

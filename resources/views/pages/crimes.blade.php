@@ -6,7 +6,9 @@
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a class="text-white" href="{{route('main')}}">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="{{ route('categoryId', $category->id) }}">{{$category->slug}}</a></li>
+                    <li class="breadcrumb-item"><a class="text-white"
+                                                   href="{{ route('categoryId', $category->id) }}">{{$category->slug}}</a>
+                    </li>
                     <li class="breadcrumb-item text-white active" aria-current="page">{{$research->name}}</li>
                 </ol>
             </nav>
@@ -29,11 +31,24 @@
                             allowfullscreen
                         ></iframe>
                     </div>
-                    <div class="text-center mt-3">
-                        <a href="{{ asset('storage/' . $research->file_path) }}" class="btn btn-primary" download>
-                            {{ __('lan.yuklab_olish')}}
-                        </a>
+                    <div class="d-flex justify-content-center d__flex_button" >
+                        <div class="text-center mt-3 p-3">
+                            <a href="{{route('main')}}" class="btn btn-danger">
+                                {{ __('lan.bosh')}}
+                            </a>
+                        </div>
+                        <div class="text-center mt-3 p-3">
+                            <a href="{{route('categoryId',$category->id)}}" class="btn btn-success">
+                                {{ __('lan.ortga')}}
+                            </a>
+                        </div>
+                        <div class="text-center mt-3 p-3">
+                            <a href="{{ asset('storage/' . $research->file_path) }}" class="btn btn-primary" download>
+                                {{ __('lan.yuklab_olish')}}
+                            </a>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -47,7 +62,7 @@
             overflow: hidden;
             max-width: 100%;
             background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
         }
 
@@ -68,6 +83,9 @@
         @media (max-width: 480px) {
             .responsive-pdf-container {
                 padding-bottom: 170%;
+            }
+            .d__flex_button div a {
+                font-size: 0.5rem;
             }
         }
     </style>

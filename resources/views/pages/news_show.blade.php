@@ -118,8 +118,17 @@
                                 </div>
                             </div>
                             <div class="col-lg-12">
-                                <div class="main-button-red text-center">
-                                    <a href="{{route('categoryId',$category->id)}}">{{__('lan.ortga')}}</a>
+                                <div class="d-flex justify-content-center d__flex_button" >
+                                    <div class="text-center mt-3 p-3">
+                                        <a href="{{route('main')}}" class="btn btn-danger">
+                                            {{ __('lan.bosh')}}
+                                        </a>
+                                    </div>
+                                    <div class="text-center mt-3 p-3">
+                                        <a href="{{route('categoryId',$category->id)}}" class="btn btn-success">
+                                            {{ __('lan.ortga')}}
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

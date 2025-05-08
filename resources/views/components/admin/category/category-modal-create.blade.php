@@ -57,14 +57,14 @@
                             <option value="academia">Ilmiy kengash </option>
                             <option value="bibliophilia">Kitobxonlik</option>
                             <option value="crimes">Jinoyatlar</option>
-                            <option value="institut">Institut</option>
+                            <option value="institut">Institut va ishga qabul</option>
                             <option value="jurnal">Jurnallar</option>
                             <option value="news">Yangiliklar</option>
                             <option value="research">Tadqiqotlar</option>
                             <option value="scholars">Tadqiqotchilar va amaliy yordam</option>
                             <option value="partner">Hamkorlar</option>
                             <option value="expertise">Ilmiy salohiyat va hamkorlar</option>
-                            <option value="articles">Maqolalar</option>
+                            <option value="articles">Maqola va disertatsiya mavzulari</option>
                         </select>
                     </div>
                 </div>

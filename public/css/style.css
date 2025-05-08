@@ -886,6 +886,9 @@ upcoming meetings page
         gap: 3px;
         font-size: 0.8rem;
     }
+    .d__flex_button div a {
+        font-size: 0.5rem;
+    }
 }
 .footer__link p{
     text-align: left;

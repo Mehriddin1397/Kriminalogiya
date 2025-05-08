@@ -71,6 +71,14 @@
                         <hr>
                     @endforeach
 
+                        <div class="d-flex justify-content-center d__flex_button" >
+                            <div class="text-center mt-3 p-3">
+                                <a href="{{route('main')}}" class="btn btn-danger">
+                                    {{ __('lan.bosh')}}
+                                </a>
+                            </div>
+                        </div>
+
                     <style>
                         .xalqaro-hankorlik-section {
                             margin: 10px 0;

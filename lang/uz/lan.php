@@ -11,6 +11,7 @@ return [
 
     'ortga' => 'Ortga',
     'yuklab_olish' => 'Yuklab olish',
+    'bosh' => 'Bosh sahifa',
 
 
 

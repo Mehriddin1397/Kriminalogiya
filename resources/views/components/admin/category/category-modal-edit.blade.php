@@ -65,7 +65,7 @@
                             Jinoyatlar
                         </option>
                         <option value="institut" {{ old('object_type', $category->object_type ?? '') == 'institut' ? 'selected' : '' }}>
-                            Institut
+                            Institut va ishga qabul
                         </option>
                         <option value="jurnal" {{ old('object_type', $category->object_type ?? '') == 'jurnal' ? 'selected' : '' }}>
                             Jurnallar
@@ -86,7 +86,7 @@
                             Ilmiy salohiyat va hamkorlar
                         </option>
                         <option value="articles" {{ old('object_type', $category->object_type ?? '') == 'articles' ? 'selected' : '' }}>
-                            Maqolalar
+                            Maqola va disertatsiya mavzulari
                         </option>
                     </select>
                 </div>
