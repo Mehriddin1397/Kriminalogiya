@@ -212,7 +212,7 @@
                 <div class="dropdown-menu fade-up m-0">
                     <a href="{{route('test',['category_id'=>29,'id'=>2])}}" class="dropdown-item">{{__('lan.ish_qab')}}</a>{{--{{route('test',['category_id'=>19,'id'=>3])}} --}}
                     <a href="{{route('show',['category_id'=>30,'id'=>3])}}" class="dropdown-item">{{__('lan.dis_mav')}}</a>{{--{{route('test',['category_id'=>19,'id'=>3])}} --}}
-                    <a href="#" class="dropdown-item">{{__('lan.tadqiq')}}</a>{{--{{route('categoryId',39)}} --}}
+                    <a href="{{route('categoryId',31)}}" class="dropdown-item">{{__('lan.tadqiq')}}</a>{{--{{route('categoryId',39)}} --}}
                     <a href="#" class="dropdown-item">{{__('lan.pul_xiz')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
                 </div>
             </div>
@@ -221,7 +221,7 @@
                 <div class="dropdown-menu fade-up m-0">
                     <a href="{{route('categoryId',22)}}" class="dropdown-item">{{__('lan.xor_yan')}}</a>
                     <a href="{{route('categoryId',8)}}" class="dropdown-item">{{__('lan.mah_yan')}}</a>
-                    <a href="#" class="dropdown-item">{{__('lan.ins_tash')}}</a>{{--{{route('categoryId',33)}} --}}
+                    <a href="{{route('categoryId',23)}}" class="dropdown-item">{{__('lan.ins_tash')}}</a>{{--{{route('categoryId',33)}} --}}
                     <a href="#" class="dropdown-item">{{__('lan.ilm_saf')}}</a>{{--{{route('categoryId',34)}} --}}
                     <a href="#" class="dropdown-item">{{__('lan.telek')}}</a>{{--{{route('categoryId',40)}} --}}
                 </div>
