@@ -114,7 +114,7 @@ class PageController extends Controller
 
                 $news = Crimes::whereHas('categories', function ($query) use ($id) {
                     $query->where('category_id', $id);
-                })->get();
+                })->paginate(9);
 
                 return view('pages.news', compact('news', 'categories', 'category', 'id'));
                 break;
@@ -142,7 +142,7 @@ class PageController extends Controller
             case 'news':
                 $news = News::whereHas('categories', function ($query) use ($id) {
                     $query->where('category_id', $id);
-                })->get();
+                })->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
@@ -150,14 +150,14 @@ class PageController extends Controller
             case 'scholars':
                 $news = Scholars::whereHas('categories', function ($query) use ($id) {
                     $query->where('category_id', $id);
-                })->get();
+                })->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
             case 'expertise':
                 $news = Expertise::whereHas('categories', function ($query) use ($id) {
                     $query->where('category_id', $id);
-                })->get();
+                })->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;

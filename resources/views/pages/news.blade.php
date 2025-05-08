@@ -41,6 +41,9 @@
                     </div>
                 </div>
                 @endforeach
+                <div>
+                    {{$news->links('pagination::bootstrap-4')}}
+                </div>
             </div>
         </div>
     </div>

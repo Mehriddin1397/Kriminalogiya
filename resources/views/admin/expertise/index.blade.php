@@ -6,7 +6,7 @@
 
     <div class="nxl-content d-flex flex-column h-100">
         <!-- [ page-header ] start -->
-        <div class="page-header">
+        <div class="page-header position-fixed">
             <div class="page-header-left d-flex align-items-center">
                 <div class="page-header-title">
                     <h5 class="m-b-10">Ilmiy salohiyat</h5>

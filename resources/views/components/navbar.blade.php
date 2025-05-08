@@ -222,8 +222,8 @@
                     <a href="{{route('categoryId',22)}}" class="dropdown-item">{{__('lan.xor_yan')}}</a>
                     <a href="{{route('categoryId',8)}}" class="dropdown-item">{{__('lan.mah_yan')}}</a>
                     <a href="{{route('categoryId',23)}}" class="dropdown-item">{{__('lan.ins_tash')}}</a>{{--{{route('categoryId',33)}} --}}
-                    <a href="#" class="dropdown-item">{{__('lan.ilm_saf')}}</a>{{--{{route('categoryId',34)}} --}}
-                    <a href="#" class="dropdown-item">{{__('lan.telek')}}</a>{{--{{route('categoryId',40)}} --}}
+                    <a href="{{route('categoryId',24)}}" class="dropdown-item">{{__('lan.ilm_saf')}}</a>{{--{{route('categoryId',34)}} --}}
+                    <a href="{{route('categoryId',32)}}" class="dropdown-item">{{__('lan.telek')}}</a>{{--{{route('categoryId',40)}} --}}
                 </div>
             </div>
             <div class="nav-item dropdown">
