@@ -25,7 +25,7 @@ class JournalController extends Controller
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'name_kr' => 'required|string|max:255',
-            'file_path' => 'required|mimes:pdf,doc,docx|max:10240', // Fayl yuklash qoidalari (masalan, 10MB gacha)
+            'file_path' => 'required|mimes:pdf,doc,docx|max:51200', // Fayl yuklash qoidalari (masalan, 10MB gacha)
             'categories' => 'array',  // Kategoriyalar array bo‘lishi kerak
             'categories.*' => 'exists:categories,id',// Kategoriyalar faqat mavjud IDlar bo‘lishi kerak
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240', // Rasm yuklash qoidalari

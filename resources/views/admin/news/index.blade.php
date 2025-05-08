@@ -104,6 +104,7 @@
             </div>
         </div>
 
+
     </div>
 
     @include('components.admin.news.news-modal-create')
