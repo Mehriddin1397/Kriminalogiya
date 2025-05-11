@@ -124,7 +124,7 @@ class PageController extends Controller
 
                 $researchs = Journal::whereHas('categories', function ($query) use ($id) {
                     $query->where('category_id', $id);
-                })->get();
+                })->latest()->get();
 
                 return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
                 break;
@@ -142,7 +142,7 @@ class PageController extends Controller
             case 'news':
                 $news = News::whereHas('categories', function ($query) use ($id) {
                     $query->where('category_id', $id);
-                })->paginate(9);
+                })->latest()->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
