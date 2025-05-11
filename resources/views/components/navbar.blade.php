@@ -229,8 +229,8 @@
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">{{__('lan.hamkor')}}</a>
                 <div class="dropdown-menu fade-up m-0">
-                    <a href="#" class="dropdown-item">{{__('lan.xor_ham')}}</a>{{--{{route('categoryId',39)}} --}}
-                    <a href="#" class="dropdown-item">{{__('lan.mah_ham')}}</a>{{--{{route('categoryId',38)}} --}}
+                    <a href="{{route('categoryId',12)}}" class="dropdown-item">{{__('lan.xor_ham')}}</a>{{--{{route('categoryId',39)}} --}}
+                    <a href="{{route('categoryId',11)}}" class="dropdown-item">{{__('lan.mah_ham')}}</a>{{--{{route('categoryId',38)}} --}}
                     <a href="{{route('contact')}}" class="dropdown-item">{{__('lan.boglanish')}}</a>
                 </div>
             </div>

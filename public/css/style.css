@@ -878,7 +878,7 @@ upcoming meetings page
 @media (max-width: 576px) {
 
     .page-header h1 {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
     .breadcrumb {
         flex-direction: column;
@@ -889,6 +889,7 @@ upcoming meetings page
     .d__flex_button div a {
         font-size: 0.5rem;
     }
+
 }
 .footer__link p{
     text-align: left;
