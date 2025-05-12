@@ -90,7 +90,7 @@
                             <img class="img-fluid" src="assets/img/i2.jfif" alt="" style="width:275px; height:183px; !important;">
                         </div>
                         <div class="text-center border border-5 border-light border-top-0 p-4">
-                            <a href="{{route('categoryId',22)}}"><h5 class="mb-0">{{__('lan.ijti_ama_tad')}}</h5></a>
+                            <a href="{{route('categoryId',13)}}"><h5 class="mb-0">{{__('lan.ijti_ama_tad')}}</h5></a>
                         </div>
                     </div>
                 </div>
