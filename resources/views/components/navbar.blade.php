@@ -213,7 +213,7 @@
                     <a href="{{route('categoryId',34)}}" class="dropdown-item">{{__('lan.ish_qab')}}</a>{{--{{route('test',['category_id'=>19,'id'=>3])}} --}}
                     <a href="{{route('show',['category_id'=>30,'id'=>3])}}" class="dropdown-item">{{__('lan.dis_mav')}}</a>{{--{{route('test',['category_id'=>19,'id'=>3])}} --}}
                     <a href="{{route('categoryId',31)}}" class="dropdown-item">{{__('lan.tadqiq')}}</a>{{--{{route('categoryId',39)}} --}}
-                    <a href="#" class="dropdown-item">{{__('lan.pul_xiz')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
+                    <a href="{{route('show',['category_id'=>35,'id'=>1])}}" class="dropdown-item">{{__('lan.pul_xiz')}}</a>{{--{{route('show',['category_id'=>31,'id'=>4])}} --}}
                 </div>
             </div>
             <div class="nav-item dropdown">
