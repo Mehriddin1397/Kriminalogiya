@@ -42,12 +42,12 @@ class PageController extends Controller
         $category2Id = 21; // Ikkinchi kategoriya IDsi
 
 // 1-kategoriya bo‘yicha hamkorlar soni
-        $category1PartnersCount = News::whereHas('categories', function ($query) {
+        $category1PartnersCount = Expertise::whereHas('categories', function ($query) {
             $query->where('name_uz', 'Mahalliy hamkorlar');
         })->count();
 
 // 2-kategoriya bo‘yicha hamkorlar soni
-        $category2PartnersCount = News::whereHas('categories', function ($query) {
+        $category2PartnersCount = Expertise::whereHas('categories', function ($query) {
             $query->where('name_uz', 'Xorijiy hamkorlar');
         })->count();
 
