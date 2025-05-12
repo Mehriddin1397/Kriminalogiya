@@ -37,18 +37,18 @@ class PageController extends Controller
             ->take(6)
             ->get();
         $newscount = News::count();
-        $researchcount = Research::count();
+        $researchcount = Articles::count();
         $category1Id = 20; // Birinchi kategoriya IDsi
         $category2Id = 21; // Ikkinchi kategoriya IDsi
 
 // 1-kategoriya bo‘yicha hamkorlar soni
-        $category1PartnersCount = Partner::whereHas('categories', function ($query) use ($category1Id) {
-            $query->where('category_id', $category1Id);
+        $category1PartnersCount = News::whereHas('categories', function ($query) {
+            $query->where('name_uz', 'Mahalliy hamkorlar');
         })->count();
 
 // 2-kategoriya bo‘yicha hamkorlar soni
-        $category2PartnersCount = Partner::whereHas('categories', function ($query) use ($category2Id) {
-            $query->where('category_id', $category2Id);
+        $category2PartnersCount = News::whereHas('categories', function ($query) {
+            $query->where('name_uz', 'Xorijiy hamkorlar');
         })->count();
 
         return view('pages.main', compact('contacts', 'mnews','xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount'));
