@@ -111,7 +111,7 @@
 
                         </div>
                         <div class="text-center border border-5 border-light border-top-0 p-4">
-                             <a href="{{route('categoryId',15)}}"><h5 class="mb-0">{{__('lan.jin_va_jin_saq')}}</h5> </a>
+                             <a href="{{route('show',['category_id'=>18,'id'=>5])}}"><h5 class="mb-0">{{__('lan.jin_va_jin_saq')}}</h5> </a>
                          </div>
                     </div>
                 </div>
