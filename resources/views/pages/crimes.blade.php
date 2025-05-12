@@ -19,8 +19,8 @@
 
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="section-title text-center">
-                <h1 class="display-5 mb-5">{{ $research->name }}</h1>
+            <div class="section-title text-center ">
+                <h1 class="display-5 mb-5 section__h1">{{ $research->name }}</h1>
             </div>
             <div class="row g-4 justify-content-center">
                 <div class="col-12">
@@ -35,11 +35,6 @@
                         <div class="text-center mt-3 p-3">
                             <a href="{{route('main')}}" class="btn btn-danger">
                                 {{ __('lan.bosh')}}
-                            </a>
-                        </div>
-                        <div class="text-center mt-3 p-3">
-                            <a href="{{route('categoryId',$category->id)}}" class="btn btn-success">
-                                {{ __('lan.ortga')}}
                             </a>
                         </div>
                         <div class="text-center mt-3 p-3">
@@ -86,7 +81,12 @@
             }
             .d__flex_button div a {
                 font-size: 0.5rem;
+
             }
+            .section__h1{
+                font-size: 1rem;
+            }
+
         }
     </style>
 

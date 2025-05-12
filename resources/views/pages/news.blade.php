@@ -44,6 +44,11 @@
                 <div>
                     {{$news->links('pagination::bootstrap-4')}}
                 </div>
+                    <div class="text-center mt-3 p-3">
+                        <a href="{{route('main')}}" class="btn btn-danger">
+                            {{ __('lan.bosh')}}
+                        </a>
+                    </div>
             </div>
         </div>
     </div>
