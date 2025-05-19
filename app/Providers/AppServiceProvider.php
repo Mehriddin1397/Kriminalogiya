@@ -14,14 +14,16 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
     }
+
 
     /**
      * Bootstrap any application services.
      */
     public function boot(): void
     {
+
         // Agar sessiyada 'locale' mavjud bo'lsa, uni o'qib olish
         $locale = session('lang', config('app.locale'));
         App::setLocale($locale);

@@ -5,9 +5,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[\App\Http\Controllers\PageController::class,'main'])->name('main');
 Route::get('/contact',[\App\Http\Controllers\PageController::class,'contact'])->name('contact');
 
-Route::get('/login',[\App\Http\Controllers\AuthController::class,'showLogin'])->name('login');
-Route::post('/login',[\App\Http\Controllers\AuthController::class,'login'])->name('loginn');
-Route::post('/logout',[\App\Http\Controllers\AuthController::class,'logout'])->name('logout');
+
+Route::get('/login', [\App\Http\Controllers\AuthController::class, 'showLogin'])->name('login');
+Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login.post');
+
+Route::get('/verify-code', [\App\Http\Controllers\AuthController::class, 'showVerifyForm'])->name('verify.code.form');
+Route::post('/verify-code', [\App\Http\Controllers\AuthController::class, 'verifyCode'])->name('verify.code');
+
+Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+Route::get('/dashboard', [\App\Http\Controllers\AuthController::class, 'dashboard'])->name('admin.dashboard')->middleware('auth');
+
 
 
 
@@ -69,4 +76,7 @@ Route::get('/sitemap.xml', function (){
         ->add(Url::create('/boss'))
         ->add(Url::create('/categoryId/8'));
 });
+
+
+
 
