@@ -55,7 +55,7 @@ class AuthController extends Controller
             'code' => 'required'
         ]);
 
-        $correctCode = env('TWO_FACTOR_CODE', '123456'); // .env dan kodni olamiz
+        $correctCode = env('TWO_FACTOR_CODE', 'kti_admin'); // .env dan kodni olamiz
 
         if ($request->code !== $correctCode) {
             return redirect()->route('login')->withErrors(['code' => 'Kiritilgan kod noto‘g‘ri.']);
