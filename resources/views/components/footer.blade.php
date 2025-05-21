@@ -15,17 +15,17 @@
             </div>
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-light mb-4">{{__('lan.services')}}</h4>
-                <a class="btn btn-link" href="#">{{__('lan.ish_qab')}}</a>
-                <a class="btn btn-link" href="#">{{__('lan.dis_mav')}}</a>
-                <a class="btn btn-link" href="#">{{__('lan.tadqiq')}}</a>
-                <a class="btn btn-link" href="#">{{__('lan.pul_xiz')}}</a>
+                <a class="btn btn-link" href="{{route('categoryId',34)}}">{{__('lan.ish_qab')}}</a>
+                <a class="btn btn-link" href="{{route('show',['category_id'=>30,'id'=>3])}}">{{__('lan.dis_mav')}}</a>
+                <a class="btn btn-link" href="{{route('categoryId',31)}}">{{__('lan.tadqiq')}}</a>
+                <a class="btn btn-link" href="{{route('show',['category_id'=>35,'id'=>1])}}">{{__('lan.pul_xiz')}}</a>
             </div>
             <div class="col-lg-4 col-md-6">
                 <h4 class="text-light mb-4">{{__('lan.sayt_xaritasi')}}</h4>
-                <a class="btn btn-link" href="">{{__('lan.maqolalar')}}</a>
-                <a class="btn btn-link" href="">{{__('lan.kitobxonlik')}}</a>
-                <a class="btn btn-link" href="">{{__('lan.xor_yan')}}</a>
-                <a class="btn btn-link" href="">{{__('lan.mah_yan')}}</a>
+                <a class="btn btn-link" href="{{route('categoryId',14)}}">{{__('lan.maqolalar')}}</a>
+                <a class="btn btn-link" href="{{route('categoryId',15)}}">{{__('lan.kitobxonlik')}}</a>
+                <a class="btn btn-link" href="{{route('categoryId',22)}}">{{__('lan.xor_yan')}}</a>
+                <a class="btn btn-link" href="{{route('categoryId',8)}}">{{__('lan.mah_yan')}}</a>
             </div>
         </div>
     </div>
