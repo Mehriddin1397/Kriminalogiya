@@ -12,6 +12,7 @@ return [
 
     'ortga' => 'Back',
     'yuklab_olish' => 'Download',
+    'bosh' => 'Home',
 
     //navbar tarjima
     'kriminalog' => 'Criminology Research Institute of the Republic of Uzbekistan',
