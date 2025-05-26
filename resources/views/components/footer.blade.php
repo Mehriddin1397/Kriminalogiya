@@ -13,6 +13,7 @@
                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>@if($contact)
                         {{$contact->email}}
                     @endif</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>kti@iiv.uz</p>
                 <div class="d-flex pt-2">
                     <a class="btn btn-outline-light btn-social" target="_blank"
                        href="@if($contact) {{$contact->telegram_link}} @endif"><i class="fab fa-telegram"></i></a>
