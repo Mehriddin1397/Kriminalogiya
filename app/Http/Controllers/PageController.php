@@ -150,14 +150,14 @@ class PageController extends Controller
             case 'scholars':
                 $news = Scholars::whereHas('categories', function ($query) use ($id) {
                     $query->where('category_id', $id);
-                })->paginate(9);
+                })->latest()->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
             case 'expertise':
                 $news = Expertise::whereHas('categories', function ($query) use ($id) {
                     $query->where('category_id', $id);
-                })->paginate(9);
+                })->latest()->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
