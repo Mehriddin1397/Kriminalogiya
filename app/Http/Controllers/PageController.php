@@ -21,7 +21,7 @@ use Illuminate\Http\Request;
 class PageController extends Controller
 {
 
-    public function main()
+    public function main(Request $request)
     {
         $contacts = Contact::all();
         $mnews = News::whereHas('categories', function ($query) {
@@ -51,7 +51,7 @@ class PageController extends Controller
             $query->where('name_uz', 'Xorijiy hamkorlar');
         })->count();
 
-        return view('pages.main', compact('contacts', 'mnews','xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount'));
+        return view('pages.main', compact('contacts', 'mnews','xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount','request'));
 
     }
 

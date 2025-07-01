@@ -6,7 +6,7 @@ Route::get('/',[\App\Http\Controllers\PageController::class,'main'])->name('main
 Route::get('/contact',[\App\Http\Controllers\PageController::class,'contact'])->name('contact');
 
 
-Route::get('/tez', [\App\Http\Controllers\AuthController::class, 'showLogin'])->name('login');
+Route::get('/tez', [\App\Http\Controllers\AuthController::class, 'showLogin'])->name('login')->middleware('ip.restrict');
 Route::post('/tez', [\App\Http\Controllers\AuthController::class, 'login'])->name('login.post');
 
 Route::get('/verify-code', [\App\Http\Controllers\AuthController::class, 'showVerifyForm'])->name('verify.code.form');

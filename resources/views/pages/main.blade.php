@@ -130,6 +130,7 @@
     </div>
     <!-- Ma'lumotlar End -->
 
+
     <!-- About Start -->
     <div class="container-xxl py-5 bg-light">
         <div class="containerr">

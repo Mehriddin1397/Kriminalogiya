@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Http\Middleware\RestrictLoginByIP;
 use App\Models\Contact;
+use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -23,7 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
         // Agar sessiyada 'locale' mavjud bo'lsa, uni o'qib olish
         $locale = session('lang', config('app.locale'));
         App::setLocale($locale);
