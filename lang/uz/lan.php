@@ -26,7 +26,7 @@ return [
     'ins_vaz' =>  'Institut vazifalari',
 
     'rahbariyat' => 'Rahbariyat',
-    'ins_rahbariyat' => 'Institut rahbariyat',
+    'ins_rahbariyat' => 'Institut rahbariyati',
 
     'ilm_sal' => 'Ilmiy salohiyat',
     'ilm_dara' => 'Ilmiy daraja va ilmiy unvonga ega bo\'lgan xodimlar',
