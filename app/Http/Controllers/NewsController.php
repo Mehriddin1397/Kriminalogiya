@@ -25,10 +25,10 @@ class NewsController extends Controller
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'name_kr' => 'required|string|max:255',
-            'title_uz' => 'required|string|max:10000',
-            'title_ru' => 'required|string|max:10000',
-            'title_en' => 'required|string|max:10000',
-            'title_kr' => 'required|string|max:10000',
+            'title_uz' => 'nullable|string|max:10000',
+            'title_ru' => 'nullable|string|max:10000',
+            'title_en' => 'nullable|string|max:10000',
+            'title_kr' => 'nullable|string|max:10000',
             'description_uz' => 'required|string|max:10000',
             'description_ru' => 'required|string|max:10000',
             'description_en' => 'required|string|max:10000',
@@ -39,7 +39,7 @@ class NewsController extends Controller
             'whatsapp_link' => 'nullable|string|max:255',
             'categories' => 'array',  // Kategoriyalar array bo‘lishi kerak
             'categories.*' => 'exists:categories,id',// Kategoriyalar faqat mavjud IDlar bo‘lishi kerak
-            'photos.*' => 'image|mimes:jpeg,png,jpg,gif|max:22048', // rasm validatsiyasi
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif', // rasm validatsiyasi
         ]);
 
 
