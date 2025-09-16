@@ -60,6 +60,7 @@ return [
     //main page
     'sun_yan' => 'Mahalliy yangiliklar',
     'sun_yann' => 'Xorijiy yangiliklar',
+    'xal_index' => 'Xalqaro reyting va indekslar',
     'malumot' => 'Ma\'lumotlar',
 
     'batafsil' => 'Batafsil',
