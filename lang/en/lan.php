@@ -58,6 +58,7 @@ return [
     //main page
     'sun_yan' => 'Local news',
     'sun_yann' => 'International news',
+    'xal_index' => 'International Rankings and Indices',
     'malumot' => 'Information',
 
     'batafsil' => 'More Details',

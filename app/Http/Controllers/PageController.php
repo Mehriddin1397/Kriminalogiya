@@ -36,6 +36,12 @@ class PageController extends Controller
             ->latest()
             ->take(6)
             ->get();
+        $inews = News::whereHas('categories', function ($query) {
+            $query->where('name_uz', 'Xalqaro reyting va indekslar');
+        })
+            ->latest()
+            ->take(6)
+            ->get();
         $newscount = News::count();
         $researchcount = Articles::count();
         $category1Id = 20; // Birinchi kategoriya IDsi
@@ -51,7 +57,7 @@ class PageController extends Controller
             $query->where('name_uz', 'Xorijiy hamkorlar');
         })->count();
 
-        return view('pages.main', compact('contacts', 'mnews','xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount'));
+        return view('pages.main', compact('contacts', 'mnews','xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount','inews'));
 
     }
 
