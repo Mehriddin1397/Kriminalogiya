@@ -101,9 +101,10 @@ class PageController extends Controller
             case 'research':
                 $categories = Category::forObjectType('research');
 
-                $researchs = Research::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->get();
+                $researchs = Research::with(['photos', 'categories'])
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->get();
 
                 return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
                 break;
@@ -111,9 +112,10 @@ class PageController extends Controller
             case 'bibliophilia':
                 $categories = Category::forObjectType('bibliophilia');
 
-                $researchs = Bibliophilia::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->get();
+                $researchs = Bibliophilia::with(['photos', 'categories'])
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->get();
 
                 return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
                 break;
@@ -121,9 +123,10 @@ class PageController extends Controller
             case 'crimes':
                 $categories = Category::forObjectType('crimes');
 
-                $news = Crimes::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->paginate(9);
+                $news = Crimes::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->paginate(9);
 
                 return view('pages.news', compact('news', 'categories', 'category', 'id'));
                 break;
@@ -131,9 +134,10 @@ class PageController extends Controller
             case 'jurnal':
                 $categories = Category::forObjectType('jurnal');
 
-                $researchs = Journal::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->latest()->get();
+                $researchs = Journal::with(['photos', 'categories'])
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->get();
 
                 return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
                 break;
@@ -141,32 +145,36 @@ class PageController extends Controller
             case 'articles':
                 $categories = Category::forObjectType('articles');
 
-                $researchs = Articles::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->get();
+                $researchs = Articles::with(['photos', 'categories'])
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->get();
 
                 return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
                 break;
 
             case 'news':
-                $news = News::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->latest()->paginate(9);
+                $news = News::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
 
             case 'scholars':
-                $news = Scholars::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->latest()->paginate(9);
+                $news = Scholars::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
             case 'expertise':
-                $news = Expertise::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->latest()->paginate(9);
+                $news = Expertise::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
@@ -200,7 +208,7 @@ class PageController extends Controller
 
 
             case 'crimes':
-                $new = Crimes::find($id);
+                $new = Crimes::with('photos')->find($id);
 
                 return view('pages.news_show', compact('new', 'category'));
                 break;
@@ -223,19 +231,19 @@ class PageController extends Controller
                 break;
 
             case 'news':
-                $new = News::find($id);
+                $new = News::with('photos')->find($id);
 
                 return view('pages.news_show', compact('new', 'category'));
                 break;
 
             case 'scholars':
-                $new = Scholars::find($id);
+                $new = Scholars::with('photos')->find($id);
 
                 return view('pages.news_show', compact('new', 'category'));
                 break;
 
             case 'expertise':
-                $new = Expertise::find($id);
+                $new = Expertise::with('photos')->find($id);
 
                 return view('pages.news_show', compact('new', 'category'));
                 break;
@@ -245,7 +253,7 @@ class PageController extends Controller
 
     public function boss()
     {
-        $boss = Rahbariyat::all();
+        $boss = Rahbariyat::with('photos')->get();
 
         return view('pages.boshliq', compact('boss'));
 
