@@ -260,6 +260,53 @@
         </div>
     </section>
 
+    {{-- ─────── Ilmiy hamkorlar ─────── --}}
+    @php
+        $lxPartners = [
+            ['name' => 'lex.uz',      'url' => 'https://lex.uz',      'logo' => 'assets/img/partners/lex-uz.png'],
+            ['name' => 'data.gov.uz', 'url' => 'https://data.gov.uz', 'logo' => 'assets/img/partners/data-gov-uz.png'],
+            ['name' => 'gov.uz',      'url' => 'https://gov.uz',      'logo' => 'assets/img/partners/gov-uz.png'],
+            ['name' => 'minjust.uz',  'url' => 'https://minjust.uz',  'logo' => 'assets/img/partners/minjust-uz.png'],
+        ];
+    @endphp
+
+    <section class="lx-section" style="background: var(--lx-cream);">
+        <div class="container">
+            <div class="lx-section-head" data-aos="fade-up">
+                <span class="lx-eyebrow">Scientific Partners</span>
+                <h2 class="lx-section-title">Ilmiy hamkorlar</h2>
+                <div class="lx-stats-divider"></div>
+            </div>
+
+            <div class="lx-partners-wrap" data-aos="fade-up">
+                <button class="lx-partners-nav prev" type="button" aria-label="Previous">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+
+                <div class="owl-carousel lx-partners-carousel">
+                    @foreach($lxPartners as $partner)
+                        <a href="{{ $partner['url'] }}" target="_blank" rel="noopener" class="lx-partner-card">
+                            <div class="lx-partner-logo">
+                                <img src="{{ asset($partner['logo']) }}" alt="{{ $partner['name'] }}" loading="lazy"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                <div class="lx-partner-logo-fallback">
+                                    <span>{{ strtoupper(substr($partner['name'], 0, 1)) }}</span>
+                                </div>
+                            </div>
+                            <div class="lx-partner-name">
+                                <span>{{ $partner['name'] }}</span>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+
+                <button class="lx-partners-nav next" type="button" aria-label="Next">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
 </div>
 
 <script>
@@ -312,6 +359,28 @@
                     animateIn: 'fadeIn'
                 });
             }
+        }
+
+        // Partners carousel
+        if (typeof jQuery !== 'undefined' && jQuery('.lx-partners-carousel').length) {
+            const $partners = jQuery('.lx-partners-carousel').owlCarousel({
+                loop: true,
+                margin: 24,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 4500,
+                autoplayHoverPause: true,
+                smartSpeed: 800,
+                responsive: {
+                    0:    { items: 1 },
+                    480:  { items: 2 },
+                    768:  { items: 3 },
+                    1024: { items: 4 }
+                }
+            });
+            jQuery('.lx-partners-nav.prev').on('click', function () { $partners.trigger('prev.owl.carousel'); });
+            jQuery('.lx-partners-nav.next').on('click', function () { $partners.trigger('next.owl.carousel'); });
         }
     });
 </script>
