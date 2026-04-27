@@ -709,25 +709,16 @@
     opacity: 0.5;
 }
 
-/* ─────── Navbar overlay on hero ─────── */
+/* ─────── Hero — height adjusted so it sits below the existing header ─────── */
 
-body.home-page nav.navbar-light:first-of-type {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    background: transparent !important;
+body.home-page .lx-hero {
+    height: calc(100vh - 60px);
+    min-height: 580px;
 }
 
-body.home-page .topbar_address {
-    background: transparent !important;
-    border-bottom: 1px solid rgba(245, 243, 240, 0.15);
-}
-
-body.home-page .topbar_address small,
-body.home-page .topbar_address .text-primary {
-    color: var(--lx-text-light) !important;
+body.home-page .lx-hero .lx-hero-slide {
+    height: calc(100vh - 60px);
+    min-height: 580px;
 }
 
 /* ─────── Responsive ─────── */
