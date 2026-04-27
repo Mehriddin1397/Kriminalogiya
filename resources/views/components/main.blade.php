@@ -115,15 +115,21 @@
 <!-- AOS scroll animation -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-    if (typeof AOS !== 'undefined') {
-        AOS.init({
-            duration: 900,
-            easing: 'ease-out-cubic',
-            once: true,
-            offset: 80,
-            disable: window.innerWidth < 480 ? 'phone' : false
-        });
-    }
+    (function () {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 900,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 80,
+                disable: window.innerWidth < 480 ? 'phone' : false
+            });
+        } else {
+            document.querySelectorAll('[data-aos]').forEach(function (el) {
+                el.removeAttribute('data-aos');
+            });
+        }
+    })();
 </script>
 </body>
 
