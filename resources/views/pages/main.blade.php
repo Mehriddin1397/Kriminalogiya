@@ -47,104 +47,54 @@
                 <h2 class="lx-section-title">{{ __('lan.yangilik') }}</h2>
             </div>
 
-            {{-- Mahalliy --}}
-            @if($mnews->count())
-            <div class="lx-news-block" data-aos="fade-up">
-                <div class="lx-news-block-head">
-                    <h3>{{ __('lan.sun_yan') }}</h3>
-                    <a class="lx-news-link" href="{{ route('categoryId', 8) }}">
-                        {{ __('lan.batafsil') }} &rarr;
-                    </a>
-                </div>
-                <div class="lx-news-grid">
-                    @foreach($mnews->take(3) as $i => $new)
-                        <a href="{{ route('show', ['category_id' => 8, 'id' => $new->id]) }}"
-                           class="lx-news-card {{ $i === 0 ? 'featured' : '' }}"
-                           data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
-                            <div class="lx-news-thumb">
-                                @if($new->photos->first())
-                                    <img src="{{ asset('storage/'.$new->photos->first()->file_path) }}" alt="{{ $new->name }}" loading="lazy">
-                                @else
-                                    <div class="lx-news-thumb-empty">&#9782;</div>
-                                @endif
-                            </div>
-                            <div class="lx-news-body">
-                                <div class="lx-news-meta">
-                                    <span>{{ $new->created_at?->format('d.m.Y') }}</span>
-                                </div>
-                                <h4 class="lx-news-title">{{ $new->name }}</h4>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-            </div>
-            @endif
+            @php
+                $newsBlocks = [
+                    ['title' => __('lan.sun_yan'),   'cat_id' => 8,  'items' => $mnews],
+                    ['title' => __('lan.sun_yann'),  'cat_id' => 22, 'items' => $xnews],
+                    ['title' => __('lan.xal_index'), 'cat_id' => 36, 'items' => $inews],
+                ];
+            @endphp
 
-            {{-- Xorijiy --}}
-            @if($xnews->count())
-            <div class="lx-news-block" data-aos="fade-up">
-                <div class="lx-news-block-head">
-                    <h3>{{ __('lan.sun_yann') }}</h3>
-                    <a class="lx-news-link" href="{{ route('categoryId', 22) }}">
-                        {{ __('lan.batafsil') }} &rarr;
-                    </a>
-                </div>
-                <div class="lx-news-grid">
-                    @foreach($xnews->take(3) as $i => $new)
-                        <a href="{{ route('show', ['category_id' => 22, 'id' => $new->id]) }}"
-                           class="lx-news-card {{ $i === 0 ? 'featured' : '' }}"
-                           data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
-                            <div class="lx-news-thumb">
-                                @if($new->photos->first())
-                                    <img src="{{ asset('storage/'.$new->photos->first()->file_path) }}" alt="{{ $new->name }}" loading="lazy">
-                                @else
-                                    <div class="lx-news-thumb-empty">&#9782;</div>
-                                @endif
-                            </div>
-                            <div class="lx-news-body">
-                                <div class="lx-news-meta">
-                                    <span>{{ $new->created_at?->format('d.m.Y') }}</span>
-                                </div>
-                                <h4 class="lx-news-title">{{ $new->name }}</h4>
-                            </div>
+            @foreach($newsBlocks as $block)
+                @if($block['items']->count())
+                <div class="lx-news-block" data-aos="fade-up">
+                    <div class="lx-news-block-head">
+                        <h3>{{ $block['title'] }}</h3>
+                        <a class="lx-news-link" href="{{ route('categoryId', $block['cat_id']) }}">
+                            {{ __('lan.batafsil') }} &rarr;
                         </a>
-                    @endforeach
-                </div>
-            </div>
-            @endif
-
-            {{-- Xalqaro --}}
-            @if($inews->count())
-            <div class="lx-news-block" data-aos="fade-up">
-                <div class="lx-news-block-head">
-                    <h3>{{ __('lan.xal_index') }}</h3>
-                    <a class="lx-news-link" href="{{ route('categoryId', 36) }}">
-                        {{ __('lan.batafsil') }} &rarr;
-                    </a>
-                </div>
-                <div class="lx-news-grid">
-                    @foreach($inews->take(3) as $i => $new)
-                        <a href="{{ route('show', ['category_id' => 36, 'id' => $new->id]) }}"
-                           class="lx-news-card {{ $i === 0 ? 'featured' : '' }}"
-                           data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
-                            <div class="lx-news-thumb">
-                                @if($new->photos->first())
-                                    <img src="{{ asset('storage/'.$new->photos->first()->file_path) }}" alt="{{ $new->name }}" loading="lazy">
-                                @else
-                                    <div class="lx-news-thumb-empty">&#9782;</div>
-                                @endif
-                            </div>
-                            <div class="lx-news-body">
-                                <div class="lx-news-meta">
-                                    <span>{{ $new->created_at?->format('d.m.Y') }}</span>
+                    </div>
+                    <div class="lx-news-grid">
+                        @foreach($block['items']->take(3) as $i => $new)
+                            <a href="{{ route('show', ['category_id' => $block['cat_id'], 'id' => $new->id]) }}"
+                               class="lx-news-card"
+                               data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
+                                <div class="lx-news-thumb">
+                                    <div class="lx-news-thumb-empty">
+                                        <span>Kriminalogiya</span>
+                                    </div>
+                                    @if($new->photos->first())
+                                        <img src="{{ asset('storage/'.$new->photos->first()->file_path) }}"
+                                             alt="{{ $new->name }}"
+                                             loading="lazy"
+                                             onerror="this.style.display='none'">
+                                    @endif
                                 </div>
-                                <h4 class="lx-news-title">{{ $new->name }}</h4>
-                            </div>
-                        </a>
-                    @endforeach
+                                <div class="lx-news-body">
+                                    <div class="lx-news-meta">
+                                        <span>{{ $new->created_at?->format('d.m.Y') }}</span>
+                                    </div>
+                                    <h4 class="lx-news-title">{{ $new->name }}</h4>
+                                    <span class="lx-news-readmore">
+                                        {{ __('lan.batafsil') }} &rarr;
+                                    </span>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
-            @endif
+                @endif
+            @endforeach
 
         </div>
     </section>
