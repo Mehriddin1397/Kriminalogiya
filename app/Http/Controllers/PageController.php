@@ -24,21 +24,24 @@ class PageController extends Controller
     public function main()
     {
         $contacts = Contact::all();
-        $mnews = News::whereHas('categories', function ($query) {
-            $query->where('name_uz', 'Mahalliy yangiliklar');
-        })
-            ->latest() // created_at bo'yicha eng yangilari
-            ->take(6)
-            ->get();
-        $xnews = News::whereHas('categories', function ($query) {
-            $query->where('name_uz', 'Xorijiy Yangiliklar');
-        })
+        $mnews = News::with('photos')
+            ->whereHas('categories', function ($query) {
+                $query->where('name_uz', 'Mahalliy yangiliklar');
+            })
             ->latest()
             ->take(6)
             ->get();
-        $inews = News::whereHas('categories', function ($query) {
-            $query->where('name_uz', 'Xalqaro reyting va indekslar');
-        })
+        $xnews = News::with('photos')
+            ->whereHas('categories', function ($query) {
+                $query->where('name_uz', 'Xorijiy Yangiliklar');
+            })
+            ->latest()
+            ->take(6)
+            ->get();
+        $inews = News::with('photos')
+            ->whereHas('categories', function ($query) {
+                $query->where('name_uz', 'Xalqaro reyting va indekslar');
+            })
             ->latest()
             ->take(6)
             ->get();
@@ -252,51 +255,22 @@ class PageController extends Controller
     {
         $q = $request->input('query');
 
-        $academias = Academia::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $articles = Articles::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $crimes = Crimes::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $journals = Journal::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $news = News::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $bibliophilias = Bibliophilia::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $rahbariyats = Rahbariyat::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $researchs = Research::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $scholars = Scholars::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
+        $like = function ($query) use ($q) {
+            $query->where('name_uz', 'like', "%$q%")
+                ->orWhere('name_ru', 'like', "%$q%")
+                ->orWhere('name_en', 'like', "%$q%")
+                ->orWhere('name_kr', 'like', "%$q%");
+        };
+
+        $academias = Academia::with('photos')->where($like)->limit(50)->get();
+        $articles = Articles::with('photos')->where($like)->limit(50)->get();
+        $crimes = Crimes::with('photos')->where($like)->limit(50)->get();
+        $journals = Journal::with('photos')->where($like)->limit(50)->get();
+        $news = News::with('photos')->where($like)->limit(50)->get();
+        $bibliophilias = Bibliophilia::with('photos')->where($like)->limit(50)->get();
+        $rahbariyats = Rahbariyat::with('photos')->where($like)->limit(50)->get();
+        $researchs = Research::with('photos')->where($like)->limit(50)->get();
+        $scholars = Scholars::with('photos')->where($like)->limit(50)->get();
 
 
         return view('pages.search', compact('articles', 'scholars', 'researchs',
