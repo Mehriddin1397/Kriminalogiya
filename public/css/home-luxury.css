@@ -709,6 +709,155 @@
     opacity: 0.5;
 }
 
+/* ─────── Partners ─────── */
+
+.lx-partners-wrap {
+    position: relative;
+    padding: 0 60px;
+}
+
+.lx-partner-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: #fff;
+    box-shadow: var(--lx-shadow-card);
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+    position: relative;
+}
+
+.lx-partner-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--lx-bronze);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lx-partner-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--lx-shadow-luxury);
+    color: inherit;
+}
+
+.lx-partner-card:hover::after {
+    transform: scaleX(1);
+}
+
+.lx-partner-logo {
+    position: relative;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 22px;
+    background: var(--lx-cream);
+}
+
+.lx-partner-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.78;
+    transition: filter 0.45s ease, opacity 0.45s ease, transform 0.45s ease;
+}
+
+.lx-partner-card:hover .lx-partner-logo img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.lx-partner-logo-fallback {
+    display: none;
+    width: 80px;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--lx-bronze);
+    border-radius: 50%;
+    color: var(--lx-bronze);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.lx-partner-name {
+    background: var(--lx-navy);
+    padding: 14px 16px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.lx-partner-name::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--lx-charcoal) 0%, var(--lx-navy) 100%);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 0;
+}
+
+.lx-partner-card:hover .lx-partner-name::before {
+    background: linear-gradient(135deg, var(--lx-bronze-dark) 0%, var(--lx-bronze) 100%);
+}
+
+.lx-partner-name span {
+    position: relative;
+    z-index: 1;
+    color: var(--lx-cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: lowercase;
+    transition: color 0.45s ease;
+}
+
+.lx-partner-card:hover .lx-partner-name span {
+    color: var(--lx-navy);
+}
+
+.lx-partners-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--lx-bronze);
+    background: transparent;
+    color: var(--lx-bronze);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 5;
+}
+
+.lx-partners-nav:hover {
+    background: var(--lx-bronze);
+    color: var(--lx-navy);
+}
+
+.lx-partners-nav.prev { left: 0; }
+.lx-partners-nav.next { right: 0; }
+
+@media (max-width: 640px) {
+    .lx-partners-wrap { padding: 0 36px; }
+    .lx-partners-nav { width: 36px; height: 36px; }
+    .lx-partner-logo { height: 100px; }
+}
+
 /* ─────── Hero — height adjusted so it sits below the existing header ─────── */
 
 body.home-page .lx-hero {
