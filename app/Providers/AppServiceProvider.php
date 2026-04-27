@@ -6,6 +6,7 @@ use App\Http\Middleware\RestrictLoginByIP;
 use App\Models\Contact;
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -31,8 +32,8 @@ class AppServiceProvider extends ServiceProvider
 
 
         View::composer('*', function ($view) {
-            $contact = Contact::find(1); // Baza orqali olingan ma'lumot
-            $view->with('contact', $contact); // Har bir view ga uzatish
+            $contact = Cache::remember('contact_data_1', now()->addHours(6), fn () => Contact::find(1));
+            $view->with('contact', $contact);
         });
     }
 
