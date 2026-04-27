@@ -369,14 +369,15 @@
                 nav: false,
                 dots: false,
                 autoplay: true,
-                autoplayTimeout: 4500,
+                autoplayTimeout: 3500,
                 autoplayHoverPause: true,
-                smartSpeed: 800,
+                smartSpeed: 1200,
+                slideTransition: 'cubic-bezier(0.4, 0, 0.2, 1)',
                 responsive: {
                     0:    { items: 1 },
                     480:  { items: 2 },
                     768:  { items: 3 },
-                    1024: { items: 4 }
+                    1200: { items: 3 }
                 }
             });
             jQuery('.lx-partners-nav.prev').on('click', function () { $partners.trigger('prev.owl.carousel'); });
