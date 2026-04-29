@@ -50,9 +50,15 @@
 <!-- Spinner Start -->
 <div id="spinner"
      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div role="status">
+    <div class="lx-loader" role="status" aria-label="Loading">
+        <svg class="lx-loader-ring lx-loader-ring--outer" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="100" cy="100" r="94" fill="none" stroke="#c9a961" stroke-width="1.4" stroke-linecap="round" pathLength="100" stroke-dasharray="72 28"/>
+        </svg>
+        <svg class="lx-loader-ring lx-loader-ring--inner" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="100" cy="100" r="80" fill="none" stroke="#c9a961" stroke-width="0.9" stroke-linecap="round" pathLength="100" stroke-dasharray="14 86" stroke-opacity="0.55"/>
+        </svg>
         <img
-            class="cursor-pointer rasm111"
+            class="lx-loader-logo"
             src="{{ asset('assets/img/kti-logo.png') }}"
             alt="Kriminologiya Tadqiqot Instituti"
         />
