@@ -36,6 +36,26 @@
                         <input type="text" name="name_kr" class="form-control">
                     </div>
                     <div class="form-group mb-4">
+                        <label class="form-label">E-ISSN:</label>
+                        <input type="text" name="e_issn" class="form-control">
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label"> Matni(uz):</label>
+                        <textarea name="description_uz" rows="10" id="editor1" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label"> Matni(ru):</label>
+                        <textarea name="description_ru" rows="10" id="editor2" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label"> Matni(en):</label>
+                        <textarea name="description_en" rows="10" id="editor3" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group mb-4">
+                        <label class="form-label"> Matni(kr):</label>
+                        <textarea name="description_kr" rows="10" id="editor4" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group mb-4">
                         <label class="form-label">Rasmi:</label>
                         <input type="file" name="photo" class="form-control" required>
                     </div>

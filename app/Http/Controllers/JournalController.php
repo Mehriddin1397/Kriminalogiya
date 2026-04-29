@@ -45,6 +45,11 @@ class JournalController extends Controller
             'name_ru' => $request->name_ru,
             'name_en' => $request->name_en,
             'name_kr' => $request->name_kr,
+            'e_issn' => $request->e_issn,
+            'description_uz' => $request->description_uz,
+            'description_ru' => $request->description_ru,
+            'description_en' => $request->description_en,
+            'description_kr' => $request->description_kr,
             'file_path' => $filePath,
         ]);
 
@@ -73,6 +78,11 @@ class JournalController extends Controller
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'name_kr' => 'required|string|max:255',
+            'description_uz' => 'required|string|max:255',
+            'description_ru' => 'required|string|max:255',
+            'description_en' => 'required|string|max:255',
+            'description_kr' => 'required|string|max:255',
+            'e_issn' => 'required|string|max:255',
             'file_path' => 'mimes:pdf,doc,docx|max:10240', // Fayl yuklash qoidalari (masalan, 10MB gacha)
             'categories' => 'array',  // Kategoriyalar array bo‘lishi kerak
             'categories.*' => 'exists:categories,id', // Kategoriyalar faqat mavjud IDlar bo‘lishi kerak
@@ -96,6 +106,11 @@ class JournalController extends Controller
             'name_ru' => $request->name_ru,
             'name_en' => $request->name_en,
             'name_kr' => $request->name_kr,
+            'e_issn' => $request->e_issn,
+            'description_uz' => $request->description_uz,
+            'description_ru' => $request->description_ru,
+            'description_en' => $request->description_en,
+            'description_kr' => $request->description_kr,
             'file_path' => $filePath,
         ]);
 
