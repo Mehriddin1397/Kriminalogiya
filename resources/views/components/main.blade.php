@@ -50,12 +50,11 @@
 <!-- Spinner Start -->
 <div id="spinner"
      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <!-- spinner-grow klassi olib tashlandi, faqat rasm qoldi -->
     <div role="status">
         <img
-            class="w-16 h-16 max-md:w-10 max-md:h-10 cursor-pointer rasm111"
-            src="{{ asset('assets/img/file.png') }}"
-            alt="Logo"
+            class="cursor-pointer rasm111"
+            src="{{ asset('assets/img/kti-logo.png') }}"
+            alt="Kriminologiya Tadqiqot Instituti"
         />
     </div>
 </div>
