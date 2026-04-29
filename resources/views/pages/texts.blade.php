@@ -14,7 +14,7 @@
                 <span>{{ $category->slug }}</span>
             </div>
 
-            <span class="lx-eyebrow" data-aos="fade-up">About Institute</span>
+            <span class="lx-eyebrow" data-aos="fade-up">Institut</span>
             <h1 class="lx-page-title" data-aos="fade-up">{{ $institut->name }}</h1>
             <div class="lx-page-divider" data-aos="fade-up"></div>
             <p class="lx-page-meta" data-aos="fade-up">
@@ -88,7 +88,7 @@
     <section class="lx-section dark lx-stats-bg">
         <div class="container">
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">Our principles</span>
+                <span class="lx-eyebrow">Asoslar</span>
                 <h2 class="lx-section-title">{{ __('lan.ins_vaz') ?? 'Institut vazifalari' }}</h2>
                 <div class="lx-stats-divider"></div>
             </div>

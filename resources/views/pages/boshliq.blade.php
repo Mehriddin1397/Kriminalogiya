@@ -14,7 +14,7 @@
                 <span>{{ __('lan.rahbariyat') }}</span>
             </div>
 
-            <span class="lx-eyebrow" data-aos="fade-up">Leadership</span>
+            <span class="lx-eyebrow" data-aos="fade-up">Institut</span>
             <h1 class="lx-page-title" data-aos="fade-up">{{ __('lan.rahbariyat') }}</h1>
             <div class="lx-page-divider" data-aos="fade-up"></div>
             <p class="lx-page-meta" data-aos="fade-up">
@@ -28,7 +28,7 @@
         <div class="container">
 
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">Our Team</span>
+                <span class="lx-eyebrow">Bizning jamoa</span>
                 <h2 class="lx-section-title">{{ __('lan.ins_rahbariyat') ?? __('lan.rahbariyat') }}</h2>
                 <p class="lx-section-sub">
                     Institutimiz rahbariyati tarkibi va vakolatlari haqida ma'lumotlar.
@@ -63,7 +63,7 @@
                                 @endif
                                 <div class="lx-leader-overlay">
                                     <span class="lx-leader-view">
-                                        Profile &rarr;
+                                        {{ __('lan.batafsil') }} &rarr;
                                     </span>
                                 </div>
                             </div>
