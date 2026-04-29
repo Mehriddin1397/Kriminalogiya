@@ -745,11 +745,46 @@
 
 #spinner .lx-loader {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.lx-loader-mark {
+    position: relative;
     width: 220px;
     height: 220px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.lx-loader-name {
+    color: var(--lx-navy);
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-size: clamp(15px, 1.6vw, 20px);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    max-width: 520px;
+    opacity: 0;
+    animation: lxNameFade 1.4s ease-out 0.4s forwards;
+    position: relative;
+}
+
+.lx-loader-name::before,
+.lx-loader-name::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 1px;
+    background: var(--lx-bronze);
+    margin: 14px auto;
 }
 
 .lx-loader-ring {
@@ -758,6 +793,11 @@
     width: 100%;
     height: 100%;
     transform-origin: center;
+}
+
+@keyframes lxNameFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .lx-loader-ring--outer {
@@ -789,8 +829,12 @@
 }
 
 @media (max-width: 640px) {
-    #spinner .lx-loader { width: 170px; height: 170px; }
+    #spinner .lx-loader { gap: 24px; }
+    .lx-loader-mark { width: 170px; height: 170px; }
     .lx-loader-logo { width: 100px; height: 100px; }
+    .lx-loader-name { letter-spacing: 0.14em; }
+    .lx-loader-name::before,
+    .lx-loader-name::after { width: 40px; margin: 10px auto; }
 }
 
 /* ─────── Partners ─────── */
