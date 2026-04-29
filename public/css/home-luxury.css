@@ -1781,49 +1781,277 @@
     color: var(--lx-cream);
 }
 
-/* ─────── Responsive leadership ─────── */
+/* ═══════════════════════════════════════════════════════════
+   About + Leaders — Responsive
+   ═══════════════════════════════════════════════════════════ */
 
+/* Tablet (max 992px) */
 @media (max-width: 992px) {
+    .lx-page-hero {
+        padding: 110px 0 80px;
+    }
+    .lx-page-hero-decor {
+        width: 380px;
+        height: 380px;
+        right: -150px;
+        opacity: 0.05;
+    }
+
+    .lx-about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    .lx-about-image {
+        max-width: 480px;
+        margin: 0 auto;
+        padding-bottom: 24px;
+        padding-right: 24px;
+        width: 100%;
+    }
+    .lx-about-image::before {
+        width: calc(100% - 24px);
+        height: calc(100% - 24px);
+    }
+
+    .lx-pillars-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
     .lx-leaders-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 24px;
     }
+
+    .lx-modal .modal-dialog {
+        max-width: calc(100% - 32px);
+        margin: 1.5rem auto;
+    }
 }
 
-@media (max-width: 640px) {
-    .lx-leaders-grid {
-        grid-template-columns: 1fr;
-    }
-    .lx-modal .modal-row {
-        grid-template-columns: 1fr;
-        gap: 6px;
-    }
-    .lx-modal .modal-header,
-    .lx-modal .modal-body,
-    .lx-modal .modal-footer { padding-left: 22px; padding-right: 22px; }
-}
-
-/* ─────── Responsive about ─────── */
-
-@media (max-width: 992px) {
-    .lx-about-grid {
-        grid-template-columns: 1fr;
-        gap: 60px;
-    }
-    .lx-pillars-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+/* Small tablet / large phone (max 768px) */
+@media (max-width: 768px) {
+    .lx-page-hero {
+        padding: 100px 0 70px;
     }
     .lx-page-hero-decor {
-        right: -200px;
+        width: 320px;
+        height: 320px;
+        right: -180px;
         opacity: 0.04;
+    }
+
+    .lx-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .lx-pillar {
+        padding: 36px 28px;
     }
 }
 
+/* Phone (max 640px) */
 @media (max-width: 640px) {
-    .lx-page-hero { padding: 90px 0 70px; }
-    .lx-page-title { font-size: 32px; }
-    .lx-rich-text p:first-of-type::first-letter { font-size: 48px; }
+    .lx-page-hero {
+        padding: 80px 0 60px;
+    }
+    .lx-page-title {
+        font-size: clamp(26px, 7.5vw, 36px);
+        line-height: 1.15;
+    }
+    .lx-page-hero-decor {
+        display: none;
+    }
+    .lx-breadcrumb {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        margin-bottom: 22px;
+        flex-wrap: wrap;
+        row-gap: 6px;
+    }
+    .lx-page-divider {
+        margin: 18px 0;
+    }
+    .lx-page-meta {
+        font-size: 11px;
+        letter-spacing: 0.14em;
+    }
+
+    /* About */
+    .lx-about-grid {
+        gap: 40px;
+    }
+    .lx-about-image {
+        padding-bottom: 16px;
+        padding-right: 16px;
+        max-width: 100%;
+    }
+    .lx-about-image::before {
+        width: calc(100% - 16px);
+        height: calc(100% - 16px);
+    }
+    .lx-image-frame {
+        aspect-ratio: 4 / 4.5;
+    }
+    .lx-image-badge {
+        padding: 14px 18px;
+        bottom: -10px;
+        left: -8px;
+    }
+    .lx-badge-num {
+        font-size: 26px;
+    }
+    .lx-image-badge .lx-eyebrow {
+        font-size: 8px;
+    }
+
+    .lx-rich-text {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+    .lx-rich-text p:first-of-type::first-letter {
+        font-size: 44px;
+        margin: 4px 10px 0 0;
+    }
+
+    .lx-social-strip {
+        gap: 10px;
+        margin-top: 28px;
+        padding-top: 22px;
+    }
+    .lx-social-strip-label {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+        margin-right: 4px;
+        flex-basis: 100%;
+        margin-bottom: 4px;
+    }
+    .lx-social-link {
+        width: 38px;
+        height: 38px;
+    }
+
+    /* Pillars */
+    .lx-pillar {
+        padding: 32px 24px;
+    }
+    .lx-pillar-icon {
+        width: 64px;
+        height: 64px;
+        margin-bottom: 20px;
+    }
+    .lx-pillar h3 {
+        font-size: 21px;
+    }
+
+    /* Quote */
+    .lx-quote-section {
+        padding: 70px 0;
+    }
+    .lx-quote {
+        padding: 0 12px;
+    }
+    .lx-quote-mark {
+        font-size: 100px;
+        margin-bottom: -14px;
+    }
+    .lx-quote-text {
+        font-size: clamp(18px, 5vw, 24px);
+    }
+    .lx-quote-author {
+        font-size: 11px;
+        letter-spacing: 0.25em;
+    }
+    .lx-quote-author::before {
+        width: 20px;
+        margin-right: 10px;
+    }
+
+    /* Leaders grid */
+    .lx-leaders-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .lx-leader-photo {
+        aspect-ratio: 4 / 4.2;
+    }
+    .lx-leader-photo-empty span {
+        font-size: 64px;
+    }
+    .lx-leader-info {
+        padding: 22px 22px 26px;
+    }
+    .lx-leader-info::before {
+        left: 22px;
+    }
+    .lx-leader-name {
+        font-size: 21px;
+    }
+    .lx-leader-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+    }
+    .lx-leader-overlay {
+        padding: 18px;
+    }
+
+    /* Modal */
+    .lx-modal .modal-dialog {
+        max-width: calc(100% - 24px);
+        margin: 1rem auto;
+    }
+    .lx-modal .modal-content::before {
+        height: 3px;
+    }
+    .lx-modal .modal-header {
+        padding: 22px 22px 18px;
+        gap: 14px;
+    }
+    .lx-modal .modal-title {
+        font-size: 21px;
+    }
+    .lx-modal .modal-body {
+        padding: 22px;
+    }
+    .lx-modal .modal-footer {
+        padding: 18px 22px;
+    }
+    .lx-modal-row {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 12px 0;
+    }
+    .lx-modal-label {
+        font-size: 10px;
+        letter-spacing: 0.22em;
+    }
+    .lx-modal-value {
+        font-size: 14px;
+    }
+
+    /* Back CTA */
+    .lx-back-wrap {
+        padding-top: 40px;
+    }
+    .lx-btn-dark {
+        padding: 14px 28px;
+        font-size: 11px;
+    }
+}
+
+/* Very small phone (max 380px) */
+@media (max-width: 380px) {
+    .lx-page-title {
+        font-size: 24px;
+    }
+    .lx-image-badge {
+        padding: 12px 14px;
+        left: -6px;
+    }
+    .lx-badge-num {
+        font-size: 22px;
+    }
 }
 
 /* ─────── Hero — height adjusted so it sits below the existing header ─────── */
