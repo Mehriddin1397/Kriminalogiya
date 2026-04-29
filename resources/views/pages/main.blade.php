@@ -33,7 +33,7 @@
         </div>
 
         <div class="lx-scroll-hint">
-            <span>Scroll</span>
+            <span>Pastga</span>
             <div class="lx-line"></div>
         </div>
     </section>
@@ -43,7 +43,7 @@
         <div class="container">
 
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">News &amp; Updates</span>
+                <span class="lx-eyebrow">Eng so&apos;nggi</span>
                 <h2 class="lx-section-title">{{ __('lan.yangilik') }}</h2>
             </div>
 
@@ -103,7 +103,7 @@
     <section class="lx-section charcoal">
         <div class="container">
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">Research Areas</span>
+                <span class="lx-eyebrow">Yo&apos;nalishlar</span>
                 <h2 class="lx-section-title">{{ __('lan.malumot') }}</h2>
             </div>
 
@@ -159,7 +159,7 @@
     <section class="lx-section dark lx-stats-bg">
         <div class="container">
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">By the numbers</span>
+                <span class="lx-eyebrow">Raqamlarda</span>
                 <h2 class="lx-section-title">{{ __('lan.ins_haq') }}</h2>
                 <div class="lx-stats-divider"></div>
             </div>
@@ -223,13 +223,13 @@
     <section class="lx-section" style="background: var(--lx-cream);">
         <div class="container">
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">Scientific Partners</span>
+                <span class="lx-eyebrow">Hamkorlik</span>
                 <h2 class="lx-section-title">Ilmiy hamkorlar</h2>
                 <div class="lx-stats-divider"></div>
             </div>
 
             <div class="lx-partners-wrap" data-aos="fade-up">
-                <button class="lx-partners-nav prev" type="button" aria-label="Previous">
+                <button class="lx-partners-nav prev" type="button" aria-label="Oldingisi">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg>
                 </button>
 
@@ -250,7 +250,7 @@
                     @endforeach
                 </div>
 
-                <button class="lx-partners-nav next" type="button" aria-label="Next">
+                <button class="lx-partners-nav next" type="button" aria-label="Keyingisi">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 18l6-6-6-6"/></svg>
                 </button>
             </div>
