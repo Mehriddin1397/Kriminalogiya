@@ -73,23 +73,7 @@
 <!-- Spinner End -->
 
 
-<!-- Topbar Start -->
-<div class="container-fluid bg-light p-0 topbar_address">
-    <div class="row gx-0 d-none d-lg-flex">
-        <div class="col-lg-7 px-5 text-start" style="width: 74% !important;">
-            <div class="h-100 d-inline-flex align-items-center py-3 me-4">
-                <small class="fa fa-map-marker-alt text-primary me-2"></small>
-
-                <small>{{$contact->address}}</small>
-            </div>
-            <div class="h-100 d-inline-flex align-items-center py-3">
-                <small class="far fa-clock text-primary me-2"></small>
-                <small>{{__('lan.ish_vaqt')}}</small>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Topbar End -->
+{{-- Topbar va Navbar endi <x-navbar/> ichida (lyuks dizayn) --}}
 
 
 <!-- Navbar Start -->
