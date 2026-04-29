@@ -1,187 +1,165 @@
 <x-main title="{{__('lan.rahbariyat')}}">
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 ">
-        <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">{{__('lan.rahbariyat')}}</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-white" href="{{route('main')}}">Home</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">{{__('lan.rahbariyat')}}</li>
-                </ol>
-            </nav>
+<div class="home-luxury">
+
+    {{-- ─────── Page hero ─────── --}}
+    @php
+        $heroBg = collect([
+            'assets/img/banner2.jpg',
+            'assets/img/banner4.jpg',
+            'assets/img/banner1.jpg',
+            'assets/img/bg1.jpg',
+        ])->first(fn ($p) => file_exists(public_path($p)));
+    @endphp
+
+    <section class="lx-page-hero">
+        @if($heroBg)
+            <div class="lx-page-hero-bg" aria-hidden="true">
+                <img src="{{ asset($heroBg) }}" alt="" loading="lazy">
+            </div>
+        @endif
+
+        <div class="lx-page-hero-decor" aria-hidden="true">
+            <img src="{{ asset('assets/img/kti-logo.png') }}" alt="">
         </div>
-    </div>
-    <!-- Page Header End -->
 
-
-
-    <div class="container-xxl py-5">
         <div class="container">
-            <div class="section-title text-center">
-                <h1 class="display-5 mb-5">
-                    {{__('lan.rahbariyat')}}
-                </h1>
+            <div class="lx-breadcrumb" data-aos="fade-up">
+                <a href="{{ route('main') }}">{{ __('lan.bosh_sahifa') ?? 'Bosh sahifa' }}</a>
+                <span class="sep">—</span>
+                <span>{{ __('lan.rahbariyat') }}</span>
             </div>
 
-            <div class="row g-4 ">
-                <div class="col-12 ">
-
-                    @foreach($boss as $bos)
-                        <div class="xalqaro-hankorlik-section">
-                            <div class="xalqaro-hankorlik-content">
-                                <div class="xalqaro-hankorlik-image-container">
-                                    @foreach($bos->photos as $photo)
-                                        <img src="{{asset('storage/'.$photo->file_path)}}" alt="Xalqaro hankorlik"
-                                             class="xalqaro-hankorlik-img" width="100px" height="110px">
-                                    @endforeach
-                                </div>
-                                <div class="xalqaro-hankorlik-text-container">
-                                    <p class="xalqaro-hankorlik-quote">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#bossModal{{ $bos->id }}">
-                                      {{$bos->name}}
-                                        </a>
-                                    </p>
-                                    <div class="xalqaro-hankorlik-meta">
-                                        <span class="xalqaro-hankorlik-date">{{__('lan.lavozim')}}: </span> {{$bos->post}}
-                                    </div>
-                                </div>
-                                <!-- Modal -->
-                                <div class="modal fade" id="bossModal{{ $bos->id }}" tabindex="-1" aria-labelledby="bossModalLabel{{ $bos->id }}" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content rounded-3 shadow">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="bossModalLabel{{ $bos->id }}">{{ $bos->name }}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Yopish"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p><strong>{{__('lan.telefon')}}:</strong> {{ $bos->phone }}</p>
-                                                <p><strong>{{__('lan.ish_jadvali')}}:</strong> {{ $bos->worktime }}</p>
-                                                <p><strong>{{__('lan.email')}}:</strong> {{ $bos->email }}</p>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                    {{__('lan.yopish')}}</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <hr>
-                    @endforeach
-
-                        <div class="d-flex justify-content-center d__flex_button" >
-                            <div class="text-center mt-3 p-3">
-                                <a href="{{route('main')}}" class="btn btn-danger">
-                                    {{ __('lan.bosh')}}
-                                </a>
-                            </div>
-                        </div>
-
-                    <style>
-                        .xalqaro-hankorlik-section {
-                            margin: 10px 0;
-                            padding: 15px;
-                            background-color: #f3f0ea;
-                            border-radius: 6px;
-                            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-                        }
-
-                        .xalqaro-hankorlik-content {
-                            display: flex;
-                            flex-wrap: wrap; /* Mobil qurilmalar uchun o'rash */
-                            align-items: center;
-                            justify-content: flex-start;
-                            font-family: 'Segoe UI', Arial, sans-serif;
-                            gap: 15px;
-                        }
-
-                        .xalqaro-hankorlik-image-container img {
-                            width: 100px;
-                            height: 110px;
-                            border-radius: 6px;
-                            object-fit: cover;
-                        }
-
-                        .xalqaro-hankorlik-text-container {
-                            flex-grow: 1;
-                            min-width: 200px;
-                        }
-
-                        .xalqaro-hankorlik-quote {
-                            font-size: 1.2rem;
-                            color: #333;
-                            margin: 0 0 10px 0;
-                            font-weight: 600;
-                            line-height: 1.4;
-                        }
-
-                        .xalqaro-hankorlik-meta {
-                            font-size: 0.95rem;
-                            color: #666;
-                        }
-
-                        /* Modal kichik ekranlarda yaxshi ko'rinishi uchun */
-                        .modal-dialog {
-                            max-width: 100%;
-                            margin: 1.75rem auto;
-                            padding: 0 1rem;
-                        }
-
-                        .modal-content {
-                            border-radius: 12px;
-                        }
-
-                        /* ========================
-                           RESPONSIVE DESIGN
-                        ======================== */
-
-                        @media (max-width: 768px) {
-                            .xalqaro-hankorlik-content {
-                                flex-direction: column;
-                                align-items: flex-start;
-                            }
-
-                            .xalqaro-hankorlik-image-container img {
-                                width: 90px;
-                                height: 100px;
-                                margin-bottom: 10px;
-                            }
-
-                            .xalqaro-hankorlik-text-container {
-                                width: 100%;
-                            }
-
-                            .xalqaro-hankorlik-quote {
-                                font-size: 1rem;
-                            }
-
-                            .xalqaro-hankorlik-meta {
-                                font-size: 0.85rem;
-                            }
-                        }
-
-                        @media (max-width: 480px) {
-                            .xalqaro-hankorlik-image-container img {
-                                width: 80px;
-                                height: 90px;
-                            }
-
-                            .xalqaro-hankorlik-quote {
-                                font-size: 0.95rem;
-                            }
-
-                            .xalqaro-hankorlik-meta {
-                                font-size: 0.8rem;
-                            }
-                        }
-                    </style>
-
-
-
-                </div>
-            </div>
+            <span class="lx-eyebrow" data-aos="fade-up">Institut</span>
+            <h1 class="lx-page-title" data-aos="fade-up">{{ __('lan.rahbariyat') }}</h1>
+            <div class="lx-page-divider" data-aos="fade-up"></div>
+            <p class="lx-page-meta" data-aos="fade-up">
+                {{ $boss->count() }} {{ __('lan.lavozim') ?? 'lavozim' }}
+            </p>
         </div>
-    </div>
+    </section>
+
+    {{-- ─────── Leaders grid ─────── --}}
+    <section class="lx-section" style="background: var(--lx-cream);">
+        <div class="container">
+
+            <div class="lx-section-head" data-aos="fade-up">
+                <span class="lx-eyebrow">Bizning jamoa</span>
+                <h2 class="lx-section-title">{{ __('lan.ins_rahbariyat') ?? __('lan.rahbariyat') }}</h2>
+                <p class="lx-section-sub">
+                    Institutimiz rahbariyati tarkibi va vakolatlari haqida ma'lumotlar.
+                </p>
+            </div>
+
+            @if($boss->count())
+                <div class="lx-leaders-grid">
+                    @foreach($boss as $i => $bos)
+                        @php
+                            $photo = $bos->photos->first();
+                            $modalId = 'bossModal' . $bos->id;
+                            $initial = mb_strtoupper(mb_substr(trim($bos->name ?? '?'), 0, 1));
+                        @endphp
+
+                        <a href="#"
+                           role="button"
+                           class="lx-leader-card"
+                           data-bs-toggle="modal"
+                           data-bs-target="#{{ $modalId }}"
+                           data-aos="fade-up"
+                           data-aos-delay="{{ ($i % 3) * 120 }}">
+                            <div class="lx-leader-photo">
+                                <div class="lx-leader-photo-empty" aria-hidden="true">
+                                    <span>{{ $initial }}</span>
+                                </div>
+                                @if($photo)
+                                    <img src="{{ asset('storage/'.$photo->file_path) }}"
+                                         alt="{{ $bos->name }}"
+                                         loading="lazy"
+                                         onerror="this.style.display='none'">
+                                @endif
+                                <div class="lx-leader-overlay">
+                                    <span class="lx-leader-view">
+                                        {{ __('lan.batafsil') }} &rarr;
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="lx-leader-info">
+                                <div class="lx-leader-eyebrow">{{ $bos->post }}</div>
+                                <h3 class="lx-leader-name">{{ $bos->name }}</h3>
+                            </div>
+                        </a>
+
+                        {{-- Modal --}}
+                        <div class="modal fade lx-modal"
+                             id="{{ $modalId }}"
+                             tabindex="-1"
+                             aria-labelledby="{{ $modalId }}Label"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div>
+                                            <div class="lx-leader-eyebrow" style="margin-bottom:6px;">{{ $bos->post }}</div>
+                                            <h5 class="modal-title" id="{{ $modalId }}Label">{{ $bos->name }}</h5>
+                                        </div>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('lan.yopish') }}">
+                                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                                <path d="M18 6 6 18M6 6l12 12"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        @if(!empty($bos->phone))
+                                            <div class="lx-modal-row">
+                                                <span class="lx-modal-label">{{ __('lan.telefon') }}</span>
+                                                <span class="lx-modal-value">
+                                                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $bos->phone) }}">{{ $bos->phone }}</a>
+                                                </span>
+                                            </div>
+                                        @endif
+
+                                        @if(!empty($bos->email))
+                                            <div class="lx-modal-row">
+                                                <span class="lx-modal-label">{{ __('lan.email') }}</span>
+                                                <span class="lx-modal-value">
+                                                    <a href="mailto:{{ $bos->email }}">{{ $bos->email }}</a>
+                                                </span>
+                                            </div>
+                                        @endif
+
+                                        @if(!empty($bos->worktime))
+                                            <div class="lx-modal-row">
+                                                <span class="lx-modal-label">{{ __('lan.ish_jadvali') }}</span>
+                                                <span class="lx-modal-value">{{ $bos->worktime }}</span>
+                                            </div>
+                                        @endif
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="lx-btn lx-btn-dark" data-bs-dismiss="modal">
+                                            <span>{{ __('lan.yopish') }}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <p style="text-align:center; color: var(--lx-text-soft); padding: 60px 0;">
+                    {{ __('lan.malumot_yoq') ?? "Ma'lumot topilmadi." }}
+                </p>
+            @endif
+
+            <div class="lx-back-wrap" data-aos="fade-up">
+                <a href="{{ route('main') }}" class="lx-btn lx-btn-dark">
+                    <span class="arrow-back">&larr;</span>
+                    <span>{{ __('lan.bosh') }}</span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+</div>
 </x-main>
