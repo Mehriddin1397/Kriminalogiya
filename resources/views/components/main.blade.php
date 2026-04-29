@@ -21,8 +21,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- AOS scroll animation -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -38,9 +41,12 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
+    <!-- Home page luxury theme -->
+    <link href="{{asset('css/home-luxury.css')}}" rel="stylesheet">
 </head>
 
-<body>
+<body class="{{ request()->routeIs('main') ? 'home-page' : '' }}">
 <!-- Spinner Start -->
 <div id="spinner"
      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
@@ -163,6 +169,26 @@
 
 <!-- Template Javascript -->
 <script src="{{asset('js/main.js')}}"></script>
+
+<!-- AOS scroll animation -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    (function () {
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 900,
+                easing: 'ease-out-cubic',
+                once: true,
+                offset: 80,
+                disable: window.innerWidth < 480 ? 'phone' : false
+            });
+        } else {
+            document.querySelectorAll('[data-aos]').forEach(function (el) {
+                el.removeAttribute('data-aos');
+            });
+        }
+    })();
+</script>
 </body>
 
 </html>

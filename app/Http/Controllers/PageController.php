@@ -24,21 +24,24 @@ class PageController extends Controller
     public function main()
     {
         $contacts = Contact::all();
-        $mnews = News::whereHas('categories', function ($query) {
-            $query->where('name_uz', 'Mahalliy yangiliklar');
-        })
-            ->latest() // created_at bo'yicha eng yangilari
-            ->take(6)
-            ->get();
-        $xnews = News::whereHas('categories', function ($query) {
-            $query->where('name_uz', 'Xorijiy Yangiliklar');
-        })
+        $mnews = News::with('photos')
+            ->whereHas('categories', function ($query) {
+                $query->where('name_uz', 'Mahalliy yangiliklar');
+            })
             ->latest()
             ->take(6)
             ->get();
-        $inews = News::whereHas('categories', function ($query) {
-            $query->where('name_uz', 'Xalqaro reyting va indekslar');
-        })
+        $xnews = News::with('photos')
+            ->whereHas('categories', function ($query) {
+                $query->where('name_uz', 'Xorijiy Yangiliklar');
+            })
+            ->latest()
+            ->take(6)
+            ->get();
+        $inews = News::with('photos')
+            ->whereHas('categories', function ($query) {
+                $query->where('name_uz', 'Xalqaro reyting va indekslar');
+            })
             ->latest()
             ->take(6)
             ->get();
@@ -98,9 +101,10 @@ class PageController extends Controller
             case 'research':
                 $categories = Category::forObjectType('research');
 
-                $researchs = Research::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->get();
+                $researchs = Research::with(['photos', 'categories'])
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->get();
 
                 return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
                 break;
@@ -108,9 +112,10 @@ class PageController extends Controller
             case 'bibliophilia':
                 $categories = Category::forObjectType('bibliophilia');
 
-                $researchs = Bibliophilia::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->get();
+                $researchs = Bibliophilia::with(['photos', 'categories'])
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->get();
 
                 return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
                 break;
@@ -118,9 +123,10 @@ class PageController extends Controller
             case 'crimes':
                 $categories = Category::forObjectType('crimes');
 
-                $news = Crimes::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->paginate(9);
+                $news = Crimes::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->paginate(9);
 
                 return view('pages.news', compact('news', 'categories', 'category', 'id'));
                 break;
@@ -128,9 +134,10 @@ class PageController extends Controller
             case 'jurnal':
                 $categories = Category::forObjectType('jurnal');
 
-                $researchs = Journal::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->latest()->get();
+                $researchs = Journal::with(['photos', 'categories'])
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->get();
 
                 return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
                 break;
@@ -138,32 +145,36 @@ class PageController extends Controller
             case 'articles':
                 $categories = Category::forObjectType('articles');
 
-                $researchs = Articles::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->get();
+                $researchs = Articles::with(['photos', 'categories'])
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->get();
 
                 return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
                 break;
 
             case 'news':
-                $news = News::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->latest()->paginate(9);
+                $news = News::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
 
             case 'scholars':
-                $news = Scholars::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->latest()->paginate(9);
+                $news = Scholars::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
             case 'expertise':
-                $news = Expertise::whereHas('categories', function ($query) use ($id) {
-                    $query->where('category_id', $id);
-                })->latest()->paginate(9);
+                $news = Expertise::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->paginate(9);
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
@@ -197,7 +208,7 @@ class PageController extends Controller
 
 
             case 'crimes':
-                $new = Crimes::find($id);
+                $new = Crimes::with('photos')->find($id);
 
                 return view('pages.news_show', compact('new', 'category'));
                 break;
@@ -220,19 +231,19 @@ class PageController extends Controller
                 break;
 
             case 'news':
-                $new = News::find($id);
+                $new = News::with('photos')->find($id);
 
                 return view('pages.news_show', compact('new', 'category'));
                 break;
 
             case 'scholars':
-                $new = Scholars::find($id);
+                $new = Scholars::with('photos')->find($id);
 
                 return view('pages.news_show', compact('new', 'category'));
                 break;
 
             case 'expertise':
-                $new = Expertise::find($id);
+                $new = Expertise::with('photos')->find($id);
 
                 return view('pages.news_show', compact('new', 'category'));
                 break;
@@ -242,7 +253,7 @@ class PageController extends Controller
 
     public function boss()
     {
-        $boss = Rahbariyat::all();
+        $boss = Rahbariyat::with('photos')->get();
 
         return view('pages.boshliq', compact('boss'));
 
@@ -252,51 +263,22 @@ class PageController extends Controller
     {
         $q = $request->input('query');
 
-        $academias = Academia::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $articles = Articles::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $crimes = Crimes::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $journals = Journal::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $news = News::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $bibliophilias = Bibliophilia::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $rahbariyats = Rahbariyat::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $researchs = Research::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
-        $scholars = Scholars::where('name_uz', 'like', "%$q%")
-            ->orWhere('name_ru', 'like', "%$q%")
-            ->orWhere('name_en', 'like', "%$q%")
-            ->orWhere('name_kr', 'like', "%$q%")
-            ->get();
+        $like = function ($query) use ($q) {
+            $query->where('name_uz', 'like', "%$q%")
+                ->orWhere('name_ru', 'like', "%$q%")
+                ->orWhere('name_en', 'like', "%$q%")
+                ->orWhere('name_kr', 'like', "%$q%");
+        };
+
+        $academias = Academia::with('photos')->where($like)->limit(50)->get();
+        $articles = Articles::with('photos')->where($like)->limit(50)->get();
+        $crimes = Crimes::with('photos')->where($like)->limit(50)->get();
+        $journals = Journal::with('photos')->where($like)->limit(50)->get();
+        $news = News::with('photos')->where($like)->limit(50)->get();
+        $bibliophilias = Bibliophilia::with('photos')->where($like)->limit(50)->get();
+        $rahbariyats = Rahbariyat::with('photos')->where($like)->limit(50)->get();
+        $researchs = Research::with('photos')->where($like)->limit(50)->get();
+        $scholars = Scholars::with('photos')->where($like)->limit(50)->get();
 
 
         return view('pages.search', compact('articles', 'scholars', 'researchs',

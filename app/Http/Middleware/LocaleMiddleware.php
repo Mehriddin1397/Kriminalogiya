@@ -10,8 +10,13 @@ class LocaleMiddleware
 {
     public function handle($request, Closure $next)
     {
-        $locale = Session::get('lang') ??  'uz';
-        Session::put('lang', $locale);
+        $locale = Session::get('lang');
+
+        if (!$locale) {
+            $locale = 'uz';
+            Session::put('lang', $locale);
+        }
+
         App::setLocale($locale);
 
         return $next($request);
