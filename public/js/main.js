@@ -1,15 +1,38 @@
 (function ($) {
     "use strict";
 
-    // Spinner
-    var spinner = function () {
-        setTimeout(function () {
-            if ($('#spinner').length > 0) {
-                $('#spinner').removeClass('show');
-            }
-        }, 1);
-    };
-    spinner();
+    // Spinner — wait for full page load, with a minimum display time and safety cap.
+    (function () {
+        var $spinner = $('#spinner');
+        if (!$spinner.length) return;
+
+        var startedAt = Date.now();
+        var MIN_DURATION = 1200;  // animatsiya ko'rinishi uchun minimal vaqt
+        var MAX_DURATION = 8000;  // 'load' hech qachon ishlamasa, eng ko'p kutiladigan vaqt
+        var hidden = false;
+
+        function hide() {
+            if (hidden) return;
+            hidden = true;
+            $spinner.removeClass('show');
+        }
+
+        function scheduleHide() {
+            var elapsed = Date.now() - startedAt;
+            var remaining = Math.max(0, MIN_DURATION - elapsed);
+            setTimeout(hide, remaining);
+        }
+
+        if (document.readyState === 'complete') {
+            // Sahifa allaqachon yuklangan (masalan, brauzer 'back' bilan kelganda)
+            scheduleHide();
+        } else {
+            $(window).one('load', scheduleHide);
+        }
+
+        // Xavfsizlik: agar biror resurs cheksiz osilib qolsa, baribir yashir.
+        setTimeout(hide, MAX_DURATION);
+    })();
     
     
     // Initiate the wowjs
