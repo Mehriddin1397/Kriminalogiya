@@ -2,7 +2,22 @@
 <div class="home-luxury">
 
     {{-- ─────── Page hero ─────── --}}
+    @php
+        $heroBg = collect([
+            'assets/img/banner1.jpg',
+            'assets/img/banner3.jpg',
+            'assets/img/aa.jpg',
+            'assets/img/bg1.jpg',
+        ])->first(fn ($p) => file_exists(public_path($p)));
+    @endphp
+
     <section class="lx-page-hero">
+        @if($heroBg)
+            <div class="lx-page-hero-bg" aria-hidden="true">
+                <img src="{{ asset($heroBg) }}" alt="" loading="lazy">
+            </div>
+        @endif
+
         <div class="lx-page-hero-decor" aria-hidden="true">
             <img src="{{ asset('assets/img/kti-logo.png') }}" alt="">
         </div>
