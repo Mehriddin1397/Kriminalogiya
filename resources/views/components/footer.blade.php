@@ -1,99 +1,183 @@
-<div class="container-fluid bg-dark text-light footer mt-5 pt-5 wow fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="row g-5">
-            <div class="col-lg-4 col-md-6 footer__link">
-                <h4 class="text-light mb-4">{{__('lan.address')}}</h4>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>@if($contact)
-                        {{$contact->address}}
-                    @endif</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i><a href="tel:@if($contact){{$contact->phone}}@endif"
-                                                                       class="">@if($contact)
-                            {{$contact->phone}}
-                        @endif</a></p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>@if($contact)
-                        {{$contact->email}}
-                    @endif</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>kti@iiv.uz</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" target="_blank"
-                       href="@if($contact) {{$contact->telegram_link}} @endif"><i class="fab fa-telegram"></i></a>
-                    <a class="btn btn-outline-light btn-social" target="_blank"
-                       href="@if($contact) {{$contact->facebook_link}} @endif"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" target="_blank"
-                       href="@if($contact) {{$contact->youtube_link}} @endif "><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" target="_blank"
-                       href="@if($contact) {{$contact->whatsapp_link}} @endif"><i class="fab fa-whatsapp"></i></a>
+<footer class="lx-footer">
+    <div class="lx-footer-inner">
+        <div class="container">
+
+            <div class="lx-footer-grid">
+
+                {{-- ─────── Brand / About ─────── --}}
+                <div class="lx-footer-brand" data-aos="fade-up">
+                    <a href="{{ route('main') }}" class="lx-footer-logo">
+                        <img src="{{ asset('assets/img/kti-logo.png') }}" alt="KTI">
+                        <span class="lx-footer-logo-text">
+                            <span class="small">Kriminologiya Instituti</span>
+                            <span class="big">{{ __('lan.kriminalog') }}</span>
+                        </span>
+                    </a>
+
+                    <p class="lx-footer-tagline">
+                        Ilm-fan asosida adolat va xavfsizlikni mustahkamlash. Kriminalogiya
+                        sohasidagi tadqiqotlar, xalqaro hamkorlik va innovatsion yondashuv.
+                    </p>
+
+                    <div class="lx-footer-social">
+                        @isset($contact)
+                            @if(!empty($contact->telegram_link))
+                                <a href="{{ $contact->telegram_link }}" target="_blank" rel="noopener" aria-label="Telegram">
+                                    <i class="fab fa-telegram"></i>
+                                </a>
+                            @endif
+                            @if(!empty($contact->facebook_link))
+                                <a href="{{ $contact->facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            @endif
+                            @if(!empty($contact->youtube_link))
+                                <a href="{{ $contact->youtube_link }}" target="_blank" rel="noopener" aria-label="YouTube">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            @endif
+                            @if(!empty($contact->whatsapp_link))
+                                <a href="{{ $contact->whatsapp_link }}" target="_blank" rel="noopener" aria-label="WhatsApp">
+                                    <i class="fab fa-whatsapp"></i>
+                                </a>
+                            @endif
+                        @endisset
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <h4 class="text-light mb-4">{{__('lan.services')}}</h4>
-                <a class="btn btn-link" href="{{route('categoryId',34)}}">{{__('lan.ish_qab')}}</a>
-                <a class="btn btn-link" href="{{route('show',['category_id'=>30,'id'=>3])}}">{{__('lan.dis_mav')}}</a>
-                <a class="btn btn-link" href="{{route('categoryId',31)}}">{{__('lan.tadqiq')}}</a>
-                <a class="btn btn-link" href="{{route('show',['category_id'=>35,'id'=>1])}}">{{__('lan.pul_xiz')}}</a>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <h4 class="text-light mb-4">{{__('lan.sayt_xaritasi')}}</h4>
-                <a class="btn btn-link" href="{{route('categoryId',14)}}">{{__('lan.maqolalar')}}</a>
-                <a class="btn btn-link" href="{{route('categoryId',15)}}">{{__('lan.kitobxonlik')}}</a>
-                <a class="btn btn-link" href="{{route('categoryId',22)}}">{{__('lan.xor_yan')}}</a>
-                <a class="btn btn-link" href="{{route('categoryId',8)}}">{{__('lan.mah_yan')}}</a>
-            </div>
-            <div>
-                <!-- START WWW.UZ TOP-RATING -->
-                <SCRIPT language="javascript" type="text/javascript">
-                    <!--
-                    top_js = "1.0";
-                    top_r = "id=47852&r=" + escape(document.referrer) + "&pg=" + escape(window.location.href);
-                    document.cookie = "smart_top=1; path=/";
-                    top_r += "&c=" + (document.cookie ? "Y" : "N")
-                    //-->
-                </SCRIPT>
-                <SCRIPT language="javascript1.1" type="text/javascript">
-                    <!--
-                    top_js = "1.1";
-                    top_r += "&j=" + (navigator.javaEnabled() ? "Y" : "N")
-                    //-->
-                </SCRIPT>
-                <SCRIPT language="javascript1.2" type="text/javascript">
-                    <!--
-                    top_js = "1.2";
-                    top_r += "&wh=" + screen.width + 'x' + screen.height + "&px=" +
-                        (((navigator.appName.substring(0, 3) == "Mic")) ? screen.colorDepth : screen.pixelDepth)
-                    //-->
-                </SCRIPT>
-                <SCRIPT language="javascript1.3" type="text/javascript">
-                    <!--
-                    top_js = "1.3";
-                    //-->
-                </SCRIPT>
-                <SCRIPT language="JavaScript" type="text/javascript">
-                    <!--
-                    top_rat = "&col=80312D&t=ffffff&p=F4AD00";
-                    top_r += "&js=" + top_js + "";
-                    document.write('<a href="http://www.uz/ru/res/visitor/index?id=47852" target=_top><img src="img/111.jpg?' + top_r + top_rat + '" width=88 height=31 border=0 alt="Топ рейтинг www.uz"></a>')//-->
-                </SCRIPT>
-                <NOSCRIPT><A href="http://www.uz/ru/res/visitor/index?id=47852" target=_top><IMG height=31
-                                                                                                 src="img/111.jpg"
-                                                                                                 width=88 border=0
-                                                                                                 alt="Топ рейтинг www.uz"></A>
-                </NOSCRIPT><!-- FINISH WWW.UZ TOP-RATING -->
+
+                {{-- ─────── Services ─────── --}}
+                <div class="lx-footer-col" data-aos="fade-up" data-aos-delay="100">
+                    <h4 class="lx-footer-title">{{ __('lan.services') }}</h4>
+                    <ul class="lx-footer-links">
+                        <li><a href="{{ route('categoryId', 34) }}">{{ __('lan.ish_qab') }}</a></li>
+                        <li><a href="{{ route('show', ['category_id' => 30, 'id' => 3]) }}">{{ __('lan.dis_mav') }}</a></li>
+                        <li><a href="{{ route('categoryId', 31) }}">{{ __('lan.tadqiq') }}</a></li>
+                        <li><a href="{{ route('show', ['category_id' => 35, 'id' => 1]) }}">{{ __('lan.pul_xiz') }}</a></li>
+                    </ul>
+                </div>
+
+                {{-- ─────── Site map ─────── --}}
+                <div class="lx-footer-col" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="lx-footer-title">{{ __('lan.sayt_xaritasi') }}</h4>
+                    <ul class="lx-footer-links">
+                        <li><a href="{{ route('categoryId', 14) }}">{{ __('lan.maqolalar') }}</a></li>
+                        <li><a href="{{ route('categoryId', 15) }}">{{ __('lan.kitobxonlik') }}</a></li>
+                        <li><a href="{{ route('categoryId', 22) }}">{{ __('lan.xor_yan') }}</a></li>
+                        <li><a href="{{ route('categoryId', 8) }}">{{ __('lan.mah_yan') }}</a></li>
+                        <li><a href="{{ route('boss') }}">{{ __('lan.rahbariyat') }}</a></li>
+                    </ul>
+                </div>
+
+                {{-- ─────── Contact ─────── --}}
+                <div class="lx-footer-col" data-aos="fade-up" data-aos-delay="300">
+                    <h4 class="lx-footer-title">{{ __('lan.address') }}</h4>
+                    <ul class="lx-footer-contact">
+                        @isset($contact)
+                            @if(!empty($contact->address))
+                                <li>
+                                    <span class="icon">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                            <circle cx="12" cy="10" r="3"/>
+                                        </svg>
+                                    </span>
+                                    <span>
+                                        <span class="label">{{ __('lan.address') }}</span>
+                                        {{ $contact->address }}
+                                    </span>
+                                </li>
+                            @endif
+
+                            @if(!empty($contact->phone))
+                                <li>
+                                    <span class="icon">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.74a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.34-1.34a2 2 0 0 1 2.11-.45c.88.34 1.8.57 2.74.7a2 2 0 0 1 1.72 2z"/>
+                                        </svg>
+                                    </span>
+                                    <span>
+                                        <span class="label">{{ __('lan.telefon') ?? 'Telefon' }}</span>
+                                        <a href="tel:{{ preg_replace('/[^0-9+]/', '', $contact->phone) }}">{{ $contact->phone }}</a>
+                                    </span>
+                                </li>
+                            @endif
+
+                            @if(!empty($contact->email))
+                                <li>
+                                    <span class="icon">
+                                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                            <path d="m22 6-10 7L2 6"/>
+                                        </svg>
+                                    </span>
+                                    <span>
+                                        <span class="label">Email</span>
+                                        <a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a><br>
+                                        <a href="mailto:kti@iiv.uz">kti@iiv.uz</a>
+                                    </span>
+                                </li>
+                            @endif
+                        @endisset
+
+                        <li>
+                            <span class="icon">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </span>
+                            <span>
+                                <span class="label">{{ __('lan.ish_vaqt') }}</span>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
 
             </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="copyright">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom"
-                              href="https://kti.iiv.uz">Kriminalogiya</a>, {{__('lan.bar_huq_him')}}
+
+            {{-- ─────── Bottom bar ─────── --}}
+            <div class="lx-footer-bottom">
+                <div>
+                    &copy; {{ date('Y') }}
+                    <a href="https://kti.iiv.uz">Kriminologiya tadqiqot instituti</a>.
+                    {{ __('lan.bar_huq_him') }}
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a class="border-bottom" href="https://mekhriddin.vercel.app/">Mehriddin Soyibov</a>
+
+                <div class="lx-footer-credit">
+                    Designed by
+                    <a href="https://mekhriddin.vercel.app/" target="_blank" rel="noopener"><strong>Mehriddin Soyibov</strong></a>
+                </div>
+
+                {{-- www.uz top-rating widget (legacy, keep functionality) --}}
+                <div class="lx-footer-rating">
+                    <script language="javascript" type="text/javascript">
+                        top_js = "1.0";
+                        top_r = "id=47852&r=" + escape(document.referrer) + "&pg=" + escape(window.location.href);
+                        document.cookie = "smart_top=1; path=/";
+                        top_r += "&c=" + (document.cookie ? "Y" : "N");
+                    </script>
+                    <script language="javascript1.1" type="text/javascript">
+                        top_js = "1.1";
+                        top_r += "&j=" + (navigator.javaEnabled() ? "Y" : "N");
+                    </script>
+                    <script language="javascript1.2" type="text/javascript">
+                        top_js = "1.2";
+                        top_r += "&wh=" + screen.width + 'x' + screen.height + "&px=" +
+                            (((navigator.appName.substring(0, 3) == "Mic")) ? screen.colorDepth : screen.pixelDepth);
+                    </script>
+                    <script language="JavaScript" type="text/javascript">
+                        top_rat = "&col=80312D&t=ffffff&p=F4AD00";
+                        top_r += "&js=" + top_js + "";
+                        document.write('<a href="http://www.uz/ru/res/visitor/index?id=47852" target=_top><img src="img/111.jpg?' + top_r + top_rat + '" width=88 height=31 border=0 alt="Top.uz"></a>');
+                    </script>
+                    <noscript>
+                        <a href="http://www.uz/ru/res/visitor/index?id=47852" target="_top">
+                            <img height="31" src="img/111.jpg" width="88" border="0" alt="Top.uz">
+                        </a>
+                    </noscript>
                 </div>
             </div>
+
         </div>
     </div>
-</div>
+</footer>
