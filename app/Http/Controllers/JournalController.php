@@ -25,6 +25,11 @@ class JournalController extends Controller
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'name_kr' => 'required|string|max:255',
+            'description_uz' => 'required|string|max:255',
+            'description_ru' => 'required|string|max:255',
+            'description_en' => 'required|string|max:255',
+            'description_kr' => 'required|string|max:255',
+            'e_issn' => 'required|string|max:255',
             'file_path' => 'required|mimes:pdf,doc,docx|max:51200', // Fayl yuklash qoidalari (masalan, 10MB gacha)
             'categories' => 'array',  // Kategoriyalar array bo‘lishi kerak
             'categories.*' => 'exists:categories,id',// Kategoriyalar faqat mavjud IDlar bo‘lishi kerak

@@ -34,6 +34,11 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::resource('partner',\App\Http\Controllers\PartnerController::class);
     Route::resource('expertise',\App\Http\Controllers\ExpertiseController::class);
     Route::resource('articles',\App\Http\Controllers\ArticlesController::class);
+    Route::resource('issues', \App\Http\Controllers\IssueController::class);
+    Route::resource('papers', \App\Http\Controllers\PaperController::class);
+
+// download
+    Route::get('papers/{id}/download', [\App\Http\Controllers\PaperController::class, 'download'])->name('papers.download');
 
 
 //    Route::get('/admin/projects/search', [\App\Http\Controllers\ProjectController::class, 'search'])->name('projects.search');

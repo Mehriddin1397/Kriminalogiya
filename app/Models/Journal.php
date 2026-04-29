@@ -9,8 +9,10 @@ class Journal extends Model
     //jurnallar
 
     protected $fillable = [
-        'name_uz', 'name_ru', 'name_en','name_kr',
+        'name_uz', 'name_ru', 'name_en', 'name_kr',
+        'description_uz', 'description_ru', 'description_en', 'description_kr',
         'file_path',
+        'e_issn'
     ];
 
     public function categories()
@@ -35,5 +37,10 @@ class Journal extends Model
 
         // Agar maydon topilmasa yoki boshqa maydonlar bo'lsa, default sifatida asl qiymatini qaytaramiz
         return parent::__get($key);
+    }
+
+    public function issues()
+    {
+        return $this->hasMany(Issue::class);
     }
 }
