@@ -43,10 +43,16 @@
                     </a>
                 </li>
                 <li class="nxl-item nxl-hasmenu">
-                    <a href="{{route('journal.index')}}" class="nxl-link">
-                        <span class="nxl-micon"><i class="feather-layout"></i></span>
-                        <span class="nxl-mtext">Jo'rnallar</span><span class="nxl-arrow"></span>
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-settings"></i></span>
+                        <span class="nxl-mtext">Jo'rnallar</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
                     </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link" href="{{route('journal.index')}}">Jo'rnal qo'shish</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="{{route('issues.index')}}">Jo'rnal soni</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="{{route('papers.index')}}">Maqolalar</a></li>
+
+                    </ul>
                 </li>
                 <li class="nxl-item nxl-hasmenu">
                     <a href="{{route('news.index')}}" class="nxl-link">

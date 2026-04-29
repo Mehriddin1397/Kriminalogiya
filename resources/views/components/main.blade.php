@@ -102,65 +102,7 @@
 <!-- Footer Start -->
 <x-footer></x-footer>
 <!-- Footer End -->
-<div id="snow-container"></div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const snowContainer = document.getElementById("snow-container");
-        const snowCount = 12; // 10–15 ideal
 
-        for (let i = 0; i < snowCount; i++) {
-            const snowflake = document.createElement("div");
-            snowflake.className = "snowflake";
-
-            snowflake.style.left = Math.random() * 100 + "vw";
-            snowflake.style.animationDuration = 5 + Math.random() * 5 + "s";
-            snowflake.style.opacity = Math.random();
-
-            snowContainer.appendChild(snowflake);
-        }
-    });
-</script>
-<style>
-    body {
-        background: linear-gradient(
-            to bottom,
-            #f8fbff 0%,
-            #eef5ff 50%,
-            #e6f0ff 100%
-        );
-    }
-
-
-    #snow-container {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none; /* bosishga xalaqit bermaydi */
-        z-index: 9999;
-    }
-
-    .snowflake {
-        position: absolute;
-        top: -10px;
-        width: 6px;
-        height: 6px;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.7;
-        animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-        from {
-            transform: translateY(0);
-        }
-        to {
-            transform: translateY(100vh);
-        }
-    }
-</style>
 
 <!-- Back to Top -->
 <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>

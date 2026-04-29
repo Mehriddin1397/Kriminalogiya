@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Issue;
 use App\Models\Paper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PaperController extends Controller
 {
@@ -13,7 +14,7 @@ class PaperController extends Controller
     {
         $papers = Paper::with('issue')->latest()->get();
         $issues = Issue::all();
-        return view('papers.index', compact('papers','issues'));
+        return view('admin.paper.index', compact('papers','issues'));
     }
 
 
@@ -49,17 +50,37 @@ class PaperController extends Controller
         $request->validate([
             'issue_id' => 'required|exists:issues,id',
             'title_uz' => 'required|string',
+            'title_ru' => 'required|string',
+            'title_en' => 'required|string',
+            'title_kr' => 'required|string',
+            'author' => 'required|string',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:2048'
         ]);
 
         $data = $request->all();
 
+        // PDF faylni o'chirish
+        if ($request->has('remove_pdf') && $request->remove_pdf == 1) {
+            if ($paper->pdf_file && Storage::disk('public')->exists($paper->pdf_file)) {
+                Storage::disk('public')->delete($paper->pdf_file);
+            }
+            $data['pdf_file'] = null;
+        }
+
+        // Yangi PDF yuklash
         if ($request->hasFile('pdf_file')) {
-            $data['pdf_file'] = $request->file('pdf_file')->store('papers', 'public');
+            // Eski PDF faylni o'chirish
+            if ($paper->pdf_file && Storage::disk('public')->exists($paper->pdf_file)) {
+                Storage::disk('public')->delete($paper->pdf_file);
+            }
+
+            $path = $request->file('pdf_file')->store('papers', 'public');
+            $data['pdf_file'] = $path;
         }
 
         $paper->update($data);
 
-        return redirect()->route('papers.index');
+        return redirect()->route('papers.index')->with('success', 'Maqola muvaffaqiyatli yangilandi');
     }
 
     public function destroy($id)

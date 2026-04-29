@@ -13,7 +13,7 @@
                 </div>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Home</a></li>
-                    <li class="breadcrumb-item">Jinoyatlar</li>
+                    <li class="breadcrumb-item">Maqolalar</li>
                 </ul>
             </div>
             <div class="page-header-right ms-auto">
@@ -51,29 +51,24 @@
                                     <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Photo</th>
                                         <th>Nomi</th>
-                                        <th>Kategoriyasi</th>
+                                        <th>Muallifi</th>
+                                        <th>Jurnal soni</th>
                                         <th class="text-end">Tahrirlash</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($academia as $index => $academy)
+                                    @foreach($papers as $index => $academy)
                                         <tr class="single-item">
                                             <th>{{$index +1 }}</th>
                                             <td>
-                                                @foreach($academy->photos as $photo)
-                                                    <img src="{{ asset('storage/' . $photo->file_path) }}" alt="" width="20px">
-
-                                                @endforeach
+                                                {{ $academy->title_uz }}
                                             </td>
                                             <td>
-                                                {{ $academy->name_uz }}
+                                                {{ $academy->author }}
                                             </td>
                                             <td>
-                                                @foreach($academy->categories as $category)
-                                                    {{$category->name_uz}}
-                                                @endforeach
+                                                {{ $academy->issue->published_at }}
                                             </td>
                                             <td>
                                                 <div class="hstack gap-2 justify-content-end">
@@ -82,7 +77,7 @@
                                                        class="avatar-text avatar-md">
                                                         <i class="feather feather-edit-3"></i>
                                                     </a>
-                                                    <form action="{{ route('crimes.destroy', $academy->id) }}"
+                                                    <form action="{{ route('papers.destroy', $academy->id) }}"
                                                           method="POST">
                                                         @csrf
                                                         @method('DELETE')
@@ -106,7 +101,7 @@
 
     </div>
 
-    @include('components.admin.crimes.crimes-modal-create')
-    @include('components.admin.crimes.crimes-modal-edit', ['academia' => $academia])
+    @include('components.admin.paper.partner-modal-create')
+    @include('components.admin.paper.partner-modal-edit' )
 
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Issue;
 use App\Models\Journal;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class IssueController extends Controller
 {
@@ -13,20 +14,26 @@ class IssueController extends Controller
     {
         $issues = Issue::with('journal')->latest()->get();
         $journals = Journal::all();
-        return view('issues.index', compact('issues','journals'));
+        return view('admin.issue.index', compact('issues','journals'));
     }
 
 
     public function store(Request $request)
     {
+
+
         $request->validate([
             'journal_id' => 'required|exists:journals,id',
-            'title' => 'required|string',
-            'number' => 'required|integer',
-            'year' => 'required|integer',
-            'published_at' => 'nullable|date',
-            'file_path' => 'nullable|image'
+            'title_uz' => 'required|string|max:255',
+            'title_ru' => 'required|string|max:255',
+            'title_en' => 'required|string|max:255',
+            'title_kr' => 'required|string|max:255',
+            'number' => 'required|integer|min:1',
+            'year' => 'required|integer|min:2000|max:' . date('Y'),
+            'published_at' => 'required|date',
+            'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048'
         ]);
+
 
         $data = $request->all();
 
@@ -45,22 +52,32 @@ class IssueController extends Controller
     {
         $issue = Issue::findOrFail($id);
 
-        $request->validate([
+        $validated = $request->validate([
             'journal_id' => 'required|exists:journals,id',
-            'title' => 'required|string',
-            'number' => 'required|integer',
-            'year' => 'required|integer',
+            'title_uz' => 'required|string|max:255',
+            'title_ru' => 'required|string|max:255',
+            'title_en' => 'required|string|max:255',
+            'title_kr' => 'required|string|max:255',
+            'number' => 'required|integer|min:1',
+            'year' => 'required|integer|min:2000|max:' . date('Y'),
+            'published_at' => 'required|date',
+            'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048'
         ]);
 
-        $data = $request->all();
-
+        // File upload qismi
         if ($request->hasFile('file_path')) {
-            $data['file_path'] = $request->file('file_path')->store('issues', 'public');
+            // Eski faylni o'chirish (agar mavjud bo'lsa)
+            if ($issue->file_path && Storage::disk('public')->exists($issue->file_path)) {
+                Storage::disk('public')->delete($issue->file_path);
+            }
+
+            $path = $request->file('file_path')->store('issues', 'public');
+            $validated['file_path'] = $path;
         }
 
-        $issue->update($data);
+        $issue->update($validated);
 
-        return redirect()->route('issues.index');
+        return redirect()->route('issues.index')->with('success', 'Muvaffaqiyatli yangilandi');
     }
 
     public function destroy($id)
