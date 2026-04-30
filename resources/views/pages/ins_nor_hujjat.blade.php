@@ -29,6 +29,18 @@
                                     <a href="https://www.lex.uz/docs/-6755253" target="_blank" class="d-block">3.{{ __('lan.qarori') }}</a>
                                 </div>
 
+                                @foreach($resources as $item)
+                                    @php
+                                        $url = $item->link
+                                            ? $item->link
+                                            : asset('storage/' . $item->file);
+                                    @endphp
+
+                                    <a href="{{ $url }}" target="_blank">
+                                        {{ $item->name_uz }}
+                                    </a>
+                                @endforeach
+
                                 <div class="d-flex justify-content-center flex-wrap gap-2 pt-2">
                                     <a class="btn btn-outline-dark btn-social" target="_blank" href="{{ $contact->telegram_link }}"><i class="fab fa-telegram"></i></a>
                                     <a class="btn btn-outline-dark btn-social" target="_blank" href="{{ $contact->facebook_link }}"><i class="fab fa-facebook-f"></i></a>

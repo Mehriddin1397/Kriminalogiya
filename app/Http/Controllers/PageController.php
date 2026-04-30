@@ -15,6 +15,7 @@ use App\Models\News;
 use App\Models\Partner;
 use App\Models\Rahbariyat;
 use App\Models\Research;
+use App\Models\Resource;
 use App\Models\Scholars;
 use Illuminate\Http\Request;
 
@@ -288,7 +289,8 @@ class PageController extends Controller
 
     public function hujjat()
     {
-        return view('pages.ins_nor_hujjat');
+        $resources = Resource::latest()->paginate(10);
+        return view('pages.ins_nor_hujjat', compact('resources'));
     }
 
 
