@@ -17,6 +17,7 @@ class CategoryController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
             'name_uz' => 'required|string|max:255',
             'name_ru' => 'required|string|max:255',
@@ -46,6 +47,7 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
+
         $category = Category::findOrFail($id);
         $request->validate([
             'name_uz' => 'required|string|max:255',

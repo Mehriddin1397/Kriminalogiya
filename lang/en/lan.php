@@ -12,7 +12,8 @@ return [
 
     'ortga' => 'Back',
     'yuklab_olish' => 'Download',
-    'bosh' => 'Home',
+    'bosh_sahifa' => 'Home',
+    'institut' => 'Institute',
 
     //navbar tarjima
     'kriminalog' => 'Criminology Research Institute of the Republic of Uzbekistan',
@@ -21,10 +22,26 @@ return [
     'ins_tar' =>  'History of the Institute',
     'ins_haq2' => 'Information about the Institute',
     'ins_nor' =>   'Regulatory Legal Documents of the Institute',
-    'ins_vaz' =>  'Functions of the Institute',
-
+    'ins_vaz' =>  'Mission and tasks',
+    'off_bulim' => 'Offices and departments',
     'rahbariyat' => 'Management',
     'ins_rahbariyat' => 'Institute Management',
+    'hamkor' => 'Our Partners',
+
+    'tadqiqotlar' => 'Research',
+    'ilm_tad_nima' => 'What is scientific research ?',
+    'taq_loy' => 'Research projects',
+    'dav_hisob' => 'Government reports',
+    'tad_natij' => 'Research results',
+
+    'ilm_ishlanma'=>'Scientific developments',
+    'ilm_jurnal' =>'Scientific journals',
+    'qullanma' => 'Manuals and methodologies',
+    'darsliklar' => 'Textbooks',
+    'monograf' => 'Monographs',
+    'ilm_vak_tad' => 'Proceedings of scientific and representative events',
+    'buklet' => 'Booklets and flyers',
+    'taqdimot' => 'Presentations',
 
     'ilm_sal' => 'Scientific Potential',
     'ilm_dara' => 'Staff with Academic Degrees and Titles',
@@ -50,7 +67,7 @@ return [
     'ilm_saf' => 'Scientific Trips',
     'telek' => 'TV Programs',
 
-    'hamkor' => 'Our Partners',
+
     'xor_ham' => 'Foreign',
     'mah_ham' => 'Local',
     'boglanish' => 'Contact',

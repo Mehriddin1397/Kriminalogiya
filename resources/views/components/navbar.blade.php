@@ -1,24 +1,35 @@
 @php
     $lxMenu = [
         [
-            'title' => __('lan.ins_haq'),
+            'title' => __('lan.institut'),
             'children' => [
-                ['url' => route('test', ['category_id' => 10, 'id' => 1]), 'title' => __('lan.ins_haq2')],
+                ['url' => route('test', ['category_id' => 10, 'id' => 1]), 'title' => __('lan.ins_haq')],
+                ['url' => route('test', ['category_id' => 37, 'id' => 3]), 'title' => __('lan.ins_vaz')],
+                ['url' => route('boss'), 'title' => __('lan.rahbariyat')],
+                ['url' => route('boss'), 'title' => __('lan.off_bulim')],
                 ['url' => route('hujjat'),                                  'title' => __('lan.ins_nor')],
+                ['url' => route('hujjat'),                                  'title' => __('lan.hamkor')],
             ],
         ],
         [
-            'title' => __('lan.rahbariyat'),
+            'title' => __('lan.tadqiqotlar'),
             'children' => [
-                ['url' => route('boss'), 'title' => __('lan.ins_rahbariyat')],
+                ['url' => route('boss'), 'title' => __('lan.ilm_tad_nima')],
+                ['url' => route('boss'), 'title' => __('lan.taq_loy')],
+                ['url' => route('boss'), 'title' => __('lan.dav_hisob')],
+                ['url' => route('boss'), 'title' => __('lan.tad_natij')],
             ],
         ],
         [
-            'title' => __('lan.ilm_sal'),
+            'title' => __('lan.ilm_ishlanma'),
             'children' => [
-                ['url' => route('show', ['category_id' => 27, 'id' => 1]), 'title' => __('lan.ilm_dara')],
-                ['url' => route('categoryId', 28),                          'title' => __('lan.kur_amal')],
-                ['url' => route('categoryId', 14),                          'title' => __('lan.maqolalar')],
+                ['url' => route('show', ['category_id' => 27, 'id' => 1]), 'title' => __('lan.ilm_jurnal')],
+                ['url' => route('categoryId', 28),                          'title' => __('lan.qullanma')],
+                ['url' => route('categoryId', 14),                          'title' => __('lan.darsliklar')],
+                ['url' => route('categoryId', 14),                          'title' => __('lan.monograf')],
+                ['url' => route('categoryId', 14),                          'title' => __('lan.ilm_vak_tad')],
+                ['url' => route('categoryId', 14),                          'title' => __('lan.buklet')],
+                ['url' => route('categoryId', 14),                          'title' => __('lan.taqdimot')],
             ],
         ],
         [

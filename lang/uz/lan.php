@@ -11,7 +11,8 @@ return [
 
     'ortga' => 'Ortga',
     'yuklab_olish' => 'Yuklab olish',
-    'bosh' => 'Bosh sahifa',
+    'bosh_sahifa' => 'Bosh sahifa',
+    'institut' => 'Institut',
 
 
 
@@ -19,14 +20,32 @@ return [
     //navbar tarjima
     'kriminalog' => 'O‘zbekiston Respublikasi Kriminologiya tadqiqot instituti',
     'qidirish' => 'Qidirish',
+
     'ins_haq' =>  'Institut haqida',
     'ins_tar' =>  'Institutning tarixi',
     'ins_haq2' => 'Institut haqida ma\'lumot',
     'ins_nor' =>  'Institutning normativ-huquqiy hujjatlari',
-    'ins_vaz' =>  'Institut vazifalari',
-
+    'ins_vaz' =>  'Missiya va vazifalar',
+    'off_bulim' => 'Ofislar va bo‘linmalar',
     'rahbariyat' => 'Rahbariyat',
     'ins_rahbariyat' => 'Institut rahbariyati',
+    'hamkor' => 'Hamkorlarimiz',
+
+    'tadqiqotlar' => 'Tadqiqotlar',
+    'ilm_tad_nima' => 'Ilmiy tadqiqot nima?',
+    'taq_loy' => 'Tadqiqot loyihalari',
+    'dav_hisob' => 'Davlat hisobotlari',
+    'tad_natij' => 'Tadqiqot natijalari',
+
+    'ilm_ishlanma'=>'Ilmiy ishlanmalar',
+    'ilm_jurnal' =>'Ilmiy jurnallar',
+    'qullanma' => 'Qo‘llanma va metodikalar',
+    'darsliklar' => 'Darsliklar',
+    'monograf' => 'Monografiyalar',
+    'ilm_vak_tad' => 'Ilmiy-vakillik tadbirlari to‘plamlari',
+    'buklet' => 'Buklet va flayerlar',
+    'taqdimot' => 'Taqdimotlar',
+
 
     'ilm_sal' => 'Ilmiy salohiyat',
     'ilm_dara' => 'Ilmiy daraja va ilmiy unvonga ega bo\'lgan xodimlar',
@@ -52,7 +71,7 @@ return [
     'ilm_saf' => 'Ilmiy safarlar',
     'telek' => 'Teleko\'rsatuvlar',
 
-    'hamkor' => 'Hamkorlarimiz',
+
     'xor_ham' => 'Xorijiy hamkorlar',
     'mah_ham' => 'Mahalliy hamkorlar',
     'boglanish' => 'Bog\'lanish',

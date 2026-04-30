@@ -76,6 +76,7 @@ class PageController extends Controller
 
     public function test(Request $request)
     {
+
         $category_id = $request->input('category_id');
         $id = $request->input('id');
         $category = Category::find($category_id);
