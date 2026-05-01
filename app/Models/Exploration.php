@@ -4,16 +4,44 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Resource extends Model
+class Exploration extends Model
 {
     protected $fillable = [
         'name_uz',
         'name_ru',
         'name_en',
         'name_kr',
-        'link',
-        'file',
+
+        'purpose_uz',
+        'purpose_ru',
+        'purpose_en',
+        'purpose_kr',
+
+        'tasks_uz',
+        'tasks_ru',
+        'tasks_en',
+        'tasks_kr',
+
+        'expected_results_uz',
+        'expected_results_ru',
+        'expected_results_en',
+        'expected_results_kr',
+
+        'leader_uz',
+        'leader_ru',
+        'leader_en',
+        'leader_kr',
     ];
+
+    public function categories()
+    {
+        return $this->morphToMany(Category::class, 'categorizable', 'category_relations', 'categorizable_id', 'category_id');
+    }
+
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'model');
+    }
 
     public function __get($key)
     {

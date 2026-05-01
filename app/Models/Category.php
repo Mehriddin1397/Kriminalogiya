@@ -76,6 +76,12 @@ class Category extends Model
     {
         return $this->morphedByMany(Partner::class, 'categoryable');
     }
+    public function exploration()
+    {
+        return $this->morphedByMany(Exploration::class, 'categoryable');
+    }
+
+
 
     public function __get($key)
     {

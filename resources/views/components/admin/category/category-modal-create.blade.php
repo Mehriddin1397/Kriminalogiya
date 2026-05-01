@@ -65,6 +65,7 @@
                             <option value="partner">Hamkorlar</option>
                             <option value="expertise">Ilmiy salohiyat va hamkorlar</option>
                             <option value="articles">Maqola va disertatsiya mavzulari</option>
+                            <option value="exploration">Tadqiqot loyihalari</option>
                         </select>
                     </div>
                 </div>

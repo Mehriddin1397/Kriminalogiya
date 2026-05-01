@@ -114,6 +114,12 @@
                         <span class="nxl-mtext">Kerakli hujjat yoki link</span><span class="nxl-arrow"></span>
                     </a>
                 </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="{{route('explorations.index')}}" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-layout"></i></span>
+                        <span class="nxl-mtext">Loyihalar</span><span class="nxl-arrow"></span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
