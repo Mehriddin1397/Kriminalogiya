@@ -29,7 +29,7 @@
                 <span>{{ __('lan.boglanish') }}</span>
             </div>
 
-            <span class="lx-eyebrow" data-aos="fade-up">Contact</span>
+            <span class="lx-eyebrow" data-aos="fade-up">Aloqa</span>
             <h1 class="lx-page-title" data-aos="fade-up">{{ __('lan.boglanish') }}</h1>
             <div class="lx-page-divider" data-aos="fade-up"></div>
             <p class="lx-page-meta" data-aos="fade-up">
@@ -146,6 +146,109 @@
                         @endisset
                     </ul>
                 </div>
+
+            </div>
+
+            {{-- ─────── Form ─────── --}}
+            <div class="lx-contact-form-wrap" id="contact-form" data-aos="fade-up">
+
+                <aside class="lx-contact-form-side">
+                    <span class="lx-eyebrow">Xabar yuboring</span>
+                    <h3>Biz bilan bog'laning</h3>
+                    <div class="lx-side-divider"></div>
+                    <p>
+                        Savollaringiz, takliflaringiz yoki hamkorlik haqida formani to'ldiring —
+                        eng qisqa muddatda javob beramiz.
+                    </p>
+
+                    <ul>
+                        @isset($contact)
+                            @if(!empty($contact->phone))
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.74a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.34-1.34a2 2 0 0 1 2.11-.45c.88.34 1.8.57 2.74.7a2 2 0 0 1 1.72 2z"/>
+                                    </svg>
+                                    <a href="tel:{{ preg_replace('/[^0-9+]/', '', $contact->phone) }}">{{ $contact->phone }}</a>
+                                </li>
+                            @endif
+                            @if(!empty($contact->email))
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                        <path d="m22 6-10 7L2 6"/>
+                                    </svg>
+                                    <a href="mailto:{{ $contact->email }}">{{ $contact->email }}</a>
+                                </li>
+                            @endif
+                            @if(!empty($contact->address))
+                                <li>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    {{ $contact->address }}
+                                </li>
+                            @endif
+                        @endisset
+                    </ul>
+                </aside>
+
+                <form action="{{ route('contact.send') }}" method="post" class="lx-contact-form" novalidate>
+                    @csrf
+                    <div class="lx-form-head">
+                        <span class="lx-eyebrow">Aloqa formasi</span>
+                        <h2>Xabar yuborish</h2>
+                    </div>
+
+                    @if(session('contact_success'))
+                        <div class="lx-form-success" role="status">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M20 6 9 17l-5-5"/>
+                            </svg>
+                            <span>{{ session('contact_success') }}</span>
+                        </div>
+                    @endif
+
+                    <div class="lx-form-row">
+                        <div class="lx-form-field {{ $errors->has('name') ? 'has-error' : '' }}">
+                            <label for="lxName">Ism va familiya<span class="req">*</span></label>
+                            <input id="lxName" type="text" name="name" value="{{ old('name') }}"
+                                   placeholder="Aliyev Vali" required maxlength="150">
+                            @error('name')
+                                <div class="lx-form-error">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="lx-form-field {{ $errors->has('phone') ? 'has-error' : '' }}">
+                            <label for="lxPhone">Telefon raqam<span class="req">*</span></label>
+                            <input id="lxPhone" type="tel" name="phone" value="{{ old('phone') }}"
+                                   placeholder="+998 90 123 45 67" required maxlength="50">
+                            @error('phone')
+                                <div class="lx-form-error">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="lx-form-field lx-form-field--full {{ $errors->has('message') ? 'has-error' : '' }}">
+                        <label for="lxMessage">Xabar<span class="req">*</span></label>
+                        <textarea id="lxMessage" name="message" rows="5"
+                                  placeholder="Savolingizni yoki taklifingizni yozing..."
+                                  required maxlength="5000">{{ old('message') }}</textarea>
+                        @error('message')
+                            <div class="lx-form-error">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="lx-form-actions">
+                        <button type="submit" class="lx-btn lx-btn-dark">
+                            <span>Yuborish</span>
+                            <span class="arrow">&rarr;</span>
+                        </button>
+                        <span class="lx-form-note">
+                            <span class="req" style="color: var(--lx-crimson);">*</span> Majburiy maydonlar
+                        </span>
+                    </div>
+                </form>
 
             </div>
 

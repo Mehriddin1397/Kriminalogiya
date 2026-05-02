@@ -5,7 +5,7 @@
             <h1 class="display-3 text-white mb-3 animated slideInDown">{{$category->slug}}</h1>
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-white" href="{{route('main')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a class="text-white" href="{{route('main')}}">{{ __('lan.bosh_sahifa') ?? 'Bosh sahifa' }}</a></li>
                     <li class="breadcrumb-item text-white active" aria-current="page">{{$category->slug}}</li>
                 </ol>
             </nav>

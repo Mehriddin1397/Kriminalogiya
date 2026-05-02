@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[\App\Http\Controllers\PageController::class,'main'])->name('main');
 Route::get('/contact',[\App\Http\Controllers\PageController::class,'contact'])->name('contact');
+Route::post('/contact',[\App\Http\Controllers\PageController::class,'sendMessage'])->name('contact.send')->middleware('throttle:6,1');
 
 
 Route::get('/tez', [\App\Http\Controllers\AuthController::class, 'showLogin'])->name('login')->middleware('ip.restrict');

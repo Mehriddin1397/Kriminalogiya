@@ -144,7 +144,7 @@
                 </div>
 
                 <div class="lx-footer-credit">
-                    Designed by
+                    Saytni ishlab chiqdi:
                     <a href="https://mekhriddin.vercel.app/" target="_blank" rel="noopener"><strong>Mehriddin Soyibov</strong></a>
                 </div>
 
