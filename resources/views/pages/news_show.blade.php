@@ -1,140 +1,228 @@
+@php
+    if (!function_exists('toEmbedLink')) {
+        function toEmbedLink($url) {
+            if (empty($url)) return null;
+            $parts = parse_url($url);
+            if (isset($parts['query'])) {
+                parse_str($parts['query'], $query);
+                if (isset($query['v'])) {
+                    return 'https://www.youtube.com/embed/' . $query['v'];
+                }
+            }
+            if (isset($parts['host']) && $parts['host'] === 'youtu.be') {
+                return 'https://www.youtube.com/embed' . $parts['path'];
+            }
+            return null;
+        }
+    }
+    $embedLink = toEmbedLink($new->youtube_link ?? null);
+@endphp
+
 <x-main title="{{$category->slug}}">
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 ">
-        <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">{{$category->slug}}</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-white" href="{{route('main')}}">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white"
-                                                   href="{{route('categoryId',$category->id)}}">{{$category->slug}}</a>
-                    </li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">{{$new->name}}</li>
-                </ol>
-            </nav>
+<div class="home-luxury">
+
+    {{-- ─────── Page hero ─────── --}}
+    @php
+        $heroBg = collect([
+            'assets/img/banner3.jpg',
+            'assets/img/banner1.jpg',
+            'assets/img/banner4.jpg',
+            'assets/img/aa.jpg',
+        ])->first(fn ($p) => file_exists(public_path($p)));
+    @endphp
+
+    <section class="lx-page-hero">
+        @if($heroBg)
+            <div class="lx-page-hero-bg" aria-hidden="true">
+                <img src="{{ asset($heroBg) }}" alt="" loading="lazy">
+            </div>
+        @endif
+
+        <div class="lx-page-hero-decor" aria-hidden="true">
+            <img src="{{ asset('assets/img/kti-logo.png') }}" alt="">
         </div>
-    </div>
 
+        <div class="container">
+            <div class="lx-breadcrumb" data-aos="fade-up">
+                <a href="{{ route('main') }}">{{ __('lan.bosh_sahifa') ?? 'Bosh sahifa' }}</a>
+                <span class="sep">—</span>
+                <a href="{{ route('categoryId', $category->id) }}">{{ $category->slug }}</a>
+                <span class="sep">—</span>
+                <span>{{ \Illuminate\Support\Str::limit($new->name, 50) }}</span>
+            </div>
 
-    <!-- Page Header End -->
-    <div class="container-xxl py-5">
-        <section class="meetings-page" id="meetings" style=" padding-top: 20px; !important;">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="row">
-                            <div class="col-lg-12">
+            <span class="lx-eyebrow" data-aos="fade-up">{{ $category->slug }}</span>
+            <h1 class="lx-page-title" data-aos="fade-up">{{ $new->name }}</h1>
+            <div class="lx-page-divider" data-aos="fade-up"></div>
+            <p class="lx-page-meta" data-aos="fade-up">
+                {{ $new->created_at?->format('d.m.Y') }}
+            </p>
+        </div>
+    </section>
 
-                                <div class="meeting-single-item">
-                                    <div class="thumb">
-                                        <div id="carouselExampleControls" class="carousel slide"
-                                             data-bs-ride="carousel">
-                                            <div class="carousel-inner">
-                                                @foreach($new->photos as $photo)
-                                                    <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                                                        <img src="{{ asset('storage/' . $photo->file_path) }}" alt="">
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                            <button class="carousel-control-prev" type="button"
-                                                    data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next" type="button"
-                                                    data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="down-content">
-                                        <a href="#"><h4>{{$new->name}}</h4></a>
-                                        <p>{{ $new->created_at->format('Y') }}.{{ $new->created_at->format('m') }}
-                                            .{{ $new->created_at->format('d') }}</p>
-                                        <p class="description">
-                                            {{$new->title}}
+    {{-- ─────── Article body ─────── --}}
+    <section class="lx-section" style="background: var(--lx-cream);">
+        <div class="container">
+            <article class="lx-article">
 
-                                            <br><br>
-                                            {!! $new->description !!}
-                                        </p>
-                                        @php
-                                            function toEmbedLink($url) {
-                                                // parse_url yordamida querydan video ID ajratamiz
-                                                $parts = parse_url($url);
-                                                if (isset($parts['query'])) {
-                                                    parse_str($parts['query'], $query);
-                                                    if (isset($query['v'])) {
-                                                        return 'https://www.youtube.com/embed/' . $query['v'];
-                                                    }
-                                                }
-
-                                                // youtu.be formatiga ishlov berish
-                                                if (isset($parts['host']) && $parts['host'] === 'youtu.be') {
-                                                    return 'https://www.youtube.com/embed' . $parts['path'];
-                                                }
-
-                                                return null;
-                                            }
-
-                                            $embedLink = $new->youtube_link ? toEmbedLink($new->youtube_link) : null;
-                                        @endphp
-
-                                        @if($embedLink)
-                                            <div class="container mt-4">
-                                                <div class="ratio ratio-16x9">
-                                                    <iframe
-                                                        src="{{ $embedLink }}"
-                                                        title="YouTube video"
-                                                        allowfullscreen>
-                                                    </iframe>
-                                                </div>
-                                            </div>
-                                        @endif
-
-                                        <div class="row">
-                                            <div class="col-lg-12">
-                                                <div class="d-flex pt-2 ">
-                                                    <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                       href="{{$contact->telegram_link}}"><i
-                                                            class="fab fa-telegram"></i></a>
-
-                                                    <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                       href="{{$contact->facebook_link}}"><i
-                                                            class="fab fa-facebook"></i></a>
-
-                                                    <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                       href="{{$contact->youtube_link}}"><i
-                                                            class="fab fa-youtube"></i></a>
-
-                                                    <a class="btn btn-outline-dark btn-social" target="_blank"
-                                                       href="{{$contact->whatsapp_link}}"><i
-                                                            class="fab fa-whatsapp"></i></a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                {{-- Gallery --}}
+                <div class="lx-article-gallery" data-aos="fade-up" data-lx-gallery>
+                    <div class="lx-gallery-track">
+                        @if($new->photos->count())
+                            @foreach($new->photos as $i => $photo)
+                                <div class="lx-gallery-slide {{ $i === 0 ? 'is-active' : '' }}" data-index="{{ $i }}">
+                                    <img src="{{ asset('storage/'.$photo->file_path) }}"
+                                         alt="{{ $new->name }}"
+                                         loading="{{ $i === 0 ? 'eager' : 'lazy' }}"
+                                         onerror="this.style.display='none'">
                                 </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="d-flex justify-content-center d__flex_button" >
-                                    <div class="text-center mt-3 p-3">
-                                        <a href="{{route('main')}}" class="btn btn-danger">
-                                            {{ __('lan.bosh')}}
-                                        </a>
-                                    </div>
-                                    <div class="text-center mt-3 p-3">
-                                        <a href="{{route('categoryId',$category->id)}}" class="btn btn-success">
-                                            {{ __('lan.ortga')}}
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
+                        @else
+                            <div class="lx-gallery-empty"><span>Kriminalogiya</span></div>
+                        @endif
+                    </div>
+
+                    @if($new->photos->count() > 1)
+                        <button type="button" class="lx-gallery-nav prev" data-lx-gallery-prev aria-label="Oldingi rasm">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M15 18l-6-6 6-6"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="lx-gallery-nav next" data-lx-gallery-next aria-label="Keyingi rasm">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                                <path d="M9 18l6-6-6-6"/>
+                            </svg>
+                        </button>
+                        <div class="lx-gallery-dots">
+                            @foreach($new->photos as $i => $photo)
+                                <button type="button"
+                                        class="lx-gallery-dot {{ $i === 0 ? 'is-active' : '' }}"
+                                        data-lx-gallery-dot="{{ $i }}"
+                                        aria-label="{{ $i + 1 }} / {{ $new->photos->count() }}"></button>
+                            @endforeach
+                        </div>
+                    @endif
+                </div>
+
+                {{-- Lead --}}
+                @if(!empty($new->title))
+                    <p class="lx-article-lead" data-aos="fade-up">
+                        {{ $new->title }}
+                    </p>
+                @endif
+
+                {{-- Body --}}
+                <div class="lx-article-body" data-aos="fade-up">
+                    {!! $new->description !!}
+                </div>
+
+                {{-- YouTube --}}
+                @if($embedLink)
+                    <div class="lx-article-video" data-aos="fade-up">
+                        <div class="ratio ratio-16x9">
+                            <iframe
+                                src="{{ $embedLink }}"
+                                title="YouTube video"
+                                allowfullscreen
+                                loading="lazy"></iframe>
                         </div>
                     </div>
+                @endif
+
+                {{-- Share --}}
+                @isset($contact)
+                    <div class="lx-article-share" data-aos="fade-up">
+                        <span class="lx-article-share-label">{{ __('lan.boglanish') ?? 'Bog\'lanish' }}</span>
+                        @if(!empty($contact->telegram_link))
+                            <a href="{{ $contact->telegram_link }}" target="_blank" rel="noopener" class="lx-social-link" aria-label="Telegram">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                        @endif
+                        @if(!empty($contact->facebook_link))
+                            <a href="{{ $contact->facebook_link }}" target="_blank" rel="noopener" class="lx-social-link" aria-label="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        @endif
+                        @if(!empty($contact->youtube_link))
+                            <a href="{{ $contact->youtube_link }}" target="_blank" rel="noopener" class="lx-social-link" aria-label="YouTube">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        @endif
+                        @if(!empty($contact->whatsapp_link))
+                            <a href="{{ $contact->whatsapp_link }}" target="_blank" rel="noopener" class="lx-social-link" aria-label="WhatsApp">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        @endif
+                    </div>
+                @endisset
+
+                {{-- Footer CTAs --}}
+                <div class="lx-article-foot" data-aos="fade-up">
+                    <a href="{{ route('categoryId', $category->id) }}" class="lx-btn lx-btn-dark">
+                        <span class="arrow-back">&larr;</span>
+                        <span>{{ __('lan.ortga') }}</span>
+                    </a>
+                    <a href="{{ route('main') }}" class="lx-btn lx-btn-dark">
+                        <span>{{ __('lan.bosh') }}</span>
+                    </a>
                 </div>
-            </div>
-        </section>
-    </div>
+
+            </article>
+        </div>
+    </section>
+
+</div>
+
+{{-- Gallery JS --}}
+<script>
+(function () {
+    document.querySelectorAll('[data-lx-gallery]').forEach(function (gallery) {
+        var slides = gallery.querySelectorAll('.lx-gallery-slide');
+        var dots   = gallery.querySelectorAll('.lx-gallery-dot');
+        if (slides.length < 2) return;
+
+        var current = 0;
+        var timer = null;
+        var AUTO_DELAY = 6000;
+
+        function setActive(idx) {
+            current = (idx + slides.length) % slides.length;
+            slides.forEach(function (s, i) { s.classList.toggle('is-active', i === current); });
+            dots.forEach(function (d, i) { d.classList.toggle('is-active', i === current); });
+        }
+        function next() { setActive(current + 1); }
+        function prev() { setActive(current - 1); }
+
+        function startAuto() {
+            stopAuto();
+            timer = setInterval(next, AUTO_DELAY);
+        }
+        function stopAuto() {
+            if (timer) { clearInterval(timer); timer = null; }
+        }
+
+        gallery.querySelector('[data-lx-gallery-prev]')?.addEventListener('click', function () { prev(); startAuto(); });
+        gallery.querySelector('[data-lx-gallery-next]')?.addEventListener('click', function () { next(); startAuto(); });
+        dots.forEach(function (d) {
+            d.addEventListener('click', function () {
+                setActive(parseInt(d.getAttribute('data-lx-gallery-dot'), 10) || 0);
+                startAuto();
+            });
+        });
+
+        gallery.addEventListener('mouseenter', stopAuto);
+        gallery.addEventListener('mouseleave', startAuto);
+
+        // Keyboard: chap/o'ng strelkalar
+        gallery.setAttribute('tabindex', '0');
+        gallery.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowLeft')  { prev(); startAuto(); }
+            if (e.key === 'ArrowRight') { next(); startAuto(); }
+        });
+
+        startAuto();
+    });
+})();
+</script>
+
 </x-main>
