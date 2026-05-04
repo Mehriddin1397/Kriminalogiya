@@ -1,34 +1,24 @@
 /vendor
 /node_modules
 
-/.phpunit.cache
-.phpunit.result.cache
-/phpunit.xml
+storage/*
+!storage/.gitignore
+
+bootstrap/cache/*
+!bootstrap/cache/.gitignore
 
 /public/build
 /public/hot
 /public/storage
 
-/storage/*
-!/storage/app
-!/storage/app/**
-/storage/logs/*
-/storage/*.key
-
-/bootstrap/cache/*
-!.gitignore
-
 .env
-.env.backup
-.env.production
+.env.*
 
 npm-debug.log
 yarn-error.log
 
-/.idea
-/.vscode
-/.fleet
-/.nova
-/.zed
-
-**/.DS_Store
+.idea
+.vscode
+.fleet
+.nova
+.zed
