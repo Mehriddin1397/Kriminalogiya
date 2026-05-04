@@ -210,6 +210,15 @@ class PageController extends Controller
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
 
+                case 'partner':
+                $mah_hamkor = Partner::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->get();
+
+                return view('pages.mah_hamkor', compact('mah_hamkor', 'category', 'id'));
+                break;
+
         }
 
 
