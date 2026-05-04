@@ -30,3 +30,5 @@ yarn-error.log
 /.fleet
 /.nova
 /.zed
+
+**/.DS_Store
