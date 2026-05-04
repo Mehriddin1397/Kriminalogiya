@@ -1,50 +1,30 @@
 /vendor
 /node_modules
 
-# PHPUnit
 /.phpunit.cache
 .phpunit.result.cache
 /phpunit.xml
 
-# Build files
 /public/build
 /public/hot
-
-# Public storage (symlink)
 /public/storage
 
-# Storage (faqat .gitignore qoladi)
 /storage/*
 !/storage/app
-/storage/app/*
-!/storage/app/.gitignore
-
-!/storage/framework
-/storage/framework/*
-!/storage/framework/cache
-!/storage/framework/sessions
-!/storage/framework/views
-
-!/storage/logs
+!/storage/app/**
 /storage/logs/*
-!/storage/logs/.gitignore
-
 /storage/*.key
 
-# Cache
 /bootstrap/cache/*
-!/bootstrap/cache/.gitignore
+!.gitignore
 
-# Env files
 .env
 .env.backup
 .env.production
 
-# Logs
 npm-debug.log
 yarn-error.log
 
-# IDE
 /.idea
 /.vscode
 /.fleet
