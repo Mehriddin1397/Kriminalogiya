@@ -201,9 +201,9 @@ class PageController extends Controller
                 $news = Expertise::with('photos')
                     ->whereHas('categories', function ($query) use ($id) {
                         $query->where('category_id', $id);
-                    })->latest()->paginate(9);
+                    })->latest()->paginate(12);
 
-                return view('pages.news', compact('news', 'category', 'id'));
+                return view('pages.partners', compact('news', 'category', 'id'));
                 break;
             case 'exploration':
                 $news = Exploration::with('photos')
@@ -298,7 +298,7 @@ class PageController extends Controller
             case 'expertise':
                 $new = Expertise::with('photos')->find($id);
 
-                return view('pages.news_show', compact('new', 'category'));
+                return view('pages.partner_show', compact('new', 'category'));
                 break;
 
             case 'exploration':

@@ -4662,3 +4662,352 @@ body.home-page .lx-hero .lx-hero-slide {
     .lx-contact-map { min-height: 320px; }
     .lx-contact-map iframe { min-height: 304px; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Hamkorlar (Xalqaro / Mahalliy) — listing + single
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Listing grid ─── */
+
+.lx-partners-list-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+
+.lx-partner-tile {
+    position: relative;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    box-shadow: var(--lx-shadow-card);
+    transition: transform 0.55s cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 0.55s cubic-bezier(0.2, 0.7, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+}
+
+.lx-partner-tile::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--lx-bronze) 0%, var(--lx-gold) 50%, var(--lx-bronze) 100%);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 4;
+}
+
+.lx-partner-tile:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--lx-shadow-luxury);
+    color: inherit;
+}
+
+.lx-partner-tile:hover::before { transform: scaleX(1); }
+
+.lx-partner-tile-logo {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: var(--lx-cream);
+    position: relative;
+    overflow: hidden;
+}
+
+.lx-partner-tile-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: grayscale(75%);
+    opacity: 0.85;
+    transition: filter 0.5s ease, opacity 0.5s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.lx-partner-tile:hover .lx-partner-tile-logo img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.04);
+}
+
+.lx-partner-tile-empty {
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--lx-bronze);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--lx-bronze);
+    font-size: 38px;
+    font-weight: 500;
+    opacity: 0.85;
+}
+
+.lx-partner-tile-body {
+    padding: 22px 22px 26px;
+    border-top: 1px solid rgba(26, 31, 46, 0.05);
+    text-align: center;
+    position: relative;
+}
+
+.lx-partner-tile-body::before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 1px;
+    background: var(--lx-bronze);
+}
+
+.lx-partner-tile-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--lx-text);
+    margin: 0 0 8px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.lx-partner-tile:hover .lx-partner-tile-name {
+    color: var(--lx-navy);
+}
+
+.lx-partner-tile-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--lx-bronze-dark);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    transition: gap 0.35s ease, color 0.3s ease;
+    margin-top: 4px;
+}
+
+.lx-partner-tile:hover .lx-partner-tile-cta {
+    color: var(--lx-navy);
+    gap: 14px;
+}
+
+/* ─── Single partner ─── */
+
+.lx-partner-single {
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.lx-partner-single-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 56px;
+    align-items: start;
+    margin-bottom: 56px;
+}
+
+.lx-partner-single-logo {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: #fff;
+    box-shadow: var(--lx-shadow-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    overflow: hidden;
+}
+
+.lx-partner-single-logo::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--lx-bronze) 0%, var(--lx-gold) 50%, var(--lx-bronze) 100%);
+}
+
+.lx-partner-single-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 24px rgba(10, 14, 26, 0.06));
+}
+
+.lx-partner-single-info > .lx-eyebrow {
+    margin-bottom: 18px;
+}
+
+.lx-partner-single-info > .lx-eyebrow::before { display: inline-block; }
+.lx-partner-single-info > .lx-eyebrow::after { display: none; }
+
+.lx-partner-single-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 3.6vw, 42px);
+    font-weight: 500;
+    line-height: 1.18;
+    color: var(--lx-text);
+    margin: 0 0 16px;
+}
+
+.lx-partner-single-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--lx-text-soft);
+    padding-left: 18px;
+    border-left: 2px solid var(--lx-bronze);
+    margin: 0 0 28px;
+}
+
+.lx-partner-single-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--lx-bronze);
+    margin: 0 0 28px;
+    position: relative;
+}
+
+.lx-partner-single-divider::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -3px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--lx-gold);
+    box-shadow: 0 0 12px var(--lx-gold);
+}
+
+.lx-partner-single-description {
+    color: var(--lx-text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.85;
+}
+
+.lx-partner-single-description p { margin: 0 0 16px; }
+.lx-partner-single-description strong { color: var(--lx-navy); font-weight: 600; }
+
+.lx-partner-single-links {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.lx-partner-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 20px;
+    border: 1px solid rgba(201, 169, 97, 0.4);
+    color: var(--lx-text);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.35s ease;
+}
+
+.lx-partner-link:hover {
+    background: var(--lx-bronze);
+    border-color: var(--lx-bronze);
+    color: var(--lx-navy);
+}
+
+.lx-partner-link svg { color: var(--lx-bronze); transition: color 0.3s ease; }
+.lx-partner-link:hover svg { color: var(--lx-navy); }
+
+/* Filter tabs (kategoriya bo'yicha) */
+.lx-partners-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 48px;
+}
+
+.lx-partners-filter a {
+    padding: 10px 22px;
+    border: 1px solid rgba(201, 169, 97, 0.3);
+    color: var(--lx-text);
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    transition: all 0.35s ease;
+    border-radius: 999px;
+}
+
+.lx-partners-filter a:hover {
+    background: rgba(201, 169, 97, 0.06);
+    border-color: var(--lx-bronze);
+    color: var(--lx-navy);
+}
+
+.lx-partners-filter a.is-active {
+    background: var(--lx-navy);
+    border-color: var(--lx-navy);
+    color: var(--lx-bronze-soft);
+}
+
+/* ─── Responsive (partners) ─── */
+
+@media (max-width: 1100px) {
+    .lx-partners-list-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .lx-partners-list-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+    .lx-partner-single-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .lx-partner-single-logo {
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .lx-partners-list-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+    }
+    .lx-partner-tile-logo { padding: 22px; }
+    .lx-partner-tile-body { padding: 16px 14px 20px; }
+    .lx-partner-tile-name { font-size: 15px; }
+    .lx-partner-tile-cta { font-size: 9px; letter-spacing: 0.22em; }
+
+    .lx-partners-filter a { padding: 8px 16px; font-size: 10px; letter-spacing: 0.22em; }
+
+    .lx-partner-single-logo { padding: 28px; }
+    .lx-partner-single-subtitle { font-size: 16px; padding-left: 14px; }
+}
