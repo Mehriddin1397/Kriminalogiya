@@ -11,6 +11,7 @@ use App\Models\Crimes;
 use App\Models\Expertise;
 use App\Models\Institut;
 use App\Models\Journal;
+use App\Models\Message;
 use App\Models\News;
 use App\Models\Partner;
 use App\Models\Rahbariyat;
@@ -68,6 +69,34 @@ class PageController extends Controller
     public function contact()
     {
         return view('pages.contact');
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $data = $request->validate([
+            'name'    => ['required', 'string', 'max:150'],
+            'phone'   => ['required', 'string', 'max:50', 'regex:/^[0-9+()\-\s]{6,}$/'],
+            'message' => ['required', 'string', 'min:5', 'max:5000'],
+        ], [
+            'name.required'    => "Ism va familiyani kiriting.",
+            'phone.required'   => "Telefon raqamingizni kiriting.",
+            'phone.regex'      => "Telefon raqami noto'g'ri formatda.",
+            'message.required' => "Xabar matnini kiriting.",
+            'message.min'      => "Xabar kamida 5 ta belgidan iborat bo'lishi kerak.",
+        ]);
+
+        Message::create([
+            'name'       => $data['name'],
+            'phone'      => $data['phone'],
+            'message'    => $data['message'],
+            'ip'         => $request->ip(),
+            'user_agent' => substr((string) $request->userAgent(), 0, 255),
+        ]);
+
+        return redirect()
+            ->route('contact')
+            ->with('contact_success', "Xabaringiz yuborildi. Tez orada siz bilan bog'lanamiz.")
+            ->withFragment('contact-form');
     }
 
     public function dashboard()

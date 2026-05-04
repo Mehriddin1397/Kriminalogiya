@@ -3854,3 +3854,625 @@ body.home-page .lx-hero .lx-hero-slide {
         font-size: 12px;
     }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   Bog'lanish sahifasi
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Quick contact cards (yuqori 3 ta kart) ─── */
+
+.lx-contact-quick {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 64px;
+}
+
+.lx-contact-quick-card {
+    background: #fff;
+    padding: 36px 30px;
+    text-align: center;
+    box-shadow: var(--lx-shadow-card);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1),
+                box-shadow 0.5s ease;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.lx-contact-quick-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--lx-bronze) 0%, var(--lx-gold) 50%, var(--lx-bronze) 100%);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lx-contact-quick-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--lx-shadow-luxury);
+    color: inherit;
+}
+
+.lx-contact-quick-card:hover::before {
+    transform: scaleX(1);
+}
+
+.lx-contact-quick-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    border: 1px solid var(--lx-bronze);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--lx-bronze);
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.lx-contact-quick-icon::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border: 1px dashed rgba(201, 169, 97, 0.3);
+    border-radius: 50%;
+    animation: lxRingSpin 24s linear infinite;
+}
+
+.lx-contact-quick-card:hover .lx-contact-quick-icon {
+    background: var(--lx-bronze);
+    color: var(--lx-navy);
+}
+
+.lx-contact-quick-label {
+    color: var(--lx-bronze-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+}
+
+.lx-contact-quick-value {
+    color: var(--lx-text);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    line-height: 1.45;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+/* ─── Map + info grid ─── */
+
+.lx-contact-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.lx-contact-map {
+    position: relative;
+    padding: 8px;
+    background: linear-gradient(135deg, var(--lx-bronze) 0%, var(--lx-bronze-dark) 100%);
+    box-shadow: var(--lx-shadow-card);
+    min-height: 480px;
+    transition: box-shadow 0.4s ease;
+}
+
+.lx-contact-map:hover {
+    box-shadow: var(--lx-shadow-luxury);
+}
+
+.lx-contact-map iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    min-height: 464px;
+}
+
+/* ─── Info card (rasmiy kontakt ma'lumotlari) ─── */
+
+.lx-contact-card {
+    background: var(--lx-navy);
+    color: var(--lx-cream);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.lx-contact-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--lx-bronze) 0%, var(--lx-gold) 50%, var(--lx-bronze) 100%);
+}
+
+.lx-contact-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.08) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+.lx-contact-card-head {
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.lx-contact-card-eyebrow {
+    color: var(--lx-bronze);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.lx-contact-card-eyebrow::before {
+    content: "";
+    width: 22px;
+    height: 1px;
+    background: var(--lx-bronze);
+}
+
+.lx-contact-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--lx-cream);
+    margin: 0;
+}
+
+.lx-contact-card-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1;
+}
+
+.lx-contact-card-list li {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(201, 169, 97, 0.12);
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    align-items: baseline;
+}
+
+.lx-contact-card-list li:last-child { border-bottom: none; }
+
+.lx-contact-card-label {
+    color: var(--lx-bronze);
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+}
+
+.lx-contact-card-value {
+    color: var(--lx-cream);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    word-break: break-word;
+}
+
+.lx-contact-card-value a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: rgba(201, 169, 97, 0.5);
+    text-underline-offset: 4px;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+}
+
+.lx-contact-card-value a:hover {
+    color: var(--lx-bronze-soft);
+    text-decoration-color: var(--lx-bronze);
+}
+
+/* ─── Contact form ─── */
+
+.lx-contact-form-wrap {
+    margin-top: 64px;
+    background: #fff;
+    box-shadow: var(--lx-shadow-card);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+}
+
+.lx-contact-form-side {
+    background: var(--lx-navy);
+    color: var(--lx-cream);
+    padding: 50px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.lx-contact-form-side::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 30% 100%, rgba(212, 175, 55, 0.15) 0%, transparent 55%);
+    pointer-events: none;
+}
+
+.lx-contact-form-side > * {
+    position: relative;
+    z-index: 1;
+}
+
+.lx-contact-form-side .lx-eyebrow {
+    color: var(--lx-bronze);
+    margin-bottom: 18px;
+}
+
+.lx-contact-form-side .lx-eyebrow::before,
+.lx-contact-form-side .lx-eyebrow::after {
+    background: var(--lx-bronze);
+}
+
+.lx-contact-form-side h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    line-height: 1.3;
+    color: var(--lx-cream);
+    margin: 0 0 18px;
+    font-weight: 500;
+}
+
+.lx-contact-form-side p {
+    color: rgba(245, 243, 240, 0.65);
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 30px;
+}
+
+.lx-contact-form-side .lx-side-divider {
+    width: 50px;
+    height: 1px;
+    background: var(--lx-bronze);
+    margin: 0 0 30px;
+}
+
+.lx-contact-form-side ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.lx-contact-form-side ul li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    color: rgba(245, 243, 240, 0.78);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.lx-contact-form-side ul li svg {
+    color: var(--lx-bronze);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.lx-contact-form-side ul li a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.lx-contact-form-side ul li a:hover { color: var(--lx-bronze-soft); }
+
+.lx-contact-form { padding: 50px 44px; }
+
+.lx-form-head { margin-bottom: 30px; }
+
+.lx-form-head .lx-eyebrow {
+    margin-bottom: 14px;
+}
+
+.lx-form-head .lx-eyebrow::before { display: inline-block; }
+.lx-form-head .lx-eyebrow::after { display: none; }
+
+.lx-form-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3vw, 36px);
+    color: var(--lx-text);
+    margin: 0;
+    line-height: 1.2;
+    font-weight: 500;
+}
+
+.lx-form-success {
+    background: rgba(201, 169, 97, 0.12);
+    border-left: 2px solid var(--lx-bronze);
+    color: var(--lx-text);
+    padding: 16px 20px;
+    margin: 0 0 24px;
+    font-size: 14px;
+    line-height: 1.55;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    animation: lxFormFadeIn 0.6s ease-out;
+}
+
+.lx-form-success svg {
+    color: var(--lx-bronze-dark);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+@keyframes lxFormFadeIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.lx-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.lx-form-field {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+.lx-form-field--full {
+    grid-column: 1 / -1;
+    margin-bottom: 0;
+}
+
+.lx-form-field label {
+    display: block;
+    color: var(--lx-bronze-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.lx-form-field label .req {
+    color: var(--lx-crimson);
+    margin-left: 4px;
+}
+
+.lx-form-field input,
+.lx-form-field textarea {
+    width: 100%;
+    padding: 14px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(26, 31, 46, 0.18);
+    color: var(--lx-text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    transition: border-color 0.35s ease;
+    outline: none;
+    border-radius: 0;
+}
+
+.lx-form-field textarea {
+    resize: vertical;
+    min-height: 130px;
+    padding-top: 8px;
+}
+
+.lx-form-field input::placeholder,
+.lx-form-field textarea::placeholder {
+    color: rgba(26, 31, 46, 0.3);
+    font-style: italic;
+}
+
+.lx-form-field input:focus,
+.lx-form-field textarea:focus {
+    border-color: var(--lx-bronze);
+}
+
+.lx-form-field.has-error input,
+.lx-form-field.has-error textarea {
+    border-color: var(--lx-crimson);
+}
+
+.lx-form-error {
+    color: var(--lx-crimson);
+    font-size: 12px;
+    margin-top: 8px;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+}
+
+.lx-form-actions {
+    margin-top: 30px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.lx-form-actions .lx-btn {
+    cursor: pointer;
+    background: transparent;
+    font-family: inherit;
+}
+
+.lx-form-actions .lx-btn[type="submit"] {
+    color: var(--lx-navy);
+    border-color: var(--lx-navy);
+}
+
+.lx-form-actions .lx-btn[type="submit"]::before { background: var(--lx-navy); }
+.lx-form-actions .lx-btn[type="submit"]:hover { color: var(--lx-cream); }
+
+.lx-form-note {
+    color: var(--lx-text-soft);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* ─── Social strip (contact pastida) ─── */
+
+.lx-contact-social {
+    margin-top: 64px;
+    padding: 36px 32px;
+    background: var(--lx-paper);
+    text-align: center;
+    position: relative;
+}
+
+.lx-contact-social-eyebrow {
+    color: var(--lx-bronze-dark);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.lx-contact-social-eyebrow::before,
+.lx-contact-social-eyebrow::after {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--lx-bronze);
+}
+
+.lx-contact-social-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+}
+
+.lx-contact-social-link {
+    width: 52px;
+    height: 52px;
+    border: 1px solid var(--lx-bronze);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--lx-bronze-dark);
+    text-decoration: none;
+    transition: all 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-size: 15px;
+}
+
+.lx-contact-social-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--lx-navy);
+    transform: scale(0);
+    border-radius: 50%;
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lx-contact-social-link:hover {
+    color: var(--lx-bronze-soft);
+    transform: translateY(-4px);
+    box-shadow: var(--lx-shadow-luxury);
+}
+
+.lx-contact-social-link:hover::before { transform: scale(1); }
+
+.lx-contact-social-link i { position: relative; z-index: 1; }
+
+/* ─── Responsive (contact) ─── */
+
+@media (max-width: 992px) {
+    .lx-contact-quick {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .lx-contact-quick-card:nth-child(3) { grid-column: 1 / -1; }
+    .lx-contact-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+    .lx-contact-map { min-height: 380px; }
+    .lx-contact-map iframe { min-height: 364px; }
+
+    .lx-contact-form-wrap { grid-template-columns: 1fr; }
+    .lx-contact-form-side { padding: 40px 32px; }
+    .lx-contact-form { padding: 40px 32px; }
+}
+
+@media (max-width: 640px) {
+    .lx-contact-quick {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-bottom: 44px;
+    }
+    .lx-contact-quick-card:nth-child(3) { grid-column: auto; }
+    .lx-contact-quick-card { padding: 30px 24px; }
+    .lx-contact-quick-icon { width: 56px; height: 56px; margin-bottom: 16px; }
+    .lx-contact-quick-value { font-size: 17px; }
+
+    .lx-contact-card { padding: 32px 24px; }
+    .lx-contact-card-title { font-size: 24px; }
+    .lx-contact-card-list li {
+        grid-template-columns: 1fr;
+        gap: 4px;
+        padding: 14px 0;
+    }
+    .lx-contact-card-label { font-size: 9px; letter-spacing: 0.24em; }
+
+    .lx-contact-form-wrap { margin-top: 44px; }
+    .lx-contact-form-side { padding: 32px 22px; }
+    .lx-contact-form { padding: 32px 22px; }
+    .lx-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-bottom: 0;
+    }
+
+    .lx-contact-social { margin-top: 44px; padding: 28px 18px; }
+    .lx-contact-social-link { width: 46px; height: 46px; font-size: 14px; }
+
+    .lx-contact-map { min-height: 320px; }
+    .lx-contact-map iframe { min-height: 304px; }
+}
