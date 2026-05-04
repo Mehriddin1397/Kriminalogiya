@@ -1,37 +1,29 @@
-/.phpunit.cache
+/vendor
 /node_modules
+
+# Laravel cache va storage (HAMMASI ignore)
+storage/*
+!storage/.gitignore
+
+bootstrap/cache/*
+!bootstrap/cache/.gitignore
+
+# Public build
 /public/build
 /public/hot
 /public/storage
-/storage/*.key
-/storage/pail
-/storage/framework/cache/*
-/storage/framework/sessions/*
-/storage/framework/views/*
-/storage/framework/testing/*
-!/storage/framework/cache/.gitignore
-!/storage/framework/sessions/.gitignore
-!/storage/framework/views/.gitignore
-!/storage/framework/testing/.gitignore
-/storage/logs/*
-!/storage/logs/.gitignore
-/bootstrap/cache/*
-!/bootstrap/cache/.gitignore
-/vendor
+
+# Env
 .env
-.env.backup
-.env.production
-.phpactor.json
-.phpunit.result.cache
-Homestead.json
-Homestead.yaml
+.env.*
+
+# Logs
 npm-debug.log
 yarn-error.log
-/auth.json
-/.fleet
-/.idea
-/.nova
-/.vscode
-/.zed
-.DS_Store
-**/.DS_Store
+
+# IDE
+.idea
+.vscode
+.fleet
+.nova
+.zed
