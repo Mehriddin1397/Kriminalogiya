@@ -57,9 +57,7 @@
                                 ->first(fn ($p) => file_exists(public_path($p)))
                                 ?? 'assets/img/kti-logo.png';
                         @endphp
-                        @if($photo = $institut->photos->first())
-                            <img src="{{ asset('storage/'.$photo->file_path) }}" alt="{{ $institut->name }}" loading="lazy">
-                        @endif
+                        <img src="{{ asset($aboutImage) }}" alt="{{ $institut->name }}" loading="lazy">
                     </div>
 
                     @if($institut->created_at)

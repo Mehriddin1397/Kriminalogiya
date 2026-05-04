@@ -63,6 +63,7 @@ Route::get('categoryId/{id}',[\App\Http\Controllers\PageController::class,'categ
 Route::get('category/show',[\App\Http\Controllers\PageController::class,'show'])->name('show');
 Route::get('test',[\App\Http\Controllers\PageController::class,'test'])->name('test');
 Route::get('boss',[\App\Http\Controllers\PageController::class,'boss'])->name('boss');
+Route::get('/exploration-categories',[\App\Http\Controllers\PageController::class,'explorationCategories'])->name('exploration_categories');
 
 //search routes
 Route::get('search',[\App\Http\Controllers\PageController::class,'search'])->name('search');
@@ -74,6 +75,8 @@ Route::get('news_show/{id}',[\App\Http\Controllers\SearchController::class,'news
 Route::get('journal_show/{id}',[\App\Http\Controllers\SearchController::class,'journal_show'])->name('journal_show');
 Route::get('crimes_show/{id}',[\App\Http\Controllers\SearchController::class,'crimes_show'])->name('crimes_show');
 Route::get('academia_show/{id}',[\App\Http\Controllers\SearchController::class,'academia_show'])->name('academia_show');
+
+
 
 Route::get('hujjat',[\App\Http\Controllers\PageController::class,'hujjat'])->name('hujjat');
 

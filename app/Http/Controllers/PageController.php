@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Crimes;
 use App\Models\Expertise;
+use App\Models\Exploration;
 use App\Models\Institut;
 use App\Models\Journal;
 use App\Models\Message;
@@ -62,7 +63,7 @@ class PageController extends Controller
             $query->where('name_uz', 'Xorijiy hamkorlar');
         })->count();
 
-        return view('pages.main', compact('contacts', 'mnews','xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount','inews'));
+        return view('pages.main', compact('contacts', 'mnews', 'xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount', 'inews'));
 
     }
 
@@ -74,23 +75,23 @@ class PageController extends Controller
     public function sendMessage(Request $request)
     {
         $data = $request->validate([
-            'name'    => ['required', 'string', 'max:150'],
-            'phone'   => ['required', 'string', 'max:50', 'regex:/^[0-9+()\-\s]{6,}$/'],
+            'name' => ['required', 'string', 'max:150'],
+            'phone' => ['required', 'string', 'max:50', 'regex:/^[0-9+()\-\s]{6,}$/'],
             'message' => ['required', 'string', 'min:5', 'max:5000'],
         ], [
-            'name.required'    => "Ism va familiyani kiriting.",
-            'phone.required'   => "Telefon raqamingizni kiriting.",
-            'phone.regex'      => "Telefon raqami noto'g'ri formatda.",
+            'name.required' => "Ism va familiyani kiriting.",
+            'phone.required' => "Telefon raqamingizni kiriting.",
+            'phone.regex' => "Telefon raqami noto'g'ri formatda.",
             'message.required' => "Xabar matnini kiriting.",
-            'message.min'      => "Xabar kamida 5 ta belgidan iborat bo'lishi kerak.",
+            'message.min' => "Xabar kamida 5 ta belgidan iborat bo'lishi kerak.",
         ]);
 
         Message::create([
-            'name'       => $data['name'],
-            'phone'      => $data['phone'],
-            'message'    => $data['message'],
-            'ip'         => $request->ip(),
-            'user_agent' => substr((string) $request->userAgent(), 0, 255),
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'message' => $data['message'],
+            'ip' => $request->ip(),
+            'user_agent' => substr((string)$request->userAgent(), 0, 255),
         ]);
 
         return redirect()
@@ -209,8 +210,16 @@ class PageController extends Controller
 
                 return view('pages.news', compact('news', 'category', 'id'));
                 break;
+            case 'exploration':
+                $news = Exploration::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->paginate(9);
 
-                case 'partner':
+                return view('pages.news', compact('news', 'category', 'id'));
+                break;
+
+            case 'partner':
                 $mah_hamkor = Partner::with('photos')
                     ->whereHas('categories', function ($query) use ($id) {
                         $query->where('category_id', $id);
@@ -288,6 +297,12 @@ class PageController extends Controller
                 return view('pages.news_show', compact('new', 'category'));
                 break;
 
+            case 'exploration':
+                $new = Exploration::with('photos')->find($id);
+
+                return view('pages.loyiha_show', compact('new', 'category'));
+                break;
+
         }
     }
 
@@ -329,6 +344,13 @@ class PageController extends Controller
     {
         $resources = Resource::latest()->paginate(10);
         return view('pages.ins_nor_hujjat', compact('resources'));
+    }
+
+    public function explorationCategories()
+    {
+        $categories = Category::forObjectType('exploration');
+
+        return view('pages.loyiha_categories', compact('categories'));
     }
 
 

@@ -14,8 +14,8 @@
         [
             'title' => __('lan.tadqiqotlar'),
             'children' => [
-                ['url' => route('boss'), 'title' => __('lan.ilm_tad_nima')],
-                ['url' => route('boss'), 'title' => __('lan.taq_loy')],
+                ['url' => route('test', ['category_id' => 10, 'id' => 4]), 'title' => __('lan.ilm_tad_nima')],
+                ['url' => route('exploration_categories'), 'title' => __('lan.taq_loy')],
                 ['url' => route('boss'), 'title' => __('lan.dav_hisob')],
                 ['url' => route('boss'), 'title' => __('lan.tad_natij')],
             ],
