@@ -50,38 +50,195 @@
     background: var(--lx-navy);
 }
 
-.lx-hero .owl-carousel,
-.lx-hero .owl-stage-outer,
-.lx-hero .owl-stage,
-.lx-hero .owl-item {
-    height: 100%;
+/* ─── Custom luxury slider track ─── */
+
+.lx-hero-slider {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
 }
 
 .lx-hero-slide {
-    position: relative;
-    height: 100vh;
-    min-height: 640px;
+    position: absolute;
+    inset: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transform: scale(1.06);
-    transition: transform 8s ease-out;
+    opacity: 0;
+    transform: scale(1.08);
+    transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 9s ease-out;
+    z-index: 1;
 }
 
-.lx-hero .owl-item.active .lx-hero-slide {
+.lx-hero-slide.is-active {
+    opacity: 1;
     transform: scale(1);
+    z-index: 2;
 }
 
 .lx-hero-slide::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(10, 14, 26, 0.75) 0%,
-        rgba(10, 14, 26, 0.55) 40%,
-        rgba(10, 14, 26, 0.85) 100%
-    );
+    background:
+        linear-gradient(180deg, rgba(10, 14, 26, 0.55) 0%, rgba(10, 14, 26, 0.35) 40%, rgba(10, 14, 26, 0.85) 100%),
+        linear-gradient(90deg, rgba(10, 14, 26, 0.45) 0%, transparent 30%, transparent 70%, rgba(10, 14, 26, 0.45) 100%);
+    z-index: 1;
+}
+
+/* Bronza dekorativ ramka */
+.lx-hero::after {
+    content: "";
+    position: absolute;
+    inset: 24px;
+    border: 1px solid rgba(201, 169, 97, 0.15);
+    pointer-events: none;
+    z-index: 4;
+}
+
+/* ─── Slide counter (yuqori chap) ─── */
+
+.lx-hero-counter {
+    position: absolute;
+    top: 48px;
+    left: 56px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    color: var(--lx-cream);
+    z-index: 5;
+    font-family: 'Cormorant Garamond', serif;
+    opacity: 0;
+    animation: lxFadeUp 1s ease-out 0.4s forwards;
+}
+
+.lx-hero-counter .num {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.05em;
+}
+
+.lx-hero-counter .num.current {
+    color: var(--lx-bronze-soft);
+    font-size: 28px;
+}
+
+.lx-hero-counter .num.total {
+    color: rgba(245, 243, 240, 0.55);
+}
+
+.lx-hero-counter .line {
+    width: 32px;
+    height: 1px;
+    background: var(--lx-bronze);
+    opacity: 0.7;
+}
+
+/* ─── Vertikal indikatorlar (o'ng tomon) ─── */
+
+.lx-hero-indicators {
+    position: absolute;
+    top: 50%;
+    right: 56px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 5;
+    opacity: 0;
+    animation: lxFadeUp 1s ease-out 0.6s forwards;
+}
+
+.lx-hero-indicator {
+    width: 1px;
+    height: 28px;
+    background: rgba(245, 243, 240, 0.3);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+    position: relative;
+}
+
+.lx-hero-indicator::after {
+    content: "";
+    position: absolute;
+    inset: -8px;
+}
+
+.lx-hero-indicator:hover {
+    background: var(--lx-bronze-soft);
+    height: 36px;
+}
+
+.lx-hero-indicator.is-active {
+    background: var(--lx-bronze);
+    width: 2px;
+    height: 56px;
+}
+
+/* ─── Prev / Next arrows ─── */
+
+.lx-hero-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 169, 97, 0.45);
+    background: rgba(10, 14, 26, 0.35);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    color: var(--lx-bronze-soft);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
+    z-index: 5;
+    padding: 0;
+    opacity: 0;
+    animation: lxFadeUp 1s ease-out 0.7s forwards;
+}
+
+.lx-hero-arrow:hover {
+    background: var(--lx-bronze);
+    color: var(--lx-navy);
+    border-color: var(--lx-bronze);
+    box-shadow: var(--lx-shadow-gold);
+}
+
+.lx-hero-arrow.prev { left: 56px; }
+.lx-hero-arrow.next { right: 100px; }
+
+.lx-hero-arrow svg {
+    transition: transform 0.35s ease;
+}
+
+.lx-hero-arrow.prev:hover svg { transform: translateX(-3px); }
+.lx-hero-arrow.next:hover svg { transform: translateX(3px); }
+
+/* ─── Pastki progress bar ─── */
+
+.lx-hero-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(201, 169, 97, 0.12);
+    z-index: 5;
+}
+
+.lx-hero-progress .bar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--lx-bronze) 0%, var(--lx-gold) 50%, var(--lx-bronze) 100%);
+    transform-origin: left;
+    transform: scaleX(0);
 }
 
 .lx-hero-content {
@@ -251,27 +408,10 @@
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Carousel dots — luxury */
-.lx-hero .owl-dots {
-    position: absolute;
-    bottom: 110px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-}
-
-.lx-hero .owl-dots .owl-dot span {
-    width: 30px;
-    height: 1px;
-    background: rgba(245, 243, 240, 0.3);
-    transition: all 0.35s ease;
-    margin: 0 4px;
-}
-
-.lx-hero .owl-dots .owl-dot.active span {
-    background: var(--lx-bronze);
-    width: 50px;
-}
+/* (Eski owl-dots styles olib tashlandi — endi vertikal indikatorlar
+   .lx-hero-indicators ishlatilmoqda) */
+.lx-hero .owl-dots,
+.lx-hero .owl-nav { display: none !important; }
 
 /* ─────── Section heading ─────── */
 
@@ -3412,6 +3552,18 @@ body.home-page .lx-hero .lx-hero-slide {
     .lx-stats-grid {
         grid-template-columns: 1fr 1fr;
     }
+
+    /* Hero slider — tablet */
+    .lx-hero::after { inset: 16px; }
+    .lx-hero-counter { top: 32px; left: 32px; }
+    .lx-hero-counter .num.current { font-size: 24px; }
+    .lx-hero-counter .num { font-size: 18px; }
+    .lx-hero-indicators { right: 32px; gap: 11px; }
+    .lx-hero-indicator { height: 22px; }
+    .lx-hero-indicator.is-active { height: 44px; }
+    .lx-hero-arrow { width: 48px; height: 48px; }
+    .lx-hero-arrow.prev { left: 32px; }
+    .lx-hero-arrow.next { right: 76px; }
 }
 
 @media (max-width: 640px) {
@@ -3433,6 +3585,40 @@ body.home-page .lx-hero .lx-hero-slide {
     .lx-hero {
         min-height: 540px;
     }
+
+    /* Hero slider — mobile */
+    .lx-hero::after { display: none; }
+    .lx-hero-counter {
+        top: 24px;
+        left: 24px;
+        gap: 10px;
+    }
+    .lx-hero-counter .num.current { font-size: 20px; }
+    .lx-hero-counter .num { font-size: 15px; }
+    .lx-hero-counter .line { width: 22px; }
+    .lx-hero-indicators {
+        right: auto;
+        left: 50%;
+        bottom: 36px;
+        top: auto;
+        transform: translateX(-50%);
+        flex-direction: row;
+        gap: 10px;
+    }
+    .lx-hero-indicator {
+        width: 22px;
+        height: 1px;
+    }
+    .lx-hero-indicator:hover {
+        width: 28px;
+        height: 1px;
+    }
+    .lx-hero-indicator.is-active {
+        width: 44px;
+        height: 2px;
+    }
+    .lx-hero-arrow { display: none; }
+    .lx-scroll-hint { display: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════

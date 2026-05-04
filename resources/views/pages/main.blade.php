@@ -1,14 +1,55 @@
 <x-main title="Bosh sahifa">
 <div class="home-luxury">
 
-    {{-- ─────── Hero / Carousel ─────── --}}
-    <section class="lx-hero">
-        <div class="owl-carousel header-carousel">
-            @foreach (['1.6.png','1.2.png','1.4.png','1.3.png','1.1.png','1.5.png'] as $img)
-                <div class="lx-hero-slide" style="background-image: url('{{ asset('img/'.$img) }}');"></div>
+    {{-- ─────── Hero / Custom luxury slider ─────── --}}
+    @php
+        $lxHeroSlides = ['1.6.png','1.2.png','1.4.png','1.3.png','1.1.png','1.5.png'];
+        $lxHeroTotal = count($lxHeroSlides);
+    @endphp
+
+    <section class="lx-hero" data-lx-hero>
+
+        <div class="lx-hero-slider">
+            @foreach ($lxHeroSlides as $i => $img)
+                <div class="lx-hero-slide {{ $i === 0 ? 'is-active' : '' }}"
+                     style="background-image: url('{{ asset('img/'.$img) }}');"
+                     data-index="{{ $i }}"
+                     aria-hidden="{{ $i === 0 ? 'false' : 'true' }}"></div>
             @endforeach
         </div>
 
+        {{-- Slide counter (yuqori chap) --}}
+        <div class="lx-hero-counter" aria-hidden="true">
+            <span class="num current" data-lx-hero-current>01</span>
+            <span class="line"></span>
+            <span class="num total">{{ str_pad($lxHeroTotal, 2, '0', STR_PAD_LEFT) }}</span>
+        </div>
+
+        {{-- Vertikal indikatorlar (o'ng tomon) --}}
+        <div class="lx-hero-indicators" role="tablist" aria-label="Hero slider">
+            @foreach ($lxHeroSlides as $i => $img)
+                <button type="button"
+                        class="lx-hero-indicator {{ $i === 0 ? 'is-active' : '' }}"
+                        role="tab"
+                        aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                        aria-label="Slide {{ $i + 1 }}"
+                        data-lx-hero-go="{{ $i }}"></button>
+            @endforeach
+        </div>
+
+        {{-- Prev / Next arrows --}}
+        <button type="button" class="lx-hero-arrow prev" data-lx-hero-prev aria-label="Oldingi">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M15 18l-6-6 6-6"/>
+            </svg>
+        </button>
+        <button type="button" class="lx-hero-arrow next" data-lx-hero-next aria-label="Keyingi">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M9 18l6-6-6-6"/>
+            </svg>
+        </button>
+
+        {{-- Markazda kontent --}}
         <div class="lx-hero-content">
             <div class="lx-hero-divider">
                 <span>{{ __('lan.kriminalog') }}</span>
@@ -32,6 +73,12 @@
             </div>
         </div>
 
+        {{-- Pastki progress bar --}}
+        <div class="lx-hero-progress" aria-hidden="true">
+            <div class="bar" data-lx-hero-progress></div>
+        </div>
+
+        {{-- Scroll hint --}}
         <div class="lx-scroll-hint">
             <span>Pastga</span>
             <div class="lx-line"></div>
@@ -292,24 +339,107 @@
             counters.forEach(animateCounter);
         }
 
-        // Re-init owl carousel for hero with luxury settings (if not already)
-        if (typeof jQuery !== 'undefined' && jQuery('.header-carousel').length) {
-            const $carousel = jQuery('.header-carousel');
-            if (!$carousel.hasClass('owl-loaded')) {
-                $carousel.owlCarousel({
-                    items: 1,
-                    loop: true,
-                    autoplay: true,
-                    autoplayTimeout: 6500,
-                    autoplayHoverPause: false,
-                    smartSpeed: 1200,
-                    dots: true,
-                    nav: false,
-                    animateOut: 'fadeOut',
-                    animateIn: 'fadeIn'
+        // Custom luxury hero slider
+        document.querySelectorAll('[data-lx-hero]').forEach(function (hero) {
+            const slides     = hero.querySelectorAll('.lx-hero-slide');
+            const indicators = hero.querySelectorAll('.lx-hero-indicator');
+            const currentEl  = hero.querySelector('[data-lx-hero-current]');
+            const progressEl = hero.querySelector('[data-lx-hero-progress]');
+            const prevBtn    = hero.querySelector('[data-lx-hero-prev]');
+            const nextBtn    = hero.querySelector('[data-lx-hero-next]');
+            if (slides.length < 1) return;
+
+            const AUTO_DELAY = 6500;
+            let current = 0;
+            let timer = null;
+            let isPaused = false;
+
+            const pad2 = (n) => String(n).padStart(2, '0');
+
+            function setActive(idx) {
+                current = (idx + slides.length) % slides.length;
+                slides.forEach(function (s, i) {
+                    s.classList.toggle('is-active', i === current);
+                    s.setAttribute('aria-hidden', i === current ? 'false' : 'true');
                 });
+                indicators.forEach(function (b, i) {
+                    b.classList.toggle('is-active', i === current);
+                    b.setAttribute('aria-selected', i === current ? 'true' : 'false');
+                });
+                if (currentEl) currentEl.textContent = pad2(current + 1);
+                resetProgress();
             }
-        }
+
+            function next() { setActive(current + 1); }
+            function prev() { setActive(current - 1); }
+
+            function startAuto() {
+                stopAuto();
+                if (isPaused) return;
+                timer = setInterval(next, AUTO_DELAY);
+                runProgress();
+            }
+            function stopAuto() {
+                if (timer) { clearInterval(timer); timer = null; }
+            }
+            function resetProgress() {
+                if (!progressEl) return;
+                progressEl.style.transition = 'none';
+                progressEl.style.transform  = 'scaleX(0)';
+                // force reflow
+                void progressEl.offsetWidth;
+                if (!isPaused) runProgress();
+            }
+            function runProgress() {
+                if (!progressEl) return;
+                progressEl.style.transition = 'transform ' + AUTO_DELAY + 'ms linear';
+                progressEl.style.transform  = 'scaleX(1)';
+            }
+
+            indicators.forEach(function (b) {
+                b.addEventListener('click', function () {
+                    setActive(parseInt(b.getAttribute('data-lx-hero-go'), 10) || 0);
+                    startAuto();
+                });
+            });
+            if (prevBtn) prevBtn.addEventListener('click', function () { prev(); startAuto(); });
+            if (nextBtn) nextBtn.addEventListener('click', function () { next(); startAuto(); });
+
+            hero.addEventListener('mouseenter', function () {
+                isPaused = true;
+                stopAuto();
+                if (progressEl) {
+                    const cs = getComputedStyle(progressEl);
+                    progressEl.style.transition = 'none';
+                    progressEl.style.transform  = cs.transform;
+                }
+            });
+            hero.addEventListener('mouseleave', function () {
+                isPaused = false;
+                startAuto();
+            });
+
+            document.addEventListener('keydown', function (e) {
+                if (!hero.matches(':hover') && document.activeElement !== hero) return;
+                if (e.key === 'ArrowLeft')  { prev(); startAuto(); }
+                if (e.key === 'ArrowRight') { next(); startAuto(); }
+            });
+
+            // Touch/swipe (oddiy)
+            let touchStartX = 0;
+            hero.addEventListener('touchstart', function (e) {
+                touchStartX = e.changedTouches[0].clientX;
+            }, { passive: true });
+            hero.addEventListener('touchend', function (e) {
+                const dx = e.changedTouches[0].clientX - touchStartX;
+                if (Math.abs(dx) > 40) {
+                    if (dx < 0) next(); else prev();
+                    startAuto();
+                }
+            });
+
+            startAuto();
+        });
 
         // Partners carousel
         if (typeof jQuery !== 'undefined' && jQuery('.lx-partners-carousel').length) {
