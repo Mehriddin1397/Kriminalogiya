@@ -52,13 +52,18 @@
     // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
-            $('.back-to-top').fadeIn('slow');
+            $('.back-to-top').addClass('is-visible');
         } else {
-            $('.back-to-top').fadeOut('slow');
+            $('.back-to-top').removeClass('is-visible');
         }
     });
-    $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+    $('.back-to-top').click(function (e) {
+        e.preventDefault();
+        if ('scrollBehavior' in document.documentElement.style) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            $('html, body').stop().animate({ scrollTop: 0 }, 600, 'easeOutCubic');
+        }
         return false;
     });
 

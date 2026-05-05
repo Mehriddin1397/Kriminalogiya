@@ -89,7 +89,13 @@
 
 
 <!-- Back to Top -->
-<a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-0 back-to-top"><i class="bi bi-arrow-up"></i></a>
+<a href="#" class="back-to-top lx-back-to-top" aria-label="Yuqoriga">
+    <span class="lx-back-to-top-ring" aria-hidden="true"></span>
+    <svg class="lx-back-to-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="12" y1="19" x2="12" y2="5"/>
+        <polyline points="5 12 12 5 19 12"/>
+    </svg>
+</a>
 
 
 <!-- JavaScript Libraries -->
