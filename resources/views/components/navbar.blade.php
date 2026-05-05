@@ -16,14 +16,14 @@
             'children' => [
                 ['url' => route('test', ['category_id' => 10, 'id' => 4]), 'title' => __('lan.ilm_tad_nima')],
                 ['url' => route('exploration_categories'), 'title' => __('lan.taq_loy')],
-                ['url' => route('boss'), 'title' => __('lan.dav_hisob')],
+                ['url' => route('categoryId', 44), 'title' => __('lan.dav_hisob')],
                 ['url' => route('boss'), 'title' => __('lan.tad_natij')],
             ],
         ],
         [
             'title' => __('lan.ilm_ishlanma'),
             'children' => [
-                ['url' => route('show', ['category_id' => 27, 'id' => 1]), 'title' => __('lan.ilm_jurnal')],
+                ['url' => route('categoryId', 33),                          'title' => __('lan.ilm_jurnal')],
                 ['url' => route('categoryId', 28),                          'title' => __('lan.qullanma')],
                 ['url' => route('categoryId', 14),                          'title' => __('lan.darsliklar')],
                 ['url' => route('categoryId', 14),                          'title' => __('lan.monograf')],

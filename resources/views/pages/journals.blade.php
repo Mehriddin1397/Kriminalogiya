@@ -34,7 +34,7 @@
             <div class="lx-page-divider" data-aos="fade-up"></div>
             <p class="lx-page-meta" data-aos="fade-up">
 
-                {{ $news->total() }}
+                {{ $categories->total() }}
                 @if(method_exists($news, 'currentPage'))
                     &middot; {{ $news->currentPage() }} / {{ max($news->lastPage(), 1) }}
                 @endif
@@ -46,9 +46,10 @@
     <section class="lx-section" style="background: var(--lx-cream);">
         <div class="container">
 
-            @if($news->count())
+            @if($categories->count())
                 <div class="lx-news-list-grid">
-                    @foreach($news as $i => $new)
+
+                    @foreach($categories as $i => $new)
                         <a href="{{ route('show', ['category_id' => $category->id, 'id' => $new->id]) }}"
                            class="lx-news-card"
                            data-aos="fade-up"

@@ -166,12 +166,7 @@ class PageController extends Controller
             case 'jurnal':
                 $categories = Category::forObjectType('jurnal');
 
-                $researchs = Journal::with(['photos', 'categories'])
-                    ->whereHas('categories', function ($query) use ($id) {
-                        $query->where('category_id', $id);
-                    })->latest()->get();
-
-                return view('pages.researchsCategory', compact('researchs', 'categories', 'category', 'id'));
+                return view('pages.journals', compact( 'categories', 'category', 'id'));
                 break;
 
             case 'articles':
@@ -226,6 +221,15 @@ class PageController extends Controller
                     })->latest()->get();
 
                 return view('pages.mah_hamkor', compact('mah_hamkor', 'category', 'id'));
+                break;
+
+            case 'institut':
+                $news = Institut::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->paginate(9);
+
+                return view('pages.news', compact('news', 'category', 'id'));
                 break;
 
         }
@@ -303,6 +307,11 @@ class PageController extends Controller
                 return view('pages.loyiha_show', compact('new', 'category'));
                 break;
 
+            case 'institut':
+                $institut = Institut::find($id);
+
+                return view('pages.texts', compact('institut', 'category'));
+                break;
         }
     }
 
