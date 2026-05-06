@@ -219,8 +219,10 @@ class PageController extends Controller
                     ->whereHas('categories', function ($query) use ($id) {
                         $query->where('category_id', $id);
                     })->latest()->get();
+                $text = Institut::find(7);
 
-                return view('pages.mah_hamkor', compact('mah_hamkor', 'category', 'id'));
+
+                return view('pages.mah_hamkor', compact('mah_hamkor','text', 'category', 'id'));
                 break;
 
             case 'institut':

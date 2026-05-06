@@ -19,17 +19,39 @@
                     <div class="col-lg-10 col-md-12">
 
                         <div class="meeting-single-item shadow p-4 rounded bg-light">
-                            <div class="down-content text-left">
-                                <a href="#"><h4>bu yerda matn buladi mahalliy hamkorlik tug'risida</h4></a>
-                                @foreach($mah_hamkor as  $hamkor)
-                                    <h3>{{$hamkor->name}}</h3>
-                                    @if($photo = $hamkor->photos->first())
-                                        <img src="{{ asset('storage/'.$photo->file_path) }}"
-                                             alt="{{ $hamkor->name }}"
-                                             loading="lazy"
-                                             onerror="this.style.display='none'">
-                                    @endif
-                                @endforeach
+                            <div class="down-content text-center">
+
+                                <!-- Katta text -->
+                                <h2 class="fw-bold display-5 mb-4">
+                                    {!! $text->description !!}
+                                </h2>
+
+                                <!-- Hamkorlar -->
+                                <div class="row">
+                                    @foreach($mah_hamkor as $hamkor)
+                                        <div class="col-md-4 col-sm-6 mb-3">
+                                            <div class="p-2 border rounded bg-white h-100">
+
+                                                <!-- Rasm -->
+                                                @if($photo = $hamkor->photos->first())
+                                                    <img src="{{ asset('storage/'.$photo->file_path) }}"
+                                                         alt="{{ $hamkor->name }}"
+                                                         class="img-fluid mb-2"
+                                                         style="max-height:80px; object-fit:contain;"
+                                                         loading="lazy"
+                                                         onerror="this.style.display='none'">
+                                                @endif
+
+                                                <!-- Nomi -->
+                                                <p class="mb-0 small fw-semibold">
+                                                    <a href="{{$hamkor->link}}" target="_blank">{{ $hamkor->name }}</a>
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+
                             </div>
                         </div>
 
