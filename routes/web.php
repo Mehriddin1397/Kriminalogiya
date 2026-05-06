@@ -88,6 +88,13 @@ Route::get('/sitemap.xml', function (){
         ->add(Url::create('/categoryId/8'));
 });
 
+Route::prefix('journals')->group(function () {
+    Route::get('/', [\App\Http\Controllers\JournalController::class, 'jurnals'])->name('journals_index');
+    Route::get('/{journal}', [\App\Http\Controllers\JournalController::class, 'show'])->name('journals_show');
+    Route::get('/issue/{issue}', [\App\Http\Controllers\JournalController::class, 'issue'])->name('journals_issue');
+    Route::get('/paper/{paper}', [\App\Http\Controllers\JournalController::class, 'paper'])->name('journals_paper');
+});
+
 
 
 

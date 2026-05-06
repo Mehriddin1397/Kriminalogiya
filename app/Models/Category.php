@@ -81,6 +81,11 @@ class Category extends Model
         return $this->morphedByMany(Exploration::class, 'categoryable');
     }
 
+    public function photos()
+    {
+        return $this->morphMany(Photo::class, 'model');
+    }
+
 
 
     public function __get($key)

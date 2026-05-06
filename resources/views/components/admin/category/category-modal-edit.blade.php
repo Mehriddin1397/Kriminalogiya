@@ -91,6 +91,21 @@
                     </select>
                 </div>
 
+                @if($category->photos()->exists())
+                    <!-- Munosabat mavjudligini tekshirish -->
+                    @foreach($category->photos as $photo)
+                        <!-- Munosabatni chaqirish va kolleksiyani aylanish -->
+                        <img src="{{ asset('storage/' . $photo->file_path) }}" alt="Question Image"
+                             class="img-fluid mt-2" width="150">
+                    @endforeach
+                @endif
+                <div class="col-md-6">
+                    <div class="form-group mb-4">
+                        <label class="form-label">Rasmi:</label>
+                        <input type="file" name="photos[]" class="form-control" multiple >
+                    </div>
+                </div>
+
 
                 <button type="submit" class="btn btn-primary">Yangilash</button>
             </form>

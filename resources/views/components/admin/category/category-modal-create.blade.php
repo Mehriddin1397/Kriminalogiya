@@ -68,6 +68,12 @@
                             <option value="exploration">Tadqiqot loyihalari</option>
                         </select>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group mb-4">
+                            <label class="form-label">Rasmi:</label>
+                            <input type="file" name="photos[]" class="form-control" multiple >
+                        </div>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary d-inline-block mt-4">Kategoriya qo'shish</button>
 

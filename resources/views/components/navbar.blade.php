@@ -23,7 +23,7 @@
         [
             'title' => __('lan.ilm_ishlanma'),
             'children' => [
-                ['url' => route('categoryId', 33),                          'title' => __('lan.ilm_jurnal')],
+                ['url' => route('journals_index'),                          'title' => __('lan.ilm_jurnal')],
                 ['url' => route('categoryId', 28),                          'title' => __('lan.qullanma')],
                 ['url' => route('categoryId', 14),                          'title' => __('lan.darsliklar')],
                 ['url' => route('categoryId', 14),                          'title' => __('lan.monograf')],

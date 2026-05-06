@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Issue;
 use App\Models\Journal;
+use App\Models\Paper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -171,5 +173,25 @@ class JournalController extends Controller
         $academia->delete();
 
         return redirect()->route('journal.index')->with('success', 'Muvaffaqiyatli o‘chirildi.');
+    }
+
+    public function jurnals()
+    {
+        $journals = Journal::with('photos')->get();
+        return view('pages.jurnals.journals', compact('journals'));
+    }
+
+    public function show(Journal $journal)
+    {
+        $journal->load('photos', 'issues.papers');
+        return view('pages.jurnals.show', compact('journal'));
+    }
+
+
+
+    public function paper(Paper $paper)
+    {
+        $paper->increment('views'); // 🔥 +1 qiladi
+        return view('pages.jurnals.paper', compact('paper'));
     }
 }
