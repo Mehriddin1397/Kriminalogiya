@@ -2254,6 +2254,146 @@ body nav.navbar-light:not(.lx-nav) {
     width: 14px;
 }
 
+/* ── Sub-flyout (3-level desktop) ──────────────────────── */
+.lx-dropdown-item.has-sub {
+    position: relative;
+}
+
+.lx-dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 11px 24px;
+    color: var(--lx-text);
+    font-size: 13px;
+    line-height: 1.5;
+    cursor: default;
+    position: relative;
+    transition: color 0.3s ease, background 0.3s ease, padding-left 0.3s ease;
+}
+
+.lx-dropdown-trigger::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--lx-bronze);
+    transform: translateY(-50%);
+    transition: width 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.lx-dropdown-trigger .caret {
+    flex-shrink: 0;
+    color: var(--lx-bronze);
+    transition: transform 0.3s ease;
+}
+
+.lx-dropdown-item.has-sub:hover > .lx-dropdown-trigger,
+.lx-dropdown-item.has-sub:focus-within > .lx-dropdown-trigger {
+    color: var(--lx-navy);
+    background: rgba(201, 169, 97, 0.06);
+    padding-left: 38px;
+}
+
+.lx-dropdown-item.has-sub:hover > .lx-dropdown-trigger::before,
+.lx-dropdown-item.has-sub:focus-within > .lx-dropdown-trigger::before {
+    width: 14px;
+}
+
+.lx-dropdown-item.has-sub:hover > .lx-dropdown-trigger .caret,
+.lx-dropdown-item.has-sub:focus-within > .lx-dropdown-trigger .caret {
+    transform: translateX(3px);
+}
+
+.lx-dropdown-sub {
+    position: absolute;
+    top: -8px;
+    left: calc(100% + 4px);
+    min-width: 260px;
+    background: #fff;
+    border: 1px solid rgba(201, 169, 97, 0.18);
+    box-shadow: 0 24px 50px -12px rgba(10, 14, 26, 0.18);
+    list-style: none;
+    margin: 0;
+    padding: 12px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-8px) scale(0.98);
+    transform-origin: top left;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+    z-index: 70;
+}
+
+.lx-dropdown-sub::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--lx-bronze) 0%, var(--lx-gold) 50%, var(--lx-bronze) 100%);
+}
+
+.lx-dropdown-item.has-sub:hover > .lx-dropdown-sub,
+.lx-dropdown-item.has-sub:focus-within > .lx-dropdown-sub {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) scale(1);
+    transition: opacity 0.35s ease, transform 0.35s ease, visibility 0s linear 0s;
+}
+
+/* Right-aligned dropdowns flip the sub-flyout to the left */
+.lx-nav-item:last-child .lx-dropdown .lx-dropdown-sub,
+.lx-nav-item:nth-last-child(2) .lx-dropdown .lx-dropdown-sub {
+    left: auto;
+    right: calc(100% + 4px);
+    transform-origin: top right;
+    transform: translateX(8px) scale(0.98);
+}
+
+.lx-nav-item:last-child .lx-dropdown-item.has-sub:hover > .lx-dropdown-sub,
+.lx-nav-item:nth-last-child(2) .lx-dropdown-item.has-sub:hover > .lx-dropdown-sub,
+.lx-nav-item:last-child .lx-dropdown-item.has-sub:focus-within > .lx-dropdown-sub,
+.lx-nav-item:nth-last-child(2) .lx-dropdown-item.has-sub:focus-within > .lx-dropdown-sub {
+    transform: translateX(0) scale(1);
+}
+
+.lx-dropdown-sub a {
+    display: block;
+    padding: 11px 24px;
+    color: var(--lx-text);
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1.5;
+    position: relative;
+    transition: padding-left 0.3s ease, color 0.3s ease, background 0.3s ease;
+}
+
+.lx-dropdown-sub a::before {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    width: 0;
+    height: 1px;
+    background: var(--lx-bronze);
+    transform: translateY(-50%);
+    transition: width 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.lx-dropdown-sub a:hover {
+    color: var(--lx-navy);
+    background: rgba(201, 169, 97, 0.06);
+    padding-left: 38px;
+}
+
+.lx-dropdown-sub a:hover::before {
+    width: 14px;
+}
+
 /* Right actions */
 
 .lx-nav-actions {
@@ -2708,6 +2848,110 @@ body nav.navbar-light:not(.lx-nav) {
 
 .lx-drawer-submenu a:hover::before {
     opacity: 1;
+}
+
+/* ── Nested drawer submenu (3-level) ───────────────────── */
+.lx-drawer-submenu li.has-sub {
+    position: relative;
+}
+
+.lx-drawer-toggle-sub {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 24px 12px 44px;
+    background: transparent;
+    border: 0;
+    color: rgba(245, 243, 240, 0.7);
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease, background 0.3s ease, padding-left 0.3s ease;
+}
+
+.lx-drawer-toggle-sub::before {
+    content: "";
+    position: absolute;
+    left: 24px;
+    top: 50%;
+    width: 12px;
+    height: 1px;
+    background: var(--lx-bronze);
+    opacity: 0.5;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease;
+}
+
+.lx-drawer-toggle-sub .caret {
+    flex-shrink: 0;
+    color: var(--lx-bronze);
+    transition: transform 0.3s ease;
+}
+
+.lx-drawer-submenu li.has-sub.is-open > .lx-drawer-toggle-sub,
+.lx-drawer-toggle-sub:hover {
+    color: var(--lx-bronze-soft);
+    background: rgba(212, 175, 55, 0.05);
+}
+
+.lx-drawer-submenu li.has-sub.is-open > .lx-drawer-toggle-sub::before,
+.lx-drawer-toggle-sub:hover::before {
+    opacity: 1;
+}
+
+.lx-drawer-submenu li.has-sub.is-open > .lx-drawer-toggle-sub .caret {
+    transform: rotate(180deg);
+}
+
+.lx-drawer-subsubmenu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: rgba(0, 0, 0, 0.28);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lx-drawer-submenu li.has-sub.is-open > .lx-drawer-subsubmenu {
+    max-height: 360px;
+}
+
+.lx-drawer-subsubmenu a {
+    display: block;
+    padding: 11px 24px 11px 64px;
+    color: rgba(245, 243, 240, 0.6);
+    text-decoration: none;
+    font-size: 12.5px;
+    line-height: 1.45;
+    position: relative;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.lx-drawer-subsubmenu a::before {
+    content: "";
+    position: absolute;
+    left: 44px;
+    top: 50%;
+    width: 10px;
+    height: 1px;
+    background: var(--lx-gold);
+    opacity: 0.45;
+    transform: translateY(-50%);
+    transition: opacity 0.3s ease, width 0.3s ease;
+}
+
+.lx-drawer-subsubmenu a:hover {
+    color: var(--lx-gold-bright);
+    padding-left: 72px;
+}
+
+.lx-drawer-subsubmenu a:hover::before {
+    opacity: 1;
+    width: 14px;
 }
 
 .lx-drawer-foot {

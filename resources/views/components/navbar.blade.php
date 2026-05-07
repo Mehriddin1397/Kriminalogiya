@@ -15,7 +15,14 @@
             'title' => __('lan.tadqiqotlar'),
             'children' => [
                 ['url' => route('test', ['category_id' => 10, 'id' => 4]), 'title' => __('lan.ilm_tad_nima')],
-                ['url' => route('exploration_categories'), 'title' => __('lan.taq_loy')],
+                [
+                    'title' => __('lan.taq_loy'),
+                    'children' => [
+                        ['url' => route('categoryId', 41), 'title' => __('Tashabbus asosidagi loyihalar')],
+                        ['url' => route('categoryId', 42), 'title' => __('Buyurtma asosidagi loyihalar')],
+                        ['url' => route('categoryId', 43), 'title' => __('Davlat granti asosidagi loyihalar')],
+                    ],
+                ],
                 ['url' => route('categoryId', 44), 'title' => __('lan.dav_hisob')],
                 ['url' => route('boss'), 'title' => __('lan.tad_natij')],
             ],
@@ -156,7 +163,23 @@
                             </button>
                             <ul class="lx-dropdown">
                                 @foreach($item['children'] as $child)
-                                    <li><a href="{{ $child['url'] }}">{{ $child['title'] }}</a></li>
+                                    @if(!empty($child['children']))
+                                        <li class="lx-dropdown-item has-sub">
+                                            <span class="lx-dropdown-trigger">
+                                                {{ $child['title'] }}
+                                                <svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="m9 6 6 6-6 6"/>
+                                                </svg>
+                                            </span>
+                                            <ul class="lx-dropdown-sub">
+                                                @foreach($child['children'] as $grand)
+                                                    <li><a href="{{ $grand['url'] }}">{{ $grand['title'] }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @else
+                                        <li><a href="{{ $child['url'] }}">{{ $child['title'] }}</a></li>
+                                    @endif
                                 @endforeach
                             </ul>
                         @else
@@ -249,7 +272,23 @@
                         </button>
                         <ul class="lx-drawer-submenu">
                             @foreach($item['children'] as $child)
-                                <li><a href="{{ $child['url'] }}">{{ $child['title'] }}</a></li>
+                                @if(!empty($child['children']))
+                                    <li class="has-sub">
+                                        <button type="button" class="lx-drawer-toggle lx-drawer-toggle-sub">
+                                            {{ $child['title'] }}
+                                            <svg class="caret" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="m6 9 6 6 6-6"/>
+                                            </svg>
+                                        </button>
+                                        <ul class="lx-drawer-subsubmenu">
+                                            @foreach($child['children'] as $grand)
+                                                <li><a href="{{ $grand['url'] }}">{{ $grand['title'] }}</a></li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @else
+                                    <li><a href="{{ $child['url'] }}">{{ $child['title'] }}</a></li>
+                                @endif
                             @endforeach
                         </ul>
                     @else
@@ -368,7 +407,7 @@
 
         // Drawerdagi link bosilganda yopish
         if (drawer && drawer.classList.contains('is-open')) {
-            var lnk = e.target.closest('.lx-drawer-submenu a, .lx-drawer-menu > li > a, .lx-drawer-brand');
+            var lnk = e.target.closest('.lx-drawer-subsubmenu a, .lx-drawer-submenu > li > a, .lx-drawer-menu > li > a, .lx-drawer-brand');
             if (lnk) closeDrawer();
         }
     });
