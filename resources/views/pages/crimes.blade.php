@@ -26,23 +26,12 @@
                 <div class="col-12">
                     <div class="responsive-pdf-container">
                         <iframe
-                            src="{{ asset('storage/' . $research->file_path) }}#toolbar=0"
+                            src="{{ asset('pdf.pdf') }}#toolbar=0"
                             frameborder="0"
                             allowfullscreen
                         ></iframe>
                     </div>
-                    <div class="d-flex justify-content-center d__flex_button" >
-                        <div class="text-center mt-3 p-3">
-                            <a href="{{route('main')}}" class="btn btn-danger">
-                                {{ __('lan.bosh')}}
-                            </a>
-                        </div>
-                        <div class="text-center mt-3 p-3">
-                            <a href="{{ asset('storage/' . $research->file_path) }}" class="btn btn-primary" download>
-                                {{ __('lan.yuklab_olish')}}
-                            </a>
-                        </div>
-                    </div>
+
 
                 </div>
             </div>

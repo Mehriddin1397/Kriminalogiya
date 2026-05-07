@@ -130,6 +130,15 @@ class PageController extends Controller
 
         switch ($category->object_type) {
 
+            case 'academia':
+                $news = Academia::with('photos')
+                    ->whereHas('categories', function ($query) use ($id) {
+                        $query->where('category_id', $id);
+                    })->latest()->paginate(9);
+
+                return view('pages.news', compact('news', 'category', 'id'));
+                break;
+
             case 'research':
                 $categories = Category::forObjectType('research');
 
@@ -166,7 +175,7 @@ class PageController extends Controller
             case 'jurnal':
                 $categories = Category::forObjectType('jurnal');
 
-                return view('pages.journals', compact( 'categories', 'category', 'id'));
+                return view('pages.journals', compact('categories', 'category', 'id'));
                 break;
 
             case 'articles':
@@ -222,7 +231,7 @@ class PageController extends Controller
                 $text = Institut::find(7);
 
 
-                return view('pages.mah_hamkor', compact('mah_hamkor','text', 'category', 'id'));
+                return view('pages.mah_hamkor', compact('mah_hamkor', 'text', 'category', 'id'));
                 break;
 
             case 'institut':
