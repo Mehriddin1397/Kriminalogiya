@@ -191,7 +191,14 @@ class JournalController extends Controller
 
     public function paper(Paper $paper)
     {
-        $paper->increment('views'); // 🔥 +1 qiladi
-        return view('pages.jurnals.paper', compact('paper'));
+        $paper->increment('views');
+
+        // relationlarni yuklash
+        $paper->load('issue.journal');
+
+        // jurnalni alohida olish
+        $journal = $paper->issue->journal;
+
+        return view('pages.jurnals.paper', compact('paper', 'journal'));
     }
 }

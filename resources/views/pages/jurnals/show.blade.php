@@ -35,9 +35,6 @@
                 <h1 class="lx-page-title" data-aos="fade-up">{{ $journal->name }}</h1>
                 <div class="lx-page-divider" data-aos="fade-up"></div>
                 <p class="lx-page-meta" data-aos="fade-up">
-
-
-
                 </p>
             </div>
         </section>
