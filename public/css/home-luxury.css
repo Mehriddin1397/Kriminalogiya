@@ -5887,3 +5887,113 @@ body.home-page .lx-hero .lx-hero-slide {
     .lx-back-to-top,
     .lx-back-to-top::before { animation: none; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Mahalliy hamkorlar — intro card + static tile variant
+   ───────────────────────────────────────────────────────────── */
+
+.lx-partner-intro {
+    padding-bottom: 0;
+}
+
+.lx-partner-intro-card {
+    position: relative;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 56px 64px 48px;
+    background: linear-gradient(135deg, #ffffff 0%, var(--lx-cream) 100%);
+    border: 1px solid rgba(201, 169, 97, 0.22);
+    overflow: hidden;
+    box-shadow: 0 6px 30px rgba(10, 14, 26, 0.06);
+}
+
+.lx-partner-intro-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--lx-bronze) 0%, var(--lx-gold) 50%, var(--lx-bronze) 100%);
+}
+
+.lx-partner-intro-card::after {
+    content: '';
+    position: absolute;
+    bottom: -90px;
+    right: -70px;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(201, 169, 97, 0.18);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.lx-partner-intro-mark {
+    position: absolute;
+    top: 14px;
+    left: 38px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 140px;
+    line-height: 1;
+    color: rgba(201, 169, 97, 0.18);
+    pointer-events: none;
+    user-select: none;
+}
+
+.lx-partner-intro-body {
+    position: relative;
+    z-index: 1;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--lx-navy);
+    text-align: center;
+    font-weight: 400;
+}
+
+.lx-partner-intro-body p { margin: 0 0 16px; }
+.lx-partner-intro-body p:last-child { margin-bottom: 0; }
+.lx-partner-intro-body strong { color: var(--lx-bronze-dark); font-weight: 600; }
+
+.lx-partner-intro-body::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: var(--lx-bronze);
+    margin: 26px auto 0;
+}
+
+/* Static tile (partner without external link — visual only) */
+.lx-partner-tile.is-static {
+    cursor: default;
+}
+
+.lx-partner-tile.is-static:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--lx-shadow-card);
+}
+
+.lx-partner-tile.is-static:hover::before {
+    transform: scaleX(0.5);
+}
+
+@media (max-width: 992px) {
+    .lx-partner-intro-card {
+        padding: 48px 44px 40px;
+    }
+    .lx-partner-intro-mark { font-size: 110px; left: 28px; top: 8px; }
+    .lx-partner-intro-body { font-size: 19px; }
+}
+
+@media (max-width: 600px) {
+    .lx-partner-intro-card {
+        padding: 40px 26px 32px;
+    }
+    .lx-partner-intro-mark { font-size: 90px; left: 18px; top: 4px; }
+    .lx-partner-intro-body { font-size: 16px; line-height: 1.6; }
+    .lx-partner-intro-card::after {
+        bottom: -120px; right: -100px;
+        width: 200px; height: 200px;
+    }
+}
