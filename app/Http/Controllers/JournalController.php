@@ -187,6 +187,13 @@ class JournalController extends Controller
         return view('pages.jurnals.show', compact('journal'));
     }
 
+    public function issue(Issue $issue)
+    {
+        $issue->load('journal', 'papers');
+        $papers = $issue->papers;
+        return view('pages.jurnals.issue', compact('issue', 'papers'));
+    }
+
 
 
     public function paper(Paper $paper)
