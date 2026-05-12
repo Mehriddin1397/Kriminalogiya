@@ -85,6 +85,118 @@
         </div>
     </section>
 
+    {{-- ─────── Ilmiy salohiyat (statistika) ─────── --}}
+    @php
+        $lxStats = [
+            [
+                'value' => 56, 'suffix' => '',
+                'label' => __('Fan doktori (DSc)'),
+                'icon'  => 'dsc',
+            ],
+            [
+                'value' => 117, 'suffix' => '',
+                'label' => __('Falsafa doktori (PhD)'),
+                'icon'  => 'phd',
+            ],
+            [
+                'value' => 75, 'suffix' => '%',
+                'label' => __('Ilmiy darajaga ega'),
+                'icon'  => 'percent',
+            ],
+            [
+                'value' => 40, 'suffix' => '',
+                'label' => __('Professor'),
+                'icon'  => 'professor',
+            ],
+            [
+                'value' => 99, 'suffix' => '',
+                'label' => __('Dotsent'),
+                'icon'  => 'dotsent',
+            ],
+        ];
+    @endphp
+
+    <section class="lx-stats-section" data-lx-stats>
+        <div class="lx-stats-bg" aria-hidden="true">
+            <img src="{{ asset('assets/img/banner1.jpg') }}" alt="" loading="lazy">
+        </div>
+        <div class="lx-stats-decor" aria-hidden="true">
+            <img src="{{ asset('assets/img/kti-logo.png') }}" alt="">
+        </div>
+
+        <div class="container">
+            <div class="lx-stats-head" data-aos="fade-up">
+                <span class="lx-eyebrow">{{ __('Statistika') }}</span>
+                <h2 class="lx-stats-title">{{ __('Institut ilmiy salohiyati') }}</h2>
+                <div class="lx-stats-divider"></div>
+            </div>
+
+            <div class="lx-stats-grid">
+                @foreach($lxStats as $i => $stat)
+                    <div class="lx-stat-card"
+                         data-aos="fade-up"
+                         data-aos-delay="{{ $i * 110 }}">
+                        <div class="lx-stat-card-icon" aria-hidden="true">
+                            @switch($stat['icon'])
+                                @case('dsc')
+                                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M32 8 6 20l26 12 26-12z"/>
+                                        <path d="M14 24v12c0 5 8 9 18 9s18-4 18-9V24"/>
+                                        <path d="M56 20v14"/>
+                                        <circle cx="56" cy="38" r="2.4" fill="currentColor" stroke="none"/>
+                                    </svg>
+                                    @break
+                                @case('phd')
+                                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="32" cy="22" r="9"/>
+                                        <path d="M14 50c2-8 9-13 18-13s16 5 18 13"/>
+                                        <path d="M20 14l24-4 6 6-24 4z"/>
+                                        <path d="M44 10l2 8"/>
+                                    </svg>
+                                    @break
+                                @case('percent')
+                                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="32" cy="32" r="22"/>
+                                        <line x1="22" y1="42" x2="42" y2="22"/>
+                                        <circle cx="24" cy="24" r="3.4"/>
+                                        <circle cx="40" cy="40" r="3.4"/>
+                                    </svg>
+                                    @break
+                                @case('professor')
+                                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M32 6 8 16l24 10 24-10z"/>
+                                        <path d="M32 26v10"/>
+                                        <circle cx="32" cy="44" r="6"/>
+                                        <path d="M18 58c2-6 7-9 14-9s12 3 14 9"/>
+                                    </svg>
+                                    @break
+                                @case('dotsent')
+                                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="32" cy="24" r="8"/>
+                                        <path d="M16 52c2-8 8-12 16-12s14 4 16 12"/>
+                                        <path d="M22 16l20-6 6 5"/>
+                                        <line x1="44" y1="13" x2="46" y2="20"/>
+                                    </svg>
+                                    @break
+                            @endswitch
+                        </div>
+
+                        <div class="lx-stat-card-value">
+                            <span class="lx-stat-num"
+                                  data-lx-counter
+                                  data-target="{{ $stat['value'] }}"
+                                  data-duration="1800">0</span>@if(!empty($stat['suffix']))<span class="lx-stat-suffix">{{ $stat['suffix'] }}</span>@endif
+                        </div>
+
+                        <span class="lx-stat-card-label">{{ $stat['label'] }}</span>
+
+                        <span class="lx-stat-card-glow" aria-hidden="true"></span>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     {{-- ─────── News (Mahalliy / Xorijiy / Xalqaro) ─────── --}}
     <section class="lx-section" style="background: var(--lx-cream);">
         <div class="container">
@@ -464,6 +576,55 @@
             jQuery('.lx-partners-nav.next').on('click', function () { $partners.trigger('next.owl.carousel'); });
         }
     });
+</script>
+
+{{-- ─── Stats counter (IntersectionObserver) ─── --}}
+<script>
+(function () {
+    var counters = document.querySelectorAll('[data-lx-counter]');
+    if (!counters.length) return;
+
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+    function run(el) {
+        var target   = parseFloat(el.getAttribute('data-target')) || 0;
+        var duration = parseInt(el.getAttribute('data-duration'), 10) || 1600;
+
+        if (prefersReduced) {
+            el.textContent = target;
+            return;
+        }
+
+        var start = null;
+        function tick(ts) {
+            if (start === null) start = ts;
+            var p = Math.min((ts - start) / duration, 1);
+            var v = Math.round(target * easeOutCubic(p));
+            el.textContent = v;
+            if (p < 1) requestAnimationFrame(tick);
+            else el.textContent = target;
+        }
+        requestAnimationFrame(tick);
+    }
+
+    if (!('IntersectionObserver' in window)) {
+        counters.forEach(run);
+        return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                run(entry.target);
+                io.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.35 });
+
+    counters.forEach(function (el) { io.observe(el); });
+})();
 </script>
 
 </x-main>
