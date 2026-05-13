@@ -63,7 +63,9 @@ class PageController extends Controller
             $query->where('name_uz', 'Xorijiy hamkorlar');
         })->count();
 
-        return view('pages.main', compact('contacts', 'mnews', 'xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount', 'inews'));
+        $partners = Partner::all();
+
+        return view('pages.main', compact('contacts', 'mnews', 'xnews', 'category1PartnersCount', 'category2PartnersCount', 'newscount', 'researchcount', 'inews','partners'));
 
     }
 

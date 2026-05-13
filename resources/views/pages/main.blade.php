@@ -80,7 +80,7 @@
 
         {{-- Scroll hint --}}
         <div class="lx-scroll-hint">
-            <span>Pastga</span>
+            <span>{{ __('lan.pastga') }}</span>
             <div class="lx-line"></div>
         </div>
     </section>
@@ -89,28 +89,28 @@
     @php
         $lxStats = [
             [
-                'value' => 56, 'suffix' => '',
-                'label' => __('Fan doktori (DSc)'),
+                'value' => 6, 'suffix' => '%',
+                'label' => __('lan.fan_doktori_dsc'),
                 'icon'  => 'dsc',
             ],
             [
-                'value' => 117, 'suffix' => '',
-                'label' => __('Falsafa doktori (PhD)'),
+                'value' => 28, 'suffix' => '%',
+                'label' => __('lan.falsafa_doktori_phd'),
                 'icon'  => 'phd',
             ],
             [
-                'value' => 75, 'suffix' => '%',
-                'label' => __('Ilmiy darajaga ega'),
+                'value' => 51, 'suffix' => '%',
+                'label' => __('lan.ilmiy_darajaga_ega'),
                 'icon'  => 'percent',
             ],
             [
-                'value' => 40, 'suffix' => '',
-                'label' => __('Professor'),
+                'value' => 3, 'suffix' => '%',
+                'label' => __('lan.professor'),
                 'icon'  => 'professor',
             ],
             [
-                'value' => 99, 'suffix' => '',
-                'label' => __('Dotsent'),
+                'value' => 14, 'suffix' => '%',
+                'label' => __('lan.dotsent'),
                 'icon'  => 'dotsent',
             ],
         ];
@@ -126,8 +126,8 @@
 
         <div class="container">
             <div class="lx-stats-head" data-aos="fade-up">
-                <span class="lx-eyebrow">{{ __('Statistika') }}</span>
-                <h2 class="lx-stats-title">{{ __('Institut ilmiy salohiyati') }}</h2>
+                <span class="lx-eyebrow">{{ __('lan.statistika') }}</span>
+                <h2 class="lx-stats-title">{{ __('lan.institut_ilmiy_salohiyati') }}</h2>
                 <div class="lx-stats-divider"></div>
             </div>
 
@@ -202,7 +202,7 @@
         <div class="container">
 
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">Eng so&apos;nggi</span>
+                <span class="lx-eyebrow">{{__('lan.eng_songgi')}}</span>
                 <h2 class="lx-section-title">{{ __('lan.yangilik') }}</h2>
             </div>
 
@@ -230,7 +230,7 @@
                                data-aos="fade-up" data-aos-delay="{{ $i * 100 }}">
                                 <div class="lx-news-thumb">
                                     <div class="lx-news-thumb-empty">
-                                        <span>Kriminalogiya</span>
+                                        <span>Kriminologiya</span>
                                     </div>
                                     @if($new->photos->first())
                                         <img src="{{ asset('storage/'.$new->photos->first()->file_path) }}"
@@ -262,7 +262,7 @@
     <section class="lx-section charcoal">
         <div class="container">
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">Yo&apos;nalishlar</span>
+                <span class="lx-eyebrow">{{__('lan.yonalishlar')}}</span>
                 <h2 class="lx-section-title">{{ __('lan.malumot') }}</h2>
             </div>
 
@@ -382,8 +382,8 @@
     <section class="lx-section" style="background: var(--lx-cream);">
         <div class="container">
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">Hamkorlik</span>
-                <h2 class="lx-section-title">Ilmiy hamkorlar</h2>
+                <span class="lx-eyebrow">{{__('lan.hamkorlik')}}</span>
+                <h2 class="lx-section-title">{{__('lan.ilmiy_hamkorlar')}}</h2>
                 <div class="lx-stats-divider"></div>
             </div>
 
@@ -393,17 +393,19 @@
                 </button>
 
                 <div class="owl-carousel lx-partners-carousel">
-                    @foreach($lxPartners as $partner)
-                        <a href="{{ $partner['url'] }}" target="_blank" rel="noopener" class="lx-partner-card">
+                    @foreach($partners as $partner)
+                        <a href="{{ $partner->link }}" target="_blank" rel="noopener" class="lx-partner-card">
                             <div class="lx-partner-logo">
-                                <img src="{{ asset($partner['logo']) }}" alt="{{ $partner['name'] }}" loading="lazy"
+                                @foreach($partner->photos as $photo)
+                                <img src="{{ asset('storage/' . $photo->file_path) }}" alt="{{ $photo->file_path }}" loading="lazy"
                                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                @endforeach
                                 <div class="lx-partner-logo-fallback">
-                                    <span>{{ strtoupper(substr($partner['name'], 0, 1)) }}</span>
+                                    <span>{{ strtoupper(substr($partner->name, 0, 1)) }}</span>
                                 </div>
                             </div>
                             <div class="lx-partner-name">
-                                <span>{{ $partner['name'] }}</span>
+                                <span>{{ $partner->name }}</span>
                             </div>
                         </a>
                     @endforeach

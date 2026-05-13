@@ -18,9 +18,9 @@
                 [
                     'title' => __('lan.taq_loy'),
                     'children' => [
-                        ['url' => route('categoryId', 41), 'title' => __('Tashabbus asosidagi loyihalar')],
-                        ['url' => route('categoryId', 42), 'title' => __('Buyurtma asosidagi loyihalar')],
-                        ['url' => route('categoryId', 43), 'title' => __('Davlat granti asosidagi loyihalar')],
+                        ['url' => route('categoryId', 41), 'title' => __('lan.tashabbus_asosidagi_loyihalar')],
+                        ['url' => route('categoryId', 42), 'title' => __('lan.buyurtma_asosidagi_loyihalar')],
+                        ['url' => route('categoryId', 43), 'title' => __('lan.davlat_granti_asosidagi_loyihalar')],
                     ],
                 ],
                 ['url' => route('categoryId', 44), 'title' => __('lan.dav_hisob')],
@@ -40,33 +40,55 @@
             ],
         ],
         [
-            'title' => __('Ilmiy kengashlar'),
+            'title' => __('lan.ilmiy_kengashlar'),
             'children' => [
-                ['url' => route('show', ['category_id' => 2, 'id' => 1]), 'title' => __('Institut huzuridagi kengashlar')],
-                ['url' => route('show', ['category_id' => 1, 'id' => 2]), 'title' => __('O‘zbekiston Respublikasi Kriminologiya kengashi')],
-                ['url' => route('show', ['category_id' => 3, 'id' => 3]), 'title' => __('Xalqaro ekspertlar kengashi')],
-                ['url' => route('show', ['category_id' => 4, 'id' => 4]), 'title' => __('Ilmiy darajalar beruvchi kengashlar')],
+                ['url' => route('show', ['category_id' => 2, 'id' => 1]), 'title' => __('lan.institut_huzuridagi_kengashlar')],
+                [
+                    'title' => __('lan.kriminologiya_kengashi'),
+                    'children' => [
+                        ['url' => route('categoryId', 41), 'title' => __('lan.kengash_maqsadi_va_vazifalari')],
+                        ['url' => route('categoryId', 42), 'title' => __('lan.kengash_azolari')],
+                    ],
+                ],
+                [
+                    'title' => __('lan.xalqaro_ekspertlar_kengashi'),
+                    'children' => [
+                        ['url' => route('categoryId', 41), 'title' => __('lan.kengash_maqsadi_va_vazifalari')],
+                        ['url' => route('categoryId', 42), 'title' => __('lan.kengash_azolari')],
+                    ],
+                ],
+                [
+                    'title' => __('lan.ilmiy_darajalar_beruvchi_kengashlar'),
+                    'children' => [
+                        ['url' => route('categoryId', 41), 'title' => __('lan.kriminologiya_ixtisosligi_12_00_15')],
+                        ['url' => route('categoryId', 42), 'title' => __('lan.jinoyat_huquqi_12_00_08')],
+                        ['url' => route('categoryId', 42), 'title' => __('lan.huquqbuzarliklar_profilaktikasi_12_00_14')],
+                        ['url' => route('categoryId', 42), 'title' => __('lan.kiberxavfsizlik_05_01_12')],
+                        ['url' => route('categoryId', 42), 'title' => __('lan.dissertatsiya_mavzulari')],
+                    ],
+                ],
+
             ],
         ],
         [
-            'title' => __('XALQARO HAMKORLAR'),
+            'title' => __('lan.xalqaro_hamkorlar'),
             'children' => [
-                ['url' => route('categoryId', 34),                          'title' => __('Xalqaro hamkorlik haqida')],
-                ['url' => route('show', ['category_id' => 30, 'id' => 3]), 'title' => __('Xalqaro hamkorlar')],
-                ['url' => route('categoryId', 31),                          'title' => __('Memorandumlar')],
-                ['url' => route('show', ['category_id' => 35, 'id' => 1]), 'title' => __('Xalqaro tadbirlar')],
-                ['url' => route('show', ['category_id' => 35, 'id' => 1]), 'title' => __('Xorijiy tajribalar')],
-                ['url' => route('show', ['category_id' => 35, 'id' => 1]), 'title' => __('Hamkorlik uchun murojaat')],
+                ['url' => route('categoryId', 34),                          'title' => __('lan.xalqaro_hamkorlik_haqida')],
+                ['url' => route('show', ['category_id' => 30, 'id' => 3]), 'title' => __('lan.xalqaro_hamkorlar')],
+                ['url' => route('categoryId', 31),                          'title' => __('lan.memorandumlar')],
+                ['url' => route('show', ['category_id' => 35, 'id' => 1]), 'title' => __('lan.xalqaro_tadbirlar')],
+                ['url' => route('show', ['category_id' => 35, 'id' => 1]), 'title' => __('lan.xorijiy_tajribalar')],
+                ['url' => route('show', ['category_id' => 35, 'id' => 1]), 'title' => __('lan.hamkorlik_uchun_murojaat')],
             ],
         ],
         [
             'title' => __('lan.yangilik'),
             'children' => [
-                ['url' => route('categoryId', 22), 'title' => __('Yangiliklar')],
-                ['url' => route('categoryId', 8),  'title' => __('Ommabop maqolalar')],
-                ['url' => route('categoryId', 23), 'title' => __('Fotogaleriya')],
-                ['url' => route('categoryId', 24), 'title' => __('Videotasvirlar')],
-                ['url' => route('categoryId', 32), 'title' => __('Ochiq ma’lumotlar')],
+                ['url' => route('categoryId', 22), 'title' => __('lan.yangilik')],
+                ['url' => route('categoryId', 8),  'title' => __('lan.ommabop_maqolalar')],
+                ['url' => route('categoryId', 23), 'title' => __('lan.fotogaleriya')],
+                ['url' => route('categoryId', 24), 'title' => __('lan.videotasvirlar')],
+                ['url' => route('categoryId', 32), 'title' => __('lan.ochiq_malumotlar')],
             ],
         ],
         [
@@ -146,8 +168,8 @@
             <a class="lx-nav-brand" href="{{ route('main') }}">
                 <img src="{{ asset('assets/img/kti-logo.png') }}" alt="KTI">
                 <span class="lx-nav-brand-text">
-                    <span class="lx-nav-brand-small">Kriminalogiya</span>
-                    <span class="lx-nav-brand-big">Tadqiqot Instituti</span>
+                    <span class="lx-nav-brand-small">{{__('lan.kriminologiya')}}</span>
+                    <span class="lx-nav-brand-big">{{ __('lan.kriminalog') }}</span>
                 </span>
             </a>
 

@@ -9,8 +9,8 @@
                     <a href="{{ route('main') }}" class="lx-footer-logo">
                         <img src="{{ asset('assets/img/kti-logo.png') }}" alt="KTI">
                         <span class="lx-footer-logo-text">
-                            <span class="small">Kriminologiya Instituti</span>
-                            <span class="big">{{ __('lan.kriminalog') }}</span>
+                            <span class="small">{{ __('lan.meta1') }}</span>
+
                         </span>
                     </a>
 
@@ -139,13 +139,13 @@
             <div class="lx-footer-bottom">
                 <div>
                     &copy; {{ date('Y') }}
-                    <a href="https://kti.iiv.uz">Kriminologiya tadqiqot instituti</a>.
+                    <a href="https://kti.iiv.uz">{{__('lan.meta1')}}</a>.
                     {{ __('lan.bar_huq_him') }}
                 </div>
 
                 <div class="lx-footer-credit">
                     Designed by
-                    <a href="https://mekhriddin.vercel.app/" target="_blank" rel="noopener"><strong>Mehriddin Soyibov</strong></a>
+                    <a href="https://mekhriddin.vercel.app/" target="_blank" rel="noopener"><strong>Mehriddin Soyibov, Raxmatullayev Shoymurod</strong></a>
                 </div>
 
                 {{-- www.uz top-rating widget (legacy, keep functionality) --}}
