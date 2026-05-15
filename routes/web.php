@@ -96,5 +96,8 @@ Route::prefix('journals')->group(function () {
 });
 
 
+Route::get('/gallery', [\App\Http\Controllers\PageController::class, 'gallery'])->name('gallery');
+
+
 
 

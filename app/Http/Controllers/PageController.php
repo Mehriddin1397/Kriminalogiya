@@ -15,6 +15,7 @@ use App\Models\Journal;
 use App\Models\Message;
 use App\Models\News;
 use App\Models\Partner;
+use App\Models\Photo;
 use App\Models\Rahbariyat;
 use App\Models\Research;
 use App\Models\Resource;
@@ -373,6 +374,17 @@ class PageController extends Controller
         $categories = Category::forObjectType('exploration');
 
         return view('pages.loyiha_categories', compact('categories'));
+    }
+
+    public function gallery()
+    {
+        // Faqat News modeliga bog‘langan rasmlar
+        $photos = Photo::with('model')
+            ->where('model_type', News::class)
+            ->latest()
+            ->paginate(25);
+
+        return view('pages.gallery', compact('photos'));
     }
 
 

@@ -86,7 +86,7 @@
             'children' => [
                 ['url' => route('categoryId', 22), 'title' => __('lan.yangilik')],
                 ['url' => route('categoryId', 8),  'title' => __('lan.ommabop_maqolalar')],
-                ['url' => route('categoryId', 23), 'title' => __('lan.fotogaleriya')],
+                ['url' => route('gallery'), 'title' => __('lan.fotogaleriya')],
                 ['url' => route('categoryId', 24), 'title' => __('lan.videotasvirlar')],
                 ['url' => route('categoryId', 32), 'title' => __('lan.ochiq_malumotlar')],
             ],
