@@ -382,7 +382,7 @@ class PageController extends Controller
         $photos = Photo::with('model')
             ->where('model_type', News::class)
             ->latest()
-            ->paginate(25);
+            ->paginate(27);
 
         return view('pages.gallery', compact('photos'));
     }
