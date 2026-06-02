@@ -18,7 +18,7 @@
     <section class="lx-page-hero">
         @if($heroBg)
             <div class="lx-page-hero-bg" aria-hidden="true">
-                <img src="{{ asset($heroBg) }}" alt="" loading="lazy">
+                <img src="{{ asset('assets/img/kti_rasm.jpg') }}" alt="" loading="lazy">
             </div>
         @endif
 

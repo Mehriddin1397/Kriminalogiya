@@ -9,7 +9,7 @@
                     <a href="{{ route('main') }}" class="lx-footer-logo">
                         <img src="{{ asset('assets/img/kti-logo.png') }}" alt="KTI">
                         <span class="lx-footer-logo-text">
-                            <span class="small">{{ __('lan.meta1') }}</span>
+                            <span class="small">{{ __('lan.kriminalog') }}</span>
 
                         </span>
                     </a>

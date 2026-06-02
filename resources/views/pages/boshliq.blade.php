@@ -14,7 +14,7 @@
     <section class="lx-page-hero">
         @if($heroBg)
             <div class="lx-page-hero-bg" aria-hidden="true">
-                <img src="{{ asset($heroBg) }}" alt="" loading="lazy">
+                <img src="{{ asset('assets/img/kti_rasm.jpg') }}" alt="" loading="lazy">
             </div>
         @endif
 
@@ -43,11 +43,9 @@
         <div class="container">
 
             <div class="lx-section-head" data-aos="fade-up">
-                <span class="lx-eyebrow">Bizning jamoa</span>
+
                 <h2 class="lx-section-title">{{ __('lan.ins_rahbariyat') ?? __('lan.rahbariyat') }}</h2>
-                <p class="lx-section-sub">
-                    Institutimiz rahbariyati tarkibi va vakolatlari haqida ma'lumotlar.
-                </p>
+
             </div>
 
             @if($boss->count())
@@ -151,12 +149,7 @@
                 </p>
             @endif
 
-            <div class="lx-back-wrap" data-aos="fade-up">
-                <a href="{{ route('main') }}" class="lx-btn lx-btn-dark">
-                    <span class="arrow-back">&larr;</span>
-                    <span>{{ __('lan.bosh') }}</span>
-                </a>
-            </div>
+
 
         </div>
     </section>

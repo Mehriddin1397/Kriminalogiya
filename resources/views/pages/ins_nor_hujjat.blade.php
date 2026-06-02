@@ -14,20 +14,44 @@
             [
                 'num'   => '01',
                 'href'  => 'https://lex.uz/uz/docs/7034904',
-                'label' => __('lan.qaror_kri'),
-                'kind'  => __('lan.qarori'),
+                'label' => __('Oʻzbekiston Respublikasi Prezidentining 2024-yil 15-yanvardagi "Jamoat xavfsizligini taʼminlash va jinoyatchilikka qarshi kurashish sohasini ilmiy tadqiq qilish faoliyatini sifat jihatidan yangi bosqichga koʻtarish chora-tadbirlari toʻgʻrisida" PF-10-son Farmoni'),
+                'kind'  => __('lan.farmoni'),
             ],
             [
                 'num'   => '02',
-                'href'  => 'https://www.lex.uz/uz/docs/-6755597',
-                'label' => __('lan.farmoni'),
-                'kind'  => 'Lex.uz',
+                'href'  => 'https://lex.uz/docs/-6755253',
+                'label' => __('Oʻzbekiston Respublikasi Prezidentining  2024-yil 15-yanvardagi "Kriminologiya sohasida ilmiy-amaliy tadqiqot ishlarini tashkil etish chora-tadbirlari toʻgʻrisida" PQ-22-son qarori'),
+                'kind'  =>  __('lan.qarori'),
             ],
             [
                 'num'   => '03',
-                'href'  => 'https://www.lex.uz/docs/-6755253',
-                'label' => __('lan.qarori'),
-                'kind'  => 'Lex.uz',
+                'href'  => 'https://lex.uz/uz/docs/-7034904?ONDATE=25.07.2024',
+                'label' => __('Oʻzbekiston Respublikasi Vazirlar Mahkamasining  2024-yil 24-iyuldagi "Kriminologik faoliyatni ilmiy taʼminlash chora-tadbirlari toʻgʻrisida"  445-son qarori'),
+                'kind'  => __('lan.qarori'),
+            ],
+            [
+                'num'   => '04',
+                'href'  => 'https://lex.uz/docs/-7330260',
+                'label' => __('Oʻzbekiston Respublikasi Prezidentining 2025-yil 3-yanvardagi "2025-yilda respublika mahallalarida xavfsiz muhitni yaratish va huquqbuzarliklarning barvaqt oldini olish tizimi samaradorligini yanada oshirish boʻyicha chora-tadbirlar toʻgʻrisida" PQ-1-son qarori '),
+                'kind'  => __('lan.qarori'),
+            ],
+            [
+                'num'   => '05',
+                'href'  => 'https://lex.uz/uz/docs/-7973611',
+                'label' => __('Oʻzbekiston Respublikasi Prezidentining 2025-yil 5-yanvardagi "Respublika mahallalarida xavfsiz muhitni yaratish yoʻnalishida yaxlit manzilli ishlash tizimini joriy etishga qaratilgan qoʻshimcha chora-tadbirlar toʻgʻrisida" PQ-1-son qarori '),
+                'kind'  => __('lan.qarori'),
+            ],
+            [
+                'num'   => '06',
+                'href'  => 'https://lex.uz/uz/docs/-7034904?ONDATE=25.07.2024',
+                'label' => __('Oʻzbekiston Respublikasi Prezidentining 2025-yil 30-oktabrdagi  "Strategik rejalashtirish va rivojlanish tizimini joriy etish boʻyicha tashkiliy chora-tadbirlar toʻgʻrisida" PF-201-son Farmoni '),
+                'kind'  => __('lan.farmoni'),
+            ],
+            [
+                'num'   => '07',
+                'href'  => 'https://www.lex.uz/ru/docs/-2387357?ONDATE=16.01.2026',
+                'label' => __('Oʻzbekiston Respublikasining  2014-yil 14-maydagi "Huquqbuzarliklar profilaktikasi toʻgʻrisida" O‘RQ-371-son qonuni'),
+                'kind'  => __('lan.qarori'),
             ],
         ];
 
@@ -37,7 +61,7 @@
     <section class="lx-page-hero">
         @if($heroBg)
             <div class="lx-page-hero-bg" aria-hidden="true">
-                <img src="{{ asset($heroBg) }}" alt="" loading="lazy">
+                <img src="{{ asset('assets/img/kti_rasm.jpg') }}" alt="" loading="lazy">
             </div>
         @endif
 
@@ -212,12 +236,6 @@
                 </div>
             @endif
 
-            <div class="lx-back-wrap" data-aos="fade-up">
-                <a href="{{ route('main') }}" class="lx-btn lx-btn-dark">
-                    <span class="arrow-back">&larr;</span>
-                    <span>{{ __('lan.ortga') }}</span>
-                </a>
-            </div>
         </div>
     </section>
 

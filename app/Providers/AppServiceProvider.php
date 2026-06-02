@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
             $contact = Cache::remember('contact_data_1', now()->addHours(6), fn () => Contact::find(1));
             $view->with('contact', $contact);
         });
+
+        URL::forceScheme('https');
     }
 
 

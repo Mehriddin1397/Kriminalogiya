@@ -66,7 +66,7 @@
             </p>
 
             <div class="lx-hero-cta">
-                <a href="{{ route('boss') }}" class="lx-btn">
+                <a href="{{ route('test', ['category_id' => 10, 'id' => 1]) }}" class="lx-btn">
                     <span>{{ __('lan.batafsil') }}</span>
                     <span class="arrow">&rarr;</span>
                 </a>

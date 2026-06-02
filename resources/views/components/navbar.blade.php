@@ -6,7 +6,7 @@
                 ['url' => route('test', ['category_id' => 10, 'id' => 1]), 'title' => __('lan.ins_haq')],
                 ['url' => route('test', ['category_id' => 37, 'id' => 3]), 'title' => __('lan.ins_vaz')],
                 ['url' => route('boss'), 'title' => __('lan.rahbariyat')],
-                ['url' => route('boss'), 'title' => __('lan.off_bulim')],
+                ['url' => route('main'), 'title' => __('lan.off_bulim')],
                 ['url' => route('hujjat'),                                  'title' => __('lan.ins_nor')],
                 ['url' => route('categoryId', 40)                           ,'title' => __('lan.hamkor')],
             ],
@@ -24,7 +24,7 @@
                     ],
                 ],
                 ['url' => route('categoryId', 44), 'title' => __('lan.dav_hisob')],
-                ['url' => route('boss'), 'title' => __('lan.tad_natij')],
+                ['url' => route('main'), 'title' => __('lan.tad_natij')],
             ],
         ],
         [
