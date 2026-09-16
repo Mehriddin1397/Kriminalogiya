@@ -37,7 +37,9 @@ class AppServiceProvider extends ServiceProvider
             $view->with('contact', $contact);
         });
 
-        URL::forceScheme('https');
+        if (env('FORCE_HTTPS', false) || request()->isSecure() || request()->server('HTTP_X_FORWARDED_PROTO') === 'https') {
+            URL::forceScheme('https');
+        }
     }
 
 

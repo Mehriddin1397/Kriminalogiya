@@ -22,8 +22,7 @@
     <meta name="description" content="Kriminologiya tadqiqot instituti">
     <meta name="keywords" content="jinoyatchilikka qarshi kurash,kriminalogiya,firibgarlik,o‘g‘irlik,zo‘ravonlik,fight against crime,criminology,fraud,theft,violence,жиноятчиликка қарши кураш,криминалология,фирибгарлик,ўғрилик,зўравонлик,борьба с преступностью,криминология,мошенничество,кража,насилие">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="Kriminalogiya">
-    <link rel="canonical" href="https://kti.iiv.uz">
+    <link rel="canonical" href="{{ url()->current() }}">
 
     <!-- Favicon -->
     <link href="{{asset('assets/images/logo.svg')}}" rel="icon">
