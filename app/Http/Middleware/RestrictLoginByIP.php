@@ -15,10 +15,13 @@ class RestrictLoginByIP
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $allowed_ips = ['213.230.99.98', '192.168.40.18','127.0.0.1']; // ruxsat berilgan IP'lar
+        $clientIp = $request->ip();
+        $allowed_ips = ['213.230.99.98', '192.168.40.18', '192.168.40.39', '192.168.40.111', '127.0.0.1'];
 
-        if (!in_array($request->ip(), $allowed_ips)) {
-            abort(403, 'Sizning IP manzilingiz (' . $request->ip() . ') orqali kirish taqiqlangan.');
+        $isLocalSubnet = str_starts_with($clientIp, '192.168.40.') || str_starts_with($clientIp, '127.0.0.');
+
+        if (!in_array($clientIp, $allowed_ips) && !$isLocalSubnet) {
+            abort(403, 'Sizning IP manzilingiz (' . $clientIp . ') orqali kirish taqiqlangan.');
         }
 
         return $next($request);
