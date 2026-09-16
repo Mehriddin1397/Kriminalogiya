@@ -1,6 +1,6 @@
 <!--! ================================================================ !-->
 @foreach($issues as $issue )
-    <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="tasksDetailsOffcanvasEdit{{ $academy->id }}">
+    <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="tasksDetailsOffcanvasEdit{{ $issue->id }}">
         <div class="offcanvas-header border-bottom" style="padding-top: 20px; padding-bottom: 20px">
             <div class="d-flex align-items-center">
                 <div class="avatar-text avatar-md items-details-close-trigger" data-bs-dismiss="offcanvas"
@@ -111,28 +111,51 @@
                             @enderror
                         </div>
 
-                        <!-- Joriy faylni ko'rsatish -->
+                        <!-- Joriy muqova rasmi -->
+                        @if($issue->image)
+                            <div class="form-group mb-4">
+                                <label class="form-label">Joriy muqova rasmi:</label>
+                                <div class="mb-2">
+                                    <div>
+                                        <img src="{{ Storage::url($issue->image) }}" alt="Current image" style="max-width: 200px; max-height: 200px;" class="img-thumbnail">
+                                    </div>
+                                    <div class="form-check mt-2">
+                                        <input type="checkbox" name="remove_image" id="remove_image{{ $issue->id }}" class="form-check-input" value="1">
+                                        <label for="remove_image{{ $issue->id }}" class="form-check-label text-danger">
+                                            🗑️ Rasmni o'chirish
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                        <div class="form-group mb-4">
+                            <label class="form-label">
+                                @if($issue->image)
+                                    Yangi muqova rasmi:
+                                @else
+                                    Muqova rasmi (ixtiyoriy):
+                                @endif
+                            </label>
+                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"
+                                   accept="image/*">
+                            @error('image')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <!-- Joriy PDF fayl -->
                         @if($issue->file_path)
                             <div class="form-group mb-4">
-                                <label class="form-label">Joriy fayl:</label>
+                                <label class="form-label">Joriy PDF fayl:</label>
                                 <div class="mb-2">
-                                    @php
-                                        $extension = pathinfo($issue->file_path, PATHINFO_EXTENSION);
-                                    @endphp
-
-                                    @if(in_array($extension, ['jpg', 'jpeg', 'png', 'gif']))
-                                        <div>
-                                            <img src="{{ Storage::url($issue->file_path) }}" alt="Current image" style="max-width: 200px; max-height: 200px;" class="img-thumbnail">
-                                        </div>
-                                    @else
-                                        <a href="{{ Storage::url($issue->file_path) }}" target="_blank" class="btn btn-sm btn-info">
-                                            📄 Hozirgi faylni ko'rish
-                                        </a>
-                                    @endif
+                                    <a href="{{ Storage::url($issue->file_path) }}" target="_blank" class="btn btn-sm btn-info">
+                                        📄 Hozirgi faylni ko'rish
+                                    </a>
 
                                     <div class="form-check mt-2">
-                                        <input type="checkbox" name="remove_file" id="remove_file" class="form-check-input" value="1">
-                                        <label for="remove_file" class="form-check-label text-danger">
+                                        <input type="checkbox" name="remove_file" id="remove_file{{ $issue->id }}" class="form-check-input" value="1">
+                                        <label for="remove_file{{ $issue->id }}" class="form-check-label text-danger">
                                             🗑️ Faylni o'chirish
                                         </label>
                                     </div>
@@ -143,14 +166,14 @@
                         <div class="form-group mb-4">
                             <label class="form-label">
                                 @if($issue->file_path)
-                                    Yangi fayl yuklash (PDF yoki rasm):
+                                    Yangi PDF fayl yuklash:
                                 @else
-                                    Fayl (rasm yoki PDF):
+                                    PDF fayl (ixtiyoriy):
                                 @endif
                             </label>
                             <input type="file" name="file_path" class="form-control @error('file_path') is-invalid @enderror"
-                                   accept="image/*,.pdf">
-                            <small class="text-muted">Rasm yoki PDF formatida (max 2MB)</small>
+                                   accept="application/pdf">
+                            <small class="text-muted">PDF formatida, hajmi katta bo'lishi mumkin (max 200MB)</small>
                             @error('file_path')
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -164,7 +187,6 @@
                 </div>
             </form>
         </div>
-    </div>
     </div>
 @endforeach
 

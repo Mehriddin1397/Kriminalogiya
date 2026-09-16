@@ -31,15 +31,19 @@ class IssueController extends Controller
             'number' => 'required|integer|min:1',
             'year' => 'required|integer|min:2000|max:' . date('Y'),
             'published_at' => 'required|date',
-            'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'file_path' => 'nullable|file|mimes:pdf|max:204800'
         ]);
 
 
-        $data = $request->all();
+        $data = $request->except(['image', 'file_path']);
 
-        // rasm yuklash
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('issues/covers', 'public');
+        }
+
         if ($request->hasFile('file_path')) {
-            $data['file_path'] = $request->file('file_path')->store('issues', 'public');
+            $data['file_path'] = $request->file('file_path')->store('issues/files', 'public');
         }
 
         Issue::create($data);
@@ -61,18 +65,36 @@ class IssueController extends Controller
             'number' => 'required|integer|min:1',
             'year' => 'required|integer|min:2000|max:' . date('Y'),
             'published_at' => 'required|date',
-            'file_path' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048'
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
+            'file_path' => 'nullable|file|mimes:pdf|max:204800'
         ]);
 
-        // File upload qismi
-        if ($request->hasFile('file_path')) {
-            // Eski faylni o'chirish (agar mavjud bo'lsa)
+        // 'image' va 'file_path' faqat yangi fayl yuklanganda yoki o'chirish so'ralganda o'zgartiriladi,
+        // aks holda mavjud faylni saqlab qolamiz.
+        unset($validated['image'], $validated['file_path']);
+
+        if ($request->boolean('remove_image')) {
+            if ($issue->image && Storage::disk('public')->exists($issue->image)) {
+                Storage::disk('public')->delete($issue->image);
+            }
+            $validated['image'] = null;
+        } elseif ($request->hasFile('image')) {
+            if ($issue->image && Storage::disk('public')->exists($issue->image)) {
+                Storage::disk('public')->delete($issue->image);
+            }
+            $validated['image'] = $request->file('image')->store('issues/covers', 'public');
+        }
+
+        if ($request->boolean('remove_file')) {
             if ($issue->file_path && Storage::disk('public')->exists($issue->file_path)) {
                 Storage::disk('public')->delete($issue->file_path);
             }
-
-            $path = $request->file('file_path')->store('issues', 'public');
-            $validated['file_path'] = $path;
+            $validated['file_path'] = null;
+        } elseif ($request->hasFile('file_path')) {
+            if ($issue->file_path && Storage::disk('public')->exists($issue->file_path)) {
+                Storage::disk('public')->delete($issue->file_path);
+            }
+            $validated['file_path'] = $request->file('file_path')->store('issues/files', 'public');
         }
 
         $issue->update($validated);
@@ -82,7 +104,18 @@ class IssueController extends Controller
 
     public function destroy($id)
     {
-        Issue::findOrFail($id)->delete();
-        return back();
+        $issue = Issue::findOrFail($id);
+
+        if ($issue->file_path && Storage::disk('public')->exists($issue->file_path)) {
+            Storage::disk('public')->delete($issue->file_path);
+        }
+
+        if ($issue->image && Storage::disk('public')->exists($issue->image)) {
+            Storage::disk('public')->delete($issue->image);
+        }
+
+        $issue->delete();
+
+        return back()->with('success', "Muvaffaqiyatli o'chirildi");
     }
 }

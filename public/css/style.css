@@ -92,7 +92,7 @@
     margin-right: 30px;
     padding: 25px 0;
     color: #FFFFFF;
-    font-size: 15px;
+    font-size: 16.5px;
     font-weight: 500;
     text-transform: uppercase;
     outline: none;
@@ -165,12 +165,12 @@
 
     .header-carousel .owl-carousel-item h5,
     .header-carousel .owl-carousel-item p {
-        font-size: 14px !important;
+        font-size: 15.5px !important;
         font-weight: 400 !important;
     }
 
     .header-carousel .owl-carousel-item h1 {
-        font-size: 30px;
+        font-size: 32.5px;
         font-weight: 600;
     }
 }
@@ -202,7 +202,7 @@
     color: #FFFFFF;
     background: transparent;
     border: 1px solid #FFFFFF;
-    font-size: 22px;
+    font-size: 24px;
     transition: .5s;
 }
 
@@ -535,7 +535,7 @@
 .testimonial-carousel .owl-nav .owl-next {
     position: relative;
     color: var(--primary);
-    font-size: 45px;
+    font-size: 49px;
     transition: .5s;
 }
 
@@ -597,7 +597,7 @@
     padding: 0;
     text-align: left;
     color: #FFFFFF;
-    font-size: 15px;
+    font-size: 16.5px;
     font-weight: normal;
     text-transform: capitalize;
     transition: .3s;
@@ -619,7 +619,7 @@
 
 .footer .copyright {
     padding: 25px 0;
-    font-size: 15px;
+    font-size: 16.5px;
     border-top: 1px solid rgba(256, 256, 256, .1);
 }
 
@@ -751,12 +751,12 @@ upcoming meetings page
 
 /* Sarlavha va sana */
 .down-content h4 {
-    font-size: 24px;
+    font-size: 26px;
     margin-top: 20px;
     margin-bottom: 10px;
 }
 .new_p {
-    font-size: 14px;
+    font-size: 15.5px;
     color: #666;
 }
 
@@ -795,7 +795,7 @@ upcoming meetings page
         height: 350px;
     }
     .down-content h4 {
-        font-size: 22px;
+        font-size: 24px;
     }
 }
 @media (max-width: 768px) {
@@ -806,7 +806,7 @@ upcoming meetings page
         padding: 30px 15px;
     }
     .down-content h4 {
-        font-size: 20px;
+        font-size: 22px;
     }
 }
 @media (max-width: 576px) {
@@ -814,7 +814,7 @@ upcoming meetings page
         height: 220px;
     }
     .down-content h4 {
-        font-size: 18px;
+        font-size: 19.5px;
     }
     .main-button-red a {
         width: 100%;
@@ -851,14 +851,14 @@ upcoming meetings page
 
 /* Responsive heading */
 .page-header h1 {
-    font-size: 3rem;
+    font-size: 3.25rem;
     font-weight: bold;
 }
 
 /* RESPONSIVE MEDIA QUERIES */
 @media (max-width: 992px) {
     .page-header h1 {
-        font-size: 2.5rem;
+        font-size: 2.75rem;
     }
     .topbar_address {
         display: none;
@@ -867,10 +867,10 @@ upcoming meetings page
 
 @media (max-width: 768px) {
     .page-header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     .breadcrumb {
-        font-size: 14px;
+        font-size: 15.5px;
     }
 
 }
@@ -878,16 +878,16 @@ upcoming meetings page
 @media (max-width: 576px) {
 
     .page-header h1 {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     .breadcrumb {
         flex-direction: column;
         align-items: left;
         gap: 3px;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
     }
     .d__flex_button div a {
-        font-size: 0.5rem;
+        font-size: 0.55rem;
     }
 
 }

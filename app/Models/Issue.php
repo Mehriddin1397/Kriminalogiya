@@ -12,17 +12,13 @@ class Issue extends Model
         'number',
         'year',
         'published_at',
-        'file_path'
+        'file_path',
+        'image'
     ];
 
     public function journal()
     {
         return $this->belongsTo(Journal::class);
-    }
-
-    public function papers()
-    {
-        return $this->hasMany(Paper::class);
     }
 }
 
@@ -30,4 +26,5 @@ class Issue extends Model
 //title → ko‘rinadigan nom
 //number → 1,2,3...
 //year → yil
-//file_path → cover rasm (ixtiyoriy)
+//file_path → sonning PDF fayli
+//image → sonning muqova rasmi

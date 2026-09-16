@@ -106,7 +106,7 @@
                 </div>
 
                 @if($extraPhotos->count())
-                    <h3 class="lx-section-title" style="text-align: left; font-size: 28px; margin: 60px 0 28px;" data-aos="fade-up">
+                    <h3 class="lx-section-title" style="text-align: left; font-size: 30.5px; margin: 60px 0 28px;" data-aos="fade-up">
                         <span class="lx-eyebrow" style="display: block; margin-bottom: 12px;">Galereya</span>
                     </h3>
                     <div class="lx-news-list-grid" data-aos="fade-up">

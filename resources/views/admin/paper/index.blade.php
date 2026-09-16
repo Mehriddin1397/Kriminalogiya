@@ -68,7 +68,7 @@
                                                 {{ $academy->author }}
                                             </td>
                                             <td>
-                                                {{ $academy->issue->published_at }}
+                                                {{ $academy->issue->number }}
                                             </td>
                                             <td>
                                                 <div class="hstack gap-2 justify-content-end">

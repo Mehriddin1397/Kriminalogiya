@@ -20,41 +20,59 @@
                 @csrf
                 @method('PUT')
 
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="mb-3">
                     <label for="name" class="form-label">Kategoriya nomi(uz):</label>
-                    <input type="text" class="form-control" name="name_uz" value="{{ $category->name_uz }}" required>
+                    <input type="text" class="form-control @error('name_uz') is-invalid @enderror" name="name_uz" value="{{ old('name_uz', $category->name_uz) }}" required>
+                    @error('name_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Kategoriya nomi(ru):</label>
-                    <input type="text" class="form-control" name="name_ru" value="{{ $category->name_ru }}" required>
+                    <input type="text" class="form-control @error('name_ru') is-invalid @enderror" name="name_ru" value="{{ old('name_ru', $category->name_ru) }}" required>
+                    @error('name_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Kategoriya nomi(en):</label>
-                    <input type="text" class="form-control" name="name_en" value="{{ $category->name_en }}" required>
+                    <input type="text" class="form-control @error('name_en') is-invalid @enderror" name="name_en" value="{{ old('name_en', $category->name_en) }}" required>
+                    @error('name_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Kategoriya nomi(kr):</label>
-                    <input type="text" class="form-control" name="name_kr" value="{{ $category->name_kr }}" required>
+                    <input type="text" class="form-control @error('name_kr') is-invalid @enderror" name="name_kr" value="{{ old('name_kr', $category->name_kr) }}" required>
+                    @error('name_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Obekt nomi(uz):</label>
-                    <input type="text" class="form-control" name="slug_uz" value="{{ $category->slug_uz }}" required>
+                    <input type="text" class="form-control @error('slug_uz') is-invalid @enderror" name="slug_uz" value="{{ old('slug_uz', $category->slug_uz) }}" required>
+                    @error('slug_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Obekt nomi(ru):</label>
-                    <input type="text" class="form-control" name="slug_ru" value="{{ $category->slug_ru }}" required>
+                    <input type="text" class="form-control @error('slug_ru') is-invalid @enderror" name="slug_ru" value="{{ old('slug_ru', $category->slug_ru) }}" required>
+                    @error('slug_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Obekt nomi(en):</label>
-                    <input type="text" class="form-control" name="slug_en" value="{{ $category->slug_en }}" required>
+                    <input type="text" class="form-control @error('slug_en') is-invalid @enderror" name="slug_en" value="{{ old('slug_en', $category->slug_en) }}" required>
+                    @error('slug_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Obekt nomi(kr):</label>
-                    <input type="text" class="form-control" name="slug_kr" value="{{ $category->slug_kr }}" required>
+                    <input type="text" class="form-control @error('slug_kr') is-invalid @enderror" name="slug_kr" value="{{ old('slug_kr', $category->slug_kr) }}" required>
+                    @error('slug_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                 </div>
                 <div class="form-group mb-4">
                     <label for="object_type">Obyekt turi:</label>
-                    <select name="object_type" required class="form-select form-control">
+                    <select name="object_type" required class="form-select form-control @error('object_type') is-invalid @enderror">
                         <option value="academia" {{ old('object_type', $category->object_type ?? '') == 'academia' ? 'selected' : '' }}>
                             Ilmiy kengash
                         </option>
@@ -109,7 +127,6 @@
 
                 <button type="submit" class="btn btn-primary">Yangilash</button>
             </form>
-        </div>
         </div>
     </div>
 @endforeach

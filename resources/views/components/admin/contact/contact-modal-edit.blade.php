@@ -21,56 +21,76 @@
                 @method('PUT')
 
                 <div class="row">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <div class="form-group mb-4">
                         <label class="form-label">Address_uz:</label>
-                        <input type="text" name="address_uz" value="{{old('address_uz',$academy->address_uz)}}" class="form-control">
+                        <input type="text" name="address_uz" value="{{old('address_uz',$academy->address_uz)}}" class="form-control @error('address_uz') is-invalid @enderror">
+                        @error('address_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Address_ru:</label>
-                        <input type="text" name="address_ru" value="{{old('address_ru',$academy->address_ru)}}" class="form-control">
+                        <input type="text" name="address_ru" value="{{old('address_ru',$academy->address_ru)}}" class="form-control @error('address_ru') is-invalid @enderror">
+                        @error('address_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Address_en:</label>
-                        <input type="text" name="address_en" value="{{old('address_en',$academy->address_en)}}" class="form-control">
+                        <input type="text" name="address_en" value="{{old('address_en',$academy->address_en)}}" class="form-control @error('address_en') is-invalid @enderror">
+                        @error('address_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Address_kr:</label>
-                        <input type="text" name="address_kr" value="{{old('address_kr',$academy->address_kr)}}" class="form-control">
+                        <input type="text" name="address_kr" value="{{old('address_kr',$academy->address_kr)}}" class="form-control @error('address_kr') is-invalid @enderror">
+                        @error('address_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Phone:</label>
-                        <input type="text" name="phone"  value="{{old('phone',$academy->phone)}}" class="form-control">
+                        <input type="text" name="phone" value="{{old('phone',$academy->phone)}}" class="form-control @error('phone') is-invalid @enderror">
+                        @error('phone')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Email:</label>
-                        <input type="text" name="email"  value="{{old('email',$academy->email)}}" class="form-control">
+                        <input type="text" name="email" value="{{old('email',$academy->email)}}" class="form-control @error('email') is-invalid @enderror">
+                        @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Ish vaqti:</label>
-                        <input type="text" name="worktime" value="{{old('worktime',$academy->worktime)}}"  class="form-control">
+                        <input type="text" name="worktime" value="{{old('worktime',$academy->worktime)}}" class="form-control @error('worktime') is-invalid @enderror">
+                        @error('worktime')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
                     <div class="form-group mb-4">
                         <label class="form-label">youtube_link:</label>
-                        <input type="text" name="youtube_link" value="{{old('youtube_link',$academy->youtube_link)}}" class="form-control">
+                        <input type="text" name="youtube_link" value="{{old('youtube_link',$academy->youtube_link)}}" class="form-control @error('youtube_link') is-invalid @enderror">
+                        @error('youtube_link')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">telegram_link:</label>
-                        <input type="text" name="telegram_link" value="{{old('telegram_link',$academy->telegram_link)}}" class="form-control">
+                        <input type="text" name="telegram_link" value="{{old('telegram_link',$academy->telegram_link)}}" class="form-control @error('telegram_link') is-invalid @enderror">
+                        @error('telegram_link')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">facebook_link:</label>
-                        <input type="text" name="facebook_link" value="{{old('facebook_link',$academy->facebook_link)}}" class="form-control">
+                        <input type="text" name="facebook_link" value="{{old('facebook_link',$academy->facebook_link)}}" class="form-control @error('facebook_link') is-invalid @enderror">
+                        @error('facebook_link')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">whatsapp_link:</label>
-                        <input type="text" name="whatsapp_link" value="{{old('whatsapp_link',$academy->whatsapp_link)}}" class="form-control">
+                        <input type="text" name="whatsapp_link" value="{{old('whatsapp_link',$academy->whatsapp_link)}}" class="form-control @error('whatsapp_link') is-invalid @enderror">
+                        @error('whatsapp_link')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <button type="submit" class="btn btn-primary d-inline-block mt-4">Saqlash</button>
                 </div>
             </form>
         </div>
-    </div>
     </div>
 @endforeach
 

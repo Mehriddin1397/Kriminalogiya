@@ -21,44 +21,63 @@
                 @method('PUT')
 
                 <div class="row">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <div class="col-md-6">
                         <div class="form-group mb-4">
                             <label class="form-label">Nomi(uz):</label>
-                            <input type="text" name="name_uz" value="{{old('name_uz',$academy->name_uz)}}" class="form-control">
+                            <input type="text" name="name_uz" value="{{old('name_uz',$academy->name_uz)}}" class="form-control @error('name_uz') is-invalid @enderror">
+                            @error('name_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label">Nomi(ru):</label>
-                            <input type="text" name="name_ru" value="{{old('name_ru',$academy->name_ru)}}" class="form-control">
+                            <input type="text" name="name_ru" value="{{old('name_ru',$academy->name_ru)}}" class="form-control @error('name_ru') is-invalid @enderror">
+                            @error('name_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label">Nomi(en):</label>
-                            <input type="text" name="name_en" value="{{old('name_en',$academy->name_en)}}" class="form-control">
+                            <input type="text" name="name_en" value="{{old('name_en',$academy->name_en)}}" class="form-control @error('name_en') is-invalid @enderror">
+                            @error('name_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label">Nomi(kr):</label>
-                            <input type="text" name="name_kr" value="{{old('name_kr',$academy->name_kr)}}" class="form-control">
+                            <input type="text" name="name_kr" value="{{old('name_kr',$academy->name_kr)}}" class="form-control @error('name_kr') is-invalid @enderror">
+                            @error('name_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label">E-ISSN:</label>
-                            <input type="text" name="e_issn" value="{{old('name_kr',$academy->e_issn)}}" class="form-control">
+                            <input type="text" name="e_issn" value="{{old('e_issn',$academy->e_issn)}}" class="form-control @error('e_issn') is-invalid @enderror">
+                            @error('e_issn')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label"> Matni(uz):</label>
-                            <textarea name="description_uz"  class="form-control ckeditor">{{old('description_uz',$academy->description_uz)}}</textarea>
+                            <textarea name="description_uz"  class="form-control ckeditor @error('description_uz') is-invalid @enderror">{{old('description_uz',$academy->description_uz)}}</textarea>
+                            @error('description_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label"> Matni(ru):</label>
-                            <textarea name="description_ru"  class="form-control ckeditor">{{old('description_ru',$academy->description_ru)}}</textarea>
+                            <textarea name="description_ru"  class="form-control ckeditor @error('description_ru') is-invalid @enderror">{{old('description_ru',$academy->description_ru)}}</textarea>
+                            @error('description_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label"> Matni(en):</label>
-                            <textarea name="description_en"  class="form-control ckeditor">{{old('description_en',$academy->description_en)}}</textarea>
+                            <textarea name="description_en"  class="form-control ckeditor @error('description_en') is-invalid @enderror">{{old('description_en',$academy->description_en)}}</textarea>
+                            @error('description_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label"> Matni(kr):</label>
-                            <textarea name="description_kr"  class="form-control ckeditor">{{old('description_kr',$academy->description_kr)}}</textarea>
+                            <textarea name="description_kr"  class="form-control ckeditor @error('description_kr') is-invalid @enderror">{{old('description_kr',$academy->description_kr)}}</textarea>
+                            @error('description_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
-                        @if($academy->photos()->exists())
+                        @if($academy->photos->isNotEmpty())
                             <!-- Munosabat mavjudligini tekshirish -->
                             @foreach($academy->photos as $photo)
                                 <!-- Munosabatni chaqirish va kolleksiyani aylanish -->
@@ -67,16 +86,18 @@
                             @endforeach
                         @endif
                         <div class="form-group mb-4">
-                            <label class="form-label">Rasmi:</label>
-                            <input type="file" name="photo" class="form-control" >
+                            <label class="form-label">Rasmi (yangilash uchun tanlang, aks holda bo'sh qoldiring):</label>
+                            <input type="file" name="photo" class="form-control @error('photo') is-invalid @enderror">
+                            @error('photo')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label">Fayli (pdf):</label>
-                            <input type="file" name="file_path" class="form-control">
+                            <input type="file" name="file_path" class="form-control @error('file_path') is-invalid @enderror">
+                            @error('file_path')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                         <div class="form-group mb-4">
                             <label class="form-label" for="categories">Kategoriyalari:</label>
-                            <select name="categories[]" class="form-select form-control" >
+                            <select name="categories[]" class="form-select form-control" multiple>
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" @if($academy->categories->contains($category->id)) selected @endif>{{ $category->name_uz }}</option>
                                 @endforeach
@@ -88,7 +109,6 @@
                 </div>
             </form>
         </div>
-    </div>
     </div>
 @endforeach
 

@@ -18,58 +18,80 @@
         <form action="{{ route('journal.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="col-md-6">
                     <div class="form-group mb-4">
                         <label class="form-label">Nomi(uz):</label>
-                        <input type="text" name="name_uz" class="form-control">
+                        <input type="text" name="name_uz" value="{{ old('name_uz') }}" class="form-control @error('name_uz') is-invalid @enderror">
+                        @error('name_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Nomi(ru):</label>
-                        <input type="text" name="name_ru" class="form-control">
+                        <input type="text" name="name_ru" value="{{ old('name_ru') }}" class="form-control @error('name_ru') is-invalid @enderror">
+                        @error('name_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Nomi(en):</label>
-                        <input type="text" name="name_en" class="form-control">
+                        <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control @error('name_en') is-invalid @enderror">
+                        @error('name_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Nomi(kr):</label>
-                        <input type="text" name="name_kr" class="form-control">
+                        <input type="text" name="name_kr" value="{{ old('name_kr') }}" class="form-control @error('name_kr') is-invalid @enderror">
+                        @error('name_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">E-ISSN:</label>
-                        <input type="text" name="e_issn" class="form-control">
+                        <input type="text" name="e_issn" value="{{ old('e_issn') }}" class="form-control @error('e_issn') is-invalid @enderror">
+                        @error('e_issn')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(uz):</label>
-                        <textarea name="description_uz" rows="10" id="editor1" class="form-control"></textarea>
+                        <textarea name="description_uz" rows="10" id="editor1" class="form-control @error('description_uz') is-invalid @enderror">{{ old('description_uz') }}</textarea>
+                        @error('description_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(ru):</label>
-                        <textarea name="description_ru" rows="10" id="editor2" class="form-control"></textarea>
+                        <textarea name="description_ru" rows="10" id="editor2" class="form-control @error('description_ru') is-invalid @enderror">{{ old('description_ru') }}</textarea>
+                        @error('description_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(en):</label>
-                        <textarea name="description_en" rows="10" id="editor3" class="form-control"></textarea>
+                        <textarea name="description_en" rows="10" id="editor3" class="form-control @error('description_en') is-invalid @enderror">{{ old('description_en') }}</textarea>
+                        @error('description_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(kr):</label>
-                        <textarea name="description_kr" rows="10" id="editor4" class="form-control"></textarea>
+                        <textarea name="description_kr" rows="10" id="editor4" class="form-control @error('description_kr') is-invalid @enderror">{{ old('description_kr') }}</textarea>
+                        @error('description_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Rasmi:</label>
-                        <input type="file" name="photo" class="form-control" required>
+                        <input type="file" name="photo" class="form-control @error('photo') is-invalid @enderror" required>
+                        @error('photo')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Fayli (pdf):</label>
-                        <input type="file" name="file_path" class="form-control">
+                        <input type="file" name="file_path" class="form-control @error('file_path') is-invalid @enderror">
+                        @error('file_path')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label" for="categories">Kategoriyalari:</label>
-                        <select name="categories[]" class="form-select form-control">
+                        <select name="categories[]" class="form-select form-control @error('categories') is-invalid @enderror" multiple>
                             @foreach($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name_uz }}</option>
+                                <option value="{{ $category->id }}" {{ collect(old('categories'))->contains($category->id) ? 'selected' : '' }}>{{ $category->name_uz }}</option>
                             @endforeach
                         </select>
+                        @error('categories')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary d-inline-block mt-4">Qo'shish</button>

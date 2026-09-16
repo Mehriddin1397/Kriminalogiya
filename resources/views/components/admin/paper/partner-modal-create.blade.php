@@ -91,6 +91,38 @@
                     </div>
 
                     <div class="form-group mb-4">
+                        <label class="form-label">Annotatsiya (uz):</label>
+                        <textarea name="description_uz" rows="4" class="form-control @error('description_uz') is-invalid @enderror">{{ old('description_uz') }}</textarea>
+                        @error('description_uz')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="form-label">Annotatsiya (ru):</label>
+                        <textarea name="description_ru" rows="4" class="form-control @error('description_ru') is-invalid @enderror">{{ old('description_ru') }}</textarea>
+                        @error('description_ru')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="form-label">Annotatsiya (en):</label>
+                        <textarea name="description_en" rows="4" class="form-control @error('description_en') is-invalid @enderror">{{ old('description_en') }}</textarea>
+                        @error('description_en')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="form-label">Annotatsiya (kr):</label>
+                        <textarea name="description_kr" rows="4" class="form-control @error('description_kr') is-invalid @enderror">{{ old('description_kr') }}</textarea>
+                        @error('description_kr')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mb-4">
                         <label class="form-label">PDF fayl:</label>
                         <input type="file" name="pdf_file" class="form-control @error('pdf_file') is-invalid @enderror"
                                accept=".pdf" required>

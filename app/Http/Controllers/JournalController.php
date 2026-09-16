@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Issue;
 use App\Models\Journal;
-use App\Models\Paper;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +13,7 @@ class JournalController extends Controller
 
     public function index()
     {
-        $academia = Journal::with(['photos'])->get();
+        $academia = Journal::with(['photos', 'categories'])->get();
         $categories = Category::forObjectType('jurnal');
         return view('admin.jurnal.index', compact('academia', 'categories'));
     }
@@ -27,12 +25,12 @@ class JournalController extends Controller
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'name_kr' => 'required|string|max:255',
-            'description_uz' => 'required|string|max:255',
-            'description_ru' => 'required|string|max:255',
-            'description_en' => 'required|string|max:255',
-            'description_kr' => 'required|string|max:255',
+            'description_uz' => 'required|string',
+            'description_ru' => 'required|string',
+            'description_en' => 'required|string',
+            'description_kr' => 'required|string',
             'e_issn' => 'required|string|max:255',
-            'file_path' => 'required|mimes:pdf,doc,docx|max:51200', // Fayl yuklash qoidalari (masalan, 10MB gacha)
+            'file_path' => 'required|mimes:pdf,doc,docx|max:204800', // Fayl yuklash qoidalari (200MB gacha)
             'categories' => 'array',  // Kategoriyalar array bo‘lishi kerak
             'categories.*' => 'exists:categories,id',// Kategoriyalar faqat mavjud IDlar bo‘lishi kerak
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240', // Rasm yuklash qoidalari
@@ -80,12 +78,12 @@ class JournalController extends Controller
             'name_ru' => 'required|string|max:255',
             'name_en' => 'required|string|max:255',
             'name_kr' => 'required|string|max:255',
-            'description_uz' => 'required|string|max:255',
-            'description_ru' => 'required|string|max:255',
-            'description_en' => 'required|string|max:255',
-            'description_kr' => 'required|string|max:255',
+            'description_uz' => 'required|string',
+            'description_ru' => 'required|string',
+            'description_en' => 'required|string',
+            'description_kr' => 'required|string',
             'e_issn' => 'required|string|max:255',
-            'file_path' => 'mimes:pdf,doc,docx|max:10240', // Fayl yuklash qoidalari (masalan, 10MB gacha)
+            'file_path' => 'nullable|mimes:pdf,doc,docx|max:204800', // Fayl yuklash qoidalari (200MB gacha)
             'categories' => 'array',  // Kategoriyalar array bo‘lishi kerak
             'categories.*' => 'exists:categories,id', // Kategoriyalar faqat mavjud IDlar bo‘lishi kerak
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240', // Rasm yuklash qoidalari
@@ -152,7 +150,7 @@ class JournalController extends Controller
 
     public function destroy($id)
     {
-        $academia = Journal::findOrFail($id);
+        $academia = Journal::with('issues')->findOrFail($id);
         // 1. Bog‘langan rasmni o‘chirish
         if ($academia->photos()->exists()) {
             foreach ($academia->photos as $photo) {
@@ -166,10 +164,21 @@ class JournalController extends Controller
             Storage::disk('public')->delete($academia->file_path);
         }
 
-        // 3. Kategoriyalar bilan bog‘lanishni o‘chirish
+        // 3. Jurnal sonlari fayllarini o'chirish
+        // (jadval darajasida cascadeOnDelete bo'lsa ham, storage fayllari o'chirilmaydi)
+        foreach ($academia->issues as $issue) {
+            if ($issue->file_path && Storage::disk('public')->exists($issue->file_path)) {
+                Storage::disk('public')->delete($issue->file_path);
+            }
+            if ($issue->image && Storage::disk('public')->exists($issue->image)) {
+                Storage::disk('public')->delete($issue->image);
+            }
+        }
+
+        // 4. Kategoriyalar bilan bog‘lanishni o‘chirish
         $academia->categories()->detach();
 
-        // 4. Asosiy obyektni o‘chirish
+        // 5. Asosiy obyektni o‘chirish
         $academia->delete();
 
         return redirect()->route('journal.index')->with('success', 'Muvaffaqiyatli o‘chirildi.');
@@ -183,29 +192,7 @@ class JournalController extends Controller
 
     public function show(Journal $journal)
     {
-        $journal->load('photos', 'issues.papers');
+        $journal->load('photos', 'issues');
         return view('pages.jurnals.show', compact('journal'));
-    }
-
-    public function issue(Issue $issue)
-    {
-        $issue->load('journal', 'papers');
-        $papers = $issue->papers;
-        return view('pages.jurnals.issue', compact('issue', 'papers'));
-    }
-
-
-
-    public function paper(Paper $paper)
-    {
-        $paper->increment('views');
-
-        // relationlarni yuklash
-        $paper->load('issue.journal');
-
-        // jurnalni alohida olish
-        $journal = $paper->issue->journal;
-
-        return view('pages.jurnals.paper', compact('paper', 'journal'));
     }
 }

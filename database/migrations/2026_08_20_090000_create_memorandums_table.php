@@ -1,0 +1,33 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('memorandums', function (Blueprint $table) {
+            $table->id();
+            $table->string('country_uz')->nullable();
+            $table->string('country_ru')->nullable();
+            $table->string('country_en')->nullable();
+            $table->string('country_kr')->nullable();
+            $table->string('org_uz')->nullable();
+            $table->string('org_ru')->nullable();
+            $table->string('org_en')->nullable();
+            $table->string('org_kr')->nullable();
+            $table->string('flag')->nullable();
+            $table->string('doc_type')->default('memorandum');
+            $table->date('date')->nullable();
+            $table->string('link')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('memorandums');
+    }
+};

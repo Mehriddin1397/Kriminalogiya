@@ -20,26 +20,25 @@ class PaperController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'issue_id' => 'required|exists:issues,id',
             'title_uz' => 'required|string',
             'title_ru' => 'required|string',
             'title_en' => 'required|string',
             'title_kr' => 'required|string',
             'author' => 'required|string',
-            'pdf_file' => 'required|file|mimes:pdf'
+            'description_uz' => 'nullable|string',
+            'description_ru' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'description_kr' => 'nullable|string',
+            'pdf_file' => 'required|file|mimes:pdf|max:20480'
         ]);
 
-        $data = $request->all();
+        $validated['pdf_file'] = $request->file('pdf_file')->store('papers', 'public');
 
-        // pdf yuklash
-        if ($request->hasFile('pdf_file')) {
-            $data['pdf_file'] = $request->file('pdf_file')->store('papers', 'public');
-        }
+        Paper::create($validated);
 
-        Paper::create($data);
-
-        return redirect()->route('papers.index');
+        return redirect()->route('papers.index')->with('success', 'Maqola muvaffaqiyatli yaratildi.');
     }
 
 
@@ -47,46 +46,52 @@ class PaperController extends Controller
     {
         $paper = Paper::findOrFail($id);
 
-        $request->validate([
+        $validated = $request->validate([
             'issue_id' => 'required|exists:issues,id',
             'title_uz' => 'required|string',
             'title_ru' => 'required|string',
             'title_en' => 'required|string',
             'title_kr' => 'required|string',
             'author' => 'required|string',
-            'pdf_file' => 'nullable|file|mimes:pdf|max:2048'
+            'description_uz' => 'nullable|string',
+            'description_ru' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'description_kr' => 'nullable|string',
+            'pdf_file' => 'nullable|file|mimes:pdf|max:20480'
         ]);
 
-        $data = $request->all();
+        // 'pdf_file' faqat yangi fayl yuklanganda yoki o'chirish so'ralganda o'zgartiriladi,
+        // aks holda mavjud faylni saqlab qolamiz (aks holda NOT NULL bo'lmagan ustunni bo'sh qilib qo'yish xavfi bor edi).
+        unset($validated['pdf_file']);
 
-        // PDF faylni o'chirish
-        if ($request->has('remove_pdf') && $request->remove_pdf == 1) {
+        if ($request->boolean('remove_pdf')) {
             if ($paper->pdf_file && Storage::disk('public')->exists($paper->pdf_file)) {
                 Storage::disk('public')->delete($paper->pdf_file);
             }
-            $data['pdf_file'] = null;
-        }
-
-        // Yangi PDF yuklash
-        if ($request->hasFile('pdf_file')) {
-            // Eski PDF faylni o'chirish
+            $validated['pdf_file'] = null;
+        } elseif ($request->hasFile('pdf_file')) {
             if ($paper->pdf_file && Storage::disk('public')->exists($paper->pdf_file)) {
                 Storage::disk('public')->delete($paper->pdf_file);
             }
-
-            $path = $request->file('pdf_file')->store('papers', 'public');
-            $data['pdf_file'] = $path;
+            $validated['pdf_file'] = $request->file('pdf_file')->store('papers', 'public');
         }
 
-        $paper->update($data);
+        $paper->update($validated);
 
         return redirect()->route('papers.index')->with('success', 'Maqola muvaffaqiyatli yangilandi');
     }
 
     public function destroy($id)
     {
-        Paper::findOrFail($id)->delete();
-        return back();
+        $paper = Paper::findOrFail($id);
+
+        if ($paper->pdf_file && Storage::disk('public')->exists($paper->pdf_file)) {
+            Storage::disk('public')->delete($paper->pdf_file);
+        }
+
+        $paper->delete();
+
+        return back()->with('success', "Muvaffaqiyatli o'chirildi");
     }
 
     // 👇 download

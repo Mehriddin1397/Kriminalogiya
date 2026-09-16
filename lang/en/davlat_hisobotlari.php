@@ -1,0 +1,66 @@
+<?php
+
+return [
+    'seo_title' => 'State Reports on Crime Trends and Factors — Criminology Research Institute of Uzbekistan',
+
+    'eyebrow' => 'Scientific Developments',
+    'title' => 'State Reports on Crime Trends and Factors',
+    'subtitle' => 'Two state reports prepared by the Institute at the end of each quarter — a system for the scientific analysis, diagnosis, and forecasting of crime.',
+
+    'intro_p1' => 'Presidential Decree No. PF-10 and Resolution No. PQ-22 of 15 January 2024, as well as Cabinet of Ministers Resolution No. 445 of 24 July 2024, established the legal and scientific-methodological foundations for moving beyond assessing crime solely on the basis of statistics of committed offences, toward a new system built on scientific analysis and forecasting of crime trends, comprehensive scientific diagnosis of their root causes and factors, and their timely elimination.',
+    'intro_p2' => 'Within this system, the Criminology Research Institute of the Republic of Uzbekistan prepares a "State Report on Crime Trends" and a "State Report on Crime Factors" at the end of each quarter.',
+
+    'why_eyebrow' => 'Significance',
+    'why_title' => 'Why do state reports matter?',
+    'why_trends_title' => 'State Report on Crime Trends',
+    'why_trends_text' => 'An information-analytical document that provides a scientific analysis of the state, structure, dynamics, and territorial characteristics of crime in the country, identifies existing and emerging trends, and produces a scientific forecast of the future criminogenic situation.',
+    'why_factors_title' => 'State Report on Crime Factors',
+    'why_factors_text' => 'Provides a comprehensive scientific diagnosis of the social, economic, psychological, moral-educational, legal, medical, organizational and other factors behind committed crimes, identifies the mechanisms by which they form, and develops scientifically grounded solutions to address them.',
+    'why_p1' => 'These two state reports are inherently interconnected and are prepared as a single, unified document so as to comprehensively assess crime trends, factors, scientific diagnosis, and forecasts within one system.',
+    'why_p2' => 'The main purpose of this approach is not to be limited to combating the consequences of a crime after it has occurred, but to identify, forecast, and address in advance the factors and negative trends that give rise to crime.',
+    'why_p3' => 'In this sense, state reports are an important scientific and practical tool that makes it possible to base management decisions in crime prevention and the fight against crime on scientific evidence, criminological diagnosis, and forecasts.',
+
+    'practice_eyebrow' => 'A New Stage',
+    'practice_title' => 'A new practice in Uzbek criminology',
+    'practice_intro' => 'The introduction of the practice of preparing these state reports has opened a qualitatively new stage in the development of criminology in Uzbekistan. For the first time in the country, an institutional mechanism has been formed in which the study of crime is not limited to recording statistical indicators, but the processes behind it are systematically examined through the unified chain of "analysis — diagnosis — forecast — scientific proposal," with the results directed into the practice of public administration and crime-prevention efforts.',
+    'practice_list_title' => 'Through the state reports:',
+    'practice_list' => [
+        'New and negative crime trends are identified early',
+        'Potential future criminogenic risks are scientifically forecast',
+        'A scientific diagnosis is made of the root causes and conditions of crime',
+        'Problem areas are identified by region and by type of crime',
+        'Scientifically grounded proposals are developed for improving legislation and law-enforcement practice',
+        'Targeted preventive measures against crime are recommended to the relevant state authorities',
+    ],
+
+    'numbers_eyebrow' => 'By the Numbers',
+    'numbers_title' => 'State reports — by the numbers',
+    'numbers_intro' => 'Under the state reports prepared since 2024, close to 250 scientifically grounded proposals have been developed, along with numerous scientific forecasts concerning the future state and changes in crime.',
+    'numbers_stat1_num' => '250+',
+    'numbers_stat1_label' => 'Scientific proposals',
+    'numbers_stat1_note' => 'Developed since 2024',
+    'numbers_stat2_num' => '65–70%',
+    'numbers_stat2_label' => 'Forecast accuracy',
+    'numbers_stat2_note' => 'Share of scientific forecasts that matched the actual criminogenic situation',
+    'quarters_title' => 'By quarter',
+    'quarters' => [
+        ['period' => 'End of 2024', 'summary' => '24 scientific proposals · 25 scientific forecasts'],
+        ['period' => 'Q1 2025', 'summary' => '45 scientific proposals · 15 scientific forecasts'],
+        ['period' => 'Q2 2025', 'summary' => '53 scientific proposals · 22 scientific forecasts'],
+        ['period' => 'Q3 2025', 'summary' => '30 scientific proposals · 23 scientific forecasts'],
+        ['period' => 'Q4 2025', 'summary' => '35 scientific proposals · 10 scientific forecasts'],
+        ['period' => 'Q1 2026', 'summary' => '25 scientific proposals'],
+        ['period' => 'Q2 2026', 'summary' => '44 proposals · 15 scientific classifications · 30 scientific definitions · 10 scientific forecasts'],
+    ],
+    'numbers_footnote' => 'Most importantly, a comparative analysis of the scientific forecasts issued against the actual criminogenic situation in the subsequent period shows that 65–70% of them matched the processes that actually took place. This demonstrates the practical value of the mechanism for scientifically assessing changes in crime in advance.',
+
+    'access_eyebrow' => 'Procedure',
+    'access_title' => 'Procedure for using the state reports',
+    'access_p1' => 'The "State Report on Crime Trends" and the "State Report on Crime Factors" contain analytical data on the state of crime, its development trends, its factors, criminogenic risks, scientific forecasts, and the activities of the relevant state authorities.',
+    'access_p2' => 'For this reason, these state reports are intended for direct use in official duties, and their full text is not published openly on the Institute\'s official website.',
+    'access_p3' => 'Where there is a need to use information from the state reports for scientific, expert, departmental, or other justified purposes, interested state bodies, organizations, scientific and educational institutions, researchers, and other persons may submit an official request to the Criminology Research Institute of the Republic of Uzbekistan in accordance with the established procedure.',
+    'access_p4' => 'Provided that the information requested, along with the purpose and necessity of its use, is duly justified, the matter of providing the relevant data is considered in accordance with the procedure established by law, based on the content of the information and the terms of its use.',
+    'access_contact_label' => 'For inquiries',
+    'access_contact_text' => 'The Institute\'s official communication channels and hotline numbers.',
+    'access_contact_cta' => 'Contact us',
+];

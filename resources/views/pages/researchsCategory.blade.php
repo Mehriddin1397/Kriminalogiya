@@ -1,27 +1,43 @@
 <x-main title="{{$category->slug}}">
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 ">
-        <div class="container py-5">
-            <h1 class="display-3 text-white mb-3 animated slideInDown">{{$category->slug}}</h1>
-            <nav aria-label="breadcrumb animated slideInDown">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a class="text-white" href="{{route('main')}}">Home</a></li>
-                    <li class="breadcrumb-item text-white active" aria-current="page">{{$category->slug}}</li>
-                </ol>
-            </nav>
-        </div>
-    </div>
-    <!-- Page Header End -->
+<div class="home-luxury">
 
+    {{-- ─────── Page hero ─────── --}}
+    @php
+        $heroBg = collect([
+            'assets/img/banner3.jpg',
+            'assets/img/banner1.jpg',
+            'assets/img/banner4.jpg',
+            'assets/img/aa.jpg',
+        ])->first(fn ($p) => file_exists(public_path($p)));
+    @endphp
 
-
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="section-title text-center">
-                <h1 class="display-5 mb-5">
-                    {{ $category->slug }}
-                </h1>
+    <section class="lx-page-hero">
+        @if($heroBg)
+            <div class="lx-page-hero-bg" aria-hidden="true">
+                <img src="{{ asset('assets/img/kti_rasm.jpg') }}" alt="" loading="lazy">
             </div>
+        @endif
+
+        <div class="lx-page-hero-decor" aria-hidden="true">
+            <img src="{{ asset('assets/img/kti-logo.png') }}" alt="">
+        </div>
+
+        <div class="container">
+            <div class="lx-breadcrumb" data-aos="fade-up">
+                <a href="{{ route('main') }}">{{ __('lan.bosh_sahifa') ?? 'Bosh sahifa' }}</a>
+                <span class="sep">—</span>
+                <span>{{ $category->slug }}</span>
+            </div>
+
+            <span class="lx-eyebrow" data-aos="fade-up">{{ $category->slug }}</span>
+            <h1 class="lx-page-title" data-aos="fade-up">{{ $category->slug }}</h1>
+            <div class="lx-page-divider" data-aos="fade-up"></div>
+            <p class="lx-page-meta" data-aos="fade-up">{{ $researchs->count() }}</p>
+        </div>
+    </section>
+
+    <section class="lx-section" style="background: var(--lx-cream);">
+        <div class="container">
 
             <div class="row mt-n2 wow fadeInUp" data-wow-delay="0.3s">
                 <div class="col-12 text-center">
@@ -67,8 +83,17 @@
 
                 </div>
             </div>
+
+            <div class="lx-back-wrap" data-aos="fade-up">
+                <a href="{{ route('main') }}" class="lx-btn lx-btn-dark">
+                    <span class="arrow-back">&larr;</span>
+                    <span>{{ __('lan.bosh_sahifa') }}</span>
+                </a>
+            </div>
         </div>
-    </div>
+    </section>
+
+</div>
 
     <style>
         .xalqaro-hankorlik-section {
@@ -104,7 +129,7 @@
         }
 
         .xalqaro-hankorlik-quote {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.5;
             color: #333;
             margin: 0 0 10px 0;
@@ -117,7 +142,7 @@
 
         .xalqaro-hankorlik-date {
             color: #666;
-            font-size: 0.875rem;
+            font-size: 0.95rem;
         }
 
         @media (max-width: 576px) {
@@ -136,7 +161,7 @@
             }
 
             .xalqaro-hankorlik-quote {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
         }
     </style>

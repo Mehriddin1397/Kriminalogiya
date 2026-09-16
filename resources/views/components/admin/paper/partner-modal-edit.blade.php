@@ -1,6 +1,6 @@
 <!--! ================================================================ !-->
 @foreach($papers as $paper )
-    <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="tasksDetailsOffcanvasEdit{{ $academy->id }}">
+    <div class="offcanvas offcanvas-end w-50" tabindex="-1" id="tasksDetailsOffcanvasEdit{{ $paper->id }}">
         <div class="offcanvas-header border-bottom" style="padding-top: 20px; padding-bottom: 20px">
             <div class="d-flex align-items-center">
                 <div class="avatar-text avatar-md items-details-close-trigger" data-bs-dismiss="offcanvas"
@@ -93,6 +93,38 @@
                             @enderror
                         </div>
 
+                        <div class="form-group mb-4">
+                            <label class="form-label">Annotatsiya (uz):</label>
+                            <textarea name="description_uz" rows="4" class="form-control @error('description_uz') is-invalid @enderror">{{ old('description_uz', $paper->description_uz) }}</textarea>
+                            @error('description_uz')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="form-label">Annotatsiya (ru):</label>
+                            <textarea name="description_ru" rows="4" class="form-control @error('description_ru') is-invalid @enderror">{{ old('description_ru', $paper->description_ru) }}</textarea>
+                            @error('description_ru')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="form-label">Annotatsiya (en):</label>
+                            <textarea name="description_en" rows="4" class="form-control @error('description_en') is-invalid @enderror">{{ old('description_en', $paper->description_en) }}</textarea>
+                            @error('description_en')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="form-label">Annotatsiya (kr):</label>
+                            <textarea name="description_kr" rows="4" class="form-control @error('description_kr') is-invalid @enderror">{{ old('description_kr', $paper->description_kr) }}</textarea>
+                            @error('description_kr')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <!-- Joriy PDF faylni ko'rsatish -->
                         @if($paper->pdf_file)
                             <div class="form-group mb-4">
@@ -138,7 +170,6 @@
                 </div>
             </form>
         </div>
-    </div>
     </div>
 @endforeach
 

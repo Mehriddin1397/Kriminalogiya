@@ -109,9 +109,19 @@
                     </div>
 
                     <div class="form-group mb-4">
-                        <label class="form-label">Fayl (rasm yoki PDF)ixtiyoriy:</label>
+                        <label class="form-label">Muqova rasmi (ixtiyoriy):</label>
+                        <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"
+                               accept="image/*">
+                        @error('image')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label class="form-label">PDF fayl (ixtiyoriy):</label>
                         <input type="file" name="file_path" class="form-control @error('file_path') is-invalid @enderror"
-                               accept="image/*,.pdf">
+                               accept="application/pdf">
+                        <small class="text-muted">PDF formatida, hajmi katta bo'lishi mumkin (max 200MB)</small>
                         @error('file_path')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

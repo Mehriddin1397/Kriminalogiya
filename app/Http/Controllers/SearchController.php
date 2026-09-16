@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Academia;
+use App\Models\Announcement;
 use App\Models\Articles;
 use App\Models\Bibliophilia;
 use App\Models\Crimes;
@@ -14,6 +15,13 @@ use Illuminate\Http\Request;
 
 class SearchController extends Controller
 {
+    public function announcement_show($id)
+    {
+        $announcement = Announcement::with('photos')->active()->findOrFail($id);
+
+        return view('pages.announcement_show', compact('announcement'));
+    }
+
     public function article_show($id)
     {
         $research = Articles::with('categories')->find($id);
@@ -52,7 +60,7 @@ class SearchController extends Controller
     }
     public function journal_show($id)
     {
-        $research = Journal::with('categories')->find($id);
+        $research = Journal::with('categories')->findOrFail($id);
         $category = $research->categories->first();
 
         return view('pages.crimes', compact('research', 'category'));

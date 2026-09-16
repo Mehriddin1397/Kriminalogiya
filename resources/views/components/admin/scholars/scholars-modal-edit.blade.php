@@ -21,61 +21,83 @@
                 @method('PUT')
 
                 <div class="row">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul class="mb-0">
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <div class="col-md-6">
                         <div class="form-group mb-4">
                             <label class="form-label">Nomi(uz):</label>
-                            <input type="text" name="name_uz" value="{{old('name_uz',$academy->name_uz)}}" class="form-control">
+                            <input type="text" name="name_uz" value="{{old('name_uz',$academy->name_uz)}}" class="form-control @error('name_uz') is-invalid @enderror">
+                            @error('name_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mb-4">
                             <label class="form-label">Nomi(ru):</label>
-                            <input type="text" name="name_ru" value="{{old('name_ru',$academy->name_ru)}}" class="form-control">
+                            <input type="text" name="name_ru" value="{{old('name_ru',$academy->name_ru)}}" class="form-control @error('name_ru') is-invalid @enderror">
+                            @error('name_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mb-4">
                             <label class="form-label">Nomi(en):</label>
-                            <input type="text" name="name_en" value="{{old('name_en',$academy->name_en)}}" class="form-control">
+                            <input type="text" name="name_en" value="{{old('name_en',$academy->name_en)}}" class="form-control @error('name_en') is-invalid @enderror">
+                            @error('name_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mb-4">
                             <label class="form-label">Nomi(kr):</label>
-                            <input type="text" name="name_kr" value="{{old('name_kr',$academy->name_kr)}}" class="form-control">
+                            <input type="text" name="name_kr" value="{{old('name_kr',$academy->name_kr)}}" class="form-control @error('name_kr') is-invalid @enderror">
+                            @error('name_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Title(uz):</label>
-                        <input type="text" name="title_uz" value="{{old('title_uz',$academy->title_uz)}}" class="form-control">
+                        <input type="text" name="title_uz" value="{{old('title_uz',$academy->title_uz)}}" class="form-control @error('title_uz') is-invalid @enderror">
+                        @error('title_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Title(ru):</label>
-                        <input type="text" name="title_ru" value="{{old('title_ru',$academy->title_ru)}}" class="form-control">
+                        <input type="text" name="title_ru" value="{{old('title_ru',$academy->title_ru)}}" class="form-control @error('title_ru') is-invalid @enderror">
+                        @error('title_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Title(en):</label>
-                        <input type="text" name="title_en" value="{{old('title_en',$academy->title_en)}}" class="form-control">
+                        <input type="text" name="title_en" value="{{old('title_en',$academy->title_en)}}" class="form-control @error('title_en') is-invalid @enderror">
+                        @error('title_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Title(kr):</label>
-                        <input type="text" name="title_kr" value="{{old('title_kr',$academy->title_kr)}}" class="form-control">
+                        <input type="text" name="title_kr" value="{{old('title_kr',$academy->title_kr)}}" class="form-control @error('title_kr') is-invalid @enderror">
+                        @error('title_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(uz):</label>
-                        <textarea name="description_uz" class="form-control ckeditor">{{old('description_uz',$academy->description_uz)}}</textarea>
+                        <textarea name="description_uz" class="form-control ckeditor @error('description_uz') is-invalid @enderror">{{old('description_uz',$academy->description_uz)}}</textarea>
+                        @error('description_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(ru):</label>
-                        <textarea name="description_ru" class="form-control ckeditor">{{old('description_ru',$academy->description_ru)}}</textarea>
+                        <textarea name="description_ru" class="form-control ckeditor @error('description_ru') is-invalid @enderror">{{old('description_ru',$academy->description_ru)}}</textarea>
+                        @error('description_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(en):</label>
-                        <textarea name="description_en" class="form-control ckeditor">{{old('description_en',$academy->description_en)}}</textarea>
+                        <textarea name="description_en" class="form-control ckeditor @error('description_en') is-invalid @enderror">{{old('description_en',$academy->description_en)}}</textarea>
+                        @error('description_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label"> Matni(kr):</label>
-                        <textarea name="description_kr" class="form-control ckeditor">{{old('description_kr',$academy->description_kr)}}</textarea>
+                        <textarea name="description_kr" class="form-control ckeditor @error('description_kr') is-invalid @enderror">{{old('description_kr',$academy->description_kr)}}</textarea>
+                        @error('description_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     @if($academy->photos()->exists())
                         <!-- Munosabat mavjudligini tekshirish -->
@@ -87,8 +109,8 @@
                     @endif
                     <div class="col-md-6">
                         <div class="form-group mb-4">
-                            <label class="form-label">Rasmi:</label>
-                            <input type="file" name="photos[]" class="form-control" multiple >
+                            <label class="form-label">Rasmi (yangilash uchun tanlang, aks holda bo'sh qoldiring):</label>
+                            <input type="file" name="photos[]" class="form-control" multiple>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -104,25 +126,28 @@
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">youtube_link:</label>
-                        <input type="text" name="youtube_link" value="{{old('youtube_link',$academy->youtube_link)}}" class="form-control">
+                        <input type="text" name="youtube_link" value="{{old('youtube_link',$academy->youtube_link)}}" class="form-control @error('youtube_link') is-invalid @enderror">
+                        @error('youtube_link')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">telegram_link:</label>
-                        <input type="text" name="telegram_link" value="{{old('telegram_link',$academy->telegram_link)}}" class="form-control">
+                        <input type="text" name="telegram_link" value="{{old('telegram_link',$academy->telegram_link)}}" class="form-control @error('telegram_link') is-invalid @enderror">
+                        @error('telegram_link')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">facebook_link:</label>
-                        <input type="text" name="facebook_link" value="{{old('facebook_link',$academy->facebook_link)}}" class="form-control">
+                        <input type="text" name="facebook_link" value="{{old('facebook_link',$academy->facebook_link)}}" class="form-control @error('facebook_link') is-invalid @enderror">
+                        @error('facebook_link')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">whatsapp_link:</label>
-                        <input type="text" name="whatsapp_link" value="{{old('whatsapp_link',$academy->whatsapp_link)}}" class="form-control">
+                        <input type="text" name="whatsapp_link" value="{{old('whatsapp_link',$academy->whatsapp_link)}}" class="form-control @error('whatsapp_link') is-invalid @enderror">
+                        @error('whatsapp_link')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <button type="submit" class="btn btn-primary d-inline-block mt-4">Saqlash</button>
                 </div>
             </form>
         </div>
-    </div>
     </div>
 @endforeach
 

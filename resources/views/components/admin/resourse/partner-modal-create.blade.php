@@ -18,30 +18,46 @@
         <form action="{{ route('resources.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="col-md-6">
                     <div class="form-group mb-4">
                         <label class="form-label">Nomi(uz):</label>
-                        <input type="text" name="name_uz" class="form-control">
+                        <input type="text" name="name_uz" value="{{ old('name_uz') }}" class="form-control @error('name_uz') is-invalid @enderror">
+                        @error('name_uz')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Nomi(ru):</label>
-                        <input type="text" name="name_ru" class="form-control">
+                        <input type="text" name="name_ru" value="{{ old('name_ru') }}" class="form-control @error('name_ru') is-invalid @enderror">
+                        @error('name_ru')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Nomi(en):</label>
-                        <input type="text" name="name_en" class="form-control">
+                        <input type="text" name="name_en" value="{{ old('name_en') }}" class="form-control @error('name_en') is-invalid @enderror">
+                        @error('name_en')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Nomi(kr):</label>
-                        <input type="text" name="name_kr" class="form-control">
+                        <input type="text" name="name_kr" value="{{ old('name_kr') }}" class="form-control @error('name_kr') is-invalid @enderror">
+                        @error('name_kr')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">Link:</label>
-                        <input type="text" name="link" class="form-control">
+                        <input type="text" name="link" value="{{ old('link') }}" class="form-control @error('link') is-invalid @enderror" placeholder="https://...">
+                        @error('link')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                     <div class="form-group mb-4">
                         <label class="form-label">PDF file:</label>
-                        <input type="file" name="file" class="form-control" >
+                        <input type="file" name="file" class="form-control @error('file') is-invalid @enderror">
+                        @error('file')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
 
                 </div>

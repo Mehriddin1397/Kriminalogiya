@@ -3,12 +3,23 @@
 
 <head>
     <meta charset="utf-8">
+    <script>
+        (function () {
+            try {
+                var saved = localStorage.getItem('lx-font-scale');
+                if (saved) {
+                    document.documentElement.style.zoom = saved;
+                }
+            } catch (e) {}
+        })();
+    </script>
     <title>{{ $title ?? 'Kriminalogiya' }}</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kriminalogiya Ilmiy tadqiqot Instituti, Научно-исследовательский институт криминологии, Криминалология Илмий тадқиқот Институти,Criminology Research Institute</title>
-    <meta name="description" content="Kriminalogiya Ilmiy tadqiqot Instituti">
+    <title>Kriminologiya tadqiqot instituti, Научно-исследовательский институт криминологии, Криминология тадқиқот институти, Criminology Research Institute</title>
+    <meta name="description" content="Kriminologiya tadqiqot instituti">
     <meta name="keywords" content="jinoyatchilikka qarshi kurash,kriminalogiya,firibgarlik,o‘g‘irlik,zo‘ravonlik,fight against crime,criminology,fraud,theft,violence,жиноятчиликка қарши кураш,криминалология,фирибгарлик,ўғрилик,зўравонлик,борьба с преступностью,криминология,мошенничество,кража,насилие">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Kriminalogiya">
@@ -50,7 +61,7 @@
 <!-- Spinner Start -->
 <div id="spinner"
      class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-    <div class="lx-loader" role="status" aria-label="Yuklanmoqda">
+    <div class="lx-loader" role="status" aria-label="{{ __('lan.yuklanmoqda') }}">
         <div class="lx-loader-mark">
             <svg class="lx-loader-ring lx-loader-ring--outer" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <circle cx="100" cy="100" r="94" fill="none" stroke="#c9a961" stroke-width="1.4" stroke-linecap="round" pathLength="100" stroke-dasharray="72 28"/>
@@ -65,7 +76,7 @@
             />
         </div>
         <div class="lx-loader-name">
-            O&apos;zbekiston Respublikasi kriminologiya tadqiqot instituti
+            {{ __('lan.kriminalog') }}
         </div>
     </div>
 </div>
@@ -87,15 +98,31 @@
 <x-footer></x-footer>
 <!-- Footer End -->
 
+<!-- Chatbot -->
+<x-chatbot></x-chatbot>
+
 
 <!-- Back to Top -->
-<a href="#" class="back-to-top lx-back-to-top" aria-label="Yuqoriga">
+<a href="#" class="back-to-top lx-back-to-top" aria-label="{{ __('lan.yuqoriga') }}">
     <span class="lx-back-to-top-ring" aria-hidden="true"></span>
     <svg class="lx-back-to-top-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="12" y1="19" x2="12" y2="5"/>
         <polyline points="5 12 12 5 19 12"/>
     </svg>
 </a>
+
+<!-- Shrift o'lchamini boshqarish -->
+<div class="lx-fontctl" data-lx-fontctl>
+    <button type="button" class="lx-fontctl-toggle" data-lx-fontctl-toggle
+            aria-haspopup="true" aria-expanded="false" aria-label="{{ __('lan.shrift_olchami') }}">
+        Aa
+    </button>
+    <div class="lx-fontctl-panel" role="menu">
+        <button type="button" class="lx-fontctl-opt lx-fontctl-opt-sm" data-lx-font-scale="1" role="menuitem" aria-label="{{ __('lan.shrift_oddiy') }}">A</button>
+        <button type="button" class="lx-fontctl-opt lx-fontctl-opt-md" data-lx-font-scale="1.12" role="menuitem" aria-label="{{ __('lan.shrift_orta') }}">A</button>
+        <button type="button" class="lx-fontctl-opt lx-fontctl-opt-lg" data-lx-font-scale="1.25" role="menuitem" aria-label="{{ __('lan.shrift_katta') }}">A</button>
+    </div>
+</div>
 
 
 <!-- JavaScript Libraries -->
@@ -129,6 +156,60 @@
                 el.removeAttribute('data-aos');
             });
         }
+    })();
+</script>
+
+<!-- Shrift o'lchamini boshqarish -->
+<script>
+    (function () {
+        var STORAGE_KEY = 'lx-font-scale';
+        var wrap = document.querySelector('[data-lx-fontctl]');
+        if (!wrap) return;
+
+        var toggle = wrap.querySelector('[data-lx-fontctl-toggle]');
+        var opts = wrap.querySelectorAll('[data-lx-font-scale]');
+
+        function applyScale(scale, persist) {
+            document.documentElement.style.zoom = scale;
+            opts.forEach(function (btn) {
+                btn.classList.toggle('is-active', btn.getAttribute('data-lx-font-scale') === String(scale));
+            });
+            if (persist) {
+                try { localStorage.setItem(STORAGE_KEY, scale); } catch (e) {}
+            }
+        }
+
+        var current = '1';
+        try { current = localStorage.getItem(STORAGE_KEY) || '1'; } catch (e) {}
+        applyScale(current, false);
+
+        toggle.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = wrap.classList.toggle('is-open');
+            toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        opts.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                applyScale(btn.getAttribute('data-lx-font-scale'), true);
+                wrap.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.addEventListener('click', function (e) {
+            if (!wrap.contains(e.target)) {
+                wrap.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                wrap.classList.remove('is-open');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
     })();
 </script>
 </body>

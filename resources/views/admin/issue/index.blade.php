@@ -62,7 +62,7 @@
                                             <th>{{$index +1 }}</th>
 
                                             <td>
-                                                {{ $academy->published_at}}
+                                                {{ $academy->number }}
                                             </td>
                                             <td>
                                                 {{$academy->journal->name_uz}}

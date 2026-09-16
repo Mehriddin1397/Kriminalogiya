@@ -3,8 +3,9 @@
         <div class="m-header">
             <a href="{{route('main')}}" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
-                <img src="{{asset('assets/images/logoo.jfif')}}" alt="" style="width: 60px; height: 60px; !important;" class="logo logo-lg"/>
-                <img src="{{asset('assets/images/logoo.jfif')}}" alt="" class="logo logo-sm"/>
+                <img src="{{asset('assets/images/logoo.jfif')}}" alt="" style="width: 60px; height: 60px; !important;"
+                    class="logo logo-lg" />
+                <img src="{{asset('assets/images/logoo.jfif')}}" alt="" class="logo logo-sm" />
             </a>
         </div>
         <div class="navbar-content">
@@ -21,7 +22,7 @@
                 <li class="nxl-item nxl-hasmenu">
                     <a href="{{route('academia.index')}}" class="nxl-link">
                         <span class="nxl-micon"><i class="feather-layout"></i></span>
-                        <span class="nxl-mtext">Ilmiy Kengash</span><span class="nxl-arrow"></span>
+                        <span class="nxl-mtext">Ilmiy Kengash va pdf hujjatlar</span><span class="nxl-arrow"></span>
                     </a>
                 </li>
                 <li class="nxl-item nxl-hasmenu">
@@ -45,10 +46,12 @@
                 <li class="nxl-item nxl-hasmenu">
                     <a href="javascript:void(0);" class="nxl-link">
                         <span class="nxl-micon"><i class="feather-settings"></i></span>
-                        <span class="nxl-mtext">Jo'rnallar</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                        <span class="nxl-mtext">Jo'rnallar</span><span class="nxl-arrow"><i
+                                class="feather-chevron-right"></i></span>
                     </a>
                     <ul class="nxl-submenu">
-                        <li class="nxl-item"><a class="nxl-link" href="{{route('journal.index')}}">Jo'rnal qo'shish</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="{{route('journal.index')}}">Jo'rnal qo'shish</a>
+                        </li>
                         <li class="nxl-item"><a class="nxl-link" href="{{route('issues.index')}}">Jo'rnal soni</a></li>
                         <li class="nxl-item"><a class="nxl-link" href="{{route('papers.index')}}">Maqolalar</a></li>
 
@@ -61,9 +64,33 @@
                     </a>
                 </li>
                 <li class="nxl-item nxl-hasmenu">
+                    <a href="{{route('videos.index')}}" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-video"></i></span>
+                        <span class="nxl-mtext">Videolar</span><span class="nxl-arrow"></span>
+                    </a>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="{{route('announcements.index')}}" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-bell"></i></span>
+                        <span class="nxl-mtext">E'lonlar</span><span class="nxl-arrow"></span>
+                    </a>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="{{route('surveys.index')}}" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-bar-chart-2"></i></span>
+                        <span class="nxl-mtext">So'rovnomalar</span><span class="nxl-arrow"></span>
+                    </a>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
                     <a href="{{route('rahbariyat.index')}}" class="nxl-link">
                         <span class="nxl-micon"><i class="feather-layout"></i></span>
                         <span class="nxl-mtext">Rahbariyat</span><span class="nxl-arrow"></span>
+                    </a>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="{{route('site-images.index')}}" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-image"></i></span>
+                        <span class="nxl-mtext">Sayt rasmlari</span><span class="nxl-arrow"></span>
                     </a>
                 </li>
                 <li class="nxl-item nxl-hasmenu">
@@ -119,6 +146,19 @@
                         <span class="nxl-micon"><i class="feather-layout"></i></span>
                         <span class="nxl-mtext">Loyihalar</span><span class="nxl-arrow"></span>
                     </a>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-micon"><i class="feather-globe"></i></span>
+                        <span class="nxl-mtext">Xalqaro hamkorlik</span><span class="nxl-arrow"><i
+                                class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link" href="{{route('memorandum.index')}}">Memorandumlar</a>
+                        </li>
+                        <li class="nxl-item"><a class="nxl-link" href="{{route('international-meeting.index')}}">Xalqaro uchrashuvlar</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="{{route('forums.index')}}">Forumlar</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
