@@ -1,1124 +1,257 @@
 @extends('layouts.admin')
 
-@section('title', 'Dashboard')
+@section('title', 'Boshqaruv paneli')
 
 @section('content')
+@php
+    $stats = $stats ?? [
+        'news'          => \App\Models\News::count(),
+        'announcements' => \App\Models\Announcement::count(),
+        'journals'      => \App\Models\Journal::count(),
+        'issues'        => \App\Models\Issue::count(),
+        'papers'        => \App\Models\Paper::count(),
+        'videos'        => \App\Models\Video::count(),
+        'messages'      => \App\Models\Message::count(),
+    ];
+    $latest_news = $latest_news ?? \App\Models\News::latest()->take(5)->get();
+    $latest_messages = $latest_messages ?? \App\Models\Message::latest()->take(5)->get();
+@endphp
 
-    <div class="nxl-content">
-        <!-- [ page-header ] start -->
-        <div class="page-header">
-            <div class="page-header-left d-flex align-items-center">
-                <div class="page-header-title">
-                    <h5 class="m-b-10">Boshqaruv paneli</h5>
-                </div>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Bosh sahifa</a></li>
-                    <li class="breadcrumb-item">Boshqaruv paneli</li>
-                </ul>
+<div class="nxl-content">
+    <!-- [ page-header ] start -->
+    <div class="page-header mb-4">
+        <div class="page-header-left d-flex align-items-center">
+            <div class="page-header-title">
+                <h5 class="m-b-10 mb-0">Boshqaruv paneli</h5>
             </div>
-
+            <ul class="breadcrumb ms-3 mb-0">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Admin</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ul>
         </div>
-        <!-- [ page-header ] end -->
-        <!-- [ Main Content ] start -->
-        <div class="main-content">
-            <div class="row">
-                <div class="user-profile-container">
-                    <div class="user-profile-image">
-                            <img src="{{asset('assets/images/logoo.jfif')}}" id="userImage" alt="User Photo">
-
-                    </div>
-                        <div class="user-profile-info">
-                            <h2 class="user-profile-name">Foydalanuvchi Ismi: {{Auth::user()->name}}
-                            </h2>
-
-                            <p class="user-profile-email">Email: {{\Illuminate\Support\Facades\Auth::user()->email}}</p>
-                        </div>
-
-
-
-                </div>
-
-                <style>
-
-                    /* Faqat foydalanuvchi profili uchun maxsus class'lar */
-                    .user-profile-container {
-                        text-align: center;
-                        background: #fff;
-                        padding: 20px;
-                        border-radius: 10px;
-                        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                        max-width: 800px;
-                        width: 100%;
-                        margin: 0 auto;
-                    }
-
-                    .user-profile-image {
-                        width: 150px;
-                        height: 150px;
-                        border-radius: 50%;
-                        overflow: hidden;
-                        margin: 0 auto 20px;
-                        border: 4px solid #ddd;
-                    }
-
-                    .user-profile-image img {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                    }
-
-                    .user-profile-upload {
-                        display: block;
-                        margin: 10px auto;
-                        padding: 5px;
-                        font-size: 14px;
-                        border: 1px solid #ddd;
-                        border-radius: 5px;
-                        cursor: pointer;
-                    }
-
-                    .user-profile-info {
-                        margin-top: 15px;
-                    }
-
-                    .user-profile-name {
-                        margin: 10px 0;
-                        font-size: 22px;
-                        color: #333;
-                    }
-
-                    .user-profile-email,
-                    .user-profile-role,
-                    .user-profile-date {
-                        margin: 5px 0;
-                        font-size: 16px;
-                        color: #555;
-                    }
-
-                </style>
-
-
-                {{--                <!-- [Invoices Awaiting Payment] start -->--}}
-                {{--                <div class="col-xxl-3 col-md-6">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-body">--}}
-                {{--                            <div class="d-flex align-items-start justify-content-between mb-4">--}}
-                {{--                                <div class="d-flex gap-4 align-items-center">--}}
-                {{--                                    <div class="avatar-text avatar-lg bg-gray-200">--}}
-                {{--                                        <i class="feather-dollar-sign"></i>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <div class="fs-4 fw-bold text-dark"><span class="counter">45</span>/<span class="counter">76</span></div>--}}
-                {{--                                        <h3 class="fs-13 fw-semibold text-truncate-1-line">Invoices Awaiting Payment</h3>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <a href="javascript:void(0);" class="">--}}
-                {{--                                    <i class="feather-more-vertical"></i>--}}
-                {{--                                </a>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="pt-4">--}}
-                {{--                                <div class="d-flex align-items-center justify-content-between">--}}
-                {{--                                    <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">Invoices Awaiting </a>--}}
-                {{--                                    <div class="w-100 text-end">--}}
-                {{--                                        <span class="fs-12 text-dark">$5,569</span>--}}
-                {{--                                        <span class="fs-11 text-muted">(56%)</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="progress mt-2 ht-3">--}}
-                {{--                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 56%"></div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- [Invoices Awaiting Payment] end -->--}}
-                {{--                <!-- [Converted Leads] start -->--}}
-                {{--                <div class="col-xxl-3 col-md-6">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-body">--}}
-                {{--                            <div class="d-flex align-items-start justify-content-between mb-4">--}}
-                {{--                                <div class="d-flex gap-4 align-items-center">--}}
-                {{--                                    <div class="avatar-text avatar-lg bg-gray-200">--}}
-                {{--                                        <i class="feather-cast"></i>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <div class="fs-4 fw-bold text-dark"><span class="counter">48</span>/<span class="counter">86</span></div>--}}
-                {{--                                        <h3 class="fs-13 fw-semibold text-truncate-1-line">Converted Leads</h3>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <a href="javascript:void(0);" class="">--}}
-                {{--                                    <i class="feather-more-vertical"></i>--}}
-                {{--                                </a>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="pt-4">--}}
-                {{--                                <div class="d-flex align-items-center justify-content-between">--}}
-                {{--                                    <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">Converted Leads </a>--}}
-                {{--                                    <div class="w-100 text-end">--}}
-                {{--                                        <span class="fs-12 text-dark">52 Completed</span>--}}
-                {{--                                        <span class="fs-11 text-muted">(63%)</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="progress mt-2 ht-3">--}}
-                {{--                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 63%"></div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- [Converted Leads] end -->--}}
-                {{--                <!-- [Projects In Progress] start -->--}}
-                {{--                <div class="col-xxl-3 col-md-6">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-body">--}}
-                {{--                            <div class="d-flex align-items-start justify-content-between mb-4">--}}
-                {{--                                <div class="d-flex gap-4 align-items-center">--}}
-                {{--                                    <div class="avatar-text avatar-lg bg-gray-200">--}}
-                {{--                                        <i class="feather-briefcase"></i>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <div class="fs-4 fw-bold text-dark"><span class="counter">16</span>/<span class="counter">20</span></div>--}}
-                {{--                                        <h3 class="fs-13 fw-semibold text-truncate-1-line">Projects In Progress</h3>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <a href="javascript:void(0);" class="">--}}
-                {{--                                    <i class="feather-more-vertical"></i>--}}
-                {{--                                </a>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="pt-4">--}}
-                {{--                                <div class="d-flex align-items-center justify-content-between">--}}
-                {{--                                    <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line">Projects In Progress </a>--}}
-                {{--                                    <div class="w-100 text-end">--}}
-                {{--                                        <span class="fs-12 text-dark">16 Completed</span>--}}
-                {{--                                        <span class="fs-11 text-muted">(78%)</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="progress mt-2 ht-3">--}}
-                {{--                                    <div class="progress-bar bg-success" role="progressbar" style="width: 78%"></div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- [Projects In Progress] end -->--}}
-                {{--                <!-- [Conversion Rate] start -->--}}
-                {{--                <div class="col-xxl-3 col-md-6">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-body">--}}
-                {{--                            <div class="d-flex align-items-start justify-content-between mb-4">--}}
-                {{--                                <div class="d-flex gap-4 align-items-center">--}}
-                {{--                                    <div class="avatar-text avatar-lg bg-gray-200">--}}
-                {{--                                        <i class="feather-activity"></i>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <div class="fs-4 fw-bold text-dark"><span class="counter">46.59</span>%</div>--}}
-                {{--                                        <h3 class="fs-13 fw-semibold text-truncate-1-line">Conversion Rate</h3>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <a href="javascript:void(0);" class="">--}}
-                {{--                                    <i class="feather-more-vertical"></i>--}}
-                {{--                                </a>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="pt-4">--}}
-                {{--                                <div class="d-flex align-items-center justify-content-between">--}}
-                {{--                                    <a href="javascript:void(0);" class="fs-12 fw-medium text-muted text-truncate-1-line"> Conversion Rate </a>--}}
-                {{--                                    <div class="w-100 text-end">--}}
-                {{--                                        <span class="fs-12 text-dark">$2,254</span>--}}
-                {{--                                        <span class="fs-11 text-muted">(46%)</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="progress mt-2 ht-3">--}}
-                {{--                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 46%"></div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- [Conversion Rate] end -->--}}
-                {{--                <!-- [Payment Records] start -->--}}
-                {{--                <div class="col-xxl-8">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-header">--}}
-                {{--                            <h5 class="card-title">Payment Record</h5>--}}
-                {{--                            <div class="card-header-action">--}}
-                {{--                                <div class="card-header-btn">--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Delete">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Refresh">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Maximize/Minimize">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="dropdown">--}}
-                {{--                                    <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">--}}
-                {{--                                        <div data-bs-toggle="tooltip" title="Options">--}}
-                {{--                                            <i class="feather-more-vertical"></i>--}}
-                {{--                                        </div>--}}
-                {{--                                    </a>--}}
-                {{--                                    <div class="dropdown-menu dropdown-menu-end">--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>--}}
-                {{--                                        <div class="dropdown-divider"></div>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body custom-card-action p-0">--}}
-                {{--                            <div id="payment-records-chart"></div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-footer">--}}
-                {{--                            <div class="row g-4">--}}
-                {{--                                <div class="col-lg-3">--}}
-                {{--                                    <div class="p-3 border border-dashed rounded">--}}
-                {{--                                        <div class="fs-12 text-muted mb-1">Awaiting</div>--}}
-                {{--                                        <h6 class="fw-bold text-dark">$5,486</h6>--}}
-                {{--                                        <div class="progress mt-2 ht-3">--}}
-                {{--                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 81%"></div>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-lg-3">--}}
-                {{--                                    <div class="p-3 border border-dashed rounded">--}}
-                {{--                                        <div class="fs-12 text-muted mb-1">Completed</div>--}}
-                {{--                                        <h6 class="fw-bold text-dark">$9,275</h6>--}}
-                {{--                                        <div class="progress mt-2 ht-3">--}}
-                {{--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 82%"></div>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-lg-3">--}}
-                {{--                                    <div class="p-3 border border-dashed rounded">--}}
-                {{--                                        <div class="fs-12 text-muted mb-1">Rejected</div>--}}
-                {{--                                        <h6 class="fw-bold text-dark">$3,868</h6>--}}
-                {{--                                        <div class="progress mt-2 ht-3">--}}
-                {{--                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 68%"></div>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-lg-3">--}}
-                {{--                                    <div class="p-3 border border-dashed rounded">--}}
-                {{--                                        <div class="fs-12 text-muted mb-1">Revenue</div>--}}
-                {{--                                        <h6 class="fw-bold text-dark">$50,668</h6>--}}
-                {{--                                        <div class="progress mt-2 ht-3">--}}
-                {{--                                            <div class="progress-bar bg-dark" role="progressbar" style="width: 75%"></div>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- [Payment Records] end -->--}}
-                {{--                <!-- [Total Sales] start -->--}}
-                {{--                <div class="col-xxl-4">--}}
-                {{--                    <div class="card stretch stretch-full overflow-hidden">--}}
-                {{--                        <div class="bg-primary text-white">--}}
-                {{--                            <div class="p-4">--}}
-                {{--                                <span class="badge bg-light text-primary text-dark float-end">12%</span>--}}
-                {{--                                <div class="text-start">--}}
-                {{--                                    <h4 class="text-reset">30,569</h4>--}}
-                {{--                                    <p class="text-reset m-0">Total Sales</p>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                            <div id="total-sales-color-graph"></div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body">--}}
-                {{--                            <div class="d-flex align-items-center justify-content-between">--}}
-                {{--                                <div class="hstack gap-3">--}}
-                {{--                                    <div class="avatar-image avatar-lg p-2 rounded">--}}
-                {{--                                        <img class="img-fluid" src="assets/images/brand/shopify.png" alt="" />--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <a href="javascript:void(0);" class="d-block">Shopify eCommerce Store</a>--}}
-                {{--                                        <span class="fs-12 text-muted">Development</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div>--}}
-                {{--                                    <div class="fw-bold text-dark">$1200</div>--}}
-                {{--                                    <div class="fs-12 text-end">6 Projects</div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                            <hr class="border-dashed my-3" />--}}
-                {{--                            <div class="d-flex align-items-center justify-content-between">--}}
-                {{--                                <div class="hstack gap-3">--}}
-                {{--                                    <div class="avatar-image avatar-lg p-2 rounded">--}}
-                {{--                                        <img class="img-fluid" src="assets/images/brand/app-store.png" alt="" />--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <a href="javascript:void(0);" class="d-block">iOS Apps Development</a>--}}
-                {{--                                        <span class="fs-12 text-muted">Development</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div>--}}
-                {{--                                    <div class="fw-bold text-dark">$1450</div>--}}
-                {{--                                    <div class="fs-12 text-end">3 Projects</div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                            <hr class="border-dashed my-3" />--}}
-                {{--                            <div class="d-flex align-items-center justify-content-between">--}}
-                {{--                                <div class="hstack gap-3">--}}
-                {{--                                    <div class="avatar-image avatar-lg p-2 rounded">--}}
-                {{--                                        <img class="img-fluid" src="assets/images/brand/figma.png" alt="" />--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <a href="javascript:void(0);" class="d-block">Figma Dashboard Design</a>--}}
-                {{--                                        <span class="fs-12 text-muted">UI/UX Design</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div>--}}
-                {{--                                    <div class="fw-bold text-dark">$1250</div>--}}
-                {{--                                    <div class="fs-12 text-end">5 Projects</div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center py-4">Full Details</a>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- [Total Sales] end !-->--}}
-                {{--                <!-- [Mini] start -->--}}
-                {{--                <div class="col-lg-4">--}}
-                {{--                    <div class="card mb-4 stretch stretch-full">--}}
-                {{--                        <div class="card-header d-flex align-items-center justify-content-between">--}}
-                {{--                            <div class="d-flex gap-3 align-items-center">--}}
-                {{--                                <div class="avatar-text">--}}
-                {{--                                    <i class="feather feather-star"></i>--}}
-                {{--                                </div>--}}
-                {{--                                <div>--}}
-                {{--                                    <div class="fw-semibold text-dark">Tasks Completed</div>--}}
-                {{--                                    <div class="fs-12 text-muted">22/35 completed</div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="fs-4 fw-bold text-dark">22/35</div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body d-flex align-items-center justify-content-between gap-4">--}}
-                {{--                            <div id="task-completed-area-chart"></div>--}}
-                {{--                            <div class="fs-12 text-muted text-nowrap">--}}
-                {{--                                <span class="fw-semibold text-primary">28% more</span><br />--}}
-                {{--                                <span>from last week</span>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <div class="col-lg-4">--}}
-                {{--                    <div class="card mb-4 stretch stretch-full">--}}
-                {{--                        <div class="card-header d-flex align-items-center justify-content-between">--}}
-                {{--                            <div class="d-flex gap-3 align-items-center">--}}
-                {{--                                <div class="avatar-text">--}}
-                {{--                                    <i class="feather feather-file-text"></i>--}}
-                {{--                                </div>--}}
-                {{--                                <div>--}}
-                {{--                                    <div class="fw-semibold text-dark">New Tasks</div>--}}
-                {{--                                    <div class="fs-12 text-muted">0/20 tasks</div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="fs-4 fw-bold text-dark">5/20</div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body d-flex align-items-center justify-content-between gap-4">--}}
-                {{--                            <div id="new-tasks-area-chart"></div>--}}
-                {{--                            <div class="fs-12 text-muted text-nowrap">--}}
-                {{--                                <span class="fw-semibold text-success">34% more</span><br />--}}
-                {{--                                <span>from last week</span>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <div class="col-lg-4">--}}
-                {{--                    <div class="card mb-4 stretch stretch-full">--}}
-                {{--                        <div class="card-header d-flex align-items-center justify-content-between">--}}
-                {{--                            <div class="d-flex gap-3 align-items-center">--}}
-                {{--                                <div class="avatar-text">--}}
-                {{--                                    <i class="feather feather-airplay"></i>--}}
-                {{--                                </div>--}}
-                {{--                                <div>--}}
-                {{--                                    <div class="fw-semibold text-dark">Project Done</div>--}}
-                {{--                                    <div class="fs-12 text-muted">20/30 academia</div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="fs-4 fw-bold text-dark">20/30</div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body d-flex align-items-center justify-content-between gap-4">--}}
-                {{--                            <div id="academia-done-area-chart"></div>--}}
-                {{--                            <div class="fs-12 text-muted text-nowrap">--}}
-                {{--                                <span class="fw-semibold text-danger">42% more</span><br />--}}
-                {{--                                <span>from last week</span>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- [Mini] end !-->--}}
-                {{--                <!-- [Leads Overview] start -->--}}
-                {{--                <div class="col-xxl-4">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-header">--}}
-                {{--                            <h5 class="card-title">Leads Overview</h5>--}}
-                {{--                            <div class="card-header-action">--}}
-                {{--                                <div class="card-header-btn">--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Delete">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Refresh">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Maximize/Minimize">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="dropdown">--}}
-                {{--                                    <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">--}}
-                {{--                                        <div data-bs-toggle="tooltip" title="Options">--}}
-                {{--                                            <i class="feather-more-vertical"></i>--}}
-                {{--                                        </div>--}}
-                {{--                                    </a>--}}
-                {{--                                    <div class="dropdown-menu dropdown-menu-end">--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>--}}
-                {{--                                        <div class="dropdown-divider"></div>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body custom-card-action">--}}
-                {{--                            <div id="leads-overview-donut"></div>--}}
-                {{--                            <div class="row g-2">--}}
-                {{--                                <div class="col-4">--}}
-                {{--                                    <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">--}}
-                {{--                                        <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #3454d1"></span>--}}
-                {{--                                        <span>New<span class="fs-10 text-muted ms-1">(20K)</span></span>--}}
-                {{--                                    </a>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-4">--}}
-                {{--                                    <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">--}}
-                {{--                                        <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #0d519e"></span>--}}
-                {{--                                        <span>Contacted<span class="fs-10 text-muted ms-1">(15K)</span></span>--}}
-                {{--                                    </a>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-4">--}}
-                {{--                                    <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">--}}
-                {{--                                        <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #1976d2"></span>--}}
-                {{--                                        <span>Qualified<span class="fs-10 text-muted ms-1">(10K)</span></span>--}}
-                {{--                                    </a>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-4">--}}
-                {{--                                    <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">--}}
-                {{--                                        <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #1e88e5"></span>--}}
-                {{--                                        <span>Working<span class="fs-10 text-muted ms-1">(18K)</span></span>--}}
-                {{--                                    </a>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-4">--}}
-                {{--                                    <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">--}}
-                {{--                                        <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #2196f3"></span>--}}
-                {{--                                        <span>Customer<span class="fs-10 text-muted ms-1">(10K)</span></span>--}}
-                {{--                                    </a>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-4">--}}
-                {{--                                    <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">--}}
-                {{--                                        <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #42a5f5"></span>--}}
-                {{--                                        <span>Proposal<span class="fs-10 text-muted ms-1">(15K)</span></span>--}}
-                {{--                                    </a>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-4">--}}
-                {{--                                    <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">--}}
-                {{--                                        <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #64b5f6"></span>--}}
-                {{--                                        <span>Leads<span class="fs-10 text-muted ms-1">(16K)</span></span>--}}
-                {{--                                    </a>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-4">--}}
-                {{--                                    <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">--}}
-                {{--                                        <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #90caf9"></span>--}}
-                {{--                                        <span>Progress<span class="fs-10 text-muted ms-1">(14K)</span></span>--}}
-                {{--                                    </a>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="col-4">--}}
-                {{--                                    <a href="javascript:void(0);" class="p-2 hstack gap-2 rounded border border-dashed border-gray-5">--}}
-                {{--                                        <span class="wd-7 ht-7 rounded-circle d-inline-block" style="background-color: #aad6fa"></span>--}}
-                {{--                                        <span>Others<span class="fs-10 text-muted ms-1">(10K)</span></span>--}}
-                {{--                                    </a>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- [Leads Overview] end -->--}}
-                {{--                <!-- [Latest Leads] start -->--}}
-                {{--                <div class="col-xxl-8">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-header">--}}
-                {{--                            <h5 class="card-title">Latest Leads</h5>--}}
-                {{--                            <div class="card-header-action">--}}
-                {{--                                <div class="card-header-btn">--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Delete">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Refresh">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Maximize/Minimize">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="dropdown">--}}
-                {{--                                    <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">--}}
-                {{--                                        <div data-bs-toggle="tooltip" title="Options">--}}
-                {{--                                            <i class="feather-more-vertical"></i>--}}
-                {{--                                        </div>--}}
-                {{--                                    </a>--}}
-                {{--                                    <div class="dropdown-menu dropdown-menu-end">--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>--}}
-                {{--                                        <div class="dropdown-divider"></div>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body custom-card-action p-0">--}}
-                {{--                            <div class="table-responsive">--}}
-                {{--                                <table class="table table-hover mb-0">--}}
-                {{--                                    <thead>--}}
-                {{--                                    <tr class="border-b">--}}
-                {{--                                        <th scope="row">Users</th>--}}
-                {{--                                        <th>Proposal</th>--}}
-                {{--                                        <th>Date</th>--}}
-                {{--                                        <th>Status</th>--}}
-                {{--                                        <th class="text-end">Actions</th>--}}
-                {{--                                    </tr>--}}
-                {{--                                    </thead>--}}
-                {{--                                    <tbody>--}}
-                {{--                                    <tr>--}}
-                {{--                                        <td>--}}
-                {{--                                            <div class="d-flex align-items-center gap-3">--}}
-                {{--                                                <div class="avatar-image">--}}
-                {{--                                                    <img src="assets/images/avatar/2.png" alt="" class="img-fluid" />--}}
-                {{--                                                </div>--}}
-                {{--                                                <a href="javascript:void(0);">--}}
-                {{--                                                    <span class="d-block">Archie Cantones</span>--}}
-                {{--                                                    <span class="fs-12 d-block fw-normal text-muted">arcie.tones@gmail.com</span>--}}
-                {{--                                                </a>--}}
-                {{--                                            </div>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-gray-200 text-dark">Sent</span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>11/06/2023 10:53</td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-soft-success text-success">Completed</span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td class="text-end">--}}
-                {{--                                            <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>--}}
-                {{--                                        </td>--}}
-                {{--                                    </tr>--}}
-                {{--                                    <tr>--}}
-                {{--                                        <td>--}}
-                {{--                                            <div class="d-flex align-items-center gap-3">--}}
-                {{--                                                <div class="avatar-image">--}}
-                {{--                                                    <img src="assets/images/avatar/3.png" alt="" class="img-fluid" />--}}
-                {{--                                                </div>--}}
-                {{--                                                <a href="javascript:void(0);">--}}
-                {{--                                                    <span class="d-block">Holmes Cherryman</span>--}}
-                {{--                                                    <span class="fs-12 d-block fw-normal text-muted">golms.chan@gmail.com</span>--}}
-                {{--                                                </a>--}}
-                {{--                                            </div>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-gray-200 text-dark">New</span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>11/06/2023 10:53</td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-soft-primary text-primary">In Progress </span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td class="text-end">--}}
-                {{--                                            <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>--}}
-                {{--                                        </td>--}}
-                {{--                                    </tr>--}}
-                {{--                                    <tr>--}}
-                {{--                                        <td>--}}
-                {{--                                            <div class="d-flex align-items-center gap-3">--}}
-                {{--                                                <div class="avatar-image">--}}
-                {{--                                                    <img src="assets/images/avatar/4.png" alt="" class="img-fluid" />--}}
-                {{--                                                </div>--}}
-                {{--                                                <a href="javascript:void(0);">--}}
-                {{--                                                    <span class="d-block">Malanie Hanvey</span>--}}
-                {{--                                                    <span class="fs-12 d-block fw-normal text-muted">lanie.nveyn@gmail.com</span>--}}
-                {{--                                                </a>--}}
-                {{--                                            </div>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-gray-200 text-dark">Sent</span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>11/06/2023 10:53</td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-soft-success text-success">Completed</span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td class="text-end">--}}
-                {{--                                            <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>--}}
-                {{--                                        </td>--}}
-                {{--                                    </tr>--}}
-                {{--                                    <tr>--}}
-                {{--                                        <td>--}}
-                {{--                                            <div class="d-flex align-items-center gap-3">--}}
-                {{--                                                <div class="avatar-image">--}}
-                {{--                                                    <img src="assets/images/avatar/5.png" alt="" class="img-fluid" />--}}
-                {{--                                                </div>--}}
-                {{--                                                <a href="javascript:void(0);">--}}
-                {{--                                                    <span class="d-block">Kenneth Hune</span>--}}
-                {{--                                                    <span class="fs-12 d-block fw-normal text-muted">nneth.une@gmail.com</span>--}}
-                {{--                                                </a>--}}
-                {{--                                            </div>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-gray-200 text-dark">Returning</span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>11/06/2023 10:53</td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-soft-warning text-warning">Not Interested</span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td class="text-end">--}}
-                {{--                                            <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>--}}
-                {{--                                        </td>--}}
-                {{--                                    </tr>--}}
-                {{--                                    <tr>--}}
-                {{--                                        <td>--}}
-                {{--                                            <div class="d-flex align-items-center gap-3">--}}
-                {{--                                                <div class="avatar-image">--}}
-                {{--                                                    <img src="assets/images/avatar/6.png" alt="" class="img-fluid" />--}}
-                {{--                                                </div>--}}
-                {{--                                                <a href="javascript:void(0);">--}}
-                {{--                                                    <span class="d-block">Valentine Maton</span>--}}
-                {{--                                                    <span class="fs-12 d-block fw-normal text-muted">alenine.aton@gmail.com</span>--}}
-                {{--                                                </a>--}}
-                {{--                                            </div>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-gray-200 text-dark">Sent</span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td>11/06/2023 10:53</td>--}}
-                {{--                                        <td>--}}
-                {{--                                            <span class="badge bg-soft-success text-success">Completed</span>--}}
-                {{--                                        </td>--}}
-                {{--                                        <td class="text-end">--}}
-                {{--                                            <a href="javascript:void(0);"><i class="feather-more-vertical"></i></a>--}}
-                {{--                                        </td>--}}
-                {{--                                    </tr>--}}
-                {{--                                    </tbody>--}}
-                {{--                                </table>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-footer">--}}
-                {{--                            <ul class="list-unstyled d-flex align-items-center gap-2 mb-0 pagination-common-style">--}}
-                {{--                                <li>--}}
-                {{--                                    <a href="javascript:void(0);"><i class="bi bi-arrow-left"></i></a>--}}
-                {{--                                </li>--}}
-                {{--                                <li><a href="javascript:void(0);" class="active">1</a></li>--}}
-                {{--                                <li><a href="javascript:void(0);">2</a></li>--}}
-                {{--                                <li>--}}
-                {{--                                    <a href="javascript:void(0);"><i class="bi bi-dot"></i></a>--}}
-                {{--                                </li>--}}
-                {{--                                <li><a href="javascript:void(0);">8</a></li>--}}
-                {{--                                <li><a href="javascript:void(0);">9</a></li>--}}
-                {{--                                <li>--}}
-                {{--                                    <a href="javascript:void(0);"><i class="bi bi-arrow-right"></i></a>--}}
-                {{--                                </li>--}}
-                {{--                            </ul>--}}
-                {{--                        </div>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!-- [Latest Leads] end -->--}}
-                {{--                <!--! BEGIN: [Upcoming Schedule] !-->--}}
-                {{--                <div class="col-xxl-4">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-header">--}}
-                {{--                            <h5 class="card-title">Upcoming Schedule</h5>--}}
-                {{--                            <div class="card-header-action">--}}
-                {{--                                <div class="card-header-btn">--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Delete">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Refresh">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Maximize/Minimize">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="dropdown">--}}
-                {{--                                    <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">--}}
-                {{--                                        <div data-bs-toggle="tooltip" title="Options">--}}
-                {{--                                            <i class="feather-more-vertical"></i>--}}
-                {{--                                        </div>--}}
-                {{--                                    </a>--}}
-                {{--                                    <div class="dropdown-menu dropdown-menu-end">--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>--}}
-                {{--                                        <div class="dropdown-divider"></div>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body">--}}
-                {{--                            <!--! BEGIN: [Events] !-->--}}
-                {{--                            <div class="p-3 border border-dashed rounded-3 mb-3">--}}
-                {{--                                <div class="d-flex justify-content-between">--}}
-                {{--                                    <div class="d-flex align-items-center gap-3">--}}
-                {{--                                        <div class="wd-50 ht-50 bg-soft-primary text-primary lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">--}}
-                {{--                                            <span class="fs-18 fw-bold mb-1 d-block">20</span>--}}
-                {{--                                            <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>--}}
-                {{--                                        </div>--}}
-                {{--                                        <div class="text-dark">--}}
-                {{--                                            <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">React Dashboard Design</a>--}}
-                {{--                                            <span class="fs-11 fw-normal text-muted text-truncate-1-line">11:30am - 12:30pm</span>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">--}}
-                {{--                                            <img src="assets/images/avatar/2.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">--}}
-                {{--                                            <img src="assets/images/avatar/3.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">--}}
-                {{--                                            <img src="assets/images/avatar/4.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">--}}
-                {{--                                            <img src="assets/images/avatar/6.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">--}}
-                {{--                                            <i class="feather-more-horizontal"></i>--}}
-                {{--                                        </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                            <!--! BEGIN: [Events] !-->--}}
-                {{--                            <div class="p-3 border border-dashed rounded-3 mb-3">--}}
-                {{--                                <div class="d-flex justify-content-between">--}}
-                {{--                                    <div class="d-flex align-items-center gap-3">--}}
-                {{--                                        <div class="wd-50 ht-50 bg-soft-warning text-warning lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">--}}
-                {{--                                            <span class="fs-18 fw-bold mb-1 d-block">30</span>--}}
-                {{--                                            <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>--}}
-                {{--                                        </div>--}}
-                {{--                                        <div class="text-dark">--}}
-                {{--                                            <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Admin Design Concept</a>--}}
-                {{--                                            <span class="fs-11 fw-normal text-muted text-truncate-1-line">10:00am - 12:00pm</span>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">--}}
-                {{--                                            <img src="assets/images/avatar/2.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">--}}
-                {{--                                            <img src="assets/images/avatar/3.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">--}}
-                {{--                                            <img src="assets/images/avatar/5.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">--}}
-                {{--                                            <img src="assets/images/avatar/6.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">--}}
-                {{--                                            <i class="feather-more-horizontal"></i>--}}
-                {{--                                        </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                            <!--! BEGIN: [Events] !-->--}}
-                {{--                            <div class="p-3 border border-dashed rounded-3 mb-3">--}}
-                {{--                                <div class="d-flex justify-content-between">--}}
-                {{--                                    <div class="d-flex align-items-center gap-3">--}}
-                {{--                                        <div class="wd-50 ht-50 bg-soft-success text-success lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">--}}
-                {{--                                            <span class="fs-18 fw-bold mb-1 d-block">17</span>--}}
-                {{--                                            <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>--}}
-                {{--                                        </div>--}}
-                {{--                                        <div class="text-dark">--}}
-                {{--                                            <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Standup Team Meeting</a>--}}
-                {{--                                            <span class="fs-11 fw-normal text-muted text-truncate-1-line">8:00am - 9:00am</span>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">--}}
-                {{--                                            <img src="assets/images/avatar/2.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Michael Ksen">--}}
-                {{--                                            <img src="assets/images/avatar/3.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">--}}
-                {{--                                            <img src="assets/images/avatar/4.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">--}}
-                {{--                                            <img src="assets/images/avatar/5.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">--}}
-                {{--                                            <i class="feather-more-horizontal"></i>--}}
-                {{--                                        </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                            <!--! BEGIN: [Events] !-->--}}
-                {{--                            <div class="p-3 border border-dashed rounded-3 mb-2">--}}
-                {{--                                <div class="d-flex justify-content-between">--}}
-                {{--                                    <div class="d-flex align-items-center gap-3">--}}
-                {{--                                        <div class="wd-50 ht-50 bg-soft-danger text-danger lh-1 d-flex align-items-center justify-content-center flex-column rounded-2 schedule-date">--}}
-                {{--                                            <span class="fs-18 fw-bold mb-1 d-block">25</span>--}}
-                {{--                                            <span class="fs-10 fw-semibold text-uppercase d-block">Dec</span>--}}
-                {{--                                        </div>--}}
-                {{--                                        <div class="text-dark">--}}
-                {{--                                            <a href="javascript:void(0);" class="fw-bold mb-2 text-truncate-1-line">Zoom Team Meeting</a>--}}
-                {{--                                            <span class="fs-11 fw-normal text-muted text-truncate-1-line">03:30pm - 05:30pm</span>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="img-group lh-0 ms-3 justify-content-start d-none d-sm-flex">--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Janette Dalton">--}}
-                {{--                                            <img src="assets/images/avatar/2.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Socrates Itumay">--}}
-                {{--                                            <img src="assets/images/avatar/4.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">--}}
-                {{--                                            <img src="assets/images/avatar/5.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-image avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Marianne Audrey">--}}
-                {{--                                            <img src="assets/images/avatar/6.png" class="img-fluid" alt="image" />--}}
-                {{--                                        </a>--}}
-                {{--                                        <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="tooltip" data-bs-trigger="hover" title="Explorer More">--}}
-                {{--                                            <i class="feather-more-horizontal"></i>--}}
-                {{--                                        </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center py-4">Upcomming Schedule</a>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!--! END: [Upcoming Schedule] !-->--}}
-                {{--                <!--! BEGIN: [Project Status] !-->--}}
-                {{--                <div class="col-xxl-4">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-header">--}}
-                {{--                            <h5 class="card-title">Project Status</h5>--}}
-                {{--                            <div class="card-header-action">--}}
-                {{--                                <div class="card-header-btn">--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Delete">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Refresh">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Maximize/Minimize">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="dropdown">--}}
-                {{--                                    <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">--}}
-                {{--                                        <div data-bs-toggle="tooltip" title="Options">--}}
-                {{--                                            <i class="feather-more-vertical"></i>--}}
-                {{--                                        </div>--}}
-                {{--                                    </a>--}}
-                {{--                                    <div class="dropdown-menu dropdown-menu-end">--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>--}}
-                {{--                                        <div class="dropdown-divider"></div>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body custom-card-action">--}}
-                {{--                            <div class="mb-3">--}}
-                {{--                                <div class="mb-4 pb-1 d-flex">--}}
-                {{--                                    <div class="d-flex w-50 align-items-center me-3">--}}
-                {{--                                        <img src="assets/images/brand/app-store.png" alt="laravel-logo" class="me-3" width="35" />--}}
-                {{--                                        <div>--}}
-                {{--                                            <a href="javascript:void(0);" class="text-truncate-1-line">Apps Development</a>--}}
-                {{--                                            <div class="fs-11 text-muted">Applications</div>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="d-flex flex-grow-1 align-items-center">--}}
-                {{--                                        <div class="progress w-100 me-3 ht-5">--}}
-                {{--                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 54%" aria-valuenow="54" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                {{--                                        </div>--}}
-                {{--                                        <span class="text-muted">54%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <hr class="border-dashed my-3" />--}}
-                {{--                                <div class="mb-4 pb-1 d-flex">--}}
-                {{--                                    <div class="d-flex w-50 align-items-center me-3">--}}
-                {{--                                        <img src="assets/images/brand/figma.png" alt="figma-logo" class="me-3" width="35" />--}}
-                {{--                                        <div>--}}
-                {{--                                            <a href="javascript:void(0);" class="text-truncate-1-line">Dashboard Design</a>--}}
-                {{--                                            <div class="fs-11 text-muted">App UI Kit</div>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="d-flex flex-grow-1 align-items-center">--}}
-                {{--                                        <div class="progress w-100 me-3 ht-5">--}}
-                {{--                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 86%" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                {{--                                        </div>--}}
-                {{--                                        <span class="text-muted">86%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <hr class="border-dashed my-3" />--}}
-                {{--                                <div class="mb-4 pb-1 d-flex">--}}
-                {{--                                    <div class="d-flex w-50 align-items-center me-3">--}}
-                {{--                                        <img src="assets/images/brand/facebook.png" alt="vue-logo" class="me-3" width="35" />--}}
-                {{--                                        <div>--}}
-                {{--                                            <a href="javascript:void(0);" class="text-truncate-1-line">Facebook Marketing</a>--}}
-                {{--                                            <div class="fs-11 text-muted">Marketing</div>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="d-flex flex-grow-1 align-items-center">--}}
-                {{--                                        <div class="progress w-100 me-3 ht-5">--}}
-                {{--                                            <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                {{--                                        </div>--}}
-                {{--                                        <span class="text-muted">90%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <hr class="border-dashed my-3" />--}}
-                {{--                                <div class="mb-4 pb-1 d-flex">--}}
-                {{--                                    <div class="d-flex w-50 align-items-center me-3">--}}
-                {{--                                        <img src="assets/images/brand/github.png" alt="react-logo" class="me-3" width="35" />--}}
-                {{--                                        <div>--}}
-                {{--                                            <a href="javascript:void(0);" class="text-truncate-1-line">React Dashboard Github</a>--}}
-                {{--                                            <div class="fs-11 text-muted">Dashboard</div>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="d-flex flex-grow-1 align-items-center">--}}
-                {{--                                        <div class="progress w-100 me-3 ht-5">--}}
-                {{--                                            <div class="progress-bar bg-info" role="progressbar" style="width: 37%" aria-valuenow="37" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                {{--                                        </div>--}}
-                {{--                                        <span class="text-muted">37%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <hr class="border-dashed my-3" />--}}
-                {{--                                <div class="d-flex">--}}
-                {{--                                    <div class="d-flex w-50 align-items-center me-3">--}}
-                {{--                                        <img src="assets/images/brand/paypal.png" alt="sketch-logo" class="me-3" width="35" />--}}
-                {{--                                        <div>--}}
-                {{--                                            <a href="javascript:void(0);" class="text-truncate-1-line">Paypal Payment Gateway</a>--}}
-                {{--                                            <div class="fs-11 text-muted">Payment</div>--}}
-                {{--                                        </div>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div class="d-flex flex-grow-1 align-items-center">--}}
-                {{--                                        <div class="progress w-100 me-3 ht-5">--}}
-                {{--                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 29%" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100"></div>--}}
-                {{--                                        </div>--}}
-                {{--                                        <span class="text-muted">29%</span>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center">Upcomming Projects</a>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!--! END: [Project Status] !-->--}}
-                {{--                <!--! BEGIN: [Team Progress] !-->--}}
-                {{--                <div class="col-xxl-4">--}}
-                {{--                    <div class="card stretch stretch-full">--}}
-                {{--                        <div class="card-header">--}}
-                {{--                            <h5 class="card-title">Team Progress</h5>--}}
-                {{--                            <div class="card-header-action">--}}
-                {{--                                <div class="card-header-btn">--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Delete">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-danger" data-bs-toggle="remove"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Refresh">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-warning" data-bs-toggle="refresh"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                    <div data-bs-toggle="tooltip" title="Maximize/Minimize">--}}
-                {{--                                        <a href="javascript:void(0);" class="avatar-text avatar-xs bg-success" data-bs-toggle="expand"> </a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="dropdown">--}}
-                {{--                                    <a href="javascript:void(0);" class="avatar-text avatar-sm" data-bs-toggle="dropdown" data-bs-offset="25, 25">--}}
-                {{--                                        <div data-bs-toggle="tooltip" title="Options">--}}
-                {{--                                            <i class="feather-more-vertical"></i>--}}
-                {{--                                        </div>--}}
-                {{--                                    </a>--}}
-                {{--                                    <div class="dropdown-menu dropdown-menu-end">--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-at-sign"></i>New</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-calendar"></i>Event</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-bell"></i>Snoozed</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-trash-2"></i>Deleted</a>--}}
-                {{--                                        <div class="dropdown-divider"></div>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-settings"></i>Settings</a>--}}
-                {{--                                        <a href="javascript:void(0);" class="dropdown-item"><i class="feather-life-buoy"></i>Tips & Tricks</a>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <div class="card-body custom-card-action">--}}
-                {{--                            <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-3">--}}
-                {{--                                <div class="hstack gap-3">--}}
-                {{--                                    <div class="avatar-image">--}}
-                {{--                                        <img src="assets/images/avatar/1.png" alt="" class="img-fluid" />--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <a href="javascript:void(0);">Alexandra Della</a>--}}
-                {{--                                        <div class="fs-11 text-muted">Frontend Developer</div>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="team-progress-1"></div>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-3">--}}
-                {{--                                <div class="hstack gap-3">--}}
-                {{--                                    <div class="avatar-image">--}}
-                {{--                                        <img src="assets/images/avatar/2.png" alt="" class="img-fluid" />--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <a href="javascript:void(0);">Archie Cantones</a>--}}
-                {{--                                        <div class="fs-11 text-muted">UI/UX Designer</div>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="team-progress-2"></div>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-3">--}}
-                {{--                                <div class="hstack gap-3">--}}
-                {{--                                    <div class="avatar-image">--}}
-                {{--                                        <img src="assets/images/avatar/3.png" alt="" class="img-fluid" />--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <a href="javascript:void(0);">Malanie Hanvey</a>--}}
-                {{--                                        <div class="fs-11 text-muted">Backend Developer</div>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="team-progress-3"></div>--}}
-                {{--                            </div>--}}
-                {{--                            <div class="hstack justify-content-between border border-dashed rounded-3 p-3 mb-2">--}}
-                {{--                                <div class="hstack gap-3">--}}
-                {{--                                    <div class="avatar-image">--}}
-                {{--                                        <img src="assets/images/avatar/4.png" alt="" class="img-fluid" />--}}
-                {{--                                    </div>--}}
-                {{--                                    <div>--}}
-                {{--                                        <a href="javascript:void(0);">Kenneth Hune</a>--}}
-                {{--                                        <div class="fs-11 text-muted">Digital Marketer</div>--}}
-                {{--                                    </div>--}}
-                {{--                                </div>--}}
-                {{--                                <div class="team-progress-4"></div>--}}
-                {{--                            </div>--}}
-                {{--                        </div>--}}
-                {{--                        <a href="javascript:void(0);" class="card-footer fs-11 fw-bold text-uppercase text-center">Update 30 Min Ago</a>--}}
-                {{--                    </div>--}}
-                {{--                </div>--}}
-                {{--                <!--! END: [Team Progress] !-->--}}
-            </div>
+        <div class="page-header-right ms-auto d-flex align-items-center gap-2">
+            <a href="{{ route('main') }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                <i class="feather-external-link me-1"></i> Saytni ko'rish
+            </a>
         </div>
-        <!-- [ Main Content ] end -->
     </div>
+    <!-- [ page-header ] end -->
 
+    <!-- [ Main Content ] start -->
+    <div class="main-content">
+        <!-- Salomlashish bloki -->
+        <div class="card stretch stretch-full mb-4 border-0 shadow-sm" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; border-radius: 12px;">
+            <div class="card-body p-4 d-flex align-items-center justify-content-between flex-wrap gap-3">
+                <div class="d-flex align-items-center gap-3">
+                    <img src="{{ asset('assets/images/logoo.jfif') }}" alt="Logo" style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.3); object-fit: cover;">
+                    <div>
+                        <h4 class="text-white mb-1">Xush kelibsiz, {{ Auth::user()->name }}!</h4>
+                        <p class="mb-0 text-white-50 fs-13">Kriminologiya tadqiqot instituti veb-saytini boshqarish tizimi</p>
+                    </div>
+                </div>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('news.index') }}" class="btn btn-light btn-sm fw-semibold text-primary">
+                        <i class="feather-plus me-1"></i> Yangilik qo'shish
+                    </a>
+                    <a href="{{ route('issues.index') }}" class="btn btn-outline-light btn-sm fw-semibold">
+                        <i class="feather-book-open me-1"></i> Jurnal soni
+                    </a>
+                    <a href="{{ route('announcements.index') }}" class="btn btn-outline-light btn-sm fw-semibold">
+                        <i class="feather-alert-circle me-1"></i> E'lon
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistika kartalari -->
+        <div class="row g-3 mb-4">
+            <!-- Yangiliklar -->
+            <div class="col-xxl-2 col-md-4 col-sm-6">
+                <div class="card stretch stretch-full border-0 shadow-sm h-100" style="border-radius: 10px;">
+                    <div class="card-body p-3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="fs-12 text-muted fw-semibold">Yangiliklar</span>
+                            <div class="avatar-text avatar-sm bg-primary-subtle text-primary rounded-circle">
+                                <i class="feather-file-text"></i>
+                            </div>
+                        </div>
+                        <h3 class="fw-bold mb-1 text-dark">{{ $stats['news'] ?? 0 }}</h3>
+                        <a href="{{ route('news.index') }}" class="fs-11 text-primary fw-medium">Ro'yxatga o'tish →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jurnal sonlari -->
+            <div class="col-xxl-2 col-md-4 col-sm-6">
+                <div class="card stretch stretch-full border-0 shadow-sm h-100" style="border-radius: 10px;">
+                    <div class="card-body p-3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="fs-12 text-muted fw-semibold">Jurnal sonlari</span>
+                            <div class="avatar-text avatar-sm bg-success-subtle text-success rounded-circle">
+                                <i class="feather-book-open"></i>
+                            </div>
+                        </div>
+                        <h3 class="fw-bold mb-1 text-dark">{{ $stats['issues'] ?? 0 }}</h3>
+                        <a href="{{ route('issues.index') }}" class="fs-11 text-success fw-medium">Ro'yxatga o'tish →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maqolalar (PDF) -->
+            <div class="col-xxl-2 col-md-4 col-sm-6">
+                <div class="card stretch stretch-full border-0 shadow-sm h-100" style="border-radius: 10px;">
+                    <div class="card-body p-3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="fs-12 text-muted fw-semibold">Maqolalar (PDF)</span>
+                            <div class="avatar-text avatar-sm bg-info-subtle text-info rounded-circle">
+                                <i class="feather-file"></i>
+                            </div>
+                        </div>
+                        <h3 class="fw-bold mb-1 text-dark">{{ $stats['papers'] ?? 0 }}</h3>
+                        <a href="{{ route('papers.index') }}" class="fs-11 text-info fw-medium">Ro'yxatga o'tish →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- E'lonlar -->
+            <div class="col-xxl-2 col-md-4 col-sm-6">
+                <div class="card stretch stretch-full border-0 shadow-sm h-100" style="border-radius: 10px;">
+                    <div class="card-body p-3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="fs-12 text-muted fw-semibold">E'lonlar</span>
+                            <div class="avatar-text avatar-sm bg-warning-subtle text-warning rounded-circle">
+                                <i class="feather-bell"></i>
+                            </div>
+                        </div>
+                        <h3 class="fw-bold mb-1 text-dark">{{ $stats['announcements'] ?? 0 }}</h3>
+                        <a href="{{ route('announcements.index') }}" class="fs-11 text-warning fw-medium">Ro'yxatga o'tish →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Videolar -->
+            <div class="col-xxl-2 col-md-4 col-sm-6">
+                <div class="card stretch stretch-full border-0 shadow-sm h-100" style="border-radius: 10px;">
+                    <div class="card-body p-3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="fs-12 text-muted fw-semibold">Videolar</span>
+                            <div class="avatar-text avatar-sm bg-danger-subtle text-danger rounded-circle">
+                                <i class="feather-video"></i>
+                            </div>
+                        </div>
+                        <h3 class="fw-bold mb-1 text-dark">{{ $stats['videos'] ?? 0 }}</h3>
+                        <a href="{{ route('videos.index') }}" class="fs-11 text-danger fw-medium">Ro'yxatga o'tish →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kelgan Murojaatlar -->
+            <div class="col-xxl-2 col-md-4 col-sm-6">
+                <div class="card stretch stretch-full border-0 shadow-sm h-100" style="border-radius: 10px;">
+                    <div class="card-body p-3">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="fs-12 text-muted fw-semibold">Murojaatlar</span>
+                            <div class="avatar-text avatar-sm bg-secondary-subtle text-secondary rounded-circle">
+                                <i class="feather-mail"></i>
+                            </div>
+                        </div>
+                        <h3 class="fw-bold mb-1 text-dark">{{ $stats['messages'] ?? 0 }}</h3>
+                        <span class="fs-11 text-muted fw-medium">Sayt xabarlari</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2 Ustun: Oxirgi yangiliklar va Oxirgi xabarlar -->
+        <div class="row g-4">
+            <!-- Oxirgi yangiliklar -->
+            <div class="col-lg-7">
+                <div class="card stretch stretch-full border-0 shadow-sm" style="border-radius: 10px;">
+                    <div class="card-header d-flex align-items-center justify-content-between py-3 px-4 border-bottom">
+                        <h6 class="mb-0 fw-bold"><i class="feather-file-text me-2 text-primary"></i>Oxirgi qo'shilgan yangiliklar</h6>
+                        <a href="{{ route('news.index') }}" class="btn btn-sm btn-light fs-12">Barchasi →</a>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light fs-12 text-muted">
+                                    <tr>
+                                        <th style="width: 50px;">Rasm</th>
+                                        <th>Sarlavha</th>
+                                        <th style="width: 120px;">Sana</th>
+                                        <th style="width: 80px;" class="text-end">Amal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($latest_news as $item)
+                                        <tr>
+                                            <td>
+                                                @if($item->photos && $item->photos->count() > 0)
+                                                    <img src="{{ asset('storage/' . $item->photos->first()->file_path) }}" alt="" style="width: 36px; height: 36px; border-radius: 6px; object-fit: cover;">
+                                                @else
+                                                    <div class="avatar-text avatar-sm bg-light text-muted rounded">
+                                                        <i class="feather-image"></i>
+                                                    </div>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <div class="fw-semibold text-dark text-truncate" style="max-width: 320px;" title="{{ $item->name_uz }}">
+                                                    {{ $item->name_uz ?? 'Nomsiz' }}
+                                                </div>
+                                            </td>
+                                            <td class="fs-12 text-muted">
+                                                {{ $item->created_at ? $item->created_at->format('d.m.Y H:i') : '-' }}
+                                            </td>
+                                            <td class="text-end">
+                                                <a href="{{ route('news.index') }}" class="btn btn-sm btn-icon btn-light" title="Boshqarish">
+                                                    <i class="feather-edit-2"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="4" class="text-center py-4 text-muted fs-13">Hozircha yangiliklar yo'q</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oxirgi kelgan murojaatlar -->
+            <div class="col-lg-5">
+                <div class="card stretch stretch-full border-0 shadow-sm" style="border-radius: 10px;">
+                    <div class="card-header d-flex align-items-center justify-content-between py-3 px-4 border-bottom">
+                        <h6 class="mb-0 fw-bold"><i class="feather-mail me-2 text-danger"></i>Saytdan kelgan murojaatlar</h6>
+                        <span class="badge bg-primary-subtle text-primary fs-11">{{ $stats['messages'] ?? 0 }} ta</span>
+                    </div>
+                    <div class="card-body p-3">
+                        @forelse($latest_messages as $msg)
+                            <div class="p-3 mb-2 bg-light rounded border-start border-3 border-primary">
+                                <div class="d-flex align-items-center justify-content-between mb-1">
+                                    <strong class="fs-13 text-dark">{{ $msg->name ?? 'Foydalanuvchi' }}</strong>
+                                    <span class="fs-11 text-muted">{{ $msg->created_at ? $msg->created_at->diffForHumans() : '' }}</span>
+                                </div>
+                                <div class="fs-12 text-primary mb-1">
+                                    <i class="feather-phone me-1"></i>{{ $msg->phone ?? '-' }}
+                                </div>
+                                <p class="fs-12 text-muted mb-0 text-truncate-2-line" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                    {{ $msg->message ?? '' }}
+                                </p>
+                            </div>
+                        @empty
+                            <div class="text-center py-4 text-muted fs-13">
+                                <i class="feather-inbox fs-24 d-block mb-2 text-muted"></i>
+                                Yangi murojaatlar yo'q
+                            </div>
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+</div>
 @endsection

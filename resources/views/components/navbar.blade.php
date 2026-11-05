@@ -63,6 +63,7 @@
         [
             'title' => __('lan.ilm_ishlanma'),
             'children' => [
+                ['url' => route('library.redirect'), 'title' => '📖 ' . __('lan.elektron_kutubxona')],
                 ['url' => route('main'), 'title' => __('lan.dav_hisob')],
                 ['url' => route('journals_index'), 'title' => __('lan.ilm_jurnal')],
                 ['url' => route('categoryId', 18), 'title' => __('lan.qullanma')],
@@ -121,6 +122,165 @@
     ];
     $lxCurrentLang = App::getLocale();
 @endphp
+
+<style>
+.lx-nav-library-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: #fff !important;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: 20px;
+    border: 1px solid rgba(201, 169, 97, 0.4);
+    box-shadow: 0 2px 8px rgba(30, 60, 114, 0.2);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+.lx-nav-library-btn:hover {
+    background: linear-gradient(135deg, #c9a961 0%, #a8853b 100%);
+    color: #fff !important;
+    box-shadow: 0 4px 14px rgba(201, 169, 97, 0.4);
+    transform: translateY(-1px);
+}
+@media (max-width: 991px) {
+    .lx-nav-library-btn {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+}
+@media (max-width: 576px) {
+    .lx-nav-library-btn span {
+        display: none;
+    }
+    .lx-nav-library-btn {
+        padding: 6px 9px;
+        border-radius: 50%;
+    }
+}
+
+.lx-test-notice-bar {
+    background: linear-gradient(90deg, #0b1728 0%, #17263c 50%, #0b1728 100%);
+    border-bottom: 1px solid rgba(201, 169, 97, 0.4);
+    color: #e2e8f0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    position: relative;
+    z-index: 1001;
+}
+.lx-test-notice-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+}
+.lx-test-notice-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+}
+.lx-test-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: linear-gradient(135deg, #c9a961 0%, #a8853b 100%);
+    color: #0b1526;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2.5px 8.5px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(201, 169, 97, 0.25);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.lx-test-badge svg {
+    display: block;
+}
+.lx-test-text {
+    color: #f1f5f9;
+    font-size: 12.5px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+.lx-test-close-btn {
+    background: transparent;
+    border: none;
+    color: rgba(241, 245, 249, 0.65);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+.lx-test-close-btn:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.12);
+}
+@media (max-width: 768px) {
+    .lx-test-notice-inner {
+        padding: 5px 0;
+    }
+    .lx-test-notice-content {
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        text-align: left;
+    }
+    .lx-test-text {
+        font-size: 11px;
+        line-height: 1.35;
+    }
+    .lx-test-badge {
+        font-size: 9.5px;
+        padding: 1.5px 6.5px;
+    }
+}
+</style>
+
+{{-- ─────── Test Rejimi Bildirishnomasi ─────── --}}
+<div class="lx-test-notice-bar" id="lxTestNoticeBar">
+    <div class="container">
+        <div class="lx-test-notice-inner">
+            <div class="lx-test-notice-content">
+                <span class="lx-test-badge">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>{{ __('lan.test_rejim_badge') }}</span>
+                </span>
+                <span class="lx-test-text">{{ __('lan.test_rejim_xabari') }}</span>
+            </div>
+            <button type="button" class="lx-test-close-btn" onclick="document.getElementById('lxTestNoticeBar').style.display='none'; try{sessionStorage.setItem('lx_test_dismissed','1');}catch(e){}" aria-label="Yopish" title="Yopish">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+</div>
+<script>
+    try {
+        if (sessionStorage.getItem('lx_test_dismissed') === '1') {
+            var el = document.getElementById('lxTestNoticeBar');
+            if (el) el.style.display = 'none';
+        }
+    } catch(e) {}
+</script>
 
 {{-- ─────── Topbar ─────── --}}
 <div class="lx-topbar">
@@ -233,6 +393,14 @@
             </ul>
 
             <div class="lx-nav-actions">
+                <a href="{{ route('library.redirect') }}" target="_blank" rel="noopener" class="lx-nav-library-btn" title="{{ __('lan.elektron_kutubxona') }}">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                    </svg>
+                    <span>{{ __('lan.elektron_kutubxona') }}</span>
+                </a>
+
                 <button type="button" class="lx-nav-icon-btn" data-lx="open-search"
                     aria-label="{{ __('lan.qidirish') }}">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"

@@ -262,6 +262,35 @@
         </div>
     </section>
 
+    {{-- ─────── Elektron kutubxona Banneri ─────── --}}
+    <section class="lx-library-cta py-4" style="background: linear-gradient(135deg, #132742 0%, #1e3c72 100%);">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 p-4 rounded-3" style="border: 1px solid rgba(201, 169, 97, 0.3); background: rgba(255, 255, 255, 0.04);">
+                <div class="d-flex align-items-center gap-3">
+                    <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(201, 169, 97, 0.15); display: flex; align-items: center; justify-content: center; color: #c9a961; border: 1px solid rgba(201, 169, 97, 0.3);" class="shrink-0">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="text-white mb-1 fw-bold" style="font-family: var(--lx-font-serif, serif); letter-spacing: 0.02em;">
+                            {{ __('lan.elektron_kutubxona') }}
+                        </h4>
+                        <p class="mb-0 text-white-50 fs-13">
+                            Institutning ilmiy nashrlari, monografiyalar, darsliklar va kriminologik tadqiqot materiallari portali
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <a href="{{ route('library.redirect') }}" target="_blank" rel="noopener" class="btn fw-semibold px-4 py-2" style="background: linear-gradient(135deg, #c9a961 0%, #a8853b 100%); color: #fff; border-radius: 25px; box-shadow: 0 4px 15px rgba(201, 169, 97, 0.35);">
+                        <span>Kutubxonaga o'tish →</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     {{-- ─────── Ilmiy salohiyat (statistika) ─────── --}}
     @php
         $lxStats = [

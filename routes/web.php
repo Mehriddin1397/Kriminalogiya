@@ -61,6 +61,34 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 
 Route::get('locale/{lang}', [\App\Http\Controllers\LocaleController::class, 'setLocale'])->name('setLocale');
 
+// Elektron kutubxonaga aqlli yo'naltirish (Ichki tarmoq: 192.168.40.109 / Tashqi: kutubxona.uzkti.uz)
+Route::get('/kutubxona', function () {
+    $clientIp = request()->ip();
+
+    if (request('target') === 'internal') {
+        return redirect()->away('http://192.168.40.109');
+    }
+    if (request('target') === 'external') {
+        return redirect()->away('https://kutubxona.uzkti.uz');
+    }
+
+    $internalSubnets = [
+        '213.230.99.98',   // Institut tashqi statik IP manzili
+        '192.168.40.',
+        '192.168.',
+        '127.0.0.1',
+        '::1',
+    ];
+
+    foreach ($internalSubnets as $prefix) {
+        if (str_starts_with($clientIp, $prefix)) {
+            return redirect()->away('http://192.168.40.109');
+        }
+    }
+
+    return redirect()->away('https://kutubxona.uzkti.uz');
+})->name('library.redirect');
+
 Route::post('chatbot/ask', [\App\Http\Controllers\ChatbotController::class, 'ask'])
     ->middleware('throttle:20,1')
     ->name('chatbot.ask');

@@ -223,5 +223,7 @@ return [
     'rn_davlat_vengriya' => 'Hungary',
     'rn_davlat_rossiya' => 'Russia',
     'rn_davlat_belarus' => 'Belarus',
-
+    'elektron_kutubxona' => 'Digital Library',
+    'test_rejim_badge' => 'Test Mode',
+    'test_rejim_xabari' => 'The website is operating in test mode. Some sections and information are currently being updated.',
 ];

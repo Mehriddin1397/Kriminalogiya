@@ -133,7 +133,22 @@ class PageController extends Controller
 
     public function dashboard()
     {
-        return view('admin.dashboard');
+        $stats = [
+            'news'          => News::count(),
+            'announcements' => Announcement::count(),
+            'journals'      => Journal::count(),
+            'issues'        => \App\Models\Issue::count(),
+            'papers'        => \App\Models\Paper::count(),
+            'videos'        => Video::count(),
+            'messages'      => Message::count(),
+            'scholars'      => Scholars::count(),
+            'research'      => Research::count(),
+        ];
+
+        $latest_news = News::latest()->take(5)->get();
+        $latest_messages = Message::latest()->take(5)->get();
+
+        return view('admin.dashboard', compact('stats', 'latest_news', 'latest_messages'));
     }
 
     public function test(Request $request)

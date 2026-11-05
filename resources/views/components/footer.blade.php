@@ -49,6 +49,7 @@
                 <div class="lx-footer-col" data-aos="fade-up" data-aos-delay="100">
                     <h4 class="lx-footer-title">{{ __('lan.services') }}</h4>
                     <ul class="lx-footer-links">
+                        <li><a href="{{ route('library.redirect') }}" target="_blank">📖 {{ __('lan.elektron_kutubxona') }}</a></li>
                         <li><a href="{{ route('categoryId', 34) }}">{{ __('lan.ish_qab') }}</a></li>
                         <li><a href="{{ route('show', ['category_id' => 30, 'id' => 3]) }}">{{ __('lan.dis_mav') }}</a></li>
                         <li><a href="{{ route('categoryId', 31) }}">{{ __('lan.tadqiq') }}</a></li>

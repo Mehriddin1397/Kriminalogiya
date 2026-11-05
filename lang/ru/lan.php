@@ -226,5 +226,7 @@ return [
     'rn_davlat_vengriya' => 'Венгрия',
     'rn_davlat_rossiya' => 'Россия',
     'rn_davlat_belarus' => 'Беларусь',
-
+    'elektron_kutubxona' => 'Электронная библиотека',
+    'test_rejim_badge' => 'Тестовый режим',
+    'test_rejim_xabari' => 'Сайт работает в тестовом режиме. Некоторые разделы и данные находятся в процессе обновления.',
 ];

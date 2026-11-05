@@ -227,13 +227,7 @@ return [
     'rn_davlat_vengriya' => 'Vengriya',
     'rn_davlat_rossiya' => 'Rossiya',
     'rn_davlat_belarus' => 'Belarus',
-
-
-
-
-
-
-
-
-
+    'elektron_kutubxona' => 'Elektron kutubxona',
+    'test_rejim_badge' => 'Test rejimi',
+    'test_rejim_xabari' => 'Sayt test rejimida ishlamoqda. Ayrim maʼlumotlar to‘ldirilish va yangilanish jarayonida.',
 ];
