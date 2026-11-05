@@ -21,12 +21,17 @@
     --lx-shadow-luxury: 0 20px 60px -10px rgba(10, 14, 26, 0.35);
     --lx-shadow-card: 0 14px 40px -12px rgba(10, 14, 26, 0.18);
     --lx-shadow-gold: 0 12px 36px -10px rgba(212, 175, 55, 0.35);
+
+    /* Yagona va eng maqul shrift (Inter) */
+    --lx-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --lx-font-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --lx-font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 .home-luxury {
     background: var(--lx-cream);
     color: var(--lx-text);
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--lx-font-sans);
     overflow-x: hidden;
 }
 
@@ -35,9 +40,9 @@
 .home-luxury h3,
 .home-luxury h4,
 .home-luxury .lx-serif {
-    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-    font-weight: 500;
-    letter-spacing: 0.005em;
+    font-family: var(--lx-font-heading);
+    font-weight: 600;
+    letter-spacing: -0.015em;
 }
 
 /* ─────── Hero ─────── */
@@ -108,7 +113,7 @@
     gap: 14px;
     color: var(--lx-cream);
     z-index: 5;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     opacity: 0;
     animation: lxFadeUp 1s ease-out 0.4s forwards;
 }
@@ -675,7 +680,7 @@
 }
 
 .lx-news-thumb-empty span {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     color: var(--lx-bronze);
     font-size: 17.5px;
@@ -710,7 +715,7 @@
 }
 
 .lx-news-card .lx-news-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 500;
     color: var(--lx-text);
     margin: 0 0 16px;
@@ -795,7 +800,7 @@
 
 .lx-announce-head h3 {
     margin: 0;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 500;
     font-size: 23px;
     letter-spacing: 0.02em;
@@ -870,7 +875,7 @@
 }
 
 .lx-announce-media-empty span {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     color: var(--lx-bronze);
     font-size: 16.5px;
@@ -888,7 +893,7 @@
 
 .lx-announce-title {
     margin: 0 0 10px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 500;
     color: var(--lx-cream);
     font-size: 20.5px;
@@ -1027,14 +1032,14 @@
 .lx-direction-num {
     display: block;
     color: var(--lx-bronze);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     font-size: 15.5px;
     margin-bottom: 8px;
 }
 
 .lx-direction-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     line-height: 1.25;
     color: var(--lx-cream);
@@ -1124,7 +1129,7 @@
 }
 
 .lx-stat-number {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(43.5px, 4.4vw, 61px);
     color: var(--lx-bronze);
     line-height: 1;
@@ -1171,7 +1176,7 @@
 
 .lx-loader-name {
     color: var(--lx-bronze-dark);
-    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(16.5px, 1.7vw, 22px);
     font-weight: 600;
     letter-spacing: 0.18em;
@@ -1312,7 +1317,7 @@
     border: 1px solid var(--lx-bronze);
     border-radius: 50%;
     color: var(--lx-bronze);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 39px;
     font-weight: 500;
 }
@@ -1506,7 +1511,7 @@
 }
 
 .lx-page-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(39px, 6vw, 74px);
     font-weight: 500;
     line-height: 1.1;
@@ -1628,7 +1633,7 @@
 
 .lx-badge-num {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 39px;
     color: var(--lx-gold-bright);
     line-height: 1;
@@ -1664,7 +1669,7 @@
 }
 
 .lx-rich-text p:first-of-type::first-letter {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 70px;
     line-height: 0.85;
     float: left;
@@ -1811,7 +1816,7 @@
 }
 
 .lx-pillar h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 26px;
     color: var(--lx-cream);
     margin: 0 0 14px;
@@ -1842,7 +1847,7 @@
 }
 
 .lx-quote-mark {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 152.5px;
     line-height: 0.9;
     color: var(--lx-bronze);
@@ -1852,7 +1857,7 @@
 }
 
 .lx-quote-text {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     font-size: clamp(24px, 2.6vw, 35px);
     color: var(--lx-text);
@@ -2000,7 +2005,7 @@
 }
 
 .lx-leader-photo-empty span {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 87px;
     color: var(--lx-bronze);
     line-height: 1;
@@ -2076,7 +2081,7 @@
 }
 
 .lx-leader-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 26px;
     line-height: 1.25;
     font-weight: 500;
@@ -2168,7 +2173,7 @@
 }
 
 .lx-leader-chief-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(32.5px, 3.5vw, 46px);
     line-height: 1.15;
     font-weight: 500;
@@ -2271,7 +2276,7 @@
 }
 
 .lx-modal .modal-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 28.5px;
     font-weight: 500;
     color: var(--lx-text);
@@ -2521,7 +2526,7 @@ body nav.navbar-light:not(.lx-nav) {
 
 .lx-nav-brand-big {
     color: var(--lx-navy);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 19.5px;
     font-weight: 600;
     letter-spacing: 0.005em;
@@ -3008,7 +3013,7 @@ body nav.navbar-light:not(.lx-nav) {
     border: none;
     border-bottom: 1px solid var(--lx-bronze);
     color: var(--lx-cream);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(26px, 3.3vw, 39px);
     font-style: italic;
     outline: none;
@@ -3127,7 +3132,7 @@ body nav.navbar-light:not(.lx-nav) {
 }
 
 .lx-drawer-brand span {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 17.5px;
     line-height: 1.2;
 }
@@ -3564,7 +3569,7 @@ body.lx-no-scroll {
 
 .lx-footer-logo-text .big {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     font-weight: 500;
     line-height: 1.25;
@@ -4347,7 +4352,7 @@ body.home-page .lx-hero .lx-hero-slide {
     text-align: center;
     padding: 80px 24px;
     color: var(--lx-text-soft);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     font-size: 22px;
 }
@@ -4497,7 +4502,7 @@ body.home-page .lx-hero .lx-hero-slide {
     flex-direction: column;
     gap: 14px;
     color: var(--lx-bronze);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -4570,7 +4575,7 @@ body.home-page .lx-hero .lx-hero-slide {
 /* Article body */
 
 .lx-article-lead {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     font-size: clamp(19.5px, 2vw, 24px);
     line-height: 1.6;
@@ -4604,7 +4609,7 @@ body.home-page .lx-hero .lx-hero-slide {
 .lx-article-body h2,
 .lx-article-body h3,
 .lx-article-body h4 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--lx-text);
     line-height: 1.3;
     margin: 36px 0 16px;
@@ -4625,7 +4630,7 @@ body.home-page .lx-hero .lx-hero-slide {
     padding: 18px 26px;
     border-left: 2px solid var(--lx-bronze);
     background: var(--lx-paper);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     color: var(--lx-text);
     font-size: 19.5px;
@@ -4829,7 +4834,7 @@ body.home-page .lx-hero .lx-hero-slide {
 
 .lx-contact-quick-value {
     color: var(--lx-text);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 20.5px;
     line-height: 1.45;
     font-weight: 500;
@@ -4923,7 +4928,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-contact-card-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 30.5px;
     font-weight: 500;
     line-height: 1.3;
@@ -5025,7 +5030,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-contact-form-side h3 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 30.5px;
     line-height: 1.3;
     color: var(--lx-cream);
@@ -5091,7 +5096,7 @@ body.home-page .lx-hero .lx-hero-slide {
 .lx-form-head .lx-eyebrow::after { display: none; }
 
 .lx-form-head h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(28.5px, 3.3vw, 39px);
     color: var(--lx-text);
     margin: 0;
@@ -5442,7 +5447,7 @@ body.home-page .lx-hero .lx-hero-slide {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--lx-bronze);
     font-size: 41.5px;
     font-weight: 500;
@@ -5468,7 +5473,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-partner-tile-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 19.5px;
     font-weight: 500;
     line-height: 1.35;
@@ -5554,7 +5559,7 @@ body.home-page .lx-hero .lx-hero-slide {
 .lx-partner-single-info > .lx-eyebrow::after { display: none; }
 
 .lx-partner-single-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(30.5px, 3.9vw, 46px);
     font-weight: 500;
     line-height: 1.18;
@@ -5563,7 +5568,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-partner-single-subtitle {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     font-size: 19.5px;
     line-height: 1.55;
@@ -5790,7 +5795,7 @@ body.home-page .lx-hero .lx-hero-slide {
     position: absolute;
     top: 22px;
     right: 28px;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 46px;
     font-weight: 300;
     color: rgba(212, 175, 55, 0.42);
@@ -5847,7 +5852,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-doc-featured-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 20.5px;
     font-weight: 500;
     line-height: 1.45;
@@ -6004,7 +6009,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-doc-row-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18.5px;
     font-weight: 500;
     line-height: 1.45;
@@ -6386,7 +6391,7 @@ body.home-page .lx-hero .lx-hero-slide {
     position: absolute;
     top: 14px;
     left: 38px;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 152.5px;
     line-height: 1;
     color: rgba(201, 169, 97, 0.18);
@@ -6397,7 +6402,7 @@ body.home-page .lx-hero .lx-hero-slide {
 .lx-partner-intro-body {
     position: relative;
     z-index: 1;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     line-height: 1.55;
     color: var(--lx-navy);
@@ -6606,7 +6611,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-journal-cover-letter {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 100.5px;
     font-weight: 300;
     line-height: 1;
@@ -6702,7 +6707,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-journal-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 23px;
     font-weight: 500;
     line-height: 1.4;
@@ -6857,7 +6862,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-journal-detail-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 41.5px;
     font-weight: 500;
     line-height: 1.2;
@@ -6908,7 +6913,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-journal-stat-value {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     font-weight: 500;
     color: var(--lx-navy);
@@ -6980,7 +6985,7 @@ body.home-page .lx-hero .lx-hero-slide {
     gap: 6px;
     background: radial-gradient(circle at center, rgba(212, 175, 55, 0.2) 0%, transparent 60%), linear-gradient(135deg, #131a2c 0%, var(--lx-navy) 100%);
     color: var(--lx-gold-bright);
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .lx-issue-card2-cover.no-cover .lx-issue-card2-fallback { z-index: 2; }
@@ -7018,7 +7023,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-issue-card2-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 17.5px;
     font-weight: 500;
     line-height: 1.4;
@@ -7199,7 +7204,7 @@ body.home-page .lx-hero .lx-hero-slide {
     margin: 0 4px;
     color: var(--lx-cream);
     font-size: 14px;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 500;
 }
 
@@ -7296,7 +7301,7 @@ body.home-page .lx-hero .lx-hero-slide {
     transform: translate(-50%, -50%) rotate(-30deg);
     pointer-events: none;
     opacity: 0.08;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 41.5px;
     letter-spacing: 0.4em;
     text-transform: uppercase;
@@ -7470,7 +7475,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-stats-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 48px;
     font-weight: 500;
     line-height: 1.18;
@@ -7596,7 +7601,7 @@ body.home-page .lx-hero .lx-hero-slide {
     align-items: baseline;
     justify-content: center;
     gap: 2px;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 500;
     line-height: 1;
     color: var(--lx-cream);
@@ -7838,7 +7843,7 @@ body.home-page .lx-hero .lx-hero-slide {
     z-index: 3;
     padding: 22px 22px 18px;
     color: var(--lx-cream);
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.4;
@@ -7907,7 +7912,7 @@ body.home-page .lx-hero .lx-hero-slide {
     align-items: center;
     gap: 14px;
     color: var(--lx-bronze-soft);
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     z-index: 3;
     pointer-events: none;
 }
@@ -8060,7 +8065,7 @@ body.home-page .lx-hero .lx-hero-slide {
     display: inline-block;
     max-width: 720px;
     color: var(--lx-cream);
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16.5px;
     line-height: 1.5;
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
@@ -8165,7 +8170,7 @@ body.home-page .lx-hero .lx-hero-slide {
     outline: 0;
     background: transparent;
     color: var(--lx-navy);
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18.5px;
     line-height: 1.4;
     padding: 12px 6px;
@@ -8301,7 +8306,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-search-group-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 24px;
     font-weight: 500;
     color: var(--lx-navy);
@@ -8311,7 +8316,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-search-group-count {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 28.5px;
     font-weight: 400;
     color: var(--lx-bronze);
@@ -8393,7 +8398,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-search-row-thumb-empty {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 28.5px;
     font-weight: 500;
     color: var(--lx-bronze);
@@ -8417,7 +8422,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-search-row-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16.5px;
     font-weight: 500;
     line-height: 1.4;
@@ -8500,7 +8505,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-search-empty-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 28.5px;
     font-weight: 500;
     color: var(--lx-navy);
@@ -8636,7 +8641,7 @@ body.home-page .lx-hero .lx-hero-slide {
     align-items: baseline;
     justify-content: center;
     gap: 3px;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 500;
     line-height: 1;
     margin-bottom: 12px;
@@ -8745,7 +8750,7 @@ body.home-page .lx-hero .lx-hero-slide {
 
 .lx-rn-type-num {
     display: block;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 37px;
     font-weight: 600;
     line-height: 1;
@@ -9027,7 +9032,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-bento-num {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
     font-size: 43.5px;
     color: var(--lx-navy);
@@ -9038,7 +9043,7 @@ body.home-page .lx-hero .lx-hero-slide {
 .lx-bento-card.has-ring .lx-bento-num { font-size: 48px; }
 
 .lx-bento-suffix {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
     font-size: 28.5px;
     color: var(--lx-bronze);
@@ -9099,7 +9104,7 @@ body.home-page .lx-hero .lx-hero-slide {
 }
 
 .lx-bento-breakdown-num {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
     font-size: 32.5px;
     color: var(--lx-bronze-dark);
@@ -9150,7 +9155,7 @@ body.home-page .lx-hero .lx-hero-slide {
 .lx-stats-product-icon svg { width: 26px; height: 26px; }
 
 .lx-stats-product-value {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
     font-size: 35px;
     color: var(--lx-gold-bright);
@@ -9175,7 +9180,7 @@ body.home-page .lx-hero .lx-hero-slide {
 
 .lx-stats-footer-quote {
     display: block;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 98px;
     line-height: 1;
     color: var(--lx-bronze);
@@ -9185,7 +9190,7 @@ body.home-page .lx-hero .lx-hero-slide {
 .lx-stats-footer-text {
     max-width: 720px;
     margin: 0 auto;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-style: italic;
     font-size: clamp(22px, 2.6vw, 30.5px);
     line-height: 1.6;
@@ -9273,7 +9278,7 @@ body.home-page .lx-hero .lx-hero-slide {
     position: absolute;
     top: -8px;
     left: 26px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 131px;
     line-height: 1;
     color: rgba(201, 169, 97, 0.16);
@@ -9294,7 +9299,7 @@ body.home-page .lx-hero .lx-hero-slide {
 .lx-mission-hero-text p {
     position: relative;
     z-index: 1;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 20.5px;
     line-height: 1.75;
     color: var(--lx-text);
@@ -9335,7 +9340,7 @@ body.home-page .lx-hero .lx-hero-slide {
     position: absolute;
     top: 22px;
     right: 24px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
     font-size: 37px;
     line-height: 1;
@@ -9422,7 +9427,7 @@ body.home-page .lx-hero .lx-hero-slide {
 .lx-mission-row-index {
     flex: 0 0 auto;
     width: 54px;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
     font-size: 34px;
     line-height: 1;
@@ -9540,7 +9545,7 @@ body.home-page .lx-hero .lx-hero-slide {
 
 .lx-intl-banner-text {
     position: relative;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 23px;
     font-weight: 600;
     line-height: 1.65;
@@ -9583,7 +9588,7 @@ body.home-page .lx-hero .lx-hero-slide {
     font-size: 22px;
     font-weight: 500;
     color: var(--lx-navy);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     line-height: 1.7;
 }
 
@@ -10404,7 +10409,7 @@ body.lx-chat-open {
 }
 
 .lx-timeline-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 23px;
     font-weight: 600;
     color: var(--lx-navy);
@@ -10540,7 +10545,7 @@ body.lx-chat-open {
     position: absolute;
     top: -18px;
     right: 14px;
-    font-family: 'Playfair Display', 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 100.5px;
     line-height: 1;
     color: rgba(212, 175, 55, 0.14);
@@ -10557,7 +10562,7 @@ body.lx-chat-open {
     position: relative;
     z-index: 1;
     margin: 0;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 20.5px;
     font-weight: 600;
     line-height: 1.5;
@@ -10824,7 +10829,7 @@ body.lx-chat-open {
 .lx-partner-highlight-body { flex: 1; min-width: 0; }
 
 .lx-partner-highlight-title {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18.5px;
     font-weight: 600;
     color: var(--lx-cream);
@@ -10887,7 +10892,7 @@ body.lx-chat-open {
 }
 
 .lx-partner-card-name {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 17.5px;
     font-weight: 600;
     color: var(--lx-cream);
@@ -11104,7 +11109,7 @@ a.lx-memo-card-org-link:hover {
     position: absolute;
     top: 16px;
     right: 26px;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 83px;
     font-weight: 300;
     line-height: 1;
@@ -11142,7 +11147,7 @@ a.lx-memo-card-org-link:hover {
 
 .lx-forum-card-theme {
     position: relative;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 23px;
     font-weight: 600;
     color: var(--lx-navy);
@@ -11170,7 +11175,7 @@ a.lx-memo-card-org-link:hover {
 
 .lx-forum-stat-num {
     display: block;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 28.5px;
     font-weight: 600;
     color: var(--lx-bronze-dark);
@@ -11335,7 +11340,7 @@ a.lx-memo-card-org-link:hover {
 
 .lx-project-title {
     position: relative;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(23px, 2.8vw, 30.5px);
     font-weight: 600;
     color: var(--lx-navy);
@@ -11390,7 +11395,7 @@ a.lx-memo-card-org-link:hover {
     margin: 0;
     padding-top: 22px;
     border-top: 1px dashed rgba(201, 169, 97, 0.3);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18.5px;
     font-weight: 600;
     color: var(--lx-bronze-dark);
@@ -11447,7 +11452,7 @@ a.lx-memo-card-org-link:hover {
 .lx-contact-org-body { min-width: 0; }
 
 .lx-contact-org-name {
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18.5px;
     font-weight: 600;
     color: var(--lx-navy);
@@ -11525,7 +11530,7 @@ a.lx-memo-card-org-link:hover {
 }
 
 .lx-contact-card-value {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 18.5px;
     font-weight: 600;
     color: var(--lx-navy);
@@ -11634,7 +11639,7 @@ a.lx-memo-card-org-link:hover {
 .lx-contact-address-label svg { color: var(--lx-bronze); }
 
 .lx-contact-address-text {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 20.5px;
     font-weight: 600;
     color: var(--lx-navy);
@@ -11952,7 +11957,7 @@ a.lx-memo-card-org-link:hover {
 }
 
 .lx-hero-card-value {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: clamp(19.5px, 2.6vw, 28.5px);
     color: var(--lx-bronze-soft);
     line-height: 1;
@@ -12030,7 +12035,7 @@ a.lx-memo-card-org-link:hover {
     box-shadow: 0 14px 34px -12px rgba(10, 14, 26, 0.55), 0 0 0 1px rgba(212, 175, 55, 0.1);
     cursor: pointer;
     padding: 0;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 19px;
     font-weight: 600;
     letter-spacing: 0.01em;
@@ -12078,7 +12083,7 @@ a.lx-memo-card-org-link:hover {
     border: 1px solid rgba(201, 169, 97, 0.25);
     background: rgba(245, 243, 240, 0.03);
     color: var(--lx-bronze-soft);
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
     line-height: 1;
     cursor: pointer;
@@ -12149,7 +12154,7 @@ a.lx-memo-card-org-link:hover {
 
 .lx-org-card-top h3 {
     margin: 0;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 22px;
     font-weight: 600;
     letter-spacing: 0.01em;
@@ -12373,7 +12378,7 @@ a.lx-memo-card-org-link:hover {
 
 .lx-partner-table-num {
     text-align: center;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--lx-bronze-dark);
     font-weight: 600;
 }
@@ -12448,7 +12453,7 @@ a.lx-memo-card-org-link:hover {
 
 .lx-topics-num {
     flex-shrink: 0;
-    font-family: 'Playfair Display', Georgia, serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     color: var(--lx-bronze-dark);
     font-weight: 600;
     min-width: 26px;

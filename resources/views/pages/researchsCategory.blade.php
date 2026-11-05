@@ -108,7 +108,6 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         .xalqaro-hankorlik-image-container {

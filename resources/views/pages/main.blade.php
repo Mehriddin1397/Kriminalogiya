@@ -274,7 +274,7 @@
                         </svg>
                     </div>
                     <div>
-                        <h4 class="text-white mb-1 fw-bold" style="font-family: var(--lx-font-serif, serif); letter-spacing: 0.02em;">
+                        <h4 class="text-white mb-1 fw-bold">
                             {{ __('lan.elektron_kutubxona') }}
                         </h4>
                         <p class="mb-0 text-white-50 fs-13">
